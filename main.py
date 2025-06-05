@@ -11,7 +11,7 @@ telegram_token = os.environ.get("TELEGRAM_TOKEN")
 
 client = OpenAI(api_key=openai_token)
 
-assistant = assistant = client.beta.assistants.retrieve(assistant_id='asst_dwB6XZQ5mOUvhapJ5dxSWUex')
+assistant = client.beta.assistants.retrieve(assistant_id='asst_OMuFH5IL2MXa4mEsabxBge3y')
 
 
 
@@ -22,6 +22,9 @@ import json
 from time import sleep
 from telebot import custom_filters, TeleBot
 from telebot.types import ReactionTypeEmoji
+from telegram.constants import ParseMode
+from telebot.apihelper import ApiTelegramException
+import re
 
 logging.basicConfig(
     level=logging.DEBUG, 
@@ -29,6 +32,25 @@ logging.basicConfig(
     filemode='w', 
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
+
+def clean_message_text(text):
+    """Clean text by removing problematic characters"""
+    # Remove backslashes
+    text = text.replace("\\", "")
+    
+    # Remove other potentially problematic characters
+    problematic_chars = ['*', '_', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
+    for char in problematic_chars:
+        text = text.replace(char, "")
+    
+    # Clean up whitespace
+    text = " ".join(text.split())
+    
+    return text
+
+
+thread = client.beta.threads.create()
+
 
 class TelegramBot:
     bot : telebot.TeleBot
@@ -59,7 +81,7 @@ class TelegramBot:
         )
         def handle_message(msg):
             if msg.text == "Hi":
-                self.bot.send_message(msg.chat.id, "Hello!")
+                self.bot.send_message(msg.chat.id, "Hello!", parse_mode=ParseMode.MARKDOWN)
             else:
 
                 self.bot.set_message_reaction(
@@ -72,10 +94,11 @@ class TelegramBot:
                 sleep(0.2)
                 self.bot.send_message(
                     msg.chat.id,
-                    "Ищу нужную инфу"
+                    "Ищу нужную инфу",
+                    parse_mode=ParseMode.MARKDOWN
                 )
 
-                thread = client.beta.threads.create()
+                
                 message = client.beta.threads.messages.create(
                     thread_id=thread.id,
                     role="user",
@@ -92,15 +115,28 @@ class TelegramBot:
                     messages = client.beta.threads.messages.list(
                         thread_id=thread.id
                     )
-                    self.bot.send_message(
-                        msg.chat.id,
-                        messages.data[0].content[0].text.value
-                    )
+                    try:
+                        self.bot.send_message(
+                            msg.chat.id,
+                            messages.data[0].content[0].text.value,
+                            parse_mode=ParseMode.MARKDOWN
+                        )
+                    except ApiTelegramException as e:
+                        self.bot.send_message(
+                            msg.chat.id,
+                            "Не получилось распарсить Markdown, отправляю как Plain Text",
+                            parse_mode=ParseMode.MARKDOWN
+                        )
+                        self.bot.send_message(
+                            msg.chat.id,
+                            clean_message_text(messages.data[0].content[0].text.value)
+                        )
                 else:
                     print(run.status)
                     self.bot.send_message(
                         msg.chat.id,
-                        "Что-то отвалилось :("
+                        "Что-то отвалилось :(",
+                        parse_mode=ParseMode.MARKDOWN
                     )
 
 
