@@ -69,7 +69,13 @@ class TelegramBot:
         
         # Start bot polling
         self.logger.info("Starting bot...")
-        self.bot.polling(non_stop=True)
+        try:
+            self.bot.polling(non_stop=True, timeout=60, long_polling_timeout=90) # Increased timeout
+        except Exception as e:
+            self.logger.error(f"Bot polling stopped due to an error: {e}")
+            # You might want to add a retry mechanism here, e.g.,
+            sleep(5)
+            self.run_bot()
 
 
     def register_handlers(self):
