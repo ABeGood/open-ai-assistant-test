@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 
 from openai import OpenAI
+from langdetect import detect_langs
 
 
 load_dotenv()
@@ -32,6 +33,13 @@ logging.basicConfig(
     filemode='w', 
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
+
+def detect_langudge(text): 
+    try:
+        langs = detect_langs(text)
+        return langs[0]
+    except:
+        return 0
 
 def clean_message_text(text):
     """Clean text by removing problematic characters"""
@@ -97,12 +105,12 @@ class TelegramBot:
                     is_big=True
                 )
 
-                sleep(0.2)
-                self.bot.send_message(
-                    msg.chat.id,
-                    "Ищу нужную инфу",
-                    parse_mode=ParseMode.MARKDOWN
-                )
+                # sleep(0.2)
+                # self.bot.send_message(
+                #     msg.chat.id,
+                #     "Ищу нужную инфу",
+                #     parse_mode=ParseMode.MARKDOWN
+                # )
 
                 
                 message = client.beta.threads.messages.create(
@@ -115,6 +123,29 @@ class TelegramBot:
                     thread_id=thread.id,
                     assistant_id=assistant.id,
                 )
+
+                tool_outputs = []
+
+                for tool in run.required_action.submit_tool_outputs.tool_calls:
+                    if tool.function.name == "ensure_language_match":
+                        tool_outputs.append({
+                        "tool_call_id": tool.id,
+                        "output": detect_langudge(msg.text)
+                        })
+
+                # Submit all tool outputs at once after collecting them in a list
+                if tool_outputs:
+                    try:
+                        run = client.beta.threads.runs.submit_tool_outputs_and_poll(
+                        thread_id=thread.id,
+                        run_id=run.id,
+                        tool_outputs=tool_outputs
+                        )
+                        print("Tool outputs submitted successfully.")
+                    except Exception as e:
+                        print("Failed to submit tool outputs:", e)
+                    else:
+                        print("No tool outputs to submit.")
 
                 if run.status == 'completed': 
                     print('Success!')
@@ -137,6 +168,7 @@ class TelegramBot:
                             msg.chat.id,
                             clean_message_text(messages.data[0].content[0].text.value)
                         )
+                    print(run)
                 else:
                     print(run.status)
                     self.bot.send_message(
