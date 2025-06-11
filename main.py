@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import re
 
 from openai import OpenAI
 
@@ -8,9 +9,24 @@ load_dotenv()
 openai_token = os.environ.get("OPENAI_TOKEN")
 telegram_token = os.environ.get("TELEGRAM_TOKEN")
 
+IMG_PATTERN = r"@_IMG_\d+"
+
+def get_all_markers_as_list(text: str) -> list[str]:
+    """
+    Finds all occurrences of the @_IMG_NNN pattern in a text
+    and returns them as a list of strings.
+
+    Args:
+        text: The input string to search.
+
+    Returns:
+        A list of strings, where each string is a detected marker.
+        Returns an empty list if no markers are found.
+    """
+    matches = re.findall(IMG_PATTERN, text)
+    return matches
 
 client = OpenAI(api_key=openai_token)
-
 assistant = client.beta.assistants.retrieve(assistant_id='asst_OMuFH5IL2MXa4mEsabxBge3y')
 
 
@@ -97,12 +113,12 @@ class TelegramBot:
                     is_big=True
                 )
 
-                sleep(0.2)
-                self.bot.send_message(
-                    msg.chat.id,
-                    "Ищу нужную инфу",
-                    parse_mode=ParseMode.MARKDOWN
-                )
+                # sleep(0.2)
+                # self.bot.send_message(
+                #     msg.chat.id,
+                #     "Ищу нужную инфу",
+                #     parse_mode=ParseMode.MARKDOWN
+                # )
 
                 
                 message = client.beta.threads.messages.create(
@@ -121,12 +137,46 @@ class TelegramBot:
                     messages = client.beta.threads.messages.list(
                         thread_id=thread.id
                     )
+
+                    response_text = messages.data[0].content[0].text.value
+                    img_markers = get_all_markers_as_list(response_text)
+
+                    pattern = r'【.*?】'
+                    response_text = re.sub(pattern, '', response_text)
+
+                    if img_markers: # Only proceed if there are markers to delete
+                        for marker in img_markers:
+                            response_text = response_text.replace(marker, "")
+
+                    responce_sorces = messages.data[0].content[0].text.annotations
+
+                    sources_list = []
+                    for source in responce_sorces:
+                        file_info = client.files.retrieve(source.file_citation.file_id)
+                        sources_list.append(f'files-ENG/eng-naming/{file_info.filename.split('.')[0].replace('_', '-')}.docx')
+                        print(f"Filename: {file_info.filename}")
+
+                    img_list = []
+                    if img_markers:
+                        for img in img_markers:
+                            img_list.append(f'files_preproc/{file_info.filename.split('.')[0]}_IMG/{img.replace('@', '')}.png')
+
                     try:
-                        self.bot.send_message(
-                            msg.chat.id,
-                            messages.data[0].content[0].text.value,
-                            parse_mode=ParseMode.MARKDOWN
-                        )
+                        if img_list:
+                            with open(img_list[0], 'rb') as img_file:
+                                # For photos, Telegram allows sending by file object or path
+                                # Using file object for consistency with documents
+                                self.bot.send_photo(
+                                    chat_id=msg.chat.id,
+                                    photo=img_file,
+                                    caption=response_text + f"\n\nSources:\n{"\n".join(str(p) for p in sources_list)}",
+                                )
+                        else:
+                            self.bot.send_message(
+                                msg.chat.id,
+                                response_text + f"\n\nSources:\n{"\n".join(str(p) for p in sources_list)}",
+                                parse_mode=ParseMode.MARKDOWN
+                            )
                     except ApiTelegramException as e:
                         self.bot.send_message(
                             msg.chat.id,
@@ -137,6 +187,8 @@ class TelegramBot:
                             msg.chat.id,
                             clean_message_text(messages.data[0].content[0].text.value)
                         )
+                    except Exception as e:
+                        print(e)
                 else:
                     print(run.status)
                     self.bot.send_message(

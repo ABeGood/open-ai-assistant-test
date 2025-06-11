@@ -11,6 +11,20 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "PP docx",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "preprocessing/proprocessing_docx.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Orchester",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "orchestrator.py",
+            "console": "integratedTerminal"
         }
     ]
 }
