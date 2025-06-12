@@ -23,7 +23,7 @@
             "name": "Orchester",
             "type": "debugpy",
             "request": "launch",
-            "program": "orchestrator.py",
+            "program": "tg_bot.py",
             "console": "integratedTerminal"
         }
     ]

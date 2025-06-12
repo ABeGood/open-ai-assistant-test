@@ -168,9 +168,9 @@ class TelegramMultiAssistantOrchestrator:
         
         for entry in recent_history:
             if entry['role'] == 'user':
-                context_summary += f"User: {entry['content'][:100]}...\n"
+                context_summary += f"User: {entry['content']['response'][:100]}...\n"
             else:
-                context_summary += f"{entry['assistant']}: {entry['content'][:100]}...\n"
+                context_summary += f"{entry['assistant']}: {entry['content']['response'][:100]}...\n"
         
         # Shared data
         if context['shared_context']:
@@ -180,7 +180,7 @@ class TelegramMultiAssistantOrchestrator:
         
         return context_summary
     
-    def route_to_assistant(self, session_id: str, assistant_name: str, user_message: str, include_context: bool = True) -> str:
+    def route_to_assistant(self, session_id: str, assistant_name: str, user_message: str, include_context: bool = True) -> dict:
         """Route message to specific assistant with context"""
         if session_id not in self.shared_threads:
             raise Exception(f"Session {session_id} not found")
@@ -204,7 +204,7 @@ class TelegramMultiAssistantOrchestrator:
                 metadata={"routed_to": assistant_name}
             )
         except Exception as e:
-            return f"Error creating message: {e}"
+            return {"success": False, "response" :f"Error creating message: {e}"}
         
         # Run with specific assistant
         try:
@@ -213,7 +213,7 @@ class TelegramMultiAssistantOrchestrator:
                 assistant_id=assistant_id
             )
         except Exception as e:
-            return f"Error creating run: {e}"
+            return {"success": False, "response" :f"Error creating run: {e}"}
         
         # Wait for completion with timeout
         timeout = 60  # 60 seconds timeout
@@ -221,23 +221,34 @@ class TelegramMultiAssistantOrchestrator:
         
         while run.status != "completed":
             if time.time() - start_time > timeout:
-                return "Assistant response timed out"
+                return {"success": False, "response" :"Assistant response timed out"}
             
             time.sleep(1)
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
-                return f"Error retrieving run status: {e}"
+                return {"success": False, "response" :f"Error retrieving run status: {e}"}
             
             if run.status == "failed":
-                return f"Assistant run failed: {run.last_error}"
+                return {"success": False, "response" :f"Assistant run failed: {run.last_error}"}
         
         # Get response
+        response = {}
         try:
             messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
-            response = messages.data[0].content[0].text.value
+
+            sources_list = []
+            response_sorces = messages.data[0].content[0].text.annotations
+            for source in response_sorces:
+                file_info = self.client.files.retrieve(source.file_citation.file_id)
+                sources_list.append(file_info)
+            response['sources'] = sources_list
+
+            response['response'] = messages.data[0].content[0].text.value
         except Exception as e:
-            return f"Error retrieving response: {e}"
+            return {"success": False, "response" :f"Error retrieving response: {e}"}
+        
+        response['success'] = True
         
         # Update context
         if session_id in self.context_store:

@@ -13,6 +13,7 @@ from telebot.apihelper import ApiTelegramException
 import re
 from orchestrator_for_tg import create_orchestrator, process_telegram_message
 
+DEBUG = True
 
 load_dotenv()
 telegram_token = os.environ.get("TELEGRAM_TOKEN")
@@ -40,7 +41,7 @@ def clean_message_text(text):
     text = text.replace("\\", "")
     
     # Remove other potentially problematic characters
-    problematic_chars = ['*', '_', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
+    problematic_chars = ['*', '_', '[', ']', '~', '`', '>', '#', '=', '|', '{', '}']
     for char in problematic_chars:
         text = text.replace(char, "")
     
@@ -48,6 +49,74 @@ def clean_message_text(text):
     text = " ".join(text.split())
     
     return text
+
+def delete_sources_from_text(text: str):
+    pattern = r'【.*?】'
+    return re.sub(pattern, '', text)
+
+def format_telegram_message(response_data):
+    """
+    Convert LLM agent response to Telegram message format
+    
+    Args:
+        response_data (dict or str): LLM agent response dictionary or JSON string
+    
+    Returns:
+        str: Formatted Telegram message
+    """
+    # Parse JSON string if needed
+    if isinstance(response_data, str):
+        response_data = json.loads(response_data)
+
+    files_path = None
+    assistant_used = response_data['assistant_used']
+    if assistant_used == 'equipment':
+        files_path = 'files_preproc/equipment/'
+    elif assistant_used == 'cables':
+        files_path = 'files_preproc/cables/'
+    elif assistant_used == 'tools':
+        files_path = 'files_preproc/tools/'
+    elif assistant_used == 'commonInfo':
+        files_path = 'files_preproc/common_info/'
+
+    
+    
+    # Extract main response text
+    main_response = clean_message_text(response_data['response']['response'])
+    main_response = delete_sources_from_text(main_response)
+    
+    # Extract and format sources
+    if files_path:
+        sources = response_data['response']['sources']
+        formatted_sources = []
+    
+        for source in sources:
+            # Get filename without extension
+            filename = source.filename
+            name_without_ext = os.path.splitext(filename)[0]
+            
+            try:
+                source_mapping_filepath = files_path + 'pdf_mapping.json'
+                with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
+                    pdf_mapping = json.load(file)
+                link = pdf_mapping[name_without_ext]
+                # Create markdown link
+                markdown_link = f"[{name_without_ext.split('_')[0]}]({link})"
+                formatted_sources.append(markdown_link)
+                formatted_sources = list(set(formatted_sources))
+            except Exception as e:
+                markdown_link = f"{filename}"
+                formatted_sources.append(markdown_link)
+                formatted_sources = list(set(formatted_sources))
+    
+    # Combine into final message
+    if formatted_sources:
+        sources_section = "\n\nSources:\n" + "\n".join(formatted_sources)
+        telegram_message = main_response + sources_section
+    else:
+        telegram_message = main_response
+    
+    return telegram_message
 
 logging.basicConfig(
     level=logging.DEBUG, 
@@ -115,11 +184,14 @@ class TelegramBot:
                     
                     self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    result_msg = clean_message_text(result['response'])
+                    result_msg = format_telegram_message(result)
                     
                     self.bot.send_message(msg.chat.id, result_msg, parse_mode=ParseMode.MARKDOWN)
                 except Exception as e:
                     self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}', parse_mode=ParseMode.MARKDOWN)
+
+                    if DEBUG:
+                        self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{result_msg}')
 
 tg_bot = TelegramBot(bot_token=str(telegram_token))
 tg_bot.run_bot()
