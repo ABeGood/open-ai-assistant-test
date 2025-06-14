@@ -12,13 +12,15 @@ from telegram.constants import ParseMode
 from telebot.apihelper import ApiTelegramException
 import re
 from orchestrator_for_tg import create_orchestrator, process_telegram_message
+import glob
 
 DEBUG = True
 
 load_dotenv()
 telegram_token = os.environ.get("TELEGRAM_TOKEN")
 
-IMG_PATTERN = r"@_IMG_\d+"
+
+IMG_PATTERN = r"D_\d+_IMG_\d+"
 
 def get_all_markers_as_list(text: str) -> list[str]:
     """
@@ -34,6 +36,39 @@ def get_all_markers_as_list(text: str) -> list[str]:
     """
     matches = re.findall(IMG_PATTERN, text)
     return matches
+
+def remove_all_markers(text: str) -> str:
+    """
+    Removes all occurrences of the @D_N_IMG_NNN pattern from a text.
+
+    Args:
+        text: The input string to clean.
+
+    Returns:
+        A string with all markers removed.
+        Returns the original string if no markers are found.
+    """
+    cleaned_text = re.sub(IMG_PATTERN, "", text)
+    return cleaned_text
+
+def extract_marker_parts(marker: str) -> tuple[str, str] | None:
+    """
+    Extracts the two main components from a marker string.
+    
+    Args:
+        marker: A marker string like "@D_3_IMG_002"
+        
+    Returns:
+        A tuple containing (prefix_part, img_part), e.g., ("D_3", "IMG_002")
+        Returns None if the marker doesn't match the expected format.
+    """
+    # Pattern with two capturing groups
+    pattern = r"(D_\d+)_(IMG_\d+)"
+    
+    match = re.match(pattern, marker)
+    if match:
+        return match.group(1), match.group(2)
+    return None
 
 def clean_message_text(text):
     """Clean text by removing problematic characters"""
@@ -54,6 +89,25 @@ def delete_sources_from_text(text: str):
     pattern = r'【.*?】'
     return re.sub(pattern, '', text)
 
+def find_file_by_name(folder_path: str, filename_base: str) -> list[str]:
+    """
+    Finds all files with the given base name regardless of extension.
+    
+    Args:
+        folder_path: Path to the folder to search in
+        filename_base: Base filename without extension (e.g., "IMG_001")
+        
+    Returns:
+        List of full file paths that match the base name
+    """
+    # Create search pattern
+    search_pattern = os.path.join(folder_path, f"{filename_base}.*")
+    
+    # Find all matching files
+    matching_files = glob.glob(search_pattern)
+    
+    return matching_files
+
 def format_telegram_message(response_data):
     """
     Convert LLM agent response to Telegram message format
@@ -68,6 +122,8 @@ def format_telegram_message(response_data):
     if isinstance(response_data, str):
         response_data = json.loads(response_data)
 
+    # CATEGORY START
+
     files_path = None
     assistant_used = response_data['assistant_used']
     if assistant_used == 'equipment':
@@ -79,12 +135,14 @@ def format_telegram_message(response_data):
     elif assistant_used == 'commonInfo':
         files_path = 'files_preproc/common_info/'
 
-    
+    # CATEGORY END
     
     # Extract main response text
-    main_response = clean_message_text(response_data['response']['response'])
-    main_response = delete_sources_from_text(main_response)
+    # main_response = clean_message_text(response_data['response']['response'])
+    main_response = delete_sources_from_text(response_data['response']['response'])
     
+
+    # SOURCES START
     # Extract and format sources
     if files_path:
         sources = response_data['response']['sources']
@@ -108,6 +166,26 @@ def format_telegram_message(response_data):
                 markdown_link = f"{filename}"
                 formatted_sources.append(markdown_link)
                 formatted_sources = list(set(formatted_sources))
+
+    # SOURCES END
+
+
+    # IMAGES START
+    img_markers = get_all_markers_as_list(main_response)
+    if img_markers and files_path:
+        img_mapping_filepath = files_path + 'doc_mapping.json'
+        with open(img_mapping_filepath, 'r', encoding='utf-8') as file:
+            img_mapping = json.load(file)
+        
+        img_list = []
+        for img in img_markers:
+            img_file_key, img_name = extract_marker_parts(marker = img)
+            img_dir = img_mapping[img_file_key]
+            file = find_file_by_name(files_path+img_dir, img_file_key+'_'+img_name)  # TODO Kostyl
+            img_list.append(file[0].replace('\\', '/'))
+    # IMAGES END
+
+    main_response = clean_message_text(main_response)
     
     # Combine into final message
     if formatted_sources:
@@ -116,7 +194,11 @@ def format_telegram_message(response_data):
     else:
         telegram_message = main_response
     
-    return telegram_message
+    # Return dictionary with message and images
+    return {
+        "message": telegram_message,
+        "images": img_list
+    }
 
 logging.basicConfig(
     level=logging.DEBUG, 
@@ -184,14 +266,47 @@ class TelegramBot:
                     
                     self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    result_msg = format_telegram_message(result)
-                    
-                    self.bot.send_message(msg.chat.id, result_msg, parse_mode=ParseMode.MARKDOWN)
+                    result_formatted = format_telegram_message(result)
+
+                    if len(result_formatted['images']) < 1:
+                        self.bot.send_message(msg.chat.id, result_formatted["message"], parse_mode=ParseMode.MARKDOWN)
+                    else:
+                        if len(result_formatted["images"]) == 1:
+                            # Send single image
+                            with open(result_formatted["images"][0], 'rb') as photo:
+                                self.bot.send_photo(msg.chat.id, photo, caption=result_formatted["message"])
+                        else:
+                            # Send multiple images as media group
+                            from telebot.types import InputMediaPhoto
+    
+                            if len(result_formatted["images"]) == 1:
+                                with open(result_formatted["images"][0], 'rb') as photo:
+                                    self.bot.send_photo(msg.chat.id, photo)
+                            else:
+                                # Keep files open during the entire operation
+                                opened_files = []
+                                media_group = []
+                                
+                                try:
+                                    for i, img_path in enumerate(result_formatted["images"]):
+                                        photo = open(img_path, 'rb')
+                                        opened_files.append(photo)
+                                        
+                                        caption = result_formatted["message"] if i == 0 else None
+                                        # Pass the file object, NOT the path string
+                                        media_group.append(InputMediaPhoto(photo, caption=caption))
+                                    
+                                    self.bot.send_media_group(msg.chat.id, media_group)
+                                    
+                                finally:
+                                    for photo in opened_files:
+                                        photo.close()
+
                 except Exception as e:
                     self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}', parse_mode=ParseMode.MARKDOWN)
 
                     if DEBUG:
-                        self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{result_msg}')
+                        self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{result_formatted["message"]}')
 
 tg_bot = TelegramBot(bot_token=str(telegram_token))
 tg_bot.run_bot()
