@@ -1,0 +1,253 @@
+MS015A
+TESTER FOR DIAGNOSTICS OF ALTERNATOR'S VOLTAGE REGULATORS
+
+@D_2_IMG_000
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The actual manual contains information on the test bench purpose, package contents, technical characteristics, and safe operation rules.
+Read carefully this manual before putting MS015A (hereinafter “the tester”) into operation, take special training at the equipment manufacturing facility if necessary.
+As the tester is being continuously improved, some changes made to the equipment design, package set, or firmware may not be reflected in this user manual. The tester firmware is updateable, so its maintenance can be terminated without prior notice to users.
+
+1. APPLICATION
+The tester is used for diagnosing 12 and 24 V automotive alternators with a controlled or digital voltage regulator directly on the vehicle. The tester allows you to determine:
+• Compliance of the alternator's output voltage with its rated value;
+• The ability and accuracy of voltage regulation by the alternator;
+• The functionality of the feedback channel (FR, DFM, M, LI) of the voltage regulator;
+• Data on the voltage regulator type COM, which will help in selecting its replacement in case of malfunction.
+Alternator diagnostics can be performed on a stand that provides drive and load for the alternator.
+
+2. TECHNICAL SPECIFICATIONS
+Power supply	10-32 V from vehicle battery
+Dimensions (L x W x H), mm	120×65×18
+Weight, kg	0.3
+Display	TFT-LCD display with touchscreen Diagonal – 2.8"
+Protection rating	IP20
+Diagnostics of alternators
+Rated voltage of the diagnosed units, V	12 and 24
+Types of diagnosed alternators	12 V	COM (LIN, BSS), SIG, RLO, RVC, C KOR, P-D, C JAP
+	24 V	COM, PWM
+Tested parameters	- Stabilizing voltage; - FR (voltage regulator response to alternator load). For COM voltage regulators: - ID; - Protocol type; - Data exchange rate; - Voltage regulator self-diagnostic errors.
+Voltage measurement accuracy, V	±0.2
+Additional functions
+Software update	Available
+
+3. EQUIPMENT SET
+
+The equipment complete set includes:
+Item name	Number of pcs
+Tester MS015A	1
+MS0128 – diagnostic cable	1
+Cable for the connection of the extra +	1
+User Manual (card with QR code)	1
+
+4. TESTER DESCRIPTION
+The tester is portable, with the touchscreen to control the functions (see fig.1).
+@D_2_IMG_001
+Figure 1. Tester overall view
+
+On the top of the tester there’s a port for the connection of the diagnostic cable (fig. 2).
+@D_2_IMG_002
+Figure 2. Diagnostic cable connection port
+At the bottom of the tester there’s MisroSD port that is used for the software update (fig. 3).
+@D_2_IMG_003
+Figure 3. MicroSD port
+The supply slip includes two cables (fig. 4-5): the diagnostic cable and the auxiliary cable - for the connection of the additional positive wire.
+@D_2_IMG_004
+Figure 4. Diagnostic cable
+The diagnostic cable has the following colour codes:
+Red – В+ – battery positive terminal, alternator connector. It supplies the power to the tester and indicates В+ voltage;
+Black – В- – battery negative terminal (alternator body);
+Yellow – GC – for the connection with the terminal that controls the alternator voltage regulator. This adapting wire is connected to the following terminals: D, SIG, RC, L(RVC), C, G, RLO, LIN, COM.
+Green – FR – for the connection with the alternator connector terminal that transmits the data about the current alternator load. This adapting wire is connected to the following terminals: FR, DFM, M, LI.
+@D_2_IMG_005
+Figure 5. Cable for the connection of the extra +
+
+4.1. Tester menu
+The tester is powered from the vehicle battery through terminals B+ and B- of the diagnostic cable. When power is applied, the tester will turn on and the main menu will be displayed on the screen. Depending on the 12 V or 24 V supply voltage, the tester will automatically activate the corresponding test mode (see Fig. 6):
+@D_2_IMG_006 @D_2_IMG_007
+Figure 6. Tester main menu
+1 – Diagnosed alternator type options. Press once the required icon to select the alternator type. The selected type icon turns highlighted.
+2 – Alternator connector types.
+3 - The current 12 or 24 V operation mode is displayed.
+The "TEST" button enters the diagnostic mode of the selected alternator type.
+
+If you choose the diagnostics of COM alternator the following information is displayed (fig. 7 and fig. 8):
+
+@D_2_IMG_008
+Figure 7. Diagnostic screen for 12 V COM type alternator
+1 – Diagnosed alternator type.
+2 – buttons -V and +V modify the value of the set stabilizing voltage of alternator. Press once to change the value with 0.2V pitch.
+3 – set stabilizing voltage.
+4 – alternator output voltage - measured.
+COM PR. – voltage regulator protocol. The following protocols are displayed: LIN1.3 (on screen - LIN1), LIN2.0 (on screen - LIN2).
+ID – voltage regulator identification number. It’s a unique number of the receiver of the commands from the engine control unit. When installing a new alternator into a car, it’s important that ID corresponded to the original one, otherwise, a car won’t “accept” the unit, and the control unit will indicate the alternator error.
+COM SPEED – data transmission speed, between the voltage regulator and the car electronic control unit. At LIN protocol, the following the speed rates can be displayed:
+• L – 2400 Bd (low);
+• M – 9600 Bd (medium);
+• H – 19200 Bd (high).
+TYPE – voltage regulator connection type. The name of the protocol BSS is displayed, as well as 12 types of LIN protocol: A1, A2, A3, A4, B1, B2, B3, B4, C3, D1, D2, E1.
+EXCITATION – current value in the winding coil of alternator excitation. This parameter is read from the voltage regulator by LIN protocol (the parameter is displayed in %).
+ERRORS – indicator of errors that the regulator transmits to engine control unit. The following errors may happen:
+• EL – electric;
+• МЕС – mechanic;
+• ТН – overheating.
+Once the error is detected, it’s highlighted by red.
+SUPPLIER – the voltage regulator manufacturer.
+SUPP. ID – the voltage regulator ID generated by the manufacturer.
+BACK – exit from the diagnostics mode.
+
+@D_2_IMG_009
+Figure 8. Diagnostic screen for 24 V COM type alternator
+
+When you choose the mode of the diagnostics of the following alternator types: SIG, RLO, RVC, C KOREA, P/D, C JAP. PW1 alternator types, the following information can be displayed (fig. 9):
+@D_2_IMG_010
+Figure 9
+1 – Diagnosed alternator type.
+2 – buttons -V and +V modify the value of the set stabilizing voltage of alternator. Press once to change the value with 0.2V pitch.
+3 – set stabilizing voltage. For C JAP. alternator types, the OFF value is displayed – the voltage regulator operation mode that corresponds to the output voltage from 12.1 up to 12.7 V. Press once -V or +V to start the voltage regulator mode ON – the voltage regulator operation mode that corresponds to the output voltage from 14 up to 14.4 V.
+4 – alternator output voltage - measured.
+FR – frequency of PWM-signal that is transmitted by FR terminal.
+DFM – duty ratio of PWM-signal, received through FR terminal, indicates on-condition rate of rotor winding.
+5 – oscillogram of the signal that is transmitted by FR terminal. The measured signal is displayed either by 20 or 200 ms, to switch between them, press the chart once.
+"FR UP" - activation of the pull-up resistor to the FR channel. It is used when the FR wire is connected to the alternator regulator, but the frequency is not shown on the display.
+BACK" button - exit the diagnostic mode.
+
+5. APPROPRIATE USE
+1. Use the tester for the specified purpose only (see section 1).
+2. When using the tester, consider the following maintenance restrictive guidelines:
+2.1. The tester should be used at the temperature range from +5 °С up to +40 °С and the relative humidity range from 10 up to 75% without moisture condensation.
+2.2. Do not use the tester at the low temperature and high humidity (more than 75%). When the tester is brought from the cold place (outdoors) into the warm place, the condensate can appear on its elements. Thus, do not turn on the tester at once. Wait for 30 minutes until switching it on.
+2.3. Keep the tester far from the direct sunlight.
+3. Do not keep the tester close to the heaters, microwave ovens and other equipment that generates a high temperature.
+4. Protect the tester from the falling, and make sure that any technical liquids won’t get it.
+5. Any changes in the tester electric circuit are forbidden.
+6. When the cable is connected to the alternator terminals, the crocodile clips should be isolated completely.
+7. Avoid the mutual short circuit of the crocodile clips, and to any current-conducting car part including the car body.
+8. Disconnect the tester once the diagnostics is completed.
+9. In case of failures in the operation of the tester, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+WARNING! When using tester touch-screen, do not press much.  DO NOT USE any stylus pen or other objects to press the touch-screen. Keep the tester away from the sharp and hard objects.
+
+5.1. Safety guidelines
+The tester has to be operated by the qualified persons who got the access to operate the definite bench (tester) types and who were instructed on the safe operating procedures and methods.
+
+5.2. Alternator diagnostics procedure
+The alternator diagnostics procedure is carried out as follows:
+1. Referring to the alternator OEM, that is commonly indicated on the body or rear cover, find on the Internet the information on the alternator connector terminals.
+2. Use the information in the Appendix 1 to determine the regulator type referring to the connector terminals.
+3. Connect the tester to the car alternator according to the cable color coding see section 4 and appendix 1.
+3.1. Connect clamp B+ to the plus output of the alternator. Clamp B- to the alternator case or to the minus terminal of the battery. The tester is powered from the battery, so the instrument will turn on and the main menu will be displayed on the screen (Fig. 6).
+3.2. Connect GC and FR cable terminals to the terminals in the alternator connector.
+4. Choose the relevant alternator type in the tester menu and press TEST. The tester does into diagnostics mode.
+4.1. If the tested alternator has COM connection terminal, wait until the tester identifies ID and TYPE of alternator.
+5. Start the cat engine and cut off all the load. Wait until the engine runs smoothly at idle.
+WARNING! It’s forbidden to exit the diagnostic mode while the engine runs because it will result in the extreme power surge generated by the alternator.
+
+WARNING! If one of the black (B-, battery negative) and/or the red (B+, battery positive) crocodile clips has spontaneously disconnected, it’s forbidden to connect it back while the engine runs.
+
+5.1. For 12V alternators, the stabilization voltage shall be set to 13.8V with a possible deviation of ±0.2V.
+5.2. For 12V alternators of JAPAN type C, the stabilization voltage shall be set within the range of 12.1V to 12.7V.
+5.3. For 24V alternators, the stabilization voltage shall be set to 28.4V with a possible deviation of ±0.2V.
+6. Change the voltage value on the alternator with buttons "-V", "+V" within the range from 13.2 to 14.8V for 12V alternators and from 26.2 to 29.8V for 24V alternators. The measured voltage should change proportionally with a possible deviation of ±0.2 V.
+6.1. For C JAPAN alternator, press the buttons -V or +V to change the alternator operation mode to ON. The stabilization voltage rate shall be within 14 and 14.4V.
+7. Set any value of alternator voltage with "-V", "+V" buttons within the range from 13.2 to 14.8 V for 12V alternators and from 26.2 to 29.8 V for 24V alternators. Increase the engine crankshaft speed to medium rpm. At the same time, the voltage value on the tester should not change (the value may fluctuate with a tolerance of ±0.2V, which is normal).
+8. Without decreasing the engine crankshaft rpm, increase the alternator load by switching on the headlights, seat heating, windshield heating and other electric power consumers. The voltage value though should not change (the acceptable voltage drop - by 0.3V).
+9. Stop the engine.
+10. Disconnect the tester terminals.
+11. Failure to comply with the one of the paragraphs 4.1, 5.1 – 8 indicates the alternator failures.
+
+6. TESTER MAINTENANCE 
+The tester is designed for a long-tern operation and doesn’t require the maintenance, however, control the following things:
+• If the operation environment is appropriate (temperature, humidity, etc.).
+• If the diagnostic cable is in order (visual inspection).
+
+6.1. Software update
+To update the tester software, you’ll need 32GB MicroSD card formatted to the file system FAT32.
+The updating is made as follows:
+1. Download the file with the latest software version that you can find on the website servicems.eu in the MS015A product description.
+2. Copy (replace) the file "MS015AUpdate.bin" from the downloaded archive to the root directory of the MicroSD flash drive.
+WARNING! There should be just one file - ‘MS015AUpdate.bin’ - on the MicroSD card.
+3. Switch off the tester and insert MicroSD card into the tester slot.
+4. Switch on the tester connecting the red and black crocodile clips of the tester to the battery or to 12V power source.
+5. When starting, the tester will automatically discover the software new version and install it.
+6. Wait until the installation completed.
+WARNING! It’s forbidden to terminate the updating of the software by switching the tester off, or by extracting MicroSD card.
+7. Once the download is completed, the tester will restart.
+8. Switch off the tester.
+9. Remove MicroSD card.
+10. The tester is ready for operation.
+
+6.2. Cleaning and care 
+To clean the surface of the tester, use soft wipes or a rag, using neutral cleaning agents. The display should be cleaned with a special fiber wipe and monitor screen cleaning spray. Do not use abrasives or solvents to avoid failure or damage to the tester body.
+
+7. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Problem	Causes	Solutions
+1. You cannot switch on the tester, or the measured parameters are displayed wrong.	Bad connection between the diagnostic cable and the tester connector.	Check the connection density.
+	The diagnostic cable is damaged.	Check the integrity of the diagnostic cable. If required, replace the diagnostic cable.
+2. The touchscreen doesn’t respond to the touches of the operator.	The touchscreen is damaged.	Contact technical support
+3. The diagnostics mode cannot start.	Failure of the operating system	
+
+8. RECYCLING
+European WEEE Directive 2002/96/EC (Waste Electrical and Electronic Equipment Directive) applies to the tester waste. 
+Obsolete electronic equipment and electric appliances, including cables, hardware, and batteries, must be disposed of separately from household wastes. 
+Use available waste collection systems to dispose of outdated equipment.
+Proper disposal of old appliances prevents harm to the environment and personal health.
+
+APPENDIX 1
+Connection of terminals to alternators
+Code	Application	Type of alternator	Tester alligator test lead
+B+	Battery (+)		B+
+30			
+A	(Ignition) Ignition start input		B+ add. wire
+IG			
+15			
+AS	Alternator Sense	Terminal for measuring of battery voltage		
+BVS	Battery Voltage Sense			
+S	Sense			
+B-	Battery (-)		B-
+31			
+E	(Earth) Earth, battery (-)		
+D+	For the connection of indicating lamp that supplies the initial voltage excitation and indicates the alternator performance capacity.	Lamp	
+I	Indicator		
+IL	Illumination		
+L	(Lamp) Output for the alternator performance capacity indicating lamp		
+61			
+FR	(Field Report) Output for the control of the alternator load by the engine control unit		FR
+DFM	Digital Field Monitor		
+M	Monitor		
+LI	(Load Indicator) Similar to FR, just with the inverted signal		
+D	(Drive) Input for the P-D regulator control, for the alternators Mitsubishi (Mazda) and Hitachi (Kia Sephia 1997-2000)	P/D	GC
+
+Code	Application	Type of alternator	Tester alligator test lead
+SIG	(Signal) Voltage code setting input	SIG	GC
+D	(Digital) Input for voltage code setting on the American Ford, similar to SIG		
+RC	(Regulator Control) Similar to SIG		
+L(RVC)	(Regulated Voltage Control) Similar to SIG, with just the voltage variation range 11.0-15.5V. The control signal is supplied to the terminal L	RVC	
+L(PWM)			
+C	(Communication) Input for the control of voltage regulator by engine control unit. Korean cars.	C KOREA	
+С (G)	Input for the control of voltage regulator by engine control unit. Japanese cars.	C JAPAN	
+RLO	(Regulated Load Output) Regulator stabilization voltage control within11.8-15V (TOYOTA)	RLO	
+COM	(Communication) The general references of the physical control interface and alternator diagnostics. The protocols BSD (Bit Serial Tester), BSS (Bit Synchronized Signal) or LIN (Local Interconnect Network) can be used	COM	
+LIN	Direct reference to the control and diagnostics of alternator through the protocol LIN (Local Interconnect Network)		
+PWM	The control of the operation of Valeo alternator that are installed into the cars with the Start-Stop option	PWM	
+Stop motor Mode	The control of the operation of Valeo alternator that are installed into the cars with the Start-Stop option	I-STARS	
+DF	Rotor winding coil output Connection of the regulator with the rotor winding coil		
+F			
+FLD			
+67			
+Code	Application	Type of alternator	Tester alligator test lead
+P	Output of one of the alternator stator winding coils It’s used for the identification of the alternator excitation level by the voltage regulator		
+S			
+STA			
+Stator			
+W	(Wave) Output of one of the alternator stator winding coils - to connect the speed gauge in the diesel cars		
+N	(Null) Stator winding coil center point output For the control of the performance capacity indicating lamp of alternator with the mechanical voltage regulator		
+D	(Dummy) Empty, no connection, mainly in Japanese cars		
+N/C	(No connect) No connection		
+LRC (Regulator option)	(Load Response Control) Option for the delay of voltage regulator reaction to the alternator load increasing. Within 2.5-15 seconds. At the load increasing (light, cooling fan), the regulator smoothly adds the excitation voltage that makes the engine speed stable. It can be easily seen at idle.		
+
+

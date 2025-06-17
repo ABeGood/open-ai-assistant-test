@@ -1,0 +1,185 @@
+MS504
+TEST BENCH FOR DIAGNOSTICS OF POWER STEERING PUMPS
+@D_9_IMG_000
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The present user manual consists of the information on the application, equipment set, technical specifications, methodology for assessing the technical condition of power steering pump, as well as the rules for safe operation of the MS504 test bench.
+Read carefully this manual before putting MS504 (hereinafter “the bench”) into operation.
+Due to the permanent improvements of the tester, the design and supply slip are subject to modifications that are not included to the present user manual.
+
+1. APPLICATION
+The MS504 bench is designed for diagnosing single- and dual-circuit pumps with mechanical drive and a capacity of up to 19 l/min. The bench allows simulating the operation of the tested pump in a car. The bench measures pressure and flow parameters at different speeds, allowing to identify such malfunctions as leaks, noise, casing wear, and sticking of the relief valve.
+
+2. TECHNICAL SPECIFICATIONS 
+Supply voltage, V	400
+Supply type	Three-phase
+Drive power, kW	5.5
+Dimensions (L×W×H), mm	1100×750×1700
+Weight, kg	188
+Working fluid	ATF DEXRON II
+Tank capacity, l	22
+Testing of the hydraulic power steering pumps
+Type of pumps to be tested	single- and double-circuit
+Drive speed adjustment, rpm	0 to 1500
+Selecting the direction of rotation of the drive	Available
+Measured fluid flow, l/min	0 to 19
+Measured fluid pressure, bar	0 to 250
+Measured liquid temperature, °C	0 to 100
+Simulation of steering rack load	Available
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+Item name	Number of pcs
+Test bench MS504	1
+MS00555 - Fitting Set	1
+Reverse cams + chuck wrench	1
+High pressure hoses (L-1100mm)	2
+Low pressure hoses	2
+1/4 nipple plug - 55500204	2
+Oil filter SR091C25R	1
+Power outlet 400 V / 16 A	1
+User Manual (card with QR code)	1
+
+4. TEST BENCH DESCRIPTION
+The bench consists of the following main elements (see Fig. 1):
+@D_9_IMG_001
+Figure 1. General view of the test bench
+1 - Flowmeter of Circuit I.
+2 - Pressure gauge of Circuit I.
+3 - Pressure regulator of Circuit I.
+4 - Pressure regulator of Circuit II.
+5 - Pressure gauge of Circuit II.
+6 - Flowmeter of Circuit II.
+7 - Touchscreen display for pump drive control.
+8 - Level gauge with thermometer.
+9 - Load valve of Circuit I.
+10 - High-pressure connector of Circuit I.
+11 - Low-pressure connector of Circuit II.
+12 - Low-pressure connector of Circuit I.
+13 - Cartridge protection.
+14 - Cartridge.
+15 - Pump fixation system.
+16 - Drive speed regulator.
+17 - Rotary power on/off button of the bench.
+18 - Load valve of Circuit II.
+19 - High-pressure connector of Circuit II.
+20 - Basin for collecting spilled working fluid.
+21 - Emergency stop button of the bench.
+22 - Low-pressure hoses.
+23 - High-pressure hoses.
+
+On the touchscreen display for pump drive control (see Fig. 2), the following will be displayed:
+@D_9_IMG_002
+Figure 2. Bench drive control menu
+1 - Selection of drive rotation direction.
+2 - Current drive rotation speed.
+3 - Selection of drive rotation speed.
+The "STOP" button stops the bench drive.
+
+5. APPROPRIATE USE
+1. Use the test bench as intended only (see Section 1).
+2. The bench is intended for indoor use at temperatures ranging from +10 to +40 °C and with relative humidity not exceeding 75% without condensation.
+3. It is prohibited to turn on the bench if leaks in the hydraulic system are detected or if there is insufficient working fluid in the tank.
+4. Use the "EMERGENCY STOP" button of the bench only when it is necessary to urgently stop the bench drive.
+5. When working with the bench, it is necessary to use eye protection (safety goggles). Contact with working fluid on exposed areas of the body is not allowed (if contact occurs, rinse with warm water and soap).
+6. Turn off the bench when not in use.
+7. When working with the bench, it is prohibited to:
+• Diagnose units with obvious mechanical faults.
+• Interfere with the operation of the bench in any way.
+• Obstruct the movement of rotating parts of the bench.
+8. Operate the bench in a manner that protects the environment and natural resources of our planet. Do not allow leakage of working fluid into the ground or sewage.
+9. To prevent the damage and the failure of the bench, do not make any modifications in the bench in your discretion. Any modifications can be effected by the official manufacturer only. Should the bench have defects contact the manufacturer or a dealer.
+10. In case of failures in the operation of the bench, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. The test bench shall be operated by the workers qualified to work with certain types of equipment and received appropriate training in the safe operation. 
+2. The bench must be turned off during cleaning and tidying.
+3. The workspace must always be kept clean, well-lit, and have sufficient space.
+4. To ensure electrical and fire safety PROHIBITED:
+- connect the bench to the electrical network having faulty protection against current overloads or not having such protection;
+— use a socket without a grounding contact to connect the bench;
+— use extension cords to connect the bench to the electrical network. If the socket is far from the bench installation site, it is necessary to modify the electrical network and install the socket;
+- operation of the bench in defective condition.
+- Independently to repair and make changes to the design of the bench, because it can lead to serious damage to the bench and deprive the right to warranty repair.
+5. Leaving units with running drives unattended on the bench is prohibited.
+6. To avoid electric shock, check the integrity of the power cable and grounding of the bench before working.
+7. Disconnecting or connecting high (low) pressure hoses and removing quick-connect fittings during bench operation (when the pump drive is rotating) is prohibited.
+8.Using damaged high-pressure hoses is prohibited.
+9.The unit being diagnosed must be securely fixed.
+
+5.2. Preparing the bench for operation
+The bench is delivered packaged. Unpack the bench, remove the protective film from the display (if present). After unpacking, ensure that the bench is intact and free of any damage. If damage is found, contact the manufacturer or sales representative before turning on the bench.
+The MS504 bench is installed on the floor with a solid, level surface. The working area must be free from foreign objects. When installing the bench, provide a minimum clearance of 0.6 m from the rear of the bench for maintenance purposes.
+Before operating the bench:
+1) Fill with new ATF oil, see section 7.1.
+WARNING! To avoid malfunctions in the operation of the bench and diagnosed units, use only new ATF oil.
+2) Connect the 400V power supply, using the socket provided with the bench, which is marked L1 L2 L3 N PE, and ensure compliance when connecting the socket to the power supply network.
+3) Turn on the voltage relay automatic switch (located on the side, right side of the bench).
+
+6. POWER STEERING PUMP DIAGNOSTICS
+The sequence of operations for checking a single-circuit pump is as follows:
+1. Turn on the bench.
+2. Install the 3-jaw chuck drive pulley or pump shaft.
+3. Use the mounting system (see item 15 in Fig. 1) to secure the pump housing.
+4. Connect the high and low-pressure hoses to the bench and the pump (see Fig. 3).
+5. Close the cartridge guard.
+@D_9_IMG_003
+Figure 3. Connecting the power steering pump to the bench
+1- low pressure connection of I circuit; 2- high pressure connection of I circuit; 
+3 - pump inlet; 4 - pump outlet.
+
+6. Open the supply valve on the low-pressure hose of Circuit I and wait for the pump to fill with fluid.
+
+@D_9_IMG_004
+Figure 4. Pump connected and fixed
+
+7. Check pressure and flow readings at idle speed.
+7.1. Start the pump drive by turning the speed controller 16 (Fig. 1) to set the speed to 800 rpm. At this value, the pump should deliver nominal pressure and flow values according to the passport data of the unit being diagnosed.
+Pay attention to the direction of rotation of the drive; if necessary, change the direction of rotation. The pump will generate pressure only in the direction of rotation provided by its design.
+8. Check the pump's operation under load.
+8.1. Set the drive speed to 1500 rpm.
+8.2. Gradually turn the load valve 9 (Fig. 1) for a few seconds. Deviations in operation are assessed according to the criteria outlined in Table 1. 
+Note that the pump load time should not exceed 10 seconds. Exceeding this parameter may lead to fluid overheating and pump damage.
+9. Check the operation of the pump valve.
+9.1. With the drive speed at 1500 rpm, cyclically turn the load valve 9 (hold the valve closed for 2-3 seconds). After each loading cycle, the flow and pressure readings should be consistent (slight deviations are permissible).
+10. Turn off the pump drive by pressing the "STOP" button.
+11. Disconnect the pump from the bench and turn off the bench.
+When checking a dual-circuit pump, both circuits of the pump are connected by high and low-pressure hoses, and diagnostic operations are performed separately for each circuit.
+
+Table 1: Main indicators for diagnostics of the hydraulic power steering pump
+Creating a load (simulation of the rail in the end stop position)	Device readings	Hum	Leak	Malfunction
+	Fluid flow	Fluid pressure			
+No	Nominal, declared by the manufacturer	Minimal	No	No	No
+No	Less than the nominal value stated by the manufacturer	Minimal	No	No	Damage "scoring" of the sealing plate of the working part of the pump pump part
+No	Nominal, declared by the manufacturer	After each load creation, the indicator changes	Yes / No	No	Wear of the working pair (rotor with blades and working chamber). Bearing wear
+Yes	Minimal	Less than the nominal value stated by the manufacturer	No	No	Wear of the working pair (rotor with blades and working chamber). Damage "scoring" of the sealing plate of the working part of the pump
+Cyclically	After each load creation, the indicator changes	No	No	Loss of by-pass valve mobility, valve seat wear
+Yes / No	No	No	No	Loss of bypass valve movement valve
+Yes / No				Yes	Wear and tear on the glands, gaskets
+Yes / No			Yes	No	Wear of the working pair (rotor with blades and working chamber). Bearing wear. Air suction
+
+
+7. TEST BENCH MAINTENANCE
+The bench is designed for long-term operation and does not have special maintenance requirements. However, for maximum trouble-free operation, it is necessary to regularly monitor its technical condition, namely:
+• Is the engine operating normally (any unusual sounds, vibrations, etc.)?
+• Hydraulic system tightness (visual inspection);
+• Level and condition of the working fluid. After diagnostics, a small amount of working fluid remains in the pump, so monitor the level of the working fluid in the tank using level gauge 8 (Fig. 1). The level should not drop below 50% of the tank volume.
+
+
+7.1. Replacement of the working fluid
+The condition of the working fluid and the need for its replacement are assessed visually - by its appearance. It should be clear, homogeneous, and free of sediment. In this case, the replacement of the working fluid and the hydraulic system filtering element (CR091C10R) of the bench should be performed no less than once a year of operation.
+A valve installed under the collecting tray is provided for draining the working fluid. Refilling the hydraulic system is done through the filling neck of the working fluid tank (see Fig. 5).
+@D_9_IMG_005
+Figure 5. Filter and filler neck (left to right)
+
+7.2. Cleaning and care
+Soft cloths or rags should be used to clean the surface of the bench using neutral cleaning agents. The display should be cleaned using a special fiber cloth and monitor screen cleaning spray. Do not use abrasives and solvents to avoid corrosion, malfunction or damage to the bench.
+8. RECYCLING
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.

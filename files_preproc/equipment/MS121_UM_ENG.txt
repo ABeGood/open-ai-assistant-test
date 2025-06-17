@@ -1,0 +1,151 @@
+MS121
+TESTER FOR DIAGNOSTICS OF ELECTROMAGNETIC VALVES AND CLUTCHES OF VEHICLE AIR
+@D_5_IMG_000
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the products of TM MSG Equipment.
+This User Manual contains information about the purpose, components, technical specifications, and safe operation rules of the MS121 tester.
+Before using the MS121 tester (hereinafter referred to as the tester), carefully study this User Manual.
+Due to continuous improvements, changes may be made to the design and configuration of the tester, which may not be reflected in this User Manual.
+
+1. APPLICATION
+The MS121 tester is designed to check the electromagnetic clutch and/or control valve of a vehicle’s air conditioning compressor. The tester can identify the most common faults—such as open circuit or short circuit—resulting in the compressor’s failure to engage.
+Testing of these components can be performed either on removed components or while they are part of the compressor directly in the vehicle, without needing to remove the air conditioning compressor or evacuate refrigerant from the system.
+
+2. TECHNICAL SPECIFICATIONS 
+Dimensions (L×W×H), mm	167×88×27
+Weight, kg	0.97
+Power source	12 V battery
+Supply voltage, V	from 10 to 16(current consumption up to 5 A)
+Clutch testing
+Voltage of tested electromagnetic clutches, V	12
+Types of tested electromagnetic clutches	- with diode - without diode
+Tested parameters of electromagnetic clutches	- presence of diode - current consumption - open circuit - short circuit
+Test current (maximum), A	5
+Control valve testing
+Types of tested electromagnetic valves	- with diode - without diode
+Tested parameters of electromagnetic valves	- duty cycle (rate of valve opening) - consumption current - open circuit - short circuit
+Adjustment range of valve opening	20%...95%
+Test current (maximum), A	1.2
+Additional features
+Auto polarity selection	available
+Short-circuit protection	available
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+Item name	Number of pcs
+MS121 tester	1
+MS0107 - diagnostic cable	1
+User Manual (card with QR code)	1
+
+4. TESTER DESCRIPTION
+The tester consists of the following main elements (Fig. 1):
+1 – Screen – displays diagnostic parameters.
+2 – Connector for connecting the diagnostic cable.
+
+@D_5_IMG_001
+Figure 1. General view of the tester
+
+3 – Control buttons:
+The "Up" button @D_5_IMG_002 – is intended to increase the performance of the automobile air conditioner compressor's electromagnetic valve. A short press increases the performance by 5%, and holding it increases the performance continuously up to a maximum value of 95%. In clutch test mode – not used.
+The "Down" button@D_5_IMG_003 – is intended to decrease the performance of the automobile air conditioner compressor's electromagnetic valve. A short press decreases the performance by 5%, and holding it decreases the performance continuously to a minimum value of 20%. In clutch test mode – not used.
+The "Select" button@D_5_IMG_004 – is intended for turning on/off the test mode of the electromagnetic valve and/or clutch.
+
+The tester comes with a diagnostic cable, which has the following color coding:
+Red – “B+” – battery positive;
+Black – “B-” – battery negative;
+Green – intended for connecting the electromagnetic clutch;
+Yellow – intended for connecting the electromagnetic valve.
+
+@D_5_IMG_005
+Figure 2. Diagnostic cable
+
+4.1. Tester menu
+The tester is powered by the car battery through the B+ and B- clamps of the diagnostic cable. When power is supplied, the tester will turn on and the tester menu will be displayed on the screen, divided into two working zones (see Fig. 3):
+“CLUTCH” – the zone for the results of the electromagnetic clutch test;
+“VALVE” – the zone for the results of the electromagnetic valve test.
+
+@D_5_IMG_006
+Figure 3. Tester menu
+
+The "CLUTCH" zone contains the following test indicators:
+“Current” – the current value of the current consumed by the electromagnetic clutch, in Amperes.
+“Voltage” – the current value of the power source voltage (car battery), in Volts.
+The "VALVE" zone contains the following test indicators:
+“Current” – the current value of the current consumed by the electromagnetic valve, in Amperes. It can change when the valve opening degree changes.
+“Duty, %” – the degree of opening of the electromagnetic valve, expressed as a percentage. Corresponds to the change in the duty cycle of the pulse-width modulated (PWM) signal. 
+Each of the test zones contains “CB” (circuit broken) and “SC” (short circuit) indicators – their color indication corresponds to the open circuit or short circuit of the tested element.
+Each test zone also contains “OFF/ON” indicators that inform about the active test mode. Some electromagnetic clutches may have a limit diode in their design for reverse current protection. If there is a diode in the tested clutch, a corresponding diode indicator will appear next to the “ON” indicator (see Fig. 4).
+
+@D_5_IMG_007
+Figure 4. Display of the diode symbol on the tester screen
+
+During the diagnosis of the electromagnetic valve, if the current consumption exceeds 6 A, a corresponding message will appear (see Fig. 5).
+
+@D_5_IMG_008
+Figure 5
+
+5. APPROPRIATE USE
+1. Use the tester as intended only (see Section 1).
+2. The tester is intended for indoor use. When using the tester, consider the following operating limitations:
+2.1. The tester should be operated at temperatures from +10 to +40 °C and relative humidity from 10 to 75% without condensation.
+2.2. Do not operate the tester at sub-zero temperatures or high humidity (over 75%). When moving the tester from a cold environment (outdoors) to a warm one, condensation may form on its elements, so do not turn on the tester immediately. Allow it to acclimate at room temperature for at least 30 minutes.
+3. Ensure that the tester is not exposed to prolonged direct sunlight.
+4. Do not store the tester near heaters, microwave ovens, or other equipment that generates high temperatures.
+5. Avoid dropping the tester or getting technical fluids on it.
+6. Do not connect the yellow and green diagnostic cable wires to any power source or battery.
+7. Avoid shorting the crocodile clips of the diagnostic cable to any conductive parts of the car, including the body.
+8. Do not place the tester on the car battery. Avoid shorting the tester case to any conductive parts of the car.
+9. Do not make any changes to the tester’s electrical circuit.
+10. Turn off the tester when not in use.
+5. In case of any malfunctions in the tester's operation, stop using it immediately and contact the manufacturer's technical support or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. Only specially trained personnel who are authorized to work with certain types of equipment and have received instruction on safe working practices and methods are allowed to operate the station. 
+
+6. DIAGNOSIS OF THE ELECTROMAGNETIC CLUTCH SEPARATELY FROM THE AIR CONDITIONER COMPRESSOR 
+Diagnosis is performed as follows:
+1. Connect the tester to a 12V DC power source, and the tester’s diagnostic menu will appear on the screen.
+WARNING! Do not connect the yellow and green clamps to the battery, as this will damage the tester.
+2. Connect the green wires to the electromagnetic clutch. The polarity of the connection does not matter.
+3. Press the “Select” button on the tester – the measurement results will be displayed on the tester screen.
+3.1. The electromagnetic clutch can be considered functional based on the following indicators:
+•The “Current” value should be between 2 and 4A;
+•The “Voltage” value should approximately match the power source voltage;
+•The absence of “CB” or “SC” indicators on the display;
+•The electromagnetic clutch can magnetize iron objects.
+4. After the diagnostic process, disconnect the tester wires from the battery and the clutch.
+
+7. DIAGNOSIS OF THE ELECTROMAGNETIC CLUTCH AND ELECTROMAGNETIC VALVE ON THE CAR
+Diagnosis of the electromagnetic valve is performed as part of the air conditioner compressor without removing it from the car (see Fig. 6). The electromagnetic clutch can be checked in the same way. The diagnosis is performed as follows:
+1. Connect the refrigerant pressure gauge set (manifold) to the service ports of the system.
+2. Connect the yellow wires to the electromagnetic valve.
+3. Connect the black and red wires to the car battery, and the tester’s diagnostic menu will appear on the screen.
+WARNING! If the valve or clutch connector has a single contact, use an external battery to power the tester. Connecting it to the car battery will result in an error.
+
+@D_5_IMG_009
+Figure 6. Diagram of checking the electromagnetic valve and clutch on the car:
+1 – Compressor; 2 – Electromagnetic clutch connector; 3 – Electromagnetic valve connector; 4 – Service ports; 5 – Manifold gauge set.
+
+4. Press the “Select” button on the tester – the measurement results will be displayed on the tester screen.
+4.1. Check the “CB” or “SC” indicators to ensure there is no open circuit or short circuit in the valve. If one of them is on, the valve is faulty.
+7. If there is no open or short circuit in the valve, start the car engine.
+6. Use the "Up" and "Down" buttons to change the PWM signal duty cycle on the valve. With a functional valve, changing the degree of its opening (Duty, %) will change the pressure in the high-pressure (HP) and low-pressure (LP) lines. The absence of these changes indicates a faulty valve. 
+7. After the diagnostic process, stop the car engine and disconnect the tester wires from the battery and the compressor.
+
+8. TESTER MAINTENANCE
+The tester is designed for a long period of operation and does not require preventive maintenance; however, during operation, the following points should be monitored:
+• Ensure that the environment is suitable for the operation of the stand (temperature, humidity, etc.).
+• Check that the diagnostic cables are in good condition (visual inspection).
+
+8.1. Cleaning and care
+To clean the surface of the tester, use soft wipes or cloths with neutral cleaning agents. The display should be cleaned with a special fiber cloth and screen cleaning spray. To avoid corrosion, malfunction, or damage to the tester, do not use abrasives or solvents.
+
+9. DISPOSAL
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.

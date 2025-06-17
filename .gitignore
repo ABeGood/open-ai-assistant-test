@@ -1,4 +1,7 @@
 .venv
 .ENV
-files_*/
+files_raw/
+files_ENG/
+files_clean/
+*.rar
 __pycache__/

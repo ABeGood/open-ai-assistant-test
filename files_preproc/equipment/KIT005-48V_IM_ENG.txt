@@ -1,0 +1,84 @@
+KIT005-48V
+MS005 TEST BENCH UPGRADE KIT FOR TESTING 48 V BELT STARTER GENERATORS (BSG) @D_0_IMG_000_PHOTO_MS005-TEST-BENCH-UPGRADE-KIT_general-view
+
+INSTALLATION INSTRUCTIONS
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The KIT005-48V kit is designed to upgrade the MS005 bench that lacks the mode for testing 48V belt starter-generators (MS005 benches manufactured before September 2023).
+The installation of the kit allows the MS005 bench to:
+1) Test belt starter-generators in both generator and starter modes of operation.
+2) Read data from the control unit of the 48V starter-generator using a diagnostic scanner.
+
+Before performing the installation works, carefully study this instruction.
+
+Upgrade steps include:
+1) Mounting the 48V power supply unit.
+2) Connecting the 48V power supply unit to the electrical system of the bench.
+3) Updating the bench's software and activating the 48V starter-generator testing function.
+
+1. COMPONENTS
+The kit includes:
+Item name	Number of pcs
+48V power supply unit with a set of wires	1
+Mounting bracket for the power supply unit	2
+M6 nut	2
+M4x20 screw	2
+MS-33401 - cable for diagnostics of belt starter-generators 48 V AUDI	1
+48 V AUDI alternator mount kit	
+Installation instructions (card with QR code)	1
+
+2. OPERATION SEQUENCE
+Mounting the RSP-3000-48 power supply unit into the bench. @D_0_IMG_001_PHOTO_Mounting-power-supply-unit-into-MS005-bench
+
+1. Disconnect the bench from the 400V power supply.
+2. Remove the rear panel by unscrewing the screws around the perimeter.
+Figure 1. Dismountable panel of the bench enclosure @D_0_IMG_002_PHOTO_Dismountable-panel-of-MS005-bench-enclosure_fig1
+Figure 2. Bench enclosure after removing the rear panel @D_0_IMG_003_SHEMATIC_MS005-Bench-enclosure-after-removing-rear-panel_fig2
+
+3. Install mounting brackets for securing the power supply unit. 
+- Attach the brackets to the inner partition of the housing using M6 nuts.
+- When installing, position the brackets to the extreme holes according to figure 3. 
+Figure 3. Mounting the brackets @D_0_IMG_004_SHEMATIC_Mounting-the-brackets-MS005-Bench_fig3
+
+4. Install the RSP-3000-48 power supply unit on the brackets (see figure 4 @D_0_IMG_005_SCHEMATIC_Install-power-supply-unit-on-brackets_fig4). When installing, position the power supply unit so that the wires are located on the left side.
+Figure 4 @D_0_IMG_005_SCHEMATIC_Install-power-supply-unit-on-brackets_fig4
+
+5. Secure the power supply unit to the brackets using screws (see figure 5 @D_0_IMG_006_SCHEMATIC_Power-supply-fixation_fig5).
+Figure 5. Power supply fixation @D_0_IMG_006_SCHEMATIC_Power-supply-fixation_fig5
+
+Connecting the RSP-3000-48 power supply unit to the bench's electrical system.
+Three sets of wires are connected to the RSP-3000-48 power supply unit (see figure 6 @D_0_IMG_007_PHOTO_Connecting-power-supply-unit-to-MS005-bench_fig6):
+1 – Power supply wires of the power supply unit.
+2 – Control wires for the power supply unit.
+3 – Power supply output wires.
+Figure 6 @D_0_IMG_007_PHOTO_Connecting-power-supply-unit-to-MS005-bench_fig6
+
+1. Open the right side panel of the bench.
+Figure 7 @D_0_IMG_008_PHOTO_Open-right-side-panel-of-MS005-bench_fig7
+
+2. Connect the black wire of the power supply output (item 3, Fig. 6 @D_0_IMG_007_PHOTO_Connecting-power-supply-unit-to-MS005-bench_fig6) to the minus copper bar, see Fig. 8.  @D_0_IMG_009_PHOTO_minus-copper-bar-inside-MS005-bench_fig8 @D_0_IMG_010_PHOTO_minus-copper-bar-inside-MS005-bench_fig8
+Figure 8 @D_0_IMG_009_PHOTO_minus-copper-bar-inside-MS005-bench_fig8 @D_0_IMG_010_PHOTO_minus-copper-bar-inside-MS005-bench_fig8
+
+3. Connect the red wire of the power supply output (pos. 3, fig. 6 @D_0_IMG_007_PHOTO_Connecting-power-supply-unit-to-MS005-bench_fig6) to the load block (see fig. 9 @D_0_IMG_011_PHOTO_red-wire-of-power-supply_fig9 @D_0_IMG_012_PHOTO_power-supply-output-inside-MS005-bench_fig9).
+Figure 9 @D_0_IMG_011_PHOTO_red-wire-of-power-supply_fig9 @D_0_IMG_012_PHOTO_power-supply-output-inside-MS005-bench_fig9
+
+4. Connect the power supply wires of the power supply unit  (pos. 1, fig. 6 @D_0_IMG_007_PHOTO_Connecting-power-supply-unit-to-MS005-bench_fig6) to the power terminal block (see fig. 10 @D_0_IMG_013_PHOTO_Connect-power-supply-wires-of-power-supply-unit_fig10).
+Figure 10 @D_0_IMG_013_PHOTO_Connect-power-supply-wires-of-power-supply-unit_fig10
+
+4.1. Remove the blue transparent cover of the terminal block.
+4.2. Connect the wires to the locations shown in the diagram 11 @D_0_IMG_014_PHOTO_Connect-power-supply-wires-of-power-supply-unit_fig11. The places where wires of the corresponding color should be connected are highlighted.
+Figure 11 @D_0_IMG_014_PHOTO_Connect-power-supply-wires-of-power-supply-unit_fig11
+
+4.3. After connecting the wires, replace the cover of the terminal block.
+
+5. Connect the control wires for the power supply unit (pos. 2, fig. 6 @D_0_IMG_007_PHOTO_Connecting-power-supply-unit-to-MS005-bench_fig6) to the main board as shown in figure 12 @D_0_IMG_015_PHOTO_Connect-control-wires-for-power-supply-unit_fig12. The wire with the connector in position 1 and the black wire in position 2.
+Figure 12 @D_0_IMG_015_PHOTO_Connect-control-wires-for-power-supply-unit_fig12
+
+6. After connecting the wires, close the side door and screw the rear panel back into place.
+
+Updating the bench's software and activating the new function – 48V belt starter-generator diagnostics.
+
+1. Turn on the bench. When the bench is turned on and connected to the internet, the software will be updated.
+2. To activate the 48V function, go to the settings menu and in the "General" tab, enter the command in the "Promo code" field: MSG48VACTIVE. Press "Enter" to accept the command.
+

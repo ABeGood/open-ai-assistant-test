@@ -1,0 +1,113 @@
+MS561
+TESTER FOR DIAGNOSTICS OF ELECTRIC POWER STEERING UNITS
+@D_12_IMG_000
+
+BOARD REPLACEMENT INSTRUCTION
+
+INTRODUCTION
+Thank you for choosing MSG Equipment TM products.
+This manual describes the process of replacing the board in the MS561 tester with a board of a new model.
+Please carefully read this instruction before replacing the board.
+
+1. EQUIPMENT SET
+The kit includes:
+Item name	Number of pcs
+MS561 board	1
+Additional OBD cable	1
+220V board power cable	1
+M4 terminal	7
+Heat shrink tubing	7
+User guide (card with QR code)	1
+
+2. PROCEDURE
+1. Unscrew the 6 screws at the bottom of the tester (4 on the legs and 2 in the middle).
+@D_12_IMG_001 
+Figure 1
+
+2. Unscrew the 16 screws on the back wall that hold the 4 fan grilles.
+@D_12_IMG_002 @D_12_IMG_003
+Figure 2
+
+3. Carefully disconnect the back wall where the power connector is located.
+
+4. Remove the case cover by pulling it to the side of the disassembled back wall. 
+Attention! Remove very carefully so as not to damage the wires on the board connectors, which should be bent as close to the board as possible.
+@D_12_IMG_004
+Figure 3
+
+5. Label the three connectors on the board.
+@D_12_IMG_005
+Figure 4
+6. Disconnect all connectors from the board.
+@D_12_IMG_006
+Figure 5
+
+7. Cut the wires: 6 red and 1 black, see Fig. 6. Cut as close to the board as possible.
+@D_12_IMG_007
+Figure 6
+8. Unscrew 4 screws, see Fig. 7 and remove the board.
+@D_12_IMG_008
+Figure 7
+9. Unscrew 2 screws on the disassembled board, which hold the inter-board racks, see Fig. 8.
+@D_12_IMG_009
+Figure 8
+10. Install the just removed 2 inter-board racks on the new board in the places indicated in Fig. 9.
+@D_12_IMG_010
+Figure 9
+Attention! When installing inter-board racks, install a dielectric gasket, see Fig. 10.
+@D_12_IMG_011
+Figure 10
+
+11. Unscrew 3 screws at the bottom of the tester, see Fig. 11.
+@D_12_IMG_012
+Figure 11
+
+12. Move the power supply block from the OBD connector. Unscrew 2 screws on the OBD connector and remove it.
+@D_12_IMG_013
+Figure 12
+
+13. Remove the lock from the OBD connector, for this it is necessary to press the lock tabs with a screwdriver and pull it in the direction indicated in Fig. 13.
+@D_12_IMG_014
+Figure 13
+
+14. Connect the additional OBD cable (Fig. 14) to the free 11 and 13 pins in the OBD connector, see Fig. 15.
+Figure 14
+@D_12_IMG_017
+Figure 15
+
+15. Install the lock on the OBD connector and screw the connector into place.
+16. On the cut 7 wires (6 red and 1 black), it is necessary to put heat shrink tubing and crimp the M4 ring terminals. Then shrink the heat shrink tubing on the terminal.
+@D_12_IMG_018
+Figure 16
+
+17. Connect the 220V board power cable (see Fig. 17) to the power supply unit, see Fig. 18, the polarity does not matter.
+@D_12_IMG_019
+Figure 17
+@D_12_IMG_020
+Figure 18
+
+18. Screw the power supply unit to the tester case with 3 screws (see Fig. 11).
+19. Install and attach the new board. The board is fastened with 4 screws, as shown in figure 19. When installing the board, it is necessary to install dielectric washers as shown in figure 10.
+@D_12_IMG_021
+Figure 19. Board mounting locations
+20. Attach the wire terminals to the board as shown in Figure 20.
+@D_12_IMG_022
+Figure 20
+21. Connect all the connectors on the board (see Fig. 21):
+@D_12_IMG_023
+Figure 21
+1 - power supply control; 
+2 - power button backlight; 
+3 - 220V power supply for the board (also see Fig. 18); 
+4 - USB connector;
+5 - cooling fan power supply; 
+6 - additional wire of the OBD connector (also see Fig. 15); 
+7 - D-SUB port connectors.
+
+22. Install the case cover in its place.
+23. Install the rear wall of the tester in its place. Attach the ventilation grilles to their places.
+Attention! Longer screws may be used to fix the two middle ventilation grilles, see Fig. 22.
+@D_12_IMG_024
+Figure 22
+
+24. Screw in the screws at the bottom of the tester, see Fig.1.

@@ -1,0 +1,240 @@
+MS570
+ELECTRONICS REPAIR TABLE
+@D_13_IMG_000
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing MSG Equipment products.
+This User Manual contains information about the purpose, components, technical specifications, and safe operation guidelines for the MS570 Electronics Repair Workbench (hereinafter referred to as "the workbench").
+Before using the workbench, carefully read this User Manual.
+Due to continuous improvements, modifications may be made to the design and configuration of the workbench that are not reflected in this manual. Therefore, no claims can be made regarding the data and illustrations provided in this User Manual.
+
+1. PURPOSE
+The electronics repair workbench is designed to provide an organized and efficient workspace for electronics technicians when repairing radio-electronic and electrical devices.
+
+2. TECHNICAL SPECIFICATIONS 
+Dimensions (L×W×H), mm	2000×830×1530
+Weight, kg	90
+Height from floor to tabletop, mm	780
+Power supply voltage, V	230
+Number of sockets, pcs.	8
+Built-in laboratory power supply unit (PSU), pcs.	2
+PSU output voltage range, V	from 0 tо 60
+PSU output current, A	from 0 to 6
+PSU output voltage adjustment step, V	0.01
+PSU output current adjustment step, A	0.001
+Lighting	60W LED lamp
+
+3. DELIVERY SET 
+The delivery set includes:
+Item name	Number of pcs
+MS570 electronics repair table	1
+Shelf	1
+Monitor bracket	1
+Wire set	1
+Silicone table mat	1
+User Manual (card with QR code)	1
+
+4. WORKBENCH DESCRIPTION
+The workbench consists of the following main functional elements (Fig. 1):
+@D_13_IMG_001
+Figure 1: Basic elements of the workbench
+1 – 230V sockets with protective cover.
+2 – Laboratory power supply unit.
+3 – Terminal of the laboratory power supply unit (depending on the configuration, it may be located on the front panel of the power supply unit).
+4 – Lighting lamp.
+5 – Rotary switch for turning on the workbench power.
+6 – Rotary switch for turning on the lamp.
+7 – Emergency shutdown button for 230V sockets.
+
+5. APPROPRIATE USE
+1. Use the workbench only for its intended purpose (see Section 1).
+2. When working with various equipment, follow the operating documentation, including user manuals provided by the equipment manufacturers.
+3. Use grounding, anti-static wrist straps, and mats to minimize the risk of damage to sensitive electronic components.
+4. Keep cables organized to prevent bending and avoid interference with your work.
+5. Do not use aggressive chemicals, bleach, acids, or alkalis for cleaning.
+6. Use protective mats to prevent damage to the tabletop from cutting tools and heat exposure. Additionally, use stands for containers with special liquids such as alcohol, varnish, and glue to prevent spills.
+7. Do not overload the workbench with heavy objects. Avoid dropping items on the surface.
+8. To prevent damage, do not modify the workbench structure at your discretion.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety instructions 
+1. Only specialists with the appropriate qualifications for the task, who are authorized to work with specific types of equipment and have undergone training on safe work practices, including electrical safety measures, are allowed to work at the bench.
+2. The workspace must be kept clean and well-lit. Clutter and poorly illuminated areas can lead to accidents.
+3. When performing repair operations, personal protective equipment must be used, including safety glasses, gloves, and protective workwear.
+4. Do not leave powered-on electronics, soldering stations, measuring instruments, or similar equipment unattended.
+5. Rooms where soldering operations involving lead-based solder are performed must be equipped with supply and exhaust ventilation.
+
+5.2. Preparing the workbench for use 
+The workbench is delivered in packaging. Remove all packaging materials. The packaging is fully recyclable—dispose of it in designated waste collection areas for separate recycling.
+The workbench should be placed on a level floor and positioned securely. It must be kept at least one meter away from heating devices and radiators.
+Before use, connect the workbench to a 230V electrical network with a grounded outlet. Then, switch on the circuit breaker (see Pos. 1, Fig. 2).
+
+@D_13_IMG_002
+Figure 2
+
+6. DESCRIPTION OF THE LABORATORY POWER SUPPLY 
+The laboratory power supply includes the following control elements (see Fig. 3):
+@D_13_IMG_003
+Figure 3
+A: Power button
+B: Auxiliary function button "SHIFT"
+C: Memory button "MEM"
+D: Current adjustment button and overload protection threshold setting "I-SET"
+E: Voltage adjustment button and overvoltage protection threshold setting "V-SET"
+F: Micro USB port
+G: Negative polarity terminal
+H: Positive polarity terminal for battery charging (special terminal for charging batteries)
+I: Positive polarity terminal
+J: Output disable button "ON/OFF"
+K: Confirmation button "ENTER"
+L: Encoder/cancel button
+M: Menu navigation buttons
+N: Button panel
+O: Display screen
+
+6.1. Control menu
+The main menu screen contains the following elements (see Fig. 4):
+@D_13_IMG_004
+Figure 4
+W: Date and time
+X: Sound indication status
+Y: Lock status
+Z: External communication status
+AA: Actual output voltage
+AB: Actual output current
+AC: Output power
+AD: Current memory slot number
+AE: Stabilization mode
+AF: Overload protection status
+AG: Battery charge indication
+AH: Battery charging information
+AM: Input voltage
+AL: Set output voltage value
+AK: Set output current value
+AJ: Overvoltage protection threshold
+AI: Overcurrent protection threshold
+WARNING! The appearance, menu contents, and operation of the LPS may vary depending on the firmware version.
+
+The main menu screen has three styles:
+Standard style
+Extended style
+Graphical style
+The style can be selected in the settings menu (see Fig. 5).
+@D_13_IMG_005
+standard style   extended style   graphic style 
+Figure 5
+
+6.1.1. General Control Rules
+Red icon or cursor → Selected parameter for modification
+Blue icon → Inactive parameter
+Press "ENTER" → Confirms an action
+Press the encoder → Cancels an action or exits the menu
+Rotate the encoder → Adjusts numerical settings
+Press arrow buttons → Moves the cursor or selects a submenu
+Factory Reset Procedures:
+Reset to factory settings: Press and hold the "0" button while turning on the converter.
+Reset to factory calibration: Press and hold the "1" button while turning on the converter.
+Enter boot mode: Press and hold "ENTER" while turning on the power supply unit (LPS).
+Settings are automatically saved when exiting the settings menu.
+
+6.1.2. Setting Output Current and Voltage
+To set the current value:
+1. Press "I-SET", then choose one of the following methods:
+Rotate the encoder to select a digit (0-9), then press an arrow button to move the cursor to another digit and repeat as needed.
+Enter the required value directly using the numeric keypad.
+2. Press "ENTER" to confirm:
+If an invalid value is entered, an error message will appear (see Fig. 6). Press the encoder button to cancel.
+@D_13_IMG_006
+Figure 6
+To set the voltage value:
+Press "V-SET" and follow the same procedure as for setting the current.
+To set overload or overvoltage protection thresholds:
+Press "SHIFT" + "I-SET" (for overload protection) or "SHIFT" + "V-SET" (for overvoltage protection).
+After confirmation, the default changes will be saved in memory slot "M0".
+
+6.1.3. Working with Memory Slots
+To save settings:
+Press "MEM" + any button 1-9 to store the current values for current, voltage, and protection thresholds.
+Press "ENTER" to confirm or the encoder button to cancel (see Fig. 7).
+@D_13_IMG_007
+Figure 7
+To load settings from memory:
+Press "SHIFT" + the corresponding button 1-9.
+Press "ENTER" or the encoder button to confirm or cancel (see Fig. 8).
+
+@D_13_IMG_008
+Figure 8
+
+6.1.4 Keyboard Lock
+To lock/unlock the keypad, use the "SHIFT" + "LOCK" button combination.
+The lock status is displayed in the upper right corner of the screen:
+@D_13_IMG_009 - Buttons locked
+@D_13_IMG_010 - Buttons unlocked
+Buttons automatically lock when the converter is connected to a PC or mobile device. They will unlock when the connection is disconnected. The power button always remains unlocked.
+
+6.1.5 System Settings
+Press "SHIFT" + "MENU" to enter the system menu.
+The system menu contains submenus for:
+Settings
+Styles
+Memory slots
+System information (see Fig. 9)
+
+@D_13_IMG_011
+Figure 9
+
+After entering the system menu, press the "ENTER" button to access the settings submenu Fig. 10). Use the cursor movement buttons to select the desired parameter, and rotate the encoder to set the preferred value or status.
+@D_13_IMG_012
+Figure 10
+Settings Menu Options:
+Language – Select the interface language.
+Take OK – Confirmation request for applying settings. If set to "OFF", settings will be edited directly when selecting a data group.
+Take Out – Output state when loading settings from a memory slot. If set to "ON", the output will be activated immediately when selecting a data group.
+Boot Power – Output state when turning on the converter. Default is "OFF". If set to "ON", the output will automatically turn on when the converter is powered up.
+Boot Logo – Display the logo at startup.
+Buzzer – Enable/disable sound feedback for button presses and encoder rotation.
+Backlight – Screen brightness level (adjustable from 0 to 5).
+Update Rate – Refresh rate for real-time output voltage and current readings. Default is "Low", but can be set to Low/Medium/High.
+Max Power – Maximum output power. When the set voltage × current exceeds the maximum power, the device automatically reduces the output current. It is recommended to set the rated power no higher than 95% of the maximum.
+Temperature – Choose between °C and °F for temperature units.
+Date, Time – Set the current date and time. Ensure the correct time is set, as incorrect time settings may lead to improper date changes.
+To exit the settings submenu, press the encoder button. All modified values will be saved automatically.
+
+6.1.5.1 Battery Charging Mode Submenu
+Cut-Off Current – The lower limit for output current. If the current drops below this threshold, the output will automatically turn off. Default is 10 mA.
+Cut-Off Temp – The upper temperature limit for the external temperature sensor, at which the output automatically turns off.
+
+6.1.5.2 Communication Submenu
+Interface – Select the communication interface: USB or Wi-Fi:
+USB – If the power supply unit (PSU) is connected to a PC via the Micro-USB port on the front panel.
+Wi-Fi – If the PSU is connected to a mobile device via Wi-Fi module. After changing the interface, a power cycle is required for changes to take effect.
+Baudrate – Data transfer speed:
+For USB, options are 9600 / 19200 / 38400 / 57600 / 115200 baud.
+For Wi-Fi, only 115200 baud is supported.
+
+6.1.5.3 Main Mode Style Submenu
+Press "SHIFT" + "MENU" to enter the system menu, then press the right arrow button to select the Main Mode Style submenu and press "ENTER" to access it.
+Use the arrow buttons to choose the desired style— the selected style will be highlighted in red.
+The Classic style (default system style) displays current, voltage, and power in large numbers at the center of the screen.
+The Graphical style represents these parameters as three colored curves, where D is the vertical scale. Press "ENTER" to start or stop the curve graph, and rotate the encoder to adjust the scale.
+To exit to the system menu, press the encoder button.
+
+6.1.5.4 Memory Slots Submenu
+Press "SHIFT" + "MENU" to enter the system menu, then press the right arrow button twice to select the Memory Slots submenu and press "ENTER" to access it.
+The selected memory slot will have a red background, and slot navigation is performed using the arrow buttons.
+The setup method is the same as described earlier for the Main Mode.
+
+6.1.5.5 System Information Submenu
+Press "SHIFT" + "MENU" to enter the system menu, then press the right arrow button three times to select the System Information submenu and press "ENTER" to access it. This section displays the following information:
+Device model
+Serial number
+Firmware version
+System temperature
+
+7. DISPOSAL
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.

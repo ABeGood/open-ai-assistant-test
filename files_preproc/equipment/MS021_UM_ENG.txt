@@ -1,0 +1,140 @@
+MS021
+TESTER FOR DIAGNOSTICS OF DIODE BRIDGES
+OF ALTERNATORS
+
+@D_3_IMG_000
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product by ТМ MSG Equipment.
+The present user manual consists of the information on the application, supply slip, design, specifications and rules of usage of tester MS021.
+The manufacturer reserves the right to change the design and software without prior notice to users.
+Prior to using the tester MS021 (hereinafter, “the tester”), study the present user manual thoroughly. If required, get the special training at tester manufacturer facilities.
+Testing rectifiers with the use of multimeter has always been the most common practice. This method has a significant drawback -it doesn't help to identify the diode type and find the faulty one. A standard multimeter test with a direct current of about 0.002A, which is too low compared to the diode operating currents. The tester checks the diode with an alternating current of 0.9A, which allows you to reliably assess the technical condition of the diode bridge of the generator or the diode separately.
+
+1. APPLICATION
+The tester MS021 is used during the alternator repair for the diagnostics of diode bridges, and it can detect:
+• diode breakdown;
+• diode cut;
+• diode type (common diode, avalanche diode);
+• diode degradation (extreme drop of forward voltage);
+• avalanche diode reverse breakdown voltage;
+• bad diode connection with the bus bar.
+
+2. SPECIFICATIONS
+Dimensions (L×W×H), mm	219×214×80
+Weight, kg	2.2
+Power source	single-phase electrical network
+Supply voltage, V	230/110 (50/60 Hz)
+Power demand (max.), W	40
+Diode bridge diagnostics
+Voltage of the tested diode bridges, V	12/24
+Testing current	alternating
+Testing voltage, V	30
+Testing current, A	0.9
+
+3. DELIVERY SET 
+DELIVERY SET
+Item name	Quantity, pc
+Tester MS021	1
+MS0129 – diagnostic cable	1
+Supply cable	1
+Safety fuse (type: 5x20mm; current: 2A)	1
+User Manual (card with QR code)	1
+
+4. TESTER DESCRIPTION
+The tester is supplied with a touch screen (“1” - Fig.1) on which the tested parameters are displayed; the color indication of the screen signals the technical condition of the tested diode. There is a connection terminal (“2” - Fig.1) for a diagnostic cable (Fig.2). The encoder knob (“3” – Fig.1) is used for fine adjustment of the device for specific tasks. Button “4” turns the device on. 
+@D_3_IMG_001
+Figure 1. MS021 tester. General view
+
+@D_3_IMG_002
+Figure 2. Diagnostic cable
+
+Diode fuse and power connectors are located at the rear of the device.
+@D_3_IMG_003
+Figure 3. MS021 tester. Back view:
+1 – Diode fuse; 2 – Power connector.
+
+5. APPROPRIATE USE
+1. Use the tester as intended (see Section 1).
+2. The tester is designed for indoor use. Be aware of the following operating constraints:
+2.1. The tester should be used at the temperature range from +10 °С up to +40 °С.
+2.2. Do not use the device when the air temperature is negative or the humidity is high (over 75%). Do not turn on the tester immediately after moving it from a cold room (or from outdoors) into a warm one as its components may be covered with a condensate. Keep it off at room temperature for at least 30 min.
+3. Avoid leaving the device in direct sunlight.
+4. Keep away from heating devices, microwaves, and other temperature-raising equipment.
+5. Avoid dropping the tester or spilling technical liquids on it.
+6. Any interference with the electric diagram of the device is strictly prohibited.
+7. Turn off the tester when it is not in operation.
+8. Do not leave the device with closed probes for more than 2 minutes.
+9. Working with a measuring probe, keep your fingers on the plastic part of it. Touching the metal part of the measuring probe may cause measurement errors.
+10. The device is equipped with a system for diagnostics of the probes condition. If any fault is detected, the "PROBE PROBLEM" message will appear on the screen. The "DIODE BREAKDOWN" message that appears when the probes are open, signals the probe failure.
+11. In case of failures in the operation of the tester, stop further operation and contact the manufacturer or sales representative.
+ WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. The tester shall be operated by the persons who completed the special training on the high-voltage battery safe operation and have the relevant electrical safety permit.
+2. Turn off the tester for cleaning and in emergencies.
+3. The work area must always be clean, with good light illumination, and spacious.
+
+5.2. Rectifier testing
+Diagnostics of a rectifier should be performed as follows:
+1. Turn the tester on. Connect the clamp to the rectifier housing. The following message will appear on the screen: “CONNECT PROBE TO DIODE”.
+2. Touch the contact spot of the tested diode with a probe. The following information will be displayed:
+“Vf” – diode voltage drop (in volts);
+"Vr" - stabilizing voltage (in volts). If there are stabilitrons (avalanche diodes) in the rectifier structure, the "AVALANCHE" message will appear.
+WARNING! Different contaminants and dirt on the tested contacts may lead to measurement errors.
+@D_3_IMG_004 @D_3_IMG_005
+Figure 4. Taking measurements:
+А) – incorrect; B) – correct
+@D_3_IMG_006 @D_3_IMG_007
+2.1. If the diode is faultless, the screen will display “Vf” and “Vr” values. The screen color will be green.
+
+@D_3_IMG_008
+2.2. If the "Vf” value is higher than normal, the screen color will be yellow.
+
+The operability of the rectifier should be decided on the basis of the “Vf” readings and type (model) of the diode (stabilitron). The “Vf” absolute value is not always a key parameter when checking the rectifier. It is important to pay attention to the spread between the “Vf” values of different diodes of the same rectifier. For example, for a rectifier that can carry 50 A, “Vf” = 0.850 V is quite typical. The rectifier can be considered faultless If the spread between “Vf” values of the diodes doesn’t exceed ± 0.020 V. For the 120A rectifier, "Vf" = 0.850V is already a critical value. The diode with such a "Vf" value shall be considered faulty.
+@D_3_IMG_009
+2.3. If the diode is faulty, the screen color will be red.
+
+2.4 In case of a short or open circuit failure, the screen color will be red and either the “SHORT CIRCUIT’ or ‘DIODE BREAKDOWN’ message will be displayed correspondingly.
+@D_3_IMG_010 @D_3_IMG_011
+
+5.3. Tester setup
+The device assesses the diode performance on the basis of the forward voltage drop value (“Vf”) and is specially calibrated to make it usable for any operator who doesn’t have sufficient knowledge of the diode parameters and characteristics. Threshold values can be changed at the user’s option.
+Enter the “Settings” menu as follows:
+@D_3_IMG_012 @D_3_IMG_013
+Figure 5. Color threshold setting menu.
+
+1) Turn the device off.
+2) Press and hold down the encoder button (“3” – Fig.1).
+3) Turn the device on. A setup mode will be activated.
+4) Threshold values for either a faultless diode (green color of the screen) or a faulty one (red color of the screen) can be changed in this mode.
+5) The selected threshold value can be changed by turning the encoder button clockwise or counterclockwise.
+6) To save the selected settings, press and hold down the encoder button until the device enters the operating mode and the “CONNECT PROBE TO DIODE” message appears on the screen.
+7) Turn the tester off to exit the setup menu. The settings won’t be saved.
+
+6. TESTER MAINTENANCE
+The TESTER is designed for a long operation life and doesn’t have any special maintenance requirements. At the same time, to ensure the maximum operation life, the regular monitoring of the tester technical condition should be made as follows:
+- conformity of the environmental conditions to the requirements for tester operation (temperature, humidity, etc.);
+- diagnostic cable visual inspection;
+- condition of the supply cable (visual inspection).
+6.1. Cleaning and care
+Use soft tissues or wipe cloths to clean the surface of the device with neutral detergents. Clean the display with a special ﬁber cloth and a cleaning spray for touch screens. To prevent corrosion, failure or damage to the tester, do not use any abrasives or solvents.
+
+7. TROUBLESHOOTING GUIDE
+The below chart contains the description of potential malfunctions and troubleshooting methods:
+Failure symptom	Potential cause	Troubleshooting tips
+1. Tester doesn’t turn on.	The power connector came off.	Check whether the connection is securely maintained.
+	The fuse burnt out.	Replace the fuse.
+2. “PROBE PROBLEM” message appears when the tester is on.	The diagnostic cable is faulty (damaged).	Replace the diagnostic cable.
+3. “DIODE BREAKDOWN” message appears when the probes are open.	Loose connection on the diagnostic cable connector.	Recover the contact.
+		Replace the diagnostic cable.
+4. The tested parameters are displayed incorrectly.	Loose connection on the diagnostic cable connector.	Recover the contact.
+	Software error.	Contact technical support.
+
+8. DISPOSAL 
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.

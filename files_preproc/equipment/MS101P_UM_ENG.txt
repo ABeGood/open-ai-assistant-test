@@ -1,0 +1,136 @@
+MS101P
+FLUSHING MACHINE FOR CAR AIR CONDITIONING SYSTEM
+
+@D_4_IMG_000
+
+INTRODUCTION
+Thank you for choosing MSG Equipment products.
+This User Manual contains information on the purpose, components, technical specifications, and safe operating rules of the MS101P station.
+Before using the MS101P flushing machine (hereinafter referred to as the station), carefully read this User Manual.
+Due to constant improvements in the station, changes may be made to its design and configuration that are not reflected in this User Manual.
+
+1. APPLICATION
+The MS101P station is used for servicing and repairing a car's climate control system. The station ensures efficient flushing of the system's pipelines and components with a pulsating flow of flushing liquid. After flushing, the station allows the removal of any remaining flushing liquid from the system using nitrogen.
+
+2. TECHNICAL SPECIFICATIONS 
+Dimensions (L×W×H), mm	350×300×670
+Weight, kg	28
+Power source	compressed air
+Operating pressure of pneumatic line, bar	from 6 to 8
+Maximum air consumption, l/min	250
+Working fluid	R141b or isopropyl alcohol
+Working fluid tank capacity, l	15
+Maximum pump capacity of the station, l/min	15
+Maximum output pressure of the station pump, bar	7
+Working gas for system drying after flushing	compressed nitrogen (external source)
+Working pressure at the nitrogen cylinder regulator outlet	7...8 bar (100...110 psi)
+Filtering element	polypropylene
+Filtering element size, mm (inch)	127 (5”)
+Recommended micron rating of the filtering element, μm	10 – 50
+Hose length, m	2.5
+Car connection fitting	universal
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+Item name	Number of pcs
+MS101P station	1
+Polypropylene filtering element 5"	2
+Repair kit – set of diaphragms for BML pump (2 pcs.)	1
+User Manual (card with QR code)	1
+
+4. STATION DESCRIPTION
+The station consists of the following main elements (Fig. 1):
+1 – Swivel wheels with brakes. The brake is used to fix the station in place.
+2 – "HP" valve – opens the flow of flushing liquid.
+3 – Pump control valve.
+4 – Filler neck cap.
+5 – Manometer – indicates the pressure of the flushing liquid.
+6 – "N2" valve – opens the flow of nitrogen to remove residual flushing liquid.
+@D_4_IMG_001
+Figure 1. General view of the station
+
+On the rear side of the station are the following elements (Fig. 2):
+@D_4_IMG_002
+Figure 2
+
+1 – Nitrogen connection fitting.
+2 – Compressed air connection fitting.
+3 – Working fluid supply hose.
+4 – Working fluid return hose to the station.
+
+5. APPROPRIATE USE
+1. Use the station as intended only (see Section 1).
+2. The station is designed for use at temperatures from +10 to +40 °C and relative air humidity not exceeding 75% without condensation.
+3. Operate the station in a manner that protects the environment and the planet's natural resources. Prevent leaks of working fluid into the ground or sewage.
+4. To avoid damage or failure of the station, do not make any modifications to its design at your discretion. The station may not be altered by anyone other than the official manufacturer.
+5. In case of any malfunctions in the station's operation, stop using it immediately and contact the manufacturer's technical support or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. Only specially trained personnel who are authorized to work with certain types of equipment and have received instruction on safe working practices and methods are allowed to operate the station. 
+2. The room where the station will be used must be well-ventilated. Any exhaust systems in the room must be turned on.
+3. There should be no open flames in the room where the station will be used. Smoking or welding near the station is prohibited. A working fire extinguisher must be present.
+4. When working with the station, personal protective equipment for eyes and hands—protective goggles and gloves—must be used. Avoid contact of the working fluid with bare skin (if contact occurs, follow the instructions in the flushing liquid specification). 
+5. NEVER leave the operating station unattended.
+6. NEVER disconnect hoses from the car or the station or unscrew the filler neck cap while the station is in operation.
+7. NEVER operate the station with damaged hoses.
+8. When placing the nitrogen cylinder, ensure that there are no heating radiators, stoves, or other heating devices within 1 meter of the cylinders. Heat sources with open flames must be located more than 5 meters away from the cylinder.
+9. In case of a malfunction of the regulator on the nitrogen cylinder, it must be returned to the filling station, which should release the gas according to the instructions for such a case.
+
+5.2. Preparing the station for operation
+The station is supplied packaged. Remove the packaging materials from the station. After unpacking, make sure the station is intact and has no damage. If any damage is found, contact the manufacturer or sales representative before turning on the station.
+Before operating the station:
+1) Connect the compressed air supply source.
+2) Pour the required amount of flushing liquid (from 5 to 10 liters) into the station's tank through the filler neck.
+3) Install the polypropylene filtering element into the filler neck and screw on the filler neck cap.
+
+6. AIR CONDITIONING SYSTEM FLUSHING
+Typically, flushing the air conditioning system is a step in the repair or maintenance of the air conditioning system, which must be carried out strictly following the work regulations.
+Before flushing the system, according to the work regulations, it is necessary to remove components from the air conditioning system that are not subject to flushing: the compressor, the thermostatic expansion valve (TXV) or orifice tube, the evaporator, the filter-drier, and the condenser.
+The air conditioning system is flushed in three stages. At each stage, the pipelines in the sections are flushed (see Fig. 3):
+from the compressor pos. 1 to the TXV valve pos. 2 (section marked in red);
+from the TXV valve pos. 2 to the filter-drier pos. 4 (section marked in green);
+from the compressor pos. 1 to the condenser pos. 5 (section marked in blue).
+
+@D_4_IMG_003
+Figure 3. Car air conditioning system diagram:
+
+1 – Compressor; 2 – TXV valve; 3 – Evaporator; 4 – Filter-drier; 5 – Condenser.
+
+Each section is flushed in several cycles and is performed in the following sequence:
+1. Connect the "HP" and "LP" hoses to the pipeline through special adapters. The direction of flushing does not matter.
+2. Open the "HP" valve by turning it to the "+" position and turn on the pump using valve 3 in Fig. 1. If necessary, the pump's performance is adjusted using this same valve.
+3. Perform the flushing for 10 minutes, then turn off the pump and close the "HP" valve.
+3.1. Check the contamination level of the filtering element. If the contamination level is high (large dispersion particles are found, such as aluminum shavings), replace the filtering element.
+3.2. If the contamination level is low, reinstall the filter, having turned it over first.
+4. Perform the second flushing cycle for 10 minutes, then turn off the pump and close the "HP" valve. Replace the filter.
+WARNING! If the filter is highly contaminated, it is recommended to replace the flushing liquid. To do this, disconnect the "HP" pipeline from the system and place it in a container for collecting used liquid. Open the "HP" valve, turn on the pump, and drain all the liquid into the container. Then fill with new flushing liquid and replace the filter.
+5. Perform the third flushing cycle for 10-20 minutes.
+6. Continue flushing cycles until the filter remains clean.
+
+@D_4_IMG_004
+Figure 4. Filtering element after the first flushing cycle (left) and after the final flushing cycle (right).
+
+7. After completing the flushing, it is necessary to remove the remaining flushing liquid from the air conditioning system. To do this:
+7.1. Connect compressed nitrogen to the station. The "HP" valve must be closed, and the pump must be off.
+7.2. Gradually open the "N2" valve for 5-10 seconds. Repeat two to three times.
+8. Disconnect the hoses from the pipelines, then proceed to flush the next section.
+WARNING! The flushing liquid remaining after the final flushing cycle can be used for the first flushing cycle of the next section.
+
+7. STATION MAINTENANCE
+The station is designed for long-term use and does not have specific maintenance requirements. However, for maximum trouble-free operation of the station, it is necessary to regularly monitor its technical condition, specifically:
+• Ensure the pump is operating normally (no unusual sounds, vibrations, etc.);
+• Check the hydraulic system for leaks (visual inspection);
+• Once a year, before the season begins, replace the hoses connected to the climate control system.
+
+7.1. Cleaning and care
+To clean the station's surface, use soft cloths or rags with neutral cleaning agents. To avoid corrosion, malfunction, or damage to the station, do not use abrasives or solvents.
+
+8. DISPOSAL
+Equipment deemed unfit for use must be disposed of.
+The station does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.
+
+
+

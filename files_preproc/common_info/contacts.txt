@@ -1,0 +1,19 @@
+MSG EQUIPMENT
+
+SALES DEPARTMENT
+Phone: +38 073 529 64 26
+Phone: +38 050 105 11 27
+Email: sales@servicems.eu
+Website: servicems.eu
+
+REPRESENTATIVE OFFICE ADDRESS IN POLAND
+Company: STS Sp. z o.o.
+Address: ul. Modlinskaya 209, Warszawa 03-120
+Phone: +48 833 13 19 70
+Phone: +48 886 89 30 56
+Email: sales@servicems.eu
+Website: msgequipment.pl
+
+TECHNICAL SUPPORT
+Phone: +38 067 434 42 94
+Email: support@servicems.eu

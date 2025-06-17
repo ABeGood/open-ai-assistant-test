@@ -1,0 +1,237 @@
+DIAGNOSTIC CABLES PRODUCT CATALOG
+
+=== STARTERS AND GENERATORS CABLES ===
+
+MS-33503A: Diagnostic cable created for joint operation with MS016 and MS016A testers, designed for starter diagnostics on vehicle without dismounting or on test stand providing starter fixation and power supply.
+
+MS-33002 (2A): Cable used for generator diagnostics on MS002A/MS005/MS005A/MS008 test stands. Cable allows quick and correct generator connection to test stand and ensures reliable data exchange between generator voltage regulator and test stand.
+
+MS-33003 (3A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33004 (4A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33005 (5A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33007 (7A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33008 (8A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33009 (9A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33010 (10A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33011 (11A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33012 (12A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33013 (13A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33015 (15A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33017 (17A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33018 (18A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33019 (19A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33020 (20A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33021 (21A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33022 (22A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33023 (23A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33024 (24A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33025 (25A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33026 (26A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33027 (27A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33028 (28A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33029 (29A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33030 (30A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33032 (32A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33033 (33A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33034 (34A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33035 (35A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33036 (36A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33037 (37A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33038 (38A): Generator diagnostic cable for MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33039 (39A): Cable used for diagnostics of start-stop system generators 12V (IStart type) on MS002A/MS005/MS005A/MS008 test stands. Cable allows quick and correct generator connection to test stand and ensures reliable data exchange between generator voltage regulator and test stand.
+
+MS-33040 (40A): Cable used for diagnostics of I-ELOOP system generators (Mazda) on MS002A/MS005/MS005A/MS008 test stands. Cable allows quick and correct generator connection to test stand and ensures reliable data exchange between generator voltage regulator and test stand.
+
+MS-33041 (41A): Cable used for generator diagnostics on MS002A/MS005/MS005A/MS008 test stands. Cable allows quick and correct generator connection to test stand and ensures reliable data exchange between generator voltage regulator and test stand.
+
+MS-33042 (42A): Cable used for diagnostics of 12V generators without voltage regulator relay (F/67 type) on MS002A/MS005/MS005A/MS008 test stands.
+
+MS-33043 (43A): Cable used for diagnostics of start-stop system generators 12V (IStart type) on MS002A/MS005/MS005A/MS008 test stands. Cable allows quick and correct generator connection to test stand and ensures reliable data exchange between generator voltage regulator and test stand.
+
+MS-33401: Cable designed for diagnostics of 48V belt starter-generator of AUDI vehicles on MS005A test stand. Cable connector matches the connector of diagnosed unit ensuring quick, reliable and correct connection. Cable also has OBD2 connector allowing connection of diagnostic scanner and reading data from unit control block.
+
+MS-33402: Cable designed for diagnostics of 48V belt starter-generator of BMW vehicles on MS005A test stand. Cable connector matches the connector of diagnosed unit ensuring quick, reliable and correct connection. Cable also has OBD2 connector allowing connection of diagnostic scanner and reading data from unit control block.
+
+MS-33403: Cable designed for diagnostics of 48V belt starter-generator of FORD vehicles on MS005A test stand. Cable connector matches the connector of diagnosed unit ensuring quick, reliable and correct connection. Cable also has OBD2 connector allowing connection of diagnostic scanner and reading data from unit control block.
+
+MS-33404: Cable designed for diagnostics of 48V belt starter-generator of HYUNDAI/KIA vehicles on MS005A test stand. Cable connector matches the connector of diagnosed unit ensuring quick, reliable and correct connection. Cable also has OBD2 connector allowing connection of diagnostic scanner and reading data from unit control block.
+
+MS-33405: Cable designed for diagnostics of 48V belt starter-generator of VOLVO vehicles on MS005A test stand. Cable connector matches the connector of diagnosed unit ensuring quick, reliable and correct connection. Cable also has OBD2 connector allowing connection of diagnostic scanner and reading data from unit control block.
+
+=== AUTO CLIMATE SYSTEM CABLES ===
+
+MS-31001 (1H): Cable for MS112 test stand designed for powering electric air conditioning compressor with high voltage during its diagnostics. Cable connector matches the connector of diagnosed unit ensuring quick connection and reliable connection.
+
+MS-31002 (2H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31003 (3H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31004 (4H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31005 (5H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31006 (6H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31007 (7H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31008 (8H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31009 (9H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31010 (10H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31011 (11H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31012 (12H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31013 (13H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31014 (14H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31015 (15H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31016 (16H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31017 (17H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31018 (18H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31019 (19H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31020 (20H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31021 (21H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31022 (22H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31023 (23H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31024 (24H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31025 (25H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-31026 (26H): High voltage power cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30001 (1D): Cable for MS112 test stand designed for transmitting control signals from test stand to electric air conditioning compressor during its diagnostics. Cable connector matches the connector of diagnosed unit ensuring quick connection and reliable signal transmission.
+
+MS-30002 (2D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30003 (3D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30004 (4D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30005 (5D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30006 (6D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30007 (7D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30008 (8D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30009 (9D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30010 (10D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30011 (11D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30012 (12D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30013 (13D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30014 (14D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30015 (15D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30016 (16D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+MS-30017 (17D): Control signal cable for electric air conditioning compressor diagnostics on MS112 test stand.
+
+=== ELECTRIC POWER STEERING CABLES ===
+
+MS-36001M: Cable designed for connecting electric power steering to MS561 PRO tester through MS550 adapter which functions as control unit for electric power steering. Cable ensures data exchange between MS561 PRO tester, electric power steering and MS550 adapter. Thanks to cable and electric power steering connector compatibility, quick and reliable connection is ensured.
+
+MS-36002M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36045M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36003M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36046M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36012M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36036M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36004M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36022M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36013M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-36035M: Electric power steering diagnostic cable for MS561 PRO tester with MS550 adapter.
+
+MS-35xxx, MS-36xxx (without "M" suffix), MS-37xxx series: Cable designed for connecting electric power steering to MS561 PRO tester for diagnostics. Cable ensures data exchange between tester and electric power steering and supplies electrical power to unit. Thanks to cable and electric power steering connector compatibility, quick and reliable connection is ensured.
+
+MS-39000: Cable designed for connecting FlexRay-controlled electric power steering to MS561 PRO tester for diagnostics. Cable contains set of adapter wires allowing connection and diagnostics of any FlexRay electric power steering systems. Cable MS-39000 features: updatable firmware ensuring constant cable relevance; FlexRay bus status indication; torque sensor indication; programming functions capability.
+
+MS-34001: Cable designed for connecting electric power steering torque sensor to MS561 PRO tester for diagnostics. Thanks to cable and torque sensor connector compatibility, quick and reliable connection is ensured.
+
+MS-34002: Electric power steering torque sensor diagnostic cable for MS561 PRO tester.
+
+MS-34003: Electric power steering torque sensor diagnostic cable for MS561 PRO tester.
+
+MS-34004: Electric power steering torque sensor diagnostic cable for MS561 PRO tester.
+
+MS-34005: Electric power steering torque sensor diagnostic cable for MS561 PRO tester.
+
+MS-34006: Electric power steering torque sensor diagnostic cable for MS561 PRO tester.
+
+MS-34007: Electric power steering torque sensor diagnostic cable for MS561 PRO tester.
+
+=== DIAGNOSTIC SCANNER CABLES ===
+
+LC001-CS: Cable designed for connecting LOKI scanner to Tesla Model S pre-facelift (<2015) CAN bus.
+
+LC002-LS: Cable designed for connecting LOKI scanner to standard diagnostic LAN connector of Tesla Model S pre-facelift (<2015), Tesla Model S facelift, Model X vehicles.
+
+LC003-CX: Cable designed for connecting LOKI scanner to Tesla Model S facelift and Model X CAN bus.
+
+LC004-L3: Cable designed for connecting LOKI scanner to Tesla Model 3. Cable connects to LAN connector on MCU (Media Control Unit) board.
+
+LC005-SEC: Cable allows connecting LOKI scanner to Tesla electric vehicle j-tag port for editing hidden configuration parameters. This procedure is performed using additional software for LOKI scanner - Secured Configuration plugin.
+
+LC006-C3: Adapter cable allows connecting LOKI scanner to Tesla Model 3 and Model Y CAN bus through LC003-CX cable.
+
+LC007-LY: Cable designed for connecting LOKI scanner to Media Control Unit (MCU) of Tesla Model Y and Model 3 vehicles manufactured after mid-2020.

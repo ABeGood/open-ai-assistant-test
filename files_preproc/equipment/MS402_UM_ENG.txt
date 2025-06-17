@@ -1,0 +1,108 @@
+MS402
+STEERING RACK SHAFT POLISHING MACHINE
+@D_7_IMG_000
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+This User Manual contains information on the purpose, configuration, technical specifications, and safe operation procedures for the MS402 machine.
+Before using the MS402 polishing machine (hereinafter referred to as the machine), carefully read this User Manual.
+Due to continuous improvements to the machine, changes may be made to its design and delivery package that are not reflected in this User Manual. Therefore, no claims may be made regarding the data and illustrations in this User Manual.
+
+1. APPLICATION
+The MS402 machine is designed for polishing steering rack rods and various shafts to remove buildup, surface corrosion, and achieve the required surface roughness. Polishing of the rod, secured in the chuck, is performed using flexible abrasive material—sandpaper.
+
+2. TECHNICAL SPECIFICATIONS 
+Dimensions (L×W×H), mm	1570×600×1080
+Weight, kg	86
+Power source	three-phase electrical network
+Supply Voltage, V	400
+Drive Power, kW	0.75
+Drive Speed, rpm	1500
+Max Length of Workpiece, mm	900
+Min Length of Workpiece, mm	400
+
+3. DELIVERY SET 
+The delivery set includes:
+Item name	Number of pcs
+MS402 Mechanism	1
+Chuck Key	1
+400 V / 16 A Power Socket	1
+User Manual (card with QR code)	1
+
+4. MACHINE DESCRIPTION
+The machine consists of the following main components (Fig. 1):
+@D_7_IMG_001
+Figure 1
+
+1 – Electric Motor
+2 – Drive Belt Guard
+3 – “START” Button
+4 – Power Supply Rotary Switch
+5 – Drive Stop Button
+6 – Chuck Guard
+7 – Chuck
+8 – Emergency Drive Stop Button
+9 – Tailstock with Taper
+10 – Tailstock Axial Adjustment Handwheel
+
+5. APPROPRIATE USE
+1. Use the machine only for its designated purpose (see Section 1).
+2. The machine is intended for indoor use at temperatures ranging from +10 to +40 °C and relative humidity not exceeding 75%, without condensation.
+3. To avoid damage or malfunction, modifications to the machine’s design are not allowed. Only the official manufacturer may make changes to the machine.
+4. If malfunctions occur during machine operation, stop using it immediately and contact the manufacturer’s technical support or an authorized dealer.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety instructions 
+1. Only specially trained personnel with authorization to operate specific types of equipment and who have undergone safety training are allowed to use the machine.
+2. Keep the workspace clean and well-lit. Clutter and poorly lit areas can lead to accidents.
+3. When operating the machine, use personal protective equipment for the eyes and hands, such as safety glasses and gloves.
+4. For electrical and fire safety, DO NOT:
+Connect the machine to a power supply with faulty or missing overload protection.
+Operate the machine if it is malfunctioning.
+Repair or modify the machine yourself.
+5. The room where the machine is installed must be equipped with local exhaust ventilation.
+6. Memorize the location of the emergency stop button so you can use it quickly if necessary.
+7. Always securely clamp the workpiece in the machine.
+8. Ensure the workpiece is mounted without runout.
+9. Always remove the chuck key after installing the workpiece.
+
+5.2. Machine preparation for operation 
+The machine is delivered packaged. Remove the packaging materials. The packaging is fully recyclable; collect and dispose of it in designated recycling areas.
+After unpacking, ensure the machine is intact and undamaged. If any damage is found, contact the manufacturer or authorized dealer before turning on the machine.
+Place the machine on a firm, flat, horizontal surface. During installation and relocation, handle the machine by its frame only.
+Before operating the machine:
+1. Connect the 400 V power supply using the socket provided with the machine. Follow the markings (L1, L2, L3, N, PE) inside the socket to ensure correct wiring to the power network.
+2. Ground the machine frame.
+
+6. POLISHING THE STEERING RACK ROD 
+The procedure for operating the machine, using the example of polishing a steering rack rod, is as follows:
+1. Install the steering rack rod into the chuck and tighten the chuck jaws using the supplied key.
+2. Rotate the handwheel to bring the tailstock with the taper so that the taper fits into the taper hole at the end of the rod. Securely tighten the chuck jaws and the handwheel.
+3. Lower the chuck guard. Turn on the machine by rotating button 4 and press the “START” button to activate the drive.
+4. Wrap a strip of sandpaper around the workpiece (see Fig. 2).
+WARNING! Be careful not to touch the rotating workpiece.
+@D_7_IMG_002
+Figure 2
+
+5. Polish the rod with the sandpaper using movements along the axis of the workpiece, periodically changing the contact area of the sandpaper.
+WARNING! When polishing, hold the sandpaper with both hands, as shown in Figure 3. Other methods of holding it are dangerous.
+@D_7_IMG_003
+Figure 3
+
+6. After polishing is complete, stop the machine drive and remove the rod by reversing the installation procedure.
+
+7. MACHINE MAINTENANCE
+The machine is designed for long-term operation and does not require special maintenance. However, to ensure maximum reliability and continuous operation, perform regular inspections and the following tasks:
+At the end of each work shift, clean the machine using a soft brush or cloth.
+During operation, monitor the performance of the electric motor. Unusual noises, excessive heating, or vibrations indicate malfunction.
+
+7.1. Cleaning and care 
+To clean the machine surface, use soft cloths or wipes with neutral cleaning agents. To prevent corrosion, damage, or malfunction, do not use abrasives or solvents.
+
+8. DISPOSAL
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.
