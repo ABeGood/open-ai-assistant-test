@@ -10,36 +10,43 @@ assistant_files_mapping = {
     'commonInfo': 'files_preproc/common_info/'
 }
 
-IMG_PATTERN = r"D_\d+_IMG_\d+"
-
-def get_all_markers_as_list(text: str) -> list[str]:
+def process_image_markers(text: str) -> tuple[str, list[str]]:
     """
-    Finds all occurrences of the @_IMG_NNN pattern in a text
-    and returns them as a list of strings.
-
+    Extracts image markers from text and replaces them with sequential figure references.
+    
     Args:
-        text: The input string to search.
-
+        text: The input string containing image markers in format @D_N_IMG_NNN_...
+        
     Returns:
-        A list of strings, where each string is a detected marker.
-        Returns an empty list if no markers are found.
+        A tuple containing:
+        - cleaned_text: Text with markers replaced by "Fig. 1", "Fig. 2", etc.
+        - markers_list: List of core markers (@D_N_IMG_NNN) in order of appearance
     """
-    matches = re.findall(IMG_PATTERN, text)
-    return matches
-
-def remove_all_markers(text: str) -> str:
-    """
-    Removes all occurrences of the @D_N_IMG_NNN pattern from a text.
-
-    Args:
-        text: The input string to clean.
-
-    Returns:
-        A string with all markers removed.
-        Returns the original string if no markers are found.
-    """
-    cleaned_text = re.sub(IMG_PATTERN, "", text)
-    return cleaned_text
+    # Pattern to capture full marker including @ and content until space
+    FULL_IMG_PATTERN = r"@D_\d+_IMG_\d+_[^\s]*"
+    
+    # Pattern to extract core marker part
+    CORE_IMG_PATTERN = r"@D_\d+_IMG_\d+"
+    
+    # Find all full markers in order of appearance
+    full_markers = re.findall(FULL_IMG_PATTERN, text)
+    
+    # Extract core parts for the return list
+    markers = []
+    for full_marker in full_markers:
+        core_match = re.search(CORE_IMG_PATTERN, full_marker)
+        if core_match:
+            markers.append(core_match.group())
+    
+    # Create a copy of text for processing
+    cleaned_text = text
+    
+    # Replace each full marker with sequential figure reference
+    for i, full_marker in enumerate(full_markers, 1):
+        # Replace only the first occurrence to maintain order
+        cleaned_text = cleaned_text.replace(full_marker, f"Fig. {i}", 1)
+    
+    return cleaned_text, markers
 
 def extract_marker_parts(marker: str) -> dict[str, str] | None:
     """
@@ -53,7 +60,7 @@ def extract_marker_parts(marker: str) -> dict[str, str] | None:
         Returns None if the marker doesn't match the expected format.
     """
     # Pattern with two capturing groups
-    pattern = r"(D_\d+)_(IMG_\d+)"
+    pattern = r"@(D_\d+)_(IMG_\d+)"
     
     match = re.match(pattern, marker)
     if match:

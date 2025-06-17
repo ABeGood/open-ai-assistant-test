@@ -8,8 +8,7 @@ import logging
 from typing import Optional
 from validators import OrchestratorResponse
 from response_processing_utils import (
-    get_all_markers_as_list, 
-    remove_all_markers, 
+    process_image_markers, 
     delete_sources_from_text, 
     assistant_files_mapping, 
     extract_marker_parts,
@@ -689,7 +688,7 @@ USER REQUEST:
                 file_info = self.client.files.retrieve(source.file_citation.file_id)
                 sources_list.append(file_info)
 
-            img_markers_list = get_all_markers_as_list(messages.data[0].content[0].text.value)
+            text_wo_markers, img_markers_list = process_image_markers(messages.data[0].content[0].text.value)
 
             sources_files_list = []
             img_files_list = []
@@ -704,6 +703,7 @@ USER REQUEST:
                     name_without_ext = os.path.splitext(source_filename)[0]
                     source_file_path = pdf_mapping[name_without_ext]
                     sources_files_list.append(source_file_path)
+                    sources_files_list = list(set(sources_files_list))
 
             if len(img_markers_list) > 0:
                 files_path = assistant_files_mapping.get(assistant_name)
@@ -717,8 +717,7 @@ USER REQUEST:
                         file = find_file_by_name(files_path+img_dir, img_info['img_file_key']+'_'+img_info['img_name'])  # TODO Kostyl
                         img_files_list.append(file[0].replace('\\', '/'))
 
-            response_clean = delete_sources_from_text(messages.data[0].content[0].text.value)
-            response_clean = remove_all_markers(response_clean)
+            response_clean = delete_sources_from_text(text_wo_markers)
 
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)

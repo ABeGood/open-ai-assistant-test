@@ -273,7 +273,7 @@ class TelegramBot:
                     )
 
                     if DEBUG:
-                        debug_msg = "🔀 STEP 1.1: Orchestrator call\n\n"\
+                        debug_msg = "🔀 STEP 1.1 \nOrchestrator call\n\n"\
                             f"Определяем каких ботов-специалистов использовать для этого запроса..."
                             # f"❔ Определяем каких ботов-специалистов использовать для этого запроса..."
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
@@ -285,7 +285,7 @@ class TelegramBot:
                     orchestrator_response_dict = await self.orchestrator.process_request(session_id, user_message, telegram_user_id)
 
                     if DEBUG:
-                        debug_msg = "🔀 STEP 1.2: Orchestrator response\n\n"\
+                        debug_msg = "🔀 STEP 1.2 \nOrchestrator response\n\n"\
                             f"🤖 *Выбранные специалисты:* \n{orchestrator_response_dict['specialists']}\n\n" \
                             f"❓ *Причина:* \n{orchestrator_response_dict['reason']}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
@@ -300,7 +300,7 @@ class TelegramBot:
                             raise Exception(f"No specialists were selected for query {user_message}")
                         
                     if DEBUG:
-                        debug_msg = "🤖 STEP 2.1: Specialists call\n\n"\
+                        debug_msg = "🤖 STEP 2.1 \nSpecialists call\n\n"\
                             f"➡️ Отправляем параллельные запросы ботам-специалистам:\n\n" \
                             f"{chosen_specialists}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
@@ -313,7 +313,7 @@ class TelegramBot:
                     failed_spec_resps = specialists_responses.get('failed_responses', [])
                     
                     if DEBUG:
-                        debug_msg = "🤖 STEP 2.2: Specialists responses\n\n"\
+                        debug_msg = "🤖 STEP 2.2 \nSpecialists responses\n\n"\
                             f"⬅️ Получили ответы от специалистов:\n\n" \
                             f"{chosen_specialists}\n\n"\
                             f"Успешные: {len(successfull_spec_resps)}\n"\
@@ -322,13 +322,13 @@ class TelegramBot:
 
                     if len(successfull_spec_resps) < 2:
                         if DEBUG:
-                            debug_msg = "📄 STEP 3: Formatting final response\n\n"\
+                            debug_msg = "📄 STEP 3 \nFormatting final response\n\n"\
                                 f"Был получен один успешный ответ, оформляем его в финальное сообщение..."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
                             final_answer_dict = successfull_spec_resps[0]
                     else:
                         if DEBUG:
-                            debug_msg = "🔗 STEP 3.1: Combinator call\n\n"\
+                            debug_msg = "🔗 STEP 3.1 \nCombinator call\n\n"\
                                 f"Было получено несколько успешных ответов.\n\n"\
                                 "➡️ Направляем их в бот-комбинатор для составления финального ответа."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
@@ -336,11 +336,11 @@ class TelegramBot:
                             final_answer_dict = self.orchestrator.process_with_combinator(session_id, user_message, successfull_spec_resps)
 
                             if DEBUG:
-                                debug_msg = "🔗 STEP 3.2: Combinator response\n\n"\
+                                debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\
                                     "⬅️ Получили ответ от комбинатора."
                                 await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                                debug_msg = "📄 STEP 4: Formatting final response\n\n"\
+                                debug_msg = "📄 STEP 4 \nFormatting final response\n\n"\
                                 f"Оформляем ответ комбинатора в финальное сообщение..."
                                 await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
@@ -348,6 +348,8 @@ class TelegramBot:
 
                     # Telegram caption limit
                     CAPTION_LIMIT = 1024
+                    MEDIA_GROUP_LIMIT = 10  # Telegram's maximum items per media group
+
                     caption_too_long = len(tg_message) > CAPTION_LIMIT
 
                     if len(images) < 1:
@@ -365,30 +367,41 @@ class TelegramBot:
                                     # Send image with caption
                                     await self.bot.send_photo(msg.chat.id, photo, caption=tg_message, parse_mode=ParseMode.MARKDOWN)
                         else:
-                            # Send multiple images as media group
+                            # Send multiple images - split into chunks if needed
                             from telebot.types import InputMediaPhoto
-                            # Keep files open during the entire operation
-                            opened_files = []
-                            media_group = []
                             
-                            try:
-                                for i, img_path in enumerate(images):
-                                    photo = open(img_path, 'rb')
-                                    opened_files.append(photo)
-                                    
-                                    # Only add caption to first image if it's not too long
-                                    caption = tg_message if (i == 0 and not caption_too_long) else None
-                                    media_group.append(InputMediaPhoto(photo, caption=caption, parse_mode=ParseMode.MARKDOWN if caption else None))
+                            # Split images into chunks of MEDIA_GROUP_LIMIT
+                            image_chunks = [images[i:i + MEDIA_GROUP_LIMIT] for i in range(0, len(images), MEDIA_GROUP_LIMIT)]
+                            
+                            for chunk_index, image_chunk in enumerate(image_chunks):
+                                opened_files = []
+                                media_group = []
                                 
-                                await self.bot.send_media_group(msg.chat.id, media_group)
-                                
-                                # If caption was too long, send it as separate message after media group
-                                if caption_too_long:
-                                    await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+                                try:
+                                    for i, img_path in enumerate(image_chunk):
+                                        photo = open(img_path, 'rb')
+                                        opened_files.append(photo)
+                                        
+                                        # Only add caption to first image of first chunk if it's not too long
+                                        caption = None
+                                        if chunk_index == 0 and i == 0 and not caption_too_long:
+                                            caption = tg_message
+                                        
+                                        media_group.append(InputMediaPhoto(
+                                            photo, 
+                                            caption=caption, 
+                                            parse_mode=ParseMode.MARKDOWN if caption else None
+                                        ))
                                     
-                            finally:
-                                for photo in opened_files:
-                                    photo.close()
+                                    await self.bot.send_media_group(msg.chat.id, media_group)
+                                    
+                                finally:
+                                    for photo in opened_files:
+                                        photo.close()
+                            
+                            # If caption was too long, send it as separate message after all media groups
+                            if caption_too_long:
+                                await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
 
                 except Exception as e:
                     # await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}', parse_mode=ParseMode.MARKDOWN)
