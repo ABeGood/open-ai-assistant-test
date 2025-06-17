@@ -355,7 +355,7 @@ USER REQUEST:
         for i, item in enumerate(specialists_responses):
             specialist_responses += f"SPECILAIST {i+1} DATA START\n"
             specialist_responses += f"SPECIALIST NAME: {item['specialist']}\n"
-            specialist_responses += f"SPECIALIST RESPONSE: {item['response']['response']}\n"
+            specialist_responses += f"SPECIALIST RESPONSE: {item['response']}\n"
             specialist_responses += f"SPECILAIST {i+1} DATA END\n\n"
 
         combinator_prompt = f"""USER QUERY: 
@@ -444,13 +444,13 @@ USER REQUEST:
             # Extract sources
             sources_list = []
             for spec_response in specialists_responses:
-                sources_list += spec_response.get('response').get('sources')
+                sources_list += spec_response.get('sources')
                 sources_list = list(set(sources_list))
 
             # Extract images
             img_list = []
             for spec_response in specialists_responses:
-                img_list += spec_response.get('response').get('images')
+                img_list += spec_response.get('images')
                 img_list = list(set(img_list))
 
         except Exception as e:
@@ -797,22 +797,11 @@ USER REQUEST:
         
         # Determine which assistant to use
         orchestrator_response_dict = self.process_with_orchestrator(session_id, user_message)
-        
-        chosen_specialists = orchestrator_response_dict.get('specialists', None)
 
-        if not chosen_specialists:
-            return {"success": False,
-                    "error": f"Empty specialists list",
-                    "specialists": [],
-                    'successful_responses': [],
-                    'failed_responses': [],
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+        return orchestrator_response_dict
         
+        
+    async def call_specialists_parallel(self, session_id: str, specialists_names: list[str], user_message:str) -> dict:
         # Create async tasks for all specialists
         async def call_single_assistant(specialist_name: str):
             """Async wrapper for single assistant call"""
@@ -824,7 +813,7 @@ USER REQUEST:
             )
         
         # Execute all assistant calls in parallel
-        tasks = [call_single_assistant(specialist) for specialist in chosen_specialists]
+        tasks = [call_single_assistant(specialist) for specialist in specialists_names]
 
         try:
             specialist_responses = await asyncio.gather(*tasks, return_exceptions=True)
@@ -836,66 +825,16 @@ USER REQUEST:
             # TODO: Check how do we detect successfull messages
             for i, response in enumerate(specialist_responses):
                 if isinstance(response, Exception):
-                    failed_responses.append({
-                        'specialist': chosen_specialists[i],
-                        'error': str(response)
-                    })
+                    failed_responses.append(response)
                 else:
-                    successful_responses.append({
-                        'specialist': chosen_specialists[i],
-                        'response': response
-                    })
+                    successful_responses.append(response)
 
-            final_answer_dict = self.process_with_combinator(session_id, user_message, successful_responses)
+            return {"successful_responses": successful_responses, "failed_responses": failed_responses}
 
-            return {"success": True,
-                    "error": None,
-                    "specialists": chosen_specialists,
-                    'successful_responses': successful_responses,
-                    'failed_responses': failed_responses,
-                    "response": final_answer_dict.get('raw_response', None),
-                    "sources": final_answer_dict.get('sources', []),
-                    "images": final_answer_dict.get('images', []),
-                    "user_query": user_message,
-                    "raw_response": final_answer_dict.get('raw_response', None)
-                    }
-        
+
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Parallel execution failed: {str(e)}",
-                    "specialists": chosen_specialists,
-                    'successful_responses': successful_responses,
-                    'failed_responses': failed_responses,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
-    
-    def get_session_info(self, session_id: str) -> dict:
-        """Get information about a session"""
-        if session_id not in self.context_store:
-            return {"error": "Session not found"}
-        
-        context = self.context_store[session_id]
-        return {
-            "session_id": session_id,
-            "telegram_user_id": context.get('telegram_user_id'),
-            "created_at": context.get('created_at'),
-            "conversation_count": len([h for h in context['conversation_history'] if h['role'] == 'user']),
-            "last_assistant": context.get('last_assistant'),
-            "routing_decisions_count": len(context.get('routing_decisions', []))
-        }
-    
-    def list_sessions(self) -> dict:
-        """List all active sessions"""
-        sessions = {}
-        for session_id in self.context_store:
-            sessions[session_id] = self.get_session_info(session_id)
-        return sessions
-
+            return {"successful_responses": [], "failed_responses": []}
 
 # Convenience functions for easy integration
 def create_orchestrator(api_key: str = None) -> TelegramMultiAssistantOrchestrator:
@@ -907,60 +846,3 @@ def create_orchestrator(api_key: str = None) -> TelegramMultiAssistantOrchestrat
         raise ValueError("OpenAI API key not provided and OPENAI_TOKEN environment variable not set")
     
     return TelegramMultiAssistantOrchestrator(api_key)
-
-
-async def process_telegram_message(orchestrator: TelegramMultiAssistantOrchestrator, 
-                           user_message: str, 
-                           telegram_user_id: int) -> dict:
-    """
-    Process a message from Telegram user
-    
-    Args:
-        orchestrator: The orchestrator instance
-        user_message: The user's message
-        telegram_user_id: Telegram user ID
-    
-    Returns:
-        Dict with response data including routing decisions for debugging
-    """
-    session_id = f"tg-{telegram_user_id}"
-    return await orchestrator.process_request(session_id, user_message, telegram_user_id)
-
-
-# # Example usage and testing
-# if __name__ == "__main__":
-#     # Initialize orchestrator
-#     orchestrator = create_orchestrator()
-    
-#     # Test with telegram user
-#     telegram_user_id = 123456789
-    
-#     # Process some messages
-#     test_messages = [
-#         "что такое MS50183-EPS?",
-#         "какие кабели нужны для диагностики генераторов?",
-#         "сбросить контекст"
-#     ]
-    
-#     print("=== Testing Telegram Multi-Assistant Orchestrator ===")
-    
-#     for i, message in enumerate(test_messages):
-#         print(f"\n--- Message {i+1}: {message} ---")
-        
-#         if message.lower() in ["сбросить контекст", "reset context", "/reset"]:
-#             session_id = f"tg-{telegram_user_id}"
-#             result = orchestrator.reset_context(session_id)
-#             print(f"Context reset: {result}")
-#             continue
-        
-#         result = process_telegram_message(orchestrator, message, telegram_user_id)
-        
-#         print(f"Assistant: {result['assistant_used']}")
-#         print(f"Routing: {result['routing_decision']}")
-#         print(f"Response: {result['response'][:200]}...")
-    
-#     # Show session info
-#     session_id = f"tg-{telegram_user_id}"
-#     session_info = orchestrator.get_session_info(session_id)
-#     print(f"\n=== Session Info ===")
-#     print(json.dumps(session_info, indent=2))

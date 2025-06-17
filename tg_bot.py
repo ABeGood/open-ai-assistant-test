@@ -10,7 +10,7 @@ from telebot.types import ReactionTypeEmoji
 from telegram.constants import ParseMode
 from telebot.apihelper import ApiTelegramException
 
-from orchestrator_for_tg import create_orchestrator, process_telegram_message
+from orchestrator_for_tg import create_orchestrator
 import asyncio
 
 DEBUG = True
@@ -272,20 +272,79 @@ class TelegramBot:
                         is_big=False
                     )
 
-                    result = await process_telegram_message(
-                        self.orchestrator, 
-                        msg.text, 
-                        telegram_user_id=msg.from_user.id
-                    )
+                    if DEBUG:
+                        debug_msg = "🔀 STEP 1.1: Orchestrator call\n\n"\
+                            f"Определяем каких ботов-специалистов использовать для этого запроса..."
+                            # f"❔ Определяем каких ботов-специалистов использовать для этого запроса..."
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    debug_msg = "🔧 DEBUG MESSAGE:\n\n" \
-                        f"🤖 *Routed to:* {result['specialists']}\n" \
-                        # f"❓ *Reason:* {clean_message_text(result['routing_decision']['reason'])}\n" \
-                        # f"📊 *Session:* {clean_message_text(result['session_id'])}" 
+                    telegram_user_id = msg.from_user.id
+                    session_id = f"tg-{telegram_user_id}"
+                    user_message = msg.text
+
+                    orchestrator_response_dict = await self.orchestrator.process_request(session_id, user_message, telegram_user_id)
+
+                    if DEBUG:
+                        debug_msg = "🔀 STEP 1.2: Orchestrator response\n\n"\
+                            f"🤖 *Выбранные специалисты:* \n{orchestrator_response_dict['specialists']}\n\n" \
+                            f"❓ *Причина:* \n{orchestrator_response_dict['reason']}"
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+
+                    chosen_specialists = orchestrator_response_dict.get('specialists', [])
+
+                    if len(chosen_specialists) < 1:
+                        if DEBUG:
+                            debug_msg = "⚠️ Что-то пошло не так:\n\n" \
+                                "Не был выбран ни один специалист..."
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            raise Exception(f"No specialists were selected for query {user_message}")
+                        
+                    if DEBUG:
+                        debug_msg = "🤖 STEP 2.1: Specialists call\n\n"\
+                            f"➡️ Отправляем параллельные запросы ботам-специалистам:\n\n" \
+                            f"{chosen_specialists}"
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+
+                    specialists_responses = await self.orchestrator.call_specialists_parallel(session_id=session_id, 
+                                                                                              specialists_names=chosen_specialists,
+                                                                                              user_message=user_message)
                     
-                    await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                    successfull_spec_resps = specialists_responses.get('successful_responses', [])
+                    failed_spec_resps = specialists_responses.get('failed_responses', [])
+                    
+                    if DEBUG:
+                        debug_msg = "🤖 STEP 2.2: Specialists responses\n\n"\
+                            f"⬅️ Получили ответы от специалистов:\n\n" \
+                            f"{chosen_specialists}\n\n"\
+                            f"Успешные: {len(successfull_spec_resps)}\n"\
+                            f"Неуспешные: {len(failed_spec_resps)}"
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    tg_message, images = format_telegram_message(result)
+                    if len(successfull_spec_resps) < 2:
+                        if DEBUG:
+                            debug_msg = "📄 STEP 3: Formatting final response\n\n"\
+                                f"Был получен один успешный ответ, оформляем его в финальное сообщение..."
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            final_answer_dict = successfull_spec_resps[0]
+                    else:
+                        if DEBUG:
+                            debug_msg = "🔗 STEP 3.1: Combinator call\n\n"\
+                                f"Было получено несколько успешных ответов.\n\n"\
+                                "➡️ Направляем их в бот-комбинатор для составления финального ответа."
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            
+                            final_answer_dict = self.orchestrator.process_with_combinator(session_id, user_message, successfull_spec_resps)
+
+                            if DEBUG:
+                                debug_msg = "🔗 STEP 3.2: Combinator response\n\n"\
+                                    "⬅️ Получили ответ от комбинатора."
+                                await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+
+                                debug_msg = "📄 STEP 4: Formatting final response\n\n"\
+                                f"Оформляем ответ комбинатора в финальное сообщение..."
+                                await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+
+                    tg_message, images = format_telegram_message(final_answer_dict)
 
                     # Telegram caption limit
                     CAPTION_LIMIT = 1024
@@ -336,7 +395,10 @@ class TelegramBot:
                     await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}')
 
                     if DEBUG:
-                        await self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{tg_message}')
+                        try:
+                            await self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{tg_message}')
+                        except Exception as e:
+                            pass
 
 tg_bot = TelegramBot(bot_token=str(telegram_token))
 tg_bot.run_bot()
