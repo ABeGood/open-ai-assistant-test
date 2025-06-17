@@ -18,105 +18,214 @@ DEBUG = True
 load_dotenv()
 telegram_token = os.environ.get("TELEGRAM_TOKEN")
 
-
-# def format_telegram_message(response_data):
-#     """
-#     Convert LLM agent response to Telegram message format
-    
-#     Args:
-#         response_data (dict or str): LLM agent response dictionary or JSON string
-    
-#     Returns:
-#         str: Formatted Telegram message
-#     """
-#     # Parse JSON string if needed
-#     if isinstance(response_data, str):
-#         response_data = json.loads(response_data)
-
-#     # CATEGORY START
-
-#     files_path = None
-#     assistant_used = response_data['assistant_used']
-#     if assistant_used == 'equipment':
-#         files_path = 'files_preproc/equipment/'
-#     elif assistant_used == 'cables':
-#         files_path = 'files_preproc/cables/'
-#     elif assistant_used == 'tools':
-#         files_path = 'files_preproc/tools/'
-#     elif assistant_used == 'commonInfo':
-#         files_path = 'files_preproc/common_info/'
-
-#     # CATEGORY END
-    
-#     # Extract main response text
-#     # main_response = clean_message_text(response_data['response']['response'])
-#     main_response = delete_sources_from_text(response_data['response']['response'])
-    
-
-#     # SOURCES START
-#     # Extract and format sources
-#     if files_path:
-#         sources = response_data['response']['sources']
-#         formatted_sources = []
-    
-#         for source in sources:
-#             # Get filename without extension
-#             filename = source.filename
-#             name_without_ext = os.path.splitext(filename)[0]
-            
-#             try:
-#                 source_mapping_filepath = files_path + 'pdf_mapping.json'
-#                 with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
-#                     pdf_mapping = json.load(file)
-#                 link = pdf_mapping[name_without_ext]
-#                 # Create markdown link
-#                 markdown_link = f"[{name_without_ext.split('_')[0]}]({link})"
-#                 formatted_sources.append(markdown_link)
-#                 formatted_sources = list(set(formatted_sources))
-#             except Exception as e:
-#                 markdown_link = f"{filename}"
-#                 formatted_sources.append(markdown_link)
-#                 formatted_sources = list(set(formatted_sources))
-
-#     # SOURCES END
-
-
-#     # IMAGES START
-#     img_markers = get_all_markers_as_list(main_response)
-#     if img_markers and files_path:
-#         img_mapping_filepath = files_path + 'doc_mapping.json'
-#         with open(img_mapping_filepath, 'r', encoding='utf-8') as file:
-#             img_mapping = json.load(file)
-        
-#         img_list = []
-#         for img in img_markers:
-#             img_file_key, img_name = extract_marker_parts(marker = img)
-#             img_dir = img_mapping[img_file_key]
-#             file = find_file_by_name(files_path+img_dir, img_file_key+'_'+img_name)  # TODO Kostyl
-#             img_list.append(file[0].replace('\\', '/'))
-#     # IMAGES END
-
-#     main_response = clean_message_text(main_response)
-    
-#     # Combine into final message
-#     if formatted_sources:
-#         sources_section = "\n\nSources:\n" + "\n".join(formatted_sources)
-#         telegram_message = main_response + sources_section
-#     else:
-#         telegram_message = main_response
-    
-#     # Return dictionary with message and images
-#     return {
-#         "message": telegram_message,
-#         "images": img_list
-#     }
-
 logging.basicConfig(
     level=logging.DEBUG, 
     filename='bot.log', 
     filemode='w', 
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
+
+
+def format_telegram_message(response_data: dict) -> tuple[str, list[str]]:
+    """
+    Format response data for Telegram API with markdown-compatible formatting.
+    
+    Args:
+        response_data (Dict[str, Any]): Dictionary containing response, sources, and images
+        
+    Returns:
+        Tuple[str, List[str]]: (formatted_markdown_text, images_list)
+    """
+    
+    # Extract main response text
+    response_text = response_data.get('response', '')
+    sources = response_data.get('sources', [])
+    images = response_data.get('images', [])
+    
+    # Clean and format the response text for Telegram markdown
+    formatted_response = escape_telegram_markdown(response_text)
+    
+    # Build the complete message
+    message_parts = []
+    
+    # Add the main response
+    if formatted_response:
+        message_parts.append(formatted_response)
+    
+    # Add sources section if sources exist
+    if sources:
+        message_parts.append("\n\n*Источники:*")
+        
+        # Format each source as a markdown link on a new line
+        for i, source in enumerate(sources, 1):
+            if isinstance(source, str) and source.strip():
+                # Extract domain name for display text
+                display_text = extract_domain_name(source)
+                # Format as Telegram-compatible markdown link
+                link_text = f"[{display_text}]({source})"
+                message_parts.append(f"{i}. {link_text}")
+    
+    # Join all parts
+    final_message = "\n".join(message_parts)
+    
+    # Ensure images is a list
+    images_list = images if isinstance(images, list) else []
+    
+    return final_message, images_list
+
+
+def escape_telegram_markdown(text: str) -> str:
+    """
+    Escape special characters for Telegram MarkdownV2 compatibility.
+    
+    Args:
+        text (str): Original text to escape
+        
+    Returns:
+        str: Escaped text compatible with Telegram
+    """
+    
+    # First, convert headers (###, ##, #) to bold formatting
+    text = convert_headers_to_bold(text)
+    
+    # Then, preserve existing markdown formatting by temporarily replacing it
+    text = preserve_existing_markdown(text)
+    
+    # Escape special characters that could break Telegram parsing
+    special_chars = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
+    
+    # Note: Character escaping is commented out as it's not needed for current use case
+    # for char in special_chars:
+    #     text = text.replace(char, f'\\{char}')
+    
+    # Restore preserved markdown
+    text = restore_preserved_markdown(text)
+    
+    return text
+
+
+def convert_headers_to_bold(text: str) -> str:
+    """Convert markdown headers (###, ##, #) to bold formatting.
+    
+    Args:
+        text (str): Text with potential headers
+    Returns:
+        str: Text with headers converted to bold
+    """
+    import re
+    
+    # Store replacements to restore later
+    replacements = {
+        '**': '<<<BOLD>>>',
+        '*': '<<<ITALIC>>>',
+        '__': '<<<UNDERLINE>>>',
+        '~~': '<<<STRIKE>>>',
+        '`': '<<<CODE>>>',
+    }
+    
+    # Temporarily replace existing markdown with placeholders
+    for original, placeholder in replacements.items():
+        text = text.replace(original, placeholder)
+    
+    # Pattern to match headers: 1-6 # symbols followed by space and text
+    # Captures the header text without the # symbols
+    header_pattern = r'^(#{1,6})\s+(.+)$'
+    
+    # Process each line
+    lines = text.split('\n')
+    processed_lines = []
+    
+    for line in lines:
+        # Check if line is a header
+        match = re.match(header_pattern, line.strip())
+        if match:
+            header_text = match.group(2).strip()
+            # Convert to bold formatting
+            processed_lines.append(f"**{header_text}**")
+        else:
+            processed_lines.append(line)
+    
+    # Rejoin lines
+    result = '\n'.join(processed_lines)
+    
+    # Restore original markdown formatting
+    for original, placeholder in replacements.items():
+        result = result.replace(placeholder, original)
+    
+    return result
+
+
+def restore_preserved_markdown(text: str) -> str:
+    """
+    Restore preserved markdown formatting.
+    """
+    
+    # Restore replacements
+    replacements = {
+        '<<<BOLD>>>': '*',
+        '<<<ITALIC>>>': '_',
+        '<<<UNDERLINE>>>': '__',
+        '<<<STRIKE>>>': '~',
+        '<<<CODE>>>': '`',
+    }
+    
+    for placeholder, original in replacements.items():
+        text = text.replace(placeholder, original)
+    
+    return text
+
+
+def extract_domain_name(url: str) -> str:
+    """
+    Extract a clean domain name from URL for display.
+    
+    Args:
+        url (str): Full URL
+        
+    Returns:
+        str: Clean domain name
+    """
+    
+    try:
+        # Remove protocol
+        if '://' in url:
+            url = url.split('://', 1)[1]
+        
+        # Remove www prefix
+        if url.startswith('www.'):
+            url = url[4:]
+        
+        # Extract domain (before first slash)
+        domain = url.split('/')[0]
+        
+        # Remove port if present
+        domain = domain.split(':')[0]
+        
+        return domain
+    
+    except Exception:
+        # Fallback to original URL if parsing fails
+        return url[:50] + '...' if len(url) > 50 else url
+
+def preserve_existing_markdown(text: str) -> str:
+    """
+    Temporarily replace existing markdown with placeholders.
+    """
+    
+    # Store replacements to restore later
+    replacements = {
+        '**': '<<<BOLD>>>',
+        '*': '<<<ITALIC>>>',
+        '__': '<<<UNDERLINE>>>',
+        '~~': '<<<STRIKE>>>',
+        '`': '<<<CODE>>>',
+    }
+    
+    for original, placeholder in replacements.items():
+        text = text.replace(original, placeholder)
+    
+    return text
+
 
 class TelegramBot:
     bot : AsyncTeleBot
@@ -170,54 +279,64 @@ class TelegramBot:
                     )
 
                     debug_msg = "🔧 DEBUG MESSAGE:\n\n" \
-                        f"🤖 *Routed to:* {clean_message_text(result['assistant_used'])}\n" \
-                        f"❓ *Reason:* {clean_message_text(result['routing_decision']['reason'])}\n" \
-                        f"📊 *Session:* {clean_message_text(result['session_id'])}" 
+                        f"🤖 *Routed to:* {result['specialists']}\n" \
+                        # f"❓ *Reason:* {clean_message_text(result['routing_decision']['reason'])}\n" \
+                        # f"📊 *Session:* {clean_message_text(result['session_id'])}" 
                     
                     await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    result_formatted = format_telegram_message(result)
+                    tg_message, images = format_telegram_message(result)
 
-                    if len(result_formatted['images']) < 1:
-                        await self.bot.send_message(msg.chat.id, result_formatted["message"], parse_mode=ParseMode.MARKDOWN)
+                    # Telegram caption limit
+                    CAPTION_LIMIT = 1024
+                    caption_too_long = len(tg_message) > CAPTION_LIMIT
+
+                    if len(images) < 1:
+                        # No images - just send text message
+                        await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
                     else:
-                        if len(result_formatted["images"]) == 1:
+                        if len(images) == 1:
                             # Send single image
-                            with open(result_formatted["images"][0], 'rb') as photo:
-                                await self.bot.send_photo(msg.chat.id, photo, caption=result_formatted["message"])
+                            with open(images[0], 'rb') as photo:
+                                if caption_too_long:
+                                    # Send image without caption, then text separately
+                                    await self.bot.send_photo(msg.chat.id, photo)
+                                    await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+                                else:
+                                    # Send image with caption
+                                    await self.bot.send_photo(msg.chat.id, photo, caption=tg_message, parse_mode=ParseMode.MARKDOWN)
                         else:
                             # Send multiple images as media group
                             from telebot.types import InputMediaPhoto
-    
-                            if len(result_formatted["images"]) == 1:
-                                with open(result_formatted["images"][0], 'rb') as photo:
-                                    await self.bot.send_photo(msg.chat.id, photo)
-                            else:
-                                # Keep files open during the entire operation
-                                opened_files = []
-                                media_group = []
+                            # Keep files open during the entire operation
+                            opened_files = []
+                            media_group = []
+                            
+                            try:
+                                for i, img_path in enumerate(images):
+                                    photo = open(img_path, 'rb')
+                                    opened_files.append(photo)
+                                    
+                                    # Only add caption to first image if it's not too long
+                                    caption = tg_message if (i == 0 and not caption_too_long) else None
+                                    media_group.append(InputMediaPhoto(photo, caption=caption, parse_mode=ParseMode.MARKDOWN if caption else None))
                                 
-                                try:
-                                    for i, img_path in enumerate(result_formatted["images"]):
-                                        photo = open(img_path, 'rb')
-                                        opened_files.append(photo)
-                                        
-                                        caption = result_formatted["message"] if i == 0 else None
-                                        # Pass the file object, NOT the path string
-                                        media_group.append(InputMediaPhoto(photo, caption=caption))
+                                await self.bot.send_media_group(msg.chat.id, media_group)
+                                
+                                # If caption was too long, send it as separate message after media group
+                                if caption_too_long:
+                                    await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
                                     
-                                    await self.bot.send_media_group(msg.chat.id, media_group)
-                                    
-                                finally:
-                                    for photo in opened_files:
-                                        photo.close()
+                            finally:
+                                for photo in opened_files:
+                                    photo.close()
 
                 except Exception as e:
                     # await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}', parse_mode=ParseMode.MARKDOWN)
                     await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}')
 
                     if DEBUG:
-                        await self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{result_formatted["message"]}')
+                        await self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{tg_message}')
 
 tg_bot = TelegramBot(bot_token=str(telegram_token))
 tg_bot.run_bot()

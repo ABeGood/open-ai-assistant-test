@@ -3,9 +3,9 @@ import json
 import time
 import os
 import uuid
-import re
 import asyncio
-from typing import Dict, Optional, Tuple
+import logging
+from typing import Optional
 from validators import OrchestratorResponse
 from response_processing_utils import (
     get_all_markers_as_list, 
@@ -16,6 +16,12 @@ from response_processing_utils import (
     find_file_by_name
 )
 
+logging.basicConfig(
+    level=logging.DEBUG, 
+    filename='bot.log', 
+    filemode='w', 
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 class TelegramMultiAssistantOrchestrator:
     """Multi-assistant orchestrator optimized for Telegram bot integration"""
@@ -125,7 +131,7 @@ class TelegramMultiAssistantOrchestrator:
             del self.context_store[session_id]
         return f"Session {session_id} deleted"
     
-    def get_or_create_session(self, telegram_user_id: Optional[int] = None) -> Tuple[str, str]:
+    def get_or_create_session(self, telegram_user_id: Optional[int] = None) -> tuple[str, str]:
         """Get existing session or create new one"""
         if telegram_user_id:
             session_id = f"tg-{telegram_user_id}"
@@ -197,6 +203,7 @@ class TelegramMultiAssistantOrchestrator:
     def process_with_orchestrator(self, session_id: str, user_message: str) -> dict:
         """Use orchestrator assistant to determine routing"""
         if session_id not in self.shared_threads:
+            logging.error(f"Error occurred: session with id {session_id} not found.")
             return {"success": False,
                     "error": "Session not found",
                     "specialists": [],
@@ -227,6 +234,7 @@ USER REQUEST:
                 metadata={"type": "routing_decision"}
             )
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             return {"success": False,
                     "error": f"Error creating routing message: {e}",
                     "specialists": [],
@@ -242,6 +250,7 @@ USER REQUEST:
                 assistant_id=orchestrator_id
             )
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             return {"success": False,
                     "error": f"Error creating routing run: {e}",
                     "specialists": [],
@@ -268,6 +277,7 @@ USER REQUEST:
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
+                logging.error(f"Error occurred: {e}", exc_info=True)
                 return {"success": False,
                         "error": f"Error checking routing status: {e}",
                         "specialists": [],
@@ -280,6 +290,7 @@ USER REQUEST:
             messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
             routing_decision_raw = messages.data[0].content[0].text.value
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             return {"success": False,
                     "error": f"Error retrieving routing decision: {e}",
                     "specialists": [],
@@ -306,6 +317,7 @@ USER REQUEST:
                         "raw_response": None
                         }
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             return {"success": False,
                     "error": f"Error parsing orchestrator response: {e}",
                     "specialists": [],
@@ -328,6 +340,9 @@ USER REQUEST:
             return {"success": False,
                     "error": "Session not found",
                     "specialists": specialists_names,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -362,9 +377,13 @@ USER REQUEST:
                 metadata={"type": "combinator_call"}
             )
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             return {"success": False,
                     "error": f"Error creating routing message: {e}",
                     "specialists": specialists_names,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -376,9 +395,13 @@ USER REQUEST:
                 assistant_id=combinator_id
             )
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             return {"success": False,
                     "error": f"Error creating routing run: {e}",
                     "specialists": specialists_names,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -392,6 +415,9 @@ USER REQUEST:
                 return {"success": False,
                         "error": "Combinator call timed out",
                         "specialists": specialists_names,
+                        "response": None,
+                        "sources": [],
+                        "images": [],
                         "user_query": user_message,
                         "raw_response": None
                         }
@@ -400,9 +426,13 @@ USER REQUEST:
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
+                logging.error(f"Error occurred: {e}", exc_info=True)
                 return {"success": False,
                         "error": f"Error checking combinator status: {e}",
                         "specialists": specialists_names,
+                        "response": None,
+                        "sources": [],
+                        "images": [],
                         "user_query": user_message,
                         "raw_response": None
                         }
@@ -410,10 +440,27 @@ USER REQUEST:
         try:
             messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
             final_response = messages.data[0].content[0].text.value
+
+            # Extract sources
+            sources_list = []
+            for spec_response in specialists_responses:
+                sources_list += spec_response.get('response').get('sources')
+                sources_list = list(set(sources_list))
+
+            # Extract images
+            img_list = []
+            for spec_response in specialists_responses:
+                img_list += spec_response.get('response').get('images')
+                img_list = list(set(img_list))
+
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             return {"success": False,
                     "error": f"Error retrieving combinator response: {e}",
                     "specialists": specialists_names,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -445,15 +492,19 @@ USER REQUEST:
         #             }
         
         # Log routing decision
-        if session_id in self.context_store:
-            self.context_store[session_id]['final_response'].append(final_response)
+        # if session_id in self.context_store:
+        #     self.context_store[session_id]['final_responses'].append(final_response)
         
         return {"success": True,
-                    "error": None,
-                    "specialists": specialists_names,
-                    "user_query": user_message,
-                    "raw_response": final_response
-                    }
+                "error": None,
+                "specialists": specialists_names,
+                "response": final_response,
+                "sources": sources_list,
+                "images": img_list,
+                "user_query": user_message,
+                "raw_response": final_response
+                }
+    
     
     def route_to_assistant(self, 
                            session_id: str, 
@@ -478,6 +529,7 @@ USER REQUEST:
                 thread_id = temp_thread.id
                 use_temp_thread = True
             except Exception as e:
+                logging.error(f"Error occurred: {e}", exc_info=True)
                 return {"success": False,
                         "error": f"Error creating temporary thread: {e}",
                         "specialist": assistant_name,
@@ -502,6 +554,7 @@ USER REQUEST:
                             use_temp_thread = True
                             break
                         except Exception as e:
+                            logging.error(f"Error occurred: {e}", exc_info=True)
                             return {"success": False,
                                     "error": f"Error creating temporary thread: {e}",
                                     "specialist": assistant_name,
@@ -531,6 +584,7 @@ USER REQUEST:
                 metadata={"routed_to": assistant_name, "temp_thread": str(use_temp_thread)}
             )
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             if use_temp_thread:
                 try:
                     self.client.beta.threads.delete(thread_id=thread_id)
@@ -553,6 +607,7 @@ USER REQUEST:
                 assistant_id=assistant_id
             )
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             # Clean up temp thread if run creation failed
             if use_temp_thread:
                 try:
@@ -589,6 +644,7 @@ USER REQUEST:
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
+                logging.error(f"Error occurred: {e}", exc_info=True)
                 # Clean up temp thread on error
                 if use_temp_thread:
                     try:
@@ -665,6 +721,7 @@ USER REQUEST:
             response_clean = remove_all_markers(response_clean)
 
         except Exception as e:
+            logging.error(f"Error occurred: {e}", exc_info=True)
             # Clean up temp thread on error
             if use_temp_thread:
                 try:
@@ -731,7 +788,7 @@ USER REQUEST:
             new_thread
         )
     
-    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> Dict:
+    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> dict:
         """Complete request processing with routing and context"""
         
         # Ensure session exists
@@ -746,9 +803,16 @@ USER REQUEST:
         if not chosen_specialists:
             return {"success": False,
                     "error": f"Empty specialists list",
+                    "specialists": [],
+                    'successful_responses': [],
+                    'failed_responses': [],
+                    "response": None,
+                    "sources": [],
+                    "images": [],
                     "user_query": user_message,
                     "raw_response": None
                     }
+        
         # Create async tasks for all specialists
         async def call_single_assistant(specialist_name: str):
             """Async wrapper for single assistant call"""
@@ -782,28 +846,35 @@ USER REQUEST:
                         'response': response
                     })
 
-            final_answer = self.process_with_combinator(session_id, user_message, successful_responses)
+            final_answer_dict = self.process_with_combinator(session_id, user_message, successful_responses)
 
-            
-            
-            return {
-                'assistants_used': chosen_specialists,
-                'successful_responses': successful_responses,
-                'failed_responses': failed_responses,
-                'session_id': session_id,
-                'routing_decision': orchestrator_response_dict,
-                'timestamp': time.time()
-            }
+            return {"success": True,
+                    "error": None,
+                    "specialists": chosen_specialists,
+                    'successful_responses': successful_responses,
+                    'failed_responses': failed_responses,
+                    "response": final_answer_dict.get('raw_response', None),
+                    "sources": final_answer_dict.get('sources', []),
+                    "images": final_answer_dict.get('images', []),
+                    "user_query": user_message,
+                    "raw_response": final_answer_dict.get('raw_response', None)
+                    }
         
         except Exception as e:
-            return {
-                "success": False,
-                "error": f"Parallel execution failed: {str(e)}",
-                "user_query": user_message,
-                "specialists_attempted": chosen_specialists
-            }
+            logging.error(f"Error occurred: {e}", exc_info=True)
+            return {"success": False,
+                    "error": f"Parallel execution failed: {str(e)}",
+                    "specialists": chosen_specialists,
+                    'successful_responses': successful_responses,
+                    'failed_responses': failed_responses,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
     
-    def get_session_info(self, session_id: str) -> Dict:
+    def get_session_info(self, session_id: str) -> dict:
         """Get information about a session"""
         if session_id not in self.context_store:
             return {"error": "Session not found"}
@@ -818,7 +889,7 @@ USER REQUEST:
             "routing_decisions_count": len(context.get('routing_decisions', []))
         }
     
-    def list_sessions(self) -> Dict:
+    def list_sessions(self) -> dict:
         """List all active sessions"""
         sessions = {}
         for session_id in self.context_store:
@@ -840,7 +911,7 @@ def create_orchestrator(api_key: str = None) -> TelegramMultiAssistantOrchestrat
 
 async def process_telegram_message(orchestrator: TelegramMultiAssistantOrchestrator, 
                            user_message: str, 
-                           telegram_user_id: int) -> Dict:
+                           telegram_user_id: int) -> dict:
     """
     Process a message from Telegram user
     
