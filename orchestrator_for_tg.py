@@ -4,7 +4,17 @@ import time
 import os
 import uuid
 import re
+import asyncio
 from typing import Dict, Optional, Tuple
+from validators import OrchestratorResponse
+from response_processing_utils import (
+    get_all_markers_as_list, 
+    remove_all_markers, 
+    delete_sources_from_text, 
+    assistant_files_mapping, 
+    extract_marker_parts,
+    find_file_by_name
+)
 
 
 class TelegramMultiAssistantOrchestrator:
@@ -39,6 +49,10 @@ class TelegramMultiAssistantOrchestrator:
             "commonInfo": {
                 "id": "asst_nJzNpbdII7UzbOGiiSFcu09u",
                 "purpose": "Expert with common information knowledge"
+            },
+            "combinator": {
+                "id": "asst_FM5jrNCeRHxy3MpMueV1RkED",
+                "purpose": "Combine experts responses into a final response for user"
             }
         }
         
@@ -56,7 +70,7 @@ class TelegramMultiAssistantOrchestrator:
         except Exception as e:
             print(f"Warning: Could not register assistant {name}: {e}")
     
-    def create_session(self, telegram_user_id: Optional[int] = None) -> Tuple[str, str]:
+    def create_session(self, telegram_user_id: Optional[int] = None) -> tuple[str, str]:
         """
         Create a session for user
         Returns: (session_id, message_for_user)
@@ -120,162 +134,84 @@ class TelegramMultiAssistantOrchestrator:
         
         return self.create_session(telegram_user_id)
     
-    def add_context_message(self, session_id: str, assistant_name: str, content: str, role: str = "assistant"):
-        """Add contextual message to maintain consistency"""
-        if session_id not in self.context_store:
-            return
+    # def add_context_message(self, session_id: str, assistant_name: str, content: str, role: str = "assistant"):
+    #     """Add contextual message to maintain consistency"""
+    #     if session_id not in self.context_store:
+    #         return
         
-        thread_id = self.shared_threads[session_id]
+    #     thread_id = self.shared_threads[session_id]
         
-        # Add to context store
-        context_entry = {
-            'timestamp': time.time(),
-            'assistant': assistant_name,
-            'role': role,
-            'content': content,
-            'message_type': 'context_update'
-        }
+    #     # Add to context store
+    #     context_entry = {
+    #         'timestamp': time.time(),
+    #         'assistant': assistant_name,
+    #         'role': role,
+    #         'content': content,
+    #         'message_type': 'context_update'
+    #     }
         
-        self.context_store[session_id]['conversation_history'].append(context_entry)
+    #     self.context_store[session_id]['conversation_history'].append(context_entry)
         
-        # Add hidden context message to thread
-        context_message = f"[CONTEXT UPDATE from {assistant_name}]: {content}"
+    #     # Add hidden context message to thread
+    #     context_message = f"[CONTEXT UPDATE from {assistant_name}]: {content}"
         
-        try:
-            self.client.beta.threads.messages.create(
-                thread_id=thread_id,
-                role="assistant",
-                content=context_message,
-                metadata={"type": "context", "source_assistant": assistant_name}
-            )
-        except Exception as e:
-            print(f"Error adding context message: {e}")
+    #     try:
+    #         self.client.beta.threads.messages.create(
+    #             thread_id=thread_id,
+    #             role="assistant",
+    #             content=context_message,
+    #             metadata={"type": "context", "source_assistant": assistant_name}
+    #         )
+    #     except Exception as e:
+    #         print(f"Error adding context message: {e}")
     
-    def get_shared_context(self, session_id: str) -> str:
-        """Get formatted shared context for assistant"""
-        if session_id not in self.context_store:
-            return "=== NO CONTEXT ==="
+    # def get_shared_context(self, session_id: str) -> str:
+    #     """Get formatted shared context for assistant"""
+    #     if session_id not in self.context_store:
+    #         return "=== NO CONTEXT ==="
         
-        context = self.context_store[session_id]
+    #     context = self.context_store[session_id]
         
-        context_summary = "=== SHARED CONTEXT ===\n"
-        context_summary += f"Previous assistants involved: {set(h['assistant'] for h in context['conversation_history'])}\n"
-        context_summary += f"Last assistant: {context['last_assistant']}\n"
+    #     context_summary = "=== SHARED CONTEXT ===\n"
+    #     context_summary += f"Previous assistants involved: {set(h['assistant'] for h in context['conversation_history'])}\n"
+    #     context_summary += f"Last assistant: {context['last_assistant']}\n"
         
-        # Recent conversation summary
-        recent_history = context['conversation_history'][-5:]  # Last 5 interactions
-        context_summary += "\nRECENT INTERACTIONS:\n"
+    #     # Recent conversation summary
+    #     recent_history = context['conversation_history'][-5:]  # Last 5 interactions
+    #     context_summary += "\nRECENT INTERACTIONS:\n"
         
-        for entry in recent_history:
-            if entry['role'] == 'user':
-                context_summary += f"User: {entry['content']['response'][:100]}...\n"
-            else:
-                context_summary += f"{entry['assistant']}: {entry['content']['response'][:100]}...\n"
+    #     for entry in recent_history:
+    #         if entry['role'] == 'user':
+    #             context_summary += f"User: {entry['content']['response'][:100]}...\n"
+    #         else:
+    #             context_summary += f"{entry['assistant']}: {entry['content']['response'][:100]}...\n"
         
-        # Shared data
-        if context['shared_context']:
-            context_summary += f"\nSHARED DATA: {json.dumps(context['shared_context'], indent=2)}\n"
+    #     # Shared data
+    #     if context['shared_context']:
+    #         context_summary += f"\nSHARED DATA: {json.dumps(context['shared_context'], indent=2)}\n"
         
-        context_summary += "=== END CONTEXT ===\n"
+    #     context_summary += "=== END CONTEXT ===\n"
         
-        return context_summary
-    
-    def route_to_assistant(self, session_id: str, assistant_name: str, user_message: str, include_context: bool = True) -> dict:
-        """Route message to specific assistant with context"""
-        if session_id not in self.shared_threads:
-            raise Exception(f"Session {session_id} not found")
-        
-        thread_id = self.shared_threads[session_id]
-        assistant_id = self.assistants[assistant_name]['id']
-        
-        # Add context if requested
-        if include_context and session_id in self.context_store:
-            context = self.get_shared_context(session_id)
-            full_message = f"{context}\n\nUSER REQUEST: {user_message}"
-        else:
-            full_message = user_message
-        
-        # Add user message to thread
-        try:
-            message = self.client.beta.threads.messages.create(
-                thread_id=thread_id,
-                role="user",
-                content=full_message,
-                metadata={"routed_to": assistant_name}
-            )
-        except Exception as e:
-            return {"success": False, "response" :f"Error creating message: {e}"}
-        
-        # Run with specific assistant
-        try:
-            run = self.client.beta.threads.runs.create(
-                thread_id=thread_id,
-                assistant_id=assistant_id
-            )
-        except Exception as e:
-            return {"success": False, "response" :f"Error creating run: {e}"}
-        
-        # Wait for completion with timeout
-        timeout = 60  # 60 seconds timeout
-        start_time = time.time()
-        
-        while run.status != "completed":
-            if time.time() - start_time > timeout:
-                return {"success": False, "response" :"Assistant response timed out"}
-            
-            time.sleep(1)
-            try:
-                run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
-            except Exception as e:
-                return {"success": False, "response" :f"Error retrieving run status: {e}"}
-            
-            if run.status == "failed":
-                return {"success": False, "response" :f"Assistant run failed: {run.last_error}"}
-        
-        # Get response
-        response = {}
-        try:
-            messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
+    #     return context_summary
 
-            sources_list = []
-            response_sorces = messages.data[0].content[0].text.annotations
-            for source in response_sorces:
-                file_info = self.client.files.retrieve(source.file_citation.file_id)
-                sources_list.append(file_info)
-            response['sources'] = sources_list
-
-            response['response'] = messages.data[0].content[0].text.value
-        except Exception as e:
-            return {"success": False, "response" :f"Error retrieving response: {e}"}
-        
-        response['success'] = True
-        
-        # Update context
-        if session_id in self.context_store:
-            self.context_store[session_id]['last_assistant'] = assistant_name
-            self.context_store[session_id]['conversation_history'].append({
-                'timestamp': time.time(),
-                'assistant': assistant_name,
-                'role': 'assistant',
-                'content': response,
-                'message_type': 'response'
-            })
-        
-        return response
-    
-    def analyze_request(self, session_id: str, user_message: str) -> Tuple[str, Dict]:
+    def process_with_orchestrator(self, session_id: str, user_message: str) -> dict:
         """Use orchestrator assistant to determine routing"""
         if session_id not in self.shared_threads:
-            return "orchestrator", {"error": "Session not found"}
+            return {"success": False,
+                    "error": "Session not found",
+                    "specialists": [],
+                    "reasoning": None,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
         
         # Get current context
-        context = self.get_shared_context(session_id)
+        # context = self.get_shared_context(session_id)
         
         # Create routing prompt
         routing_prompt = f"""
-{context}
-
-USER REQUEST: {user_message}
+USER REQUEST: 
+{user_message}
 """
         
         # Route to orchestrator for decision
@@ -291,7 +227,13 @@ USER REQUEST: {user_message}
                 metadata={"type": "routing_decision"}
             )
         except Exception as e:
-            return "orchestrator", {"error": f"Error creating routing message: {e}"}
+            return {"success": False,
+                    "error": f"Error creating routing message: {e}",
+                    "specialists": [],
+                    "reasoning": None,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
         
         # Get routing decision
         try:
@@ -300,7 +242,13 @@ USER REQUEST: {user_message}
                 assistant_id=orchestrator_id
             )
         except Exception as e:
-            return "orchestrator", {"error": f"Error creating routing run: {e}"}
+            return {"success": False,
+                    "error": f"Error creating routing run: {e}",
+                    "specialists": [],
+                    "reasoning": None,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
         
         # Wait for completion
         timeout = 30
@@ -308,67 +256,482 @@ USER REQUEST: {user_message}
         
         while run.status != "completed":
             if time.time() - start_time > timeout:
-                return "orchestrator", {"error": "Routing decision timed out"}
+                return {"success": False,
+                        "error": "Routing decision timed out",
+                        "specialists": [],
+                        "reasoning": None,
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
             
             time.sleep(1)
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
-                return "orchestrator", {"error": f"Error checking routing status: {e}"}
+                return {"success": False,
+                        "error": f"Error checking routing status: {e}",
+                        "specialists": [],
+                        "reasoning": None,
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
         
         try:
             messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
             routing_decision_raw = messages.data[0].content[0].text.value
         except Exception as e:
-            return "orchestrator", {"error": f"Error retrieving routing decision: {e}"}
+            return {"success": False,
+                    "error": f"Error retrieving routing decision: {e}",
+                    "specialists": [],
+                    "reasoning": None,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
         
         # Parse decision - try to extract JSON from response
         try:
             # Look for JSON in the response
-            json_match = re.search(r'\{[^}]*"specialist"[^}]*\}', routing_decision_raw)
-            if json_match:
-                routing_decision_dict = json.loads(json_match.group())
-                assistant_name = routing_decision_dict.get('specialist', 'orchestrator')
+            OrchestratorResponse.model_validate_json(routing_decision_raw)
+            orchestrator_response_dict = json.loads(routing_decision_raw)
+
+            if len(orchestrator_response_dict['specialists']) > 0:   # TODO: Do we need this check if we have model validation???
+                assistants_names = orchestrator_response_dict.get('specialists', None)
             else:
-                # Fallback: look for assistant names in text
-                assistant_name = "orchestrator"
-                for name in self.assistants.keys():
-                    if name.lower() in routing_decision_raw.lower():
-                        assistant_name = name
-                        break
-                
-                routing_decision_dict = {
-                    "specialist": assistant_name,
-                    "reasoning": routing_decision_raw,
-                    "fallback_parsing": True
-                }
+                # TODO: Fallback mechanism
+                return {"success": False,
+                        "error": "Empty assistants list",
+                        "specialists": [],
+                        "reasoning": None,
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
         except Exception as e:
-            # Ultimate fallback
-            assistant_name = "orchestrator"
-            routing_decision_dict = {
-                "specialist": assistant_name,
-                "reasoning": routing_decision_raw,
-                "error": f"JSON parsing failed: {e}",
-                "raw_response": routing_decision_raw
-            }
-        
-        # Validate assistant exists
-        if assistant_name not in self.assistants:
-            assistant_name = 'orchestrator'  # Fallback
-            routing_decision_dict["fallback_to_orchestrator"] = True
+            return {"success": False,
+                    "error": f"Error parsing orchestrator response: {e}",
+                    "specialists": [],
+                    "reasoning": None,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
         
         # Log routing decision
         if session_id in self.context_store:
-            self.context_store[session_id]['routing_decisions'].append({
-                'timestamp': time.time(),
-                'user_message': user_message,
-                'decision': routing_decision_dict,
-                'chosen_assistant': assistant_name
-            })
+            self.context_store[session_id]['routing_decisions'].append(orchestrator_response_dict)
         
-        return assistant_name, routing_decision_dict
+        return orchestrator_response_dict
     
-    def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> Dict:
+    def process_with_combinator(self, session_id: str, user_message: str, specialists_responses: list[dict]) -> dict:
+        """Use combinator assistant to prepare the final answer"""
+        specialists_names = [v['specialist'] for v in specialists_responses]
+
+        if session_id not in self.shared_threads:
+            return {"success": False,
+                    "error": "Session not found",
+                    "specialists": specialists_names,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        
+        # Get current context
+        # context = self.get_shared_context(session_id)
+        
+        # Create combinator prompt
+        specialist_responses = ""
+        for i, item in enumerate(specialists_responses):
+            specialist_responses += f"SPECILAIST {i+1} DATA START\n"
+            specialist_responses += f"SPECIALIST NAME: {item['specialist']}\n"
+            specialist_responses += f"SPECIALIST RESPONSE: {item['response']['response']}\n"
+            specialist_responses += f"SPECILAIST {i+1} DATA END\n\n"
+
+        combinator_prompt = f"""USER QUERY: 
+{user_message}
+
+{specialist_responses}
+"""
+        
+        # Route to combinator for decision
+        thread_id = self.shared_threads[session_id]
+        combinator_id = self.assistants['combinator']['id']
+        
+        # Add routing message
+        try:
+            self.client.beta.threads.messages.create(
+                thread_id=thread_id,
+                role="user",
+                content=combinator_prompt,
+                metadata={"type": "combinator_call"}
+            )
+        except Exception as e:
+            return {"success": False,
+                    "error": f"Error creating routing message: {e}",
+                    "specialists": specialists_names,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        
+        # Get final answer
+        try:
+            run = self.client.beta.threads.runs.create(
+                thread_id=thread_id,
+                assistant_id=combinator_id
+            )
+        except Exception as e:
+            return {"success": False,
+                    "error": f"Error creating routing run: {e}",
+                    "specialists": specialists_names,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        
+        # Wait for completion
+        timeout = 30
+        start_time = time.time()
+        
+        while run.status != "completed":
+            if time.time() - start_time > timeout:
+                return {"success": False,
+                        "error": "Combinator call timed out",
+                        "specialists": specialists_names,
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
+            
+            time.sleep(1)
+            try:
+                run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
+            except Exception as e:
+                return {"success": False,
+                        "error": f"Error checking combinator status: {e}",
+                        "specialists": specialists_names,
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
+        
+        try:
+            messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
+            final_response = messages.data[0].content[0].text.value
+        except Exception as e:
+            return {"success": False,
+                    "error": f"Error retrieving combinator response: {e}",
+                    "specialists": specialists_names,
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        
+        # # Parse decision - try to extract JSON from response
+        # try:
+        #     # Look for JSON in the response
+        #     OrchestratorResponse.model_validate_json(routing_decision_raw)
+        #     orchestrator_response_dict = json.loads(routing_decision_raw)
+
+        #     if len(orchestrator_response_dict['specialists']) > 0:   # TODO: Do we need this check if we have model validation???
+        #         assistants_names = orchestrator_response_dict.get('specialists', None)
+        #     else:
+        #         # TODO: Fallback mechanism
+        #         return {"success": False,
+        #                 "error": "Empty assistants list",
+        #                 "specialists": [],
+        #                 "reasoning": None,
+        #                 "user_query": user_message,
+        #                 "raw_response": None
+        #                 }
+        # except Exception as e:
+        #     return {"success": False,
+        #             "error": f"Error parsing orchestrator response: {e}",
+        #             "specialists": [],
+        #             "reasoning": None,
+        #             "user_query": user_message,
+        #             "raw_response": None
+        #             }
+        
+        # Log routing decision
+        if session_id in self.context_store:
+            self.context_store[session_id]['final_response'].append(final_response)
+        
+        return {"success": True,
+                    "error": None,
+                    "specialists": specialists_names,
+                    "user_query": user_message,
+                    "raw_response": final_response
+                    }
+    
+    def route_to_assistant(self, 
+                           session_id: str, 
+                           assistant_name: str, 
+                           user_message: str, 
+                           include_context: bool = True, 
+                           new_thread: bool = False
+                           ) -> dict:
+        
+        """Route message to specific assistant with context"""
+        if session_id not in self.shared_threads:
+            raise Exception(f"Session {session_id} not found")
+        
+        thread_id = self.shared_threads[session_id]
+        assistant_id = self.assistants[assistant_name]['id']
+
+        # Determine which thread to use
+        if new_thread:
+            # Force creation of temporary thread for parallel execution
+            try:
+                temp_thread = self.client.beta.threads.create()
+                thread_id = temp_thread.id
+                use_temp_thread = True
+            except Exception as e:
+                return {"success": False,
+                        "error": f"Error creating temporary thread: {e}",
+                        "specialist": assistant_name,
+                        "response": None,
+                        "sources": [],
+                        "images": [],
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
+        else:
+            # Use shared thread, but check if it's busy first
+            thread_id = self.shared_threads[session_id]
+
+            try:
+                runs = self.client.beta.threads.runs.list(thread_id=thread_id, limit=5)
+                for existing_run in runs.data:
+                    if existing_run.status in ['queued', 'in_progress', 'requires_action']:
+                        # Thread is busy, create a temporary thread
+                        try:
+                            temp_thread = self.client.beta.threads.create()
+                            thread_id = temp_thread.id
+                            use_temp_thread = True
+                            break
+                        except Exception as e:
+                            return {"success": False,
+                                    "error": f"Error creating temporary thread: {e}",
+                                    "specialist": assistant_name,
+                                    "response": None,
+                                    "sources": [],
+                                    "images": [],
+                                    "user_query": user_message,
+                                    "raw_response": None
+                                    }
+            except Exception as e:
+                # If we can't check runs, proceed with original thread
+                pass
+            
+        # Add context if requested
+        if include_context and session_id in self.context_store:
+            # context = self.get_shared_context(session_id)
+            full_message = f"USER REQUEST: {user_message}"
+        else:
+            full_message = user_message
+        
+        # Add user message to thread
+        try:
+            message = self.client.beta.threads.messages.create(
+                thread_id=thread_id,
+                role="user",
+                content=full_message,
+                metadata={"routed_to": assistant_name, "temp_thread": str(use_temp_thread)}
+            )
+        except Exception as e:
+            if use_temp_thread:
+                try:
+                    self.client.beta.threads.delete(thread_id=thread_id)
+                except:
+                    pass
+            return {"success": False,
+                    "error": f"Error creating message: {e}",
+                    "specialist": assistant_name,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        
+        # Run with specific assistant
+        try:
+            run = self.client.beta.threads.runs.create(
+                thread_id=thread_id,
+                assistant_id=assistant_id
+            )
+        except Exception as e:
+            # Clean up temp thread if run creation failed
+            if use_temp_thread:
+                try:
+                    self.client.beta.threads.delete(thread_id=thread_id)
+                except:
+                    pass
+            return {"success": False,
+                    "error": f"Error creating run: {e}",
+                    "specialist": assistant_name,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        
+        # Wait for completion with timeout
+        timeout = 60  # 60 seconds timeout
+        start_time = time.time()
+        
+        while run.status != "completed":
+            if time.time() - start_time > timeout:
+                return {"success": False,
+                        "error": "Assistant response timed out",
+                        "specialist": assistant_name,
+                        "response": None,
+                        "sources": [],
+                        "images": [],
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
+            
+            time.sleep(1)
+            try:
+                run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
+            except Exception as e:
+                # Clean up temp thread on error
+                if use_temp_thread:
+                    try:
+                        self.client.beta.threads.delete(thread_id=thread_id)
+                    except:
+                        pass
+                return {"success": False,
+                        "error": f"Error retrieving run status: {e}",
+                        "specialist": assistant_name,
+                        "response": None,
+                        "sources": [],
+                        "images": [],
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
+            
+            if run.status == "failed":
+                # Clean up temp thread on error
+                if use_temp_thread:
+                    try:
+                        self.client.beta.threads.delete(thread_id=thread_id)
+                    except:
+                        pass
+                return {"success": False,
+                        "error": f"Assistant run failed: {run.last_error}",
+                        "specialist": assistant_name,
+                        "response": None,
+                        "sources": [],
+                        "images": [],
+                        "user_query": user_message,
+                        "raw_response": None
+                        }
+        
+        # Get response
+        try:
+            messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
+
+            # TODO: Parse the answer (Images, sources)
+            sources_list = []
+            response_sorces = messages.data[0].content[0].text.annotations
+            for source in response_sorces:
+                file_info = self.client.files.retrieve(source.file_citation.file_id)
+                sources_list.append(file_info)
+
+            img_markers_list = get_all_markers_as_list(messages.data[0].content[0].text.value)
+
+            sources_files_list = []
+            img_files_list = []
+
+            if len(sources_list) > 0:
+                files_path = assistant_files_mapping.get(assistant_name)
+                source_mapping_filepath = files_path + 'pdf_mapping.json'
+                with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
+                    pdf_mapping = json.load(file)
+                for source in sources_list:
+                    source_filename = source.filename
+                    name_without_ext = os.path.splitext(source_filename)[0]
+                    source_file_path = pdf_mapping[name_without_ext]
+                    sources_files_list.append(source_file_path)
+
+            if len(img_markers_list) > 0:
+                files_path = assistant_files_mapping.get(assistant_name)
+                img_mapping_filepath = files_path + 'doc_mapping.json'
+                with open(img_mapping_filepath, 'r', encoding='utf-8') as file:
+                    img_mapping = json.load(file)
+                for img in img_markers_list:
+                    img_info = extract_marker_parts(marker = img)
+                    if img_info:
+                        img_dir = img_mapping[img_info['img_file_key']]
+                        file = find_file_by_name(files_path+img_dir, img_info['img_file_key']+'_'+img_info['img_name'])  # TODO Kostyl
+                        img_files_list.append(file[0].replace('\\', '/'))
+
+            response_clean = delete_sources_from_text(messages.data[0].content[0].text.value)
+            response_clean = remove_all_markers(response_clean)
+
+        except Exception as e:
+            # Clean up temp thread on error
+            if use_temp_thread:
+                try:
+                    self.client.beta.threads.delete(thread_id=thread_id)
+                except:
+                    pass
+            return {"success": False,
+                    "error": f"Error processing response: {e}",
+                    "specialist": assistant_name,
+                    "response": None,
+                    "sources": [],
+                    "images": [],
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        
+        response = {"success": True,
+                    "error": None,
+                    "specialist": assistant_name,
+                    "response": response_clean,
+                    "sources": sources_files_list,
+                    "images": img_files_list,
+                    "user_query": user_message,
+                    "raw_response": messages.data[0].content[0].text.value
+                    }
+        
+        # Update context
+        if session_id in self.context_store:
+            self.context_store[session_id]['last_assistant'] = assistant_name
+            self.context_store[session_id]['conversation_history'].append({
+                'timestamp': time.time(),
+                'assistant': assistant_name,
+                'role': 'assistant',
+                'content': response,
+                'message_type': 'response'
+            })
+
+        # Clean up temp thread on error
+        if use_temp_thread:
+            try:
+                self.client.beta.threads.delete(thread_id=thread_id)
+            except:
+                pass
+        
+        return response
+    
+    async def route_to_assistant_async(self, 
+                                       session_id: str, 
+                                       assistant_name: str, 
+                                       user_message: str, 
+                                       include_context: bool = True, 
+                                       new_thread: bool = True) -> dict:
+        """Async version of route_to_assistant"""
+        # Convert your existing route_to_assistant to async
+        # This depends on your OpenAI client implementation
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(
+            None, 
+            self.route_to_assistant, 
+            session_id, 
+            assistant_name, 
+            user_message, 
+            include_context,
+            new_thread
+        )
+    
+    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> Dict:
         """Complete request processing with routing and context"""
         
         # Ensure session exists
@@ -376,23 +739,69 @@ USER REQUEST: {user_message}
             session_id, session_msg = self.get_or_create_session(telegram_user_id)
         
         # Determine which assistant to use
-        chosen_assistant, routing_decision = self.analyze_request(session_id, user_message)
+        orchestrator_response_dict = self.process_with_orchestrator(session_id, user_message)
         
-        # Route to chosen assistant
-        response = self.route_to_assistant(
-            session_id=session_id,
-            assistant_name=chosen_assistant,
-            user_message=user_message,
-            include_context=True
-        )
+        chosen_specialists = orchestrator_response_dict.get('specialists', None)
+
+        if not chosen_specialists:
+            return {"success": False,
+                    "error": f"Empty specialists list",
+                    "user_query": user_message,
+                    "raw_response": None
+                    }
+        # Create async tasks for all specialists
+        async def call_single_assistant(specialist_name: str):
+            """Async wrapper for single assistant call"""
+            return await self.route_to_assistant_async(
+                session_id=session_id,
+                assistant_name=specialist_name,
+                user_message=user_message,
+                include_context=True
+            )
         
-        return {
-            'assistant_used': chosen_assistant,
-            'response': response,
-            'session_id': session_id,
-            'routing_decision': routing_decision,
-            'timestamp': time.time()
-        }
+        # Execute all assistant calls in parallel
+        tasks = [call_single_assistant(specialist) for specialist in chosen_specialists]
+
+        try:
+            specialist_responses = await asyncio.gather(*tasks, return_exceptions=True)
+
+            # Process responses
+            successful_responses = []
+            failed_responses = []
+
+            # TODO: Check how do we detect successfull messages
+            for i, response in enumerate(specialist_responses):
+                if isinstance(response, Exception):
+                    failed_responses.append({
+                        'specialist': chosen_specialists[i],
+                        'error': str(response)
+                    })
+                else:
+                    successful_responses.append({
+                        'specialist': chosen_specialists[i],
+                        'response': response
+                    })
+
+            final_answer = self.process_with_combinator(session_id, user_message, successful_responses)
+
+            
+            
+            return {
+                'assistants_used': chosen_specialists,
+                'successful_responses': successful_responses,
+                'failed_responses': failed_responses,
+                'session_id': session_id,
+                'routing_decision': orchestrator_response_dict,
+                'timestamp': time.time()
+            }
+        
+        except Exception as e:
+            return {
+                "success": False,
+                "error": f"Parallel execution failed: {str(e)}",
+                "user_query": user_message,
+                "specialists_attempted": chosen_specialists
+            }
     
     def get_session_info(self, session_id: str) -> Dict:
         """Get information about a session"""
@@ -429,7 +838,7 @@ def create_orchestrator(api_key: str = None) -> TelegramMultiAssistantOrchestrat
     return TelegramMultiAssistantOrchestrator(api_key)
 
 
-def process_telegram_message(orchestrator: TelegramMultiAssistantOrchestrator, 
+async def process_telegram_message(orchestrator: TelegramMultiAssistantOrchestrator, 
                            user_message: str, 
                            telegram_user_id: int) -> Dict:
     """
@@ -444,43 +853,43 @@ def process_telegram_message(orchestrator: TelegramMultiAssistantOrchestrator,
         Dict with response data including routing decisions for debugging
     """
     session_id = f"tg-{telegram_user_id}"
-    return orchestrator.process_request(session_id, user_message, telegram_user_id)
+    return await orchestrator.process_request(session_id, user_message, telegram_user_id)
 
 
-# Example usage and testing
-if __name__ == "__main__":
-    # Initialize orchestrator
-    orchestrator = create_orchestrator()
+# # Example usage and testing
+# if __name__ == "__main__":
+#     # Initialize orchestrator
+#     orchestrator = create_orchestrator()
     
-    # Test with telegram user
-    telegram_user_id = 123456789
+#     # Test with telegram user
+#     telegram_user_id = 123456789
     
-    # Process some messages
-    test_messages = [
-        "что такое MS50183-EPS?",
-        "какие кабели нужны для диагностики генераторов?",
-        "сбросить контекст"
-    ]
+#     # Process some messages
+#     test_messages = [
+#         "что такое MS50183-EPS?",
+#         "какие кабели нужны для диагностики генераторов?",
+#         "сбросить контекст"
+#     ]
     
-    print("=== Testing Telegram Multi-Assistant Orchestrator ===")
+#     print("=== Testing Telegram Multi-Assistant Orchestrator ===")
     
-    for i, message in enumerate(test_messages):
-        print(f"\n--- Message {i+1}: {message} ---")
+#     for i, message in enumerate(test_messages):
+#         print(f"\n--- Message {i+1}: {message} ---")
         
-        if message.lower() in ["сбросить контекст", "reset context", "/reset"]:
-            session_id = f"tg-{telegram_user_id}"
-            result = orchestrator.reset_context(session_id)
-            print(f"Context reset: {result}")
-            continue
+#         if message.lower() in ["сбросить контекст", "reset context", "/reset"]:
+#             session_id = f"tg-{telegram_user_id}"
+#             result = orchestrator.reset_context(session_id)
+#             print(f"Context reset: {result}")
+#             continue
         
-        result = process_telegram_message(orchestrator, message, telegram_user_id)
+#         result = process_telegram_message(orchestrator, message, telegram_user_id)
         
-        print(f"Assistant: {result['assistant_used']}")
-        print(f"Routing: {result['routing_decision']}")
-        print(f"Response: {result['response'][:200]}...")
+#         print(f"Assistant: {result['assistant_used']}")
+#         print(f"Routing: {result['routing_decision']}")
+#         print(f"Response: {result['response'][:200]}...")
     
-    # Show session info
-    session_id = f"tg-{telegram_user_id}"
-    session_info = orchestrator.get_session_info(session_id)
-    print(f"\n=== Session Info ===")
-    print(json.dumps(session_info, indent=2))
+#     # Show session info
+#     session_id = f"tg-{telegram_user_id}"
+#     session_info = orchestrator.get_session_info(session_id)
+#     print(f"\n=== Session Info ===")
+#     print(json.dumps(session_info, indent=2))
