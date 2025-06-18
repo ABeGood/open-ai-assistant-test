@@ -1,13 +1,12 @@
-MS504
-TEST BENCH FOR DIAGNOSTICS OF POWER STEERING PUMPS
-@D_9_IMG_000
+MS504 TEST BENCH FOR DIAGNOSTICS OF POWER STEERING PUMPS
+@D_9_IMG_000_PHOTO_MS504-test-bench-for-power-steering-pumps_cover
 
 USER MANUAL
 
 INTRODUCTION
 Thank you for choosing the product of MSG Equipment.
 The present user manual consists of the information on the application, equipment set, technical specifications, methodology for assessing the technical condition of power steering pump, as well as the rules for safe operation of the MS504 test bench.
-Read carefully this manual before putting MS504 (hereinafter “the bench”) into operation.
+Read carefully this manual before putting MS504 (hereinafter "the bench") into operation.
 Due to the permanent improvements of the tester, the design and supply slip are subject to modifications that are not included to the present user manual.
 
 1. APPLICATION
@@ -44,9 +43,8 @@ Power outlet 400 V / 16 A	1
 User Manual (card with QR code)	1
 
 4. TEST BENCH DESCRIPTION
-The bench consists of the following main elements (see Fig. 1):
-@D_9_IMG_001
-Figure 1. General view of the test bench
+The bench consists of the following main elements (see Fig. 1 @D_9_IMG_001_PHOTO_MS504-test-bench-general-view_fig1): 
+Figure 1. General view of the test bench @D_9_IMG_001_PHOTO_MS504-test-bench-general-view_fig1
 1 - Flowmeter of Circuit I.
 2 - Pressure gauge of Circuit I.
 3 - Pressure regulator of Circuit I.
@@ -70,10 +68,10 @@ Figure 1. General view of the test bench
 21 - Emergency stop button of the bench.
 22 - Low-pressure hoses.
 23 - High-pressure hoses.
+@D_9_IMG_001_PHOTO_MS504-test-bench-general-view_fig1
 
-On the touchscreen display for pump drive control (see Fig. 2), the following will be displayed:
-@D_9_IMG_002
-Figure 2. Bench drive control menu
+On the touchscreen display for pump drive control (see Fig. 2 @D_9_IMG_002_DIAGRAM_bench-drive-control-menu_fig2), the following will be displayed:
+Figure 2. Bench drive control menu @D_9_IMG_002_DIAGRAM_bench-drive-control-menu_fig2
 1 - Selection of drive rotation direction.
 2 - Current drive rotation speed.
 3 - Selection of drive rotation speed.
@@ -125,17 +123,15 @@ The sequence of operations for checking a single-circuit pump is as follows:
 1. Turn on the bench.
 2. Install the 3-jaw chuck drive pulley or pump shaft.
 3. Use the mounting system (see item 15 in Fig. 1) to secure the pump housing.
-4. Connect the high and low-pressure hoses to the bench and the pump (see Fig. 3).
+4. Connect the high and low-pressure hoses to the bench and the pump (see Fig. 3 @D_9_IMG_003_DIAGRAM_power-steering-pump-connection-to-bench_fig3). 
 5. Close the cartridge guard.
-@D_9_IMG_003
-Figure 3. Connecting the power steering pump to the bench
+Figure 3. Connecting the power steering pump to the bench @D_9_IMG_003_DIAGRAM_power-steering-pump-connection-to-bench_fig3
 1- low pressure connection of I circuit; 2- high pressure connection of I circuit; 
 3 - pump inlet; 4 - pump outlet.
 
 6. Open the supply valve on the low-pressure hose of Circuit I and wait for the pump to fill with fluid.
 
-@D_9_IMG_004
-Figure 4. Pump connected and fixed
+Figure 4. Pump connected and fixed @D_9_IMG_004_PHOTO_pump-connected-and-fixed_fig4
 
 7. Check pressure and flow readings at idle speed.
 7.1. Start the pump drive by turning the speed controller 16 (Fig. 1) to set the speed to 800 rpm. At this value, the pump should deliver nominal pressure and flow values according to the passport data of the unit being diagnosed.
@@ -172,9 +168,8 @@ The bench is designed for long-term operation and does not have special maintena
 
 7.1. Replacement of the working fluid
 The condition of the working fluid and the need for its replacement are assessed visually - by its appearance. It should be clear, homogeneous, and free of sediment. In this case, the replacement of the working fluid and the hydraulic system filtering element (CR091C10R) of the bench should be performed no less than once a year of operation.
-A valve installed under the collecting tray is provided for draining the working fluid. Refilling the hydraulic system is done through the filling neck of the working fluid tank (see Fig. 5).
-@D_9_IMG_005
-Figure 5. Filter and filler neck (left to right)
+A valve installed under the collecting tray is provided for draining the working fluid. Refilling the hydraulic system is done through the filling neck of the working fluid tank (see Fig. 5 @D_9_IMG_005_PHOTO_filter-and-filler-neck_fig5). 
+Figure 5. Filter and filler neck (left to right) @D_9_IMG_005_PHOTO_filter-and-filler-neck_fig5
 
 7.2. Cleaning and care
 Soft cloths or rags should be used to clean the surface of the bench using neutral cleaning agents. The display should be cleaned using a special fiber cloth and monitor screen cleaning spray. Do not use abrasives and solvents to avoid corrosion, malfunction or damage to the bench.

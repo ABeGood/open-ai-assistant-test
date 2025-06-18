@@ -1,6 +1,5 @@
-MS570
-ELECTRONICS REPAIR TABLE
-@D_13_IMG_000
+MS570 ELECTRONICS REPAIR TABLE
+@D_13_IMG_000_PHOTO_MS570-electronics-repair-table_cover
 
 USER MANUAL
 
@@ -37,9 +36,8 @@ Silicone table mat	1
 User Manual (card with QR code)	1
 
 4. WORKBENCH DESCRIPTION
-The workbench consists of the following main functional elements (Fig. 1):
-@D_13_IMG_001
-Figure 1: Basic elements of the workbench
+The workbench consists of the following main functional elements (Fig. 1 @D_13_IMG_001_SCHEMATIC_MS570-workbench-basic-elements_fig1): 
+Figure 1: Basic elements of the workbench @D_13_IMG_001_SCHEMATIC_MS570-workbench-basic-elements_fig1
 1 – 230V sockets with protective cover.
 2 – Laboratory power supply unit.
 3 – Terminal of the laboratory power supply unit (depending on the configuration, it may be located on the front panel of the power supply unit).
@@ -69,15 +67,12 @@ WARNING! The manufacturer is not responsible for any damage or injury to human h
 5.2. Preparing the workbench for use 
 The workbench is delivered in packaging. Remove all packaging materials. The packaging is fully recyclable—dispose of it in designated waste collection areas for separate recycling.
 The workbench should be placed on a level floor and positioned securely. It must be kept at least one meter away from heating devices and radiators.
-Before use, connect the workbench to a 230V electrical network with a grounded outlet. Then, switch on the circuit breaker (see Pos. 1, Fig. 2).
-
-@D_13_IMG_002
-Figure 2
+Before use, connect the workbench to a 230V electrical network with a grounded outlet. Then, switch on the circuit breaker (see Pos. 1, Fig. 2 @D_13_IMG_002_PHOTO_circuit-breaker-location_fig2). 
+Figure 2 @D_13_IMG_002_PHOTO_circuit-breaker-location_fig2
 
 6. DESCRIPTION OF THE LABORATORY POWER SUPPLY 
-The laboratory power supply includes the following control elements (see Fig. 3):
-@D_13_IMG_003
-Figure 3
+The laboratory power supply includes the following control elements (see Fig. 3 @D_13_IMG_003_DIAGRAM_laboratory-power-supply-control-elements_fig3): 
+Figure 3 @D_13_IMG_003_DIAGRAM_laboratory-power-supply-control-elements_fig3
 A: Power button
 B: Auxiliary function button "SHIFT"
 C: Memory button "MEM"
@@ -93,11 +88,11 @@ L: Encoder/cancel button
 M: Menu navigation buttons
 N: Button panel
 O: Display screen
+@D_13_IMG_003_DIAGRAM_laboratory-power-supply-control-elements_fig3
 
 6.1. Control menu
-The main menu screen contains the following elements (see Fig. 4):
-@D_13_IMG_004
-Figure 4
+The main menu screen contains the following elements (see Fig. 4 @D_13_IMG_004_DIAGRAM_main-menu-screen-elements_fig4): 
+Figure 4 @D_13_IMG_004_DIAGRAM_main-menu-screen-elements_fig4
 W: Date and time
 X: Sound indication status
 Y: Lock status
@@ -116,15 +111,15 @@ AK: Set output current value
 AJ: Overvoltage protection threshold
 AI: Overcurrent protection threshold
 WARNING! The appearance, menu contents, and operation of the LPS may vary depending on the firmware version.
+@D_13_IMG_004_DIAGRAM_main-menu-screen-elements_fig4
 
 The main menu screen has three styles:
 Standard style
 Extended style
 Graphical style
-The style can be selected in the settings menu (see Fig. 5).
-@D_13_IMG_005
+The style can be selected in the settings menu (see Fig. 5 @D_13_IMG_005_DIAGRAM_screen-style-options_fig5). 
 standard style   extended style   graphic style 
-Figure 5
+Figure 5 @D_13_IMG_005_DIAGRAM_screen-style-options_fig5
 
 6.1.1. General Control Rules
 Red icon or cursor → Selected parameter for modification
@@ -145,9 +140,8 @@ To set the current value:
 Rotate the encoder to select a digit (0-9), then press an arrow button to move the cursor to another digit and repeat as needed.
 Enter the required value directly using the numeric keypad.
 2. Press "ENTER" to confirm:
-If an invalid value is entered, an error message will appear (see Fig. 6). Press the encoder button to cancel.
-@D_13_IMG_006
-Figure 6
+If an invalid value is entered, an error message will appear (see Fig. 6 @D_13_IMG_006_DIAGRAM_error-message-display_fig6). Press the encoder button to cancel.
+Figure 6 @D_13_IMG_006_DIAGRAM_error-message-display_fig6
 To set the voltage value:
 Press "V-SET" and follow the same procedure as for setting the current.
 To set overload or overvoltage protection thresholds:
@@ -157,21 +151,19 @@ After confirmation, the default changes will be saved in memory slot "M0".
 6.1.3. Working with Memory Slots
 To save settings:
 Press "MEM" + any button 1-9 to store the current values for current, voltage, and protection thresholds.
-Press "ENTER" to confirm or the encoder button to cancel (see Fig. 7).
-@D_13_IMG_007
-Figure 7
+Press "ENTER" to confirm or the encoder button to cancel (see Fig. 7 @D_13_IMG_007_DIAGRAM_memory-save-confirmation_fig7). 
+Figure 7 @D_13_IMG_007_DIAGRAM_memory-save-confirmation_fig7
 To load settings from memory:
 Press "SHIFT" + the corresponding button 1-9.
-Press "ENTER" or the encoder button to confirm or cancel (see Fig. 8).
+Press "ENTER" or the encoder button to confirm or cancel (see Fig. 8 @D_13_IMG_008_DIAGRAM_memory-load-confirmation_fig8). 
 
-@D_13_IMG_008
-Figure 8
+Figure 8 @D_13_IMG_008_DIAGRAM_memory-load-confirmation_fig8
 
 6.1.4 Keyboard Lock
 To lock/unlock the keypad, use the "SHIFT" + "LOCK" button combination.
 The lock status is displayed in the upper right corner of the screen:
-@D_13_IMG_009 - Buttons locked
-@D_13_IMG_010 - Buttons unlocked
+@D_13_IMG_009_DIAGRAM_buttons-locked-status-icon - Buttons locked
+@D_13_IMG_010_DIAGRAM_buttons-unlocked-status-icon - Buttons unlocked
 Buttons automatically lock when the converter is connected to a PC or mobile device. They will unlock when the connection is disconnected. The power button always remains unlocked.
 
 6.1.5 System Settings
@@ -180,14 +172,12 @@ The system menu contains submenus for:
 Settings
 Styles
 Memory slots
-System information (see Fig. 9)
+System information (see Fig. 9 @D_13_IMG_011_DIAGRAM_system-menu-submenus_fig9) 
 
-@D_13_IMG_011
-Figure 9
+Figure 9 @D_13_IMG_011_DIAGRAM_system-menu-submenus_fig9
 
-After entering the system menu, press the "ENTER" button to access the settings submenu Fig. 10). Use the cursor movement buttons to select the desired parameter, and rotate the encoder to set the preferred value or status.
-@D_13_IMG_012
-Figure 10
+After entering the system menu, press the "ENTER" button to access the settings submenu (Fig. 10 @D_13_IMG_012_DIAGRAM_settings-submenu-options_fig10). Use the cursor movement buttons to select the desired parameter, and rotate the encoder to set the preferred value or status.
+Figure 10 @D_13_IMG_012_DIAGRAM_settings-submenu-options_fig10
 Settings Menu Options:
 Language – Select the interface language.
 Take OK – Confirmation request for applying settings. If set to "OFF", settings will be edited directly when selecting a data group.
@@ -201,6 +191,7 @@ Max Power – Maximum output power. When the set voltage × current exceeds the 
 Temperature – Choose between °C and °F for temperature units.
 Date, Time – Set the current date and time. Ensure the correct time is set, as incorrect time settings may lead to improper date changes.
 To exit the settings submenu, press the encoder button. All modified values will be saved automatically.
+@D_13_IMG_012_DIAGRAM_settings-submenu-options_fig10
 
 6.1.5.1 Battery Charging Mode Submenu
 Cut-Off Current – The lower limit for output current. If the current drops below this threshold, the output will automatically turn off. Default is 10 mA.

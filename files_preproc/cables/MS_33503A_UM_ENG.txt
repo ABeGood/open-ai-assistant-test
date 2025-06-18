@@ -1,11 +1,7 @@
-MS-33503A
-CABLE FOR TESTER MS016
-FOR DIAGNOSTICS OF STARTERS
-
-@D_14_IMG_000
+MS-33503A CABLE FOR TESTER MS016 FOR DIAGNOSTICS OF STARTERS
+@D_14_IMG_000_PHOTO_MS-33503A-cable-for-MS016-tester-starter-diagnostics_cover
 
 USER MANUAL
-
 
 INTRODUCTION
 We appreciate you have chosen the products of TM MSG Equipment.
@@ -16,23 +12,21 @@ The MS-33503A cable is designed to work in conjunction with the MS016 tester and
 The MS016 tester, when used with the MS-33503A cable, allows you to record voltage values on the starter terminals: 31, 30, 45, and current on terminal 30 during engine start. The results of these measurements are displayed on the tester screen in the form of a graph. This information helps identify deviations in the starter's operation, the car's battery, or the wiring.
 
 2. CABLE DESCRIPTION
-The MS-33503A cable (see Figure 1) includes three crocodile clips and one current sensor, which are connected to the starter terminals as shown in Figure 2.
-@D_14_IMG_001
-Figure 1. MS-33503A cable marking
+The MS-33503A cable (see Figure 1 @D_14_IMG_001_PHOTO_MS-33503A-cable-marking_fig1) includes three crocodile clips and one current sensor, which are connected to the starter terminals as shown in Figure 2 @D_14_IMG_002_PHOTO_starter-motor-terminals-location_fig2.
+Figure 1. MS-33503A cable marking @D_14_IMG_001_PHOTO_MS-33503A-cable-marking_fig1
 
-The MS-33503A cable is color-coded as follows:
+The MS-33503A cable is color-coded as follows @D_14_IMG_002_PHOTO_starter-motor-terminals-location_fig2:
 • Red clip "30" - connects to the starter's terminal 30, which is connected to the car's battery positive terminal.
 • Black clip "31" - ground, connects to the starter's casing.
 • Yellow clip "45" - connects to the starter solenoid terminal, where the power wire to the starter motor is connected.
 The current sensor is placed on the power wire that connects to terminal 30.
-@D_14_IMG_002
-Figure 2. Location of terminals on the starter motor
+Figure 2. Location of terminals on the starter motor @D_14_IMG_002_PHOTO_starter-motor-terminals-location_fig2
 
 3. MS016 TESTER MENU FOR STARTER DIAGNOSTICS
 
 To activate the starter diagnostic mode, you need to connect the MS-33503A cable to the MS016 tester and provide power to the tester. The tester is powered either from the power supply included in the MS016 tester kit or from a portable power bank.
 
-In starter diagnostic mode, the tester screen displays the following information (see Figure 3):
+In starter diagnostic mode, the tester screen displays the following information (see Figure 3 @D_14_IMG_003_DIAGRAM_tester-screen-starter-diagnostics-info_fig3): 
 1 – Graph display area with measurement results.
 2 – Buttons for scaling the graph on the time scale.
 3 – Buttons for displaying graphs:
@@ -41,20 +35,17 @@ DC – current change on the starter terminal 30;
 AC – change in the magnitude of alternating current on the starter terminal 30;
 mV – measurement of voltage drop on the starter solenoid.
 4 – The ">0<" button calibrates the tester.
-@D_14_IMG_003
-Figure 3: Information on the tester screen during starter diagnostics
+Figure 3: Information on the tester screen during starter diagnostics @D_14_IMG_003_DIAGRAM_tester-screen-starter-diagnostics-info_fig3
 
 4. STARTER DIAGNOSIS
 Starter diagnosis proceeds as follows:
 1. Connect the MS-33503A cable to the MS016 tester and provide power to the tester through the USB port.
 2. After turning on and entering the starter diagnostic mode, connect the K30 (red) and K45 (yellow) crocodile clips and press the ">0<" button.
-3. Connect the diagnostic cable clips to the starter terminals. Place the current sensor on the power wire connected to terminal 30 of the starter, ensuring that the arrow on the sensor's inner part (see Figure 4) is pointed towards the starter.
-@D_14_IMG_004
-Figure 4. Current direction indicator on the sensor
+3. Connect the diagnostic cable clips to the starter terminals. Place the current sensor on the power wire connected to terminal 30 of the starter, ensuring that the arrow on the sensor's inner part (see Figure 4 @D_14_IMG_004_PHOTO_current-direction-indicator-on-sensor_fig4) is pointed towards the starter.
+Figure 4. Current direction indicator on the sensor @D_14_IMG_004_PHOTO_current-direction-indicator-on-sensor_fig4
 4. Start the car engine for about 5 seconds and then turn it off.
-5. Wait for the tester to display measurement results.
-@D_14_IMG_005
-Figure 5. Example of measurement results
+5. Wait for the tester to display measurement results. @D_14_IMG_005_DIAGRAM_measurement-results-example_fig5
+Figure 5. Example of measurement results @D_14_IMG_005_DIAGRAM_measurement-results-example_fig5
 Clicking on the graph shows the values of all parameters at a given time.
 6. By analyzing the voltage and current change graphs, you can assess the technical condition of the starter and identify potential issues, such as:
 Significant voltage drop on terminal 30 indicates a weak car battery.

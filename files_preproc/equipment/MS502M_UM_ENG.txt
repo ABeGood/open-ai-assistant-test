@@ -1,13 +1,12 @@
-MS502M
-TEST BENCH FOR DIAGNOSTICS OF POWER STEERING RACKS
-@D_8_IMG_000
+MS502M TEST BENCH FOR DIAGNOSTICS OF POWER STEERING RACKS
+@D_8_IMG_000_PHOTO_MS502M-test-bench-for-power-steering-racks_cover
 
 USER MANUAL
 
 INTRODUCTION
 Thank you for choosing the product of MSG Equipment.
 The present user manual consists of the information on the application, equipment set, technical specifications, as well as the rules for safe operation of the MS502M test bench.
-Read carefully this manual before putting the MS502M test bench (hereinafter “the bench”) into operation.
+Read carefully this manual before putting the MS502M test bench (hereinafter "the bench") into operation.
 Due to the permanent improvements of the tester, the design and supply slip are subject to modifications that are not included to the present user manual. Therefore, no claims can be made regarding the data and illustrations in this User Manual.
 
 1. APPLICATION
@@ -39,7 +38,7 @@ Power outlet 400V / 16A	1
 User Manual (card with QR code)	1
 
 4. TEST BENCH DESCRIPTION
-The bench consists of the following main elements (see Fig. 1):
+The bench consists of the following main elements (see Fig. 1 @D_8_IMG_001_PHOTO_MS502M-test-bench-main-elements_fig1): 
 1 – Low-pressure hose;
 2 – High-pressure hose;
 3 – Flowmeter;
@@ -54,9 +53,7 @@ The bench consists of the following main elements (see Fig. 1):
 12 – Emergency stop button;
 13 – Fluid reservoir with a fluid level indicator;
 14 – Fluid drain valve.
-
-@D_8_IMG_001
-Figure 1. Main elements of the bench
+Figure 1. Main elements of the bench @D_8_IMG_001_PHOTO_MS502M-test-bench-main-elements_fig1
 
 5. APPROPRIATE USE
 1. Use the test bench as intended only (see Section 1).
@@ -102,13 +99,12 @@ The sequence of diagnostic operations on the bench is as follows:
 WARNING! Be careful to avoid injuring your fingers.
 3. Install limit tips or tie rods on the ends of the steering rack shaft.
 4. Mount a suitable fitting on the rack.
-5. Connect the high-pressure hoses to the rack as shown in Figure 2.
+5. Connect the high-pressure hoses to the rack as shown in Figure 2. @D_8_IMG_002_DIAGRAM_steering-rack-connection-to-bench_fig2
 WARNING! Strictly observe the connection of high and low pressure. Incorrect connection can lead to sudden spontaneous rotation of the steering wheel shaft, causing injury.
 6. Secure a tool for rotating the spool valve shaft (it is recommended to use universal locking pliers).
 7. Turn on the bench pump by pressing the START button.
 
-@D_8_IMG_002
-Figure 2. Connecting the steering rack to the bench:
+Figure 2. Connecting the steering rack to the bench @D_8_IMG_002_DIAGRAM_steering-rack-connection-to-bench_fig2:
 1 - Low-pressure fitting; 2 - High-pressure fitting;
 3 - High-pressure line; 4 - Low-pressure line.
 
@@ -138,9 +134,8 @@ The bench is designed for long-term operation and does not have special maintena
 
 7.1. Replacement of the operating fluid
 The condition of the operating fluid and the need for its replacement are assessed visually - by its appearance. It should be clear, homogeneous, and free of sediment. In this case, the replacement of the operating fluid and the hydraulic system filtering element (CR091C10R) of the bench should be performed no less than once a year of operation.
-A valve installed under the collecting tray is provided for draining the operating fluid. Refilling the hydraulic system is done through the filling neck of the operating fluid tank (see Fig. 5).
-@D_8_IMG_003
-Figure 3. Filter and filler neck (left to right)
+A valve installed under the collecting tray is provided for draining the operating fluid. Refilling the hydraulic system is done through the filling neck of the operating fluid tank (see Fig. 5 @D_8_IMG_003_PHOTO_filter-and-filler-neck_fig3). 
+Figure 3. Filter and filler neck (left to right) @D_8_IMG_003_PHOTO_filter-and-filler-neck_fig3
 
 7.2. Cleaning and care
 Soft cloths or rags should be used to clean the surface of the bench using neutral cleaning agents. Do not use abrasives and solvents to avoid corrosion, malfunction or damage to the bench.

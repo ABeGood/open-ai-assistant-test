@@ -1,8 +1,6 @@
-MS021
-TESTER FOR DIAGNOSTICS OF DIODE BRIDGES
-OF ALTERNATORS
+MS021 TESTER FOR DIAGNOSTICS OF DIODE BRIDGES OF ALTERNATORS
 
-@D_3_IMG_000
+@D_3_IMG_000_PHOTO_MS021-tester-for-diode-bridge-diagnostics_general-view
 
 USER MANUAL
 
@@ -10,7 +8,7 @@ INTRODUCTION
 Thank you for choosing the product by ТМ MSG Equipment.
 The present user manual consists of the information on the application, supply slip, design, specifications and rules of usage of tester MS021.
 The manufacturer reserves the right to change the design and software without prior notice to users.
-Prior to using the tester MS021 (hereinafter, “the tester”), study the present user manual thoroughly. If required, get the special training at tester manufacturer facilities.
+Prior to using the tester MS021 (hereinafter, "the tester"), study the present user manual thoroughly. If required, get the special training at tester manufacturer facilities.
 Testing rectifiers with the use of multimeter has always been the most common practice. This method has a significant drawback -it doesn't help to identify the diode type and find the faulty one. A standard multimeter test with a direct current of about 0.002A, which is too low compared to the diode operating currents. The tester checks the diode with an alternating current of 0.9A, which allows you to reliably assess the technical condition of the diode bridge of the generator or the diode separately.
 
 1. APPLICATION
@@ -44,16 +42,13 @@ Safety fuse (type: 5x20mm; current: 2A)	1
 User Manual (card with QR code)	1
 
 4. TESTER DESCRIPTION
-The tester is supplied with a touch screen (“1” - Fig.1) on which the tested parameters are displayed; the color indication of the screen signals the technical condition of the tested diode. There is a connection terminal (“2” - Fig.1) for a diagnostic cable (Fig.2). The encoder knob (“3” – Fig.1) is used for fine adjustment of the device for specific tasks. Button “4” turns the device on. 
-@D_3_IMG_001
-Figure 1. MS021 tester. General view
+The tester is supplied with a touch screen ("1" - Fig.1 @D_3_IMG_001_PHOTO_MS021-tester-general-view_fig1) on which the tested parameters are displayed; the color indication of the screen signals the technical condition of the tested diode. There is a connection terminal ("2" - Fig.1 @D_3_IMG_001_PHOTO_MS021-tester-general-view_fig1) for a diagnostic cable (Fig.2). The encoder knob ("3" – Fig.1 @D_3_IMG_001_PHOTO_MS021-tester-general-view_fig1) is used for fine adjustment of the device for specific tasks. Button "4" turns the device on.
+Figure 1. MS021 tester. General view @D_3_IMG_001_PHOTO_MS021-tester-general-view_fig1
 
-@D_3_IMG_002
-Figure 2. Diagnostic cable
+Figure 2. Diagnostic cable @D_3_IMG_002_PHOTO_MS0129-diagnostic-cable_fig2
 
-Diode fuse and power connectors are located at the rear of the device.
-@D_3_IMG_003
-Figure 3. MS021 tester. Back view:
+Diode fuse and power connectors are located at the rear of the device. @D_3_IMG_003_PHOTO_MS021-tester-back-view_fig3
+Figure 3. MS021 tester. Back view: @D_3_IMG_003_PHOTO_MS021-tester-back-view_fig3
 1 – Diode fuse; 2 – Power connector.
 
 5. APPROPRIATE USE
@@ -79,43 +74,38 @@ Figure 3. MS021 tester. Back view:
 
 5.2. Rectifier testing
 Diagnostics of a rectifier should be performed as follows:
-1. Turn the tester on. Connect the clamp to the rectifier housing. The following message will appear on the screen: “CONNECT PROBE TO DIODE”.
+1. Turn the tester on. Connect the clamp to the rectifier housing. The following message will appear on the screen: "CONNECT PROBE TO DIODE".
 2. Touch the contact spot of the tested diode with a probe. The following information will be displayed:
-“Vf” – diode voltage drop (in volts);
+"Vf" – diode voltage drop (in volts);
 "Vr" - stabilizing voltage (in volts). If there are stabilitrons (avalanche diodes) in the rectifier structure, the "AVALANCHE" message will appear.
 WARNING! Different contaminants and dirt on the tested contacts may lead to measurement errors.
-@D_3_IMG_004 @D_3_IMG_005
-Figure 4. Taking measurements:
+Figure 4. Taking measurements: @D_3_IMG_004_PHOTO_taking-measurements-incorrect_fig4A @D_3_IMG_005_PHOTO_taking-measurements-correct_fig4B
 А) – incorrect; B) – correct
-@D_3_IMG_006 @D_3_IMG_007
-2.1. If the diode is faultless, the screen will display “Vf” and “Vr” values. The screen color will be green.
 
-@D_3_IMG_008
-2.2. If the "Vf” value is higher than normal, the screen color will be yellow.
+2.1. If the diode is faultless, the screen will display "Vf" and "Vr" values. The screen color will be green. @D_3_IMG_007_DIAGRAM_screen-display-green_measurement 
 
-The operability of the rectifier should be decided on the basis of the “Vf” readings and type (model) of the diode (stabilitron). The “Vf” absolute value is not always a key parameter when checking the rectifier. It is important to pay attention to the spread between the “Vf” values of different diodes of the same rectifier. For example, for a rectifier that can carry 50 A, “Vf” = 0.850 V is quite typical. The rectifier can be considered faultless If the spread between “Vf” values of the diodes doesn’t exceed ± 0.020 V. For the 120A rectifier, "Vf" = 0.850V is already a critical value. The diode with such a "Vf" value shall be considered faulty.
-@D_3_IMG_009
-2.3. If the diode is faulty, the screen color will be red.
+2.2. If the "Vf" value is higher than normal, the screen color will be yellow.@D_3_IMG_008_DIAGRAM_screen-display-yellow_measurement 
 
-2.4 In case of a short or open circuit failure, the screen color will be red and either the “SHORT CIRCUIT’ or ‘DIODE BREAKDOWN’ message will be displayed correspondingly.
-@D_3_IMG_010 @D_3_IMG_011
+The operability of the rectifier should be decided on the basis of the "Vf" readings and type (model) of the diode (stabilitron). The "Vf" absolute value is not always a key parameter when checking the rectifier. It is important to pay attention to the spread between the "Vf" values of different diodes of the same rectifier. For example, for a rectifier that can carry 50 A, "Vf" = 0.850 V is quite typical. The rectifier can be considered faultless If the spread between "Vf" values of the diodes doesn't exceed ± 0.020 V. For the 120A rectifier, "Vf" = 0.850V is already a critical value. The diode with such a "Vf" value shall be considered faulty.
+2.3. If the diode is faulty, the screen color will be red.@D_3_IMG_009_DIAGRAM_screen-display-red_measurement
+
+2.4 In case of a short or open circuit failure, the screen color will be red and either the "SHORT CIRCUIT' or 'DIODE BREAKDOWN' message will be displayed correspondingly. @D_3_IMG_010_DIAGRAM_screen-display-short-circuit-error @D_3_IMG_011_DIAGRAM_screen-display-diode-breakdown-error
 
 5.3. Tester setup
-The device assesses the diode performance on the basis of the forward voltage drop value (“Vf”) and is specially calibrated to make it usable for any operator who doesn’t have sufficient knowledge of the diode parameters and characteristics. Threshold values can be changed at the user’s option.
-Enter the “Settings” menu as follows:
-@D_3_IMG_012 @D_3_IMG_013
-Figure 5. Color threshold setting menu.
+The device assesses the diode performance on the basis of the forward voltage drop value ("Vf") and is specially calibrated to make it usable for any operator who doesn't have sufficient knowledge of the diode parameters and characteristics. Threshold values can be changed at the user's option.
+Figure 5. Color threshold setting menu. @D_3_IMG_012_DIAGRAM_color-threshold-setting-menu_fig5 @D_3_IMG_013_DIAGRAM_threshold-values-adjustment_fig5
 
+Enter the "Settings" menu as follows:
 1) Turn the device off.
-2) Press and hold down the encoder button (“3” – Fig.1).
+2) Press and hold down the encoder button ("3" – Fig.1 @D_3_IMG_001_PHOTO_MS021-tester-general-view_fig1).
 3) Turn the device on. A setup mode will be activated.
 4) Threshold values for either a faultless diode (green color of the screen) or a faulty one (red color of the screen) can be changed in this mode.
 5) The selected threshold value can be changed by turning the encoder button clockwise or counterclockwise.
-6) To save the selected settings, press and hold down the encoder button until the device enters the operating mode and the “CONNECT PROBE TO DIODE” message appears on the screen.
-7) Turn the tester off to exit the setup menu. The settings won’t be saved.
+6) To save the selected settings, press and hold down the encoder button until the device enters the operating mode and the "CONNECT PROBE TO DIODE" message appears on the screen.
+7) Turn the tester off to exit the setup menu. The settings won't be saved.
 
 6. TESTER MAINTENANCE
-The TESTER is designed for a long operation life and doesn’t have any special maintenance requirements. At the same time, to ensure the maximum operation life, the regular monitoring of the tester technical condition should be made as follows:
+The TESTER is designed for a long operation life and doesn't have any special maintenance requirements. At the same time, to ensure the maximum operation life, the regular monitoring of the tester technical condition should be made as follows:
 - conformity of the environmental conditions to the requirements for tester operation (temperature, humidity, etc.);
 - diagnostic cable visual inspection;
 - condition of the supply cable (visual inspection).
@@ -125,10 +115,10 @@ Use soft tissues or wipe cloths to clean the surface of the device with neutral 
 7. TROUBLESHOOTING GUIDE
 The below chart contains the description of potential malfunctions and troubleshooting methods:
 Failure symptom	Potential cause	Troubleshooting tips
-1. Tester doesn’t turn on.	The power connector came off.	Check whether the connection is securely maintained.
+1. Tester doesn't turn on.	The power connector came off.	Check whether the connection is securely maintained.
 	The fuse burnt out.	Replace the fuse.
-2. “PROBE PROBLEM” message appears when the tester is on.	The diagnostic cable is faulty (damaged).	Replace the diagnostic cable.
-3. “DIODE BREAKDOWN” message appears when the probes are open.	Loose connection on the diagnostic cable connector.	Recover the contact.
+2. "PROBE PROBLEM" message appears when the tester is on.	The diagnostic cable is faulty (damaged).	Replace the diagnostic cable.
+3. "DIODE BREAKDOWN" message appears when the probes are open.	Loose connection on the diagnostic cable connector.	Recover the contact.
 		Replace the diagnostic cable.
 4. The tested parameters are displayed incorrectly.	Loose connection on the diagnostic cable connector.	Recover the contact.
 	Software error.	Contact technical support.

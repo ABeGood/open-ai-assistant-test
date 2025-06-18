@@ -1,6 +1,5 @@
-MS200
-DEVICES FOR REFUELING SHOCK ABSORBERS
-@D_6_IMG_000
+MS200 DEVICES FOR REFUELING SHOCK ABSORBERS
+@D_6_IMG_000_PHOTO_MS200-device-for-refueling-shock-absorbers_cover
 
 USER MANUAL
 
@@ -27,9 +26,8 @@ Metal pin 95-099B	100
 User Manual (card with QR code)	1
 
 4. DEVICE DESCRIPTION
-The device consists of the following main elements (fig. 1):
-@D_6_IMG_001
-Figure 1. Main elements of the device
+The device consists of the following main elements (fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1): 
+Figure 1. Main elements of the device @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1
 1 – Base.
 2 – Clamping mechanism.
 3 – Support stop.
@@ -42,6 +40,7 @@ Figure 1. Main elements of the device
 11 – Marker.
 12 – Marker adjustment screw.
 13 – Support stands.
+@D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1
 
 5. APPROPRIATE USE
 1. Use the device only for its intended purpose (see Section 1).
@@ -58,51 +57,45 @@ WARNING! The manufacturer is not responsible for any damage or injury to human h
 The device is delivered packaged. Remove all packaging materials. The packaging materials are fully recyclable; collect them in designated areas for separate waste collection.
 The device should be placed on a table and securely fastened to it using bolts (fastening elements are not included in the package). 
 ATTENTION! When installing or moving the device, do not hold it by its moving parts.
-To operate the device, a gas supply system must be prepared, which includes (see Fig. 2):
+To operate the device, a gas supply system must be prepared, which includes (see Fig. 2 @D_6_IMG_002_DIAGRAM_gas-supply-system-components_fig2): 
 1 – Quick-release coupling (female);
 2 – Valve;
 3 – Pressure gauge;
 4 – High-pressure hose connected to a compressed nitrogen cylinder.
-
-@D_6_IMG_002
-Figure 2
+Figure 2 @D_6_IMG_002_DIAGRAM_gas-supply-system-components_fig2
 
 6. PROCEDURE FOR GAS FILLING OPERATIONS 
 1. Releasing Gas from the Shock Absorber. This procedure is performed before disassembling the shock absorber for repair.
-1.1. Place the shock absorber on the support stands (pos. 13, Fig. 1) and secure it in the device using the clamping mechanism (pos. 2, Fig. 1).
-@D_6_IMG_003
-1.2. Place a marker (pos. 11, Fig. 1) on the cylindrical surface of the shock absorber body as close as possible to its bottom and use a hammer to make an indentation (center punch mark).
-@D_6_IMG_004
-1.3. Drill a 3.8 mm hole in the shock absorber body (gas chamber), using the indentation as a guide. This will release the gas (in some cases, a gas-oil mixture) inside the shock absorber.
-@D_6_IMG_005
+1.1. Place the shock absorber on the support stands (pos. 13, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1) and secure it in the device using the clamping mechanism (pos. 2, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1). @D_6_IMG_003_PHOTO_shock-absorber-placement-clamping_procedure
+
+1.2. Place a marker (pos. 11, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1) on the cylindrical surface of the shock absorber body as close as possible to its bottom and use a hammer to make an indentation (center punch mark). @D_6_IMG_004_PHOTO_marker-placement-center-punch_procedure
+
+1.3. Drill a 3.8 mm hole in the shock absorber body (gas chamber), using the indentation as a guide. This will release the gas (in some cases, a gas-oil mixture) inside the shock absorber. @D_6_IMG_005_PHOTO_drilled-hole-shock-absorber-housing_result
 Hole in the shock absorber housing
 1.4. Remove the shock absorber from the device and proceed with the repair operations.
 2. Filling the shock absorber with gas. This procedure is performed after all repair operations as the final stage of the repair.
 2.1. Place the shock absorber on the support stands (pos. 13, Fig. 1) and secure it in the device using the clamping mechanism (pos. 2, Fig. 1).
-2.2. Insert and hammer a plastic plug (95-099A, included in the device kit) into the previously drilled hole in the shock absorber body.
-@D_6_IMG_006
+2.2. Insert and hammer a plastic plug (95-099A, included in the device kit) into the previously drilled hole in the shock absorber body. @D_6_IMG_006_PHOTO_plastic-plug-insertion_procedure
 
-2.3. Insert a metal pin (95-099B, included in the device kit) into the filling module nozzle (pos. 9, Fig. 1). The pin is held in place by a magnet.
-@D_6_IMG_007
-2.4. Unscrew the press-fit screw (pos. 7, Fig. 1) until the pin is fully seated inside the filling nozzle.
-2.5. Position the filling nozzle over the hole with the plastic plug. Then, using the locking nuts (pos. 6 and 8, Fig. 1), press the nozzle against the plug.
-@D_6_IMG_008
-2.6. Connect the gas supply system to the quick-release coupling. Then, open the valve and fill the shock absorber. The required filling pressure is adjusted using the pressure regulator on the gas cylinder.
-@D_6_IMG_009
-2.7. Using the press-fit screw (pos. 7, Fig. 1), press the metal pin into the plastic plug (95-099A). 
-@D_6_IMG_010
+2.3. Insert a metal pin (95-099B, included in the device kit) into the filling module nozzle (pos. 9, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1). The pin is held in place by a magnet. @D_6_IMG_007_PHOTO_metal-pin-insertion-filling-nozzle_procedure
+
+2.4. Unscrew the press-fit screw (pos. 7, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1) until the pin is fully seated inside the filling nozzle.
+2.5. Position the filling nozzle over the hole with the plastic plug. Then, using the locking nuts (pos. 6 and 8, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1), press the nozzle against the plug. @D_6_IMG_008_PHOTO_filling-nozzle-positioning-over-plug_procedure
+
+2.6. Connect the gas supply system to the quick-release coupling. Then, open the valve and fill the shock absorber. The required filling pressure is adjusted using the pressure regulator on the gas cylinder. @D_6_IMG_009_PHOTO_gas-supply-system-connection_procedure
+
+2.7. Using the press-fit screw (pos. 7, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1v), press the metal pin into the plastic plug (95-099A). @D_6_IMG_010_PHOTO_metal-pin-pressing-into-plug_procedure
+
 2.8. Close the gas supply valve and disconnect it from the device.
-2.9. Unscrew the press-fit screw (pos. 7, Fig. 1), loosen the locking nuts (pos. 6 and 8, Fig. 1), and move the filling mechanism aside.
-2.10. Use light hammer blows to fully seat the pin. After this, the shock absorber can be removed from the device and undergo a final performance check on the MS201 test stand.
+2.9. Unscrew the press-fit screw (pos. 7, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1), loosen the locking nuts (pos. 6 and 8, Fig. 1 @D_6_IMG_001_PHOTO_MS200-device-main-elements_fig1), and move the filling mechanism aside.
+2.10. Use light hammer blows to fully seat the pin. After this, the shock absorber can be removed from the device and undergo a final performance check on the MS201 test stand. @D_6_IMG_011_PHOTO_pin-seat
 
 7. DEVICE MAINTENANCE
 The device is designed for long-term operation. To ensure its durability and reliable performance, the following maintenance operations must be carried out:
 1. At the end of each work shift, it is recommended to clean the device from metal shavings and other contaminants using a soft brush or cloth.
 2. At least once every six months, lubricate the moving joints with grease.
-3. If it becomes necessary to replace the sealing elements of the filling nozzle (pos. 9, Fig. 1), the nozzle should be removed from the filling mechanism housing. Before removing the nozzle, loosen and unscrew the stopper (pos. 1, Fig. 3).
-
-@D_6_IMG_013
-Figure 3
+3. If it becomes necessary to replace the sealing elements of the filling nozzle (pos. 9, Fig. 1), the nozzle should be removed from the filling mechanism housing. Before removing the nozzle, loosen and unscrew the stopper (pos. 1, Fig. 3 @D_6_IMG_013_PHOTO_nozzle-maintenance-stopper-removal_fig3). 
+Figure 3 @D_6_IMG_013_PHOTO_nozzle-maintenance-stopper-removal_fig3
 
 8. DISPOSAL
 Equipment deemed unfit for use must be disposed of.

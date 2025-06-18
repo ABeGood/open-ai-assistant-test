@@ -38,7 +38,7 @@ Figure 2. Bench enclosure after removing the rear panel @D_0_IMG_003_SHEMATIC_MS
 
 3. Install mounting brackets for securing the power supply unit. 
 - Attach the brackets to the inner partition of the housing using M6 nuts.
-- When installing, position the brackets to the extreme holes according to figure 3. 
+- When installing, position the brackets to the extreme holes according to figure 3 @D_0_IMG_004_SHEMATIC_Mounting-the-brackets-MS005-Bench_fig3. 
 Figure 3. Mounting the brackets @D_0_IMG_004_SHEMATIC_Mounting-the-brackets-MS005-Bench_fig3
 
 4. Install the RSP-3000-48 power supply unit on the brackets (see figure 4 @D_0_IMG_005_SCHEMATIC_Install-power-supply-unit-on-brackets_fig4). When installing, position the power supply unit so that the wires are located on the left side.

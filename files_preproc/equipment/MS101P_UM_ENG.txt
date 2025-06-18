@@ -1,7 +1,6 @@
-MS101P
-FLUSHING MACHINE FOR CAR AIR CONDITIONING SYSTEM
+MS101P FLUSHING MACHINE FOR CAR AIR CONDITIONING SYSTEM
 
-@D_4_IMG_000
+@D_4_IMG_000_PHOTO_MS101P-flushing-machine-for-car-AC_general-view
 
 INTRODUCTION
 Thank you for choosing MSG Equipment products.
@@ -25,7 +24,7 @@ Maximum output pressure of the station pump, bar	7
 Working gas for system drying after flushing	compressed nitrogen (external source)
 Working pressure at the nitrogen cylinder regulator outlet	7...8 bar (100...110 psi)
 Filtering element	polypropylene
-Filtering element size, mm (inch)	127 (5”)
+Filtering element size, mm (inch)	127 (5")
 Recommended micron rating of the filtering element, μm	10 – 50
 Hose length, m	2.5
 Car connection fitting	universal
@@ -39,19 +38,17 @@ Repair kit – set of diaphragms for BML pump (2 pcs.)	1
 User Manual (card with QR code)	1
 
 4. STATION DESCRIPTION
-The station consists of the following main elements (Fig. 1):
+The station consists of the following main elements (Fig. 1 @D_4_IMG_001_PHOTO_MS101P-station-general-view_fig1): 
 1 – Swivel wheels with brakes. The brake is used to fix the station in place.
 2 – "HP" valve – opens the flow of flushing liquid.
 3 – Pump control valve.
 4 – Filler neck cap.
 5 – Manometer – indicates the pressure of the flushing liquid.
 6 – "N2" valve – opens the flow of nitrogen to remove residual flushing liquid.
-@D_4_IMG_001
-Figure 1. General view of the station
+Figure 1. General view of the station @D_4_IMG_001_PHOTO_MS101P-station-general-view_fig1
 
-On the rear side of the station are the following elements (Fig. 2):
-@D_4_IMG_002
-Figure 2
+On the rear side of the station are the following elements (Fig. 2 @D_4_IMG_002_PHOTO_MS101P-station-rear-view_fig2): 
+Figure 2 @D_4_IMG_002_PHOTO_MS101P-station-rear-view_fig2
 
 1 – Nitrogen connection fitting.
 2 – Compressed air connection fitting.
@@ -87,13 +84,12 @@ Before operating the station:
 6. AIR CONDITIONING SYSTEM FLUSHING
 Typically, flushing the air conditioning system is a step in the repair or maintenance of the air conditioning system, which must be carried out strictly following the work regulations.
 Before flushing the system, according to the work regulations, it is necessary to remove components from the air conditioning system that are not subject to flushing: the compressor, the thermostatic expansion valve (TXV) or orifice tube, the evaporator, the filter-drier, and the condenser.
-The air conditioning system is flushed in three stages. At each stage, the pipelines in the sections are flushed (see Fig. 3):
+The air conditioning system is flushed in three stages. At each stage, the pipelines in the sections are flushed (see Fig. 3 @D_4_IMG_003_DIAGRAM_car-air-conditioning-system-diagram_fig3): 
 from the compressor pos. 1 to the TXV valve pos. 2 (section marked in red);
 from the TXV valve pos. 2 to the filter-drier pos. 4 (section marked in green);
 from the compressor pos. 1 to the condenser pos. 5 (section marked in blue).
 
-@D_4_IMG_003
-Figure 3. Car air conditioning system diagram:
+Figure 3. Car air conditioning system diagram @D_4_IMG_003_DIAGRAM_car-air-conditioning-system-diagram_fig3:
 
 1 – Compressor; 2 – TXV valve; 3 – Evaporator; 4 – Filter-drier; 5 – Condenser.
 
@@ -108,8 +104,7 @@ WARNING! If the filter is highly contaminated, it is recommended to replace the 
 5. Perform the third flushing cycle for 10-20 minutes.
 6. Continue flushing cycles until the filter remains clean.
 
-@D_4_IMG_004
-Figure 4. Filtering element after the first flushing cycle (left) and after the final flushing cycle (right).
+Figure 4. Filtering element after the first flushing cycle (left) and after the final flushing cycle (right). @D_4_IMG_004_PHOTO_filtering-element-before-after-flushing_fig4
 
 7. After completing the flushing, it is necessary to remove the remaining flushing liquid from the air conditioning system. To do this:
 7.1. Connect compressed nitrogen to the station. The "HP" valve must be closed, and the pump must be off.
@@ -131,6 +126,3 @@ Equipment deemed unfit for use must be disposed of.
 The station does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
 Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
 Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.
-
-
-
