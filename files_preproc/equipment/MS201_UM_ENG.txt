@@ -1,0 +1,437 @@
+MS201 TEST BENCH FOR DIAGNOSTICS OF SHOCK ABSORBERS @D_17_IMG_000_PHOTO_MS201-test-bench-for-shock-absorbers_cover
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product by ТМ MSG Equipment.
+The actual User Manual contains information on application, technical characteristics, package contents, design of MS201 and all the important details regarding its operation.
+It is strongly recommended to learn carefully the actual User Manual before putting MS201 (hereinafter, "the test bench") in operation, take special training at the equipment manufacturing facility if necessary.
+Due to the continual improvement of the test bench structure and configuration as well as firmware upgrade, some changes might not be reflected in this User Manual. The test bench firmware will require update. Later, firmware support and maintenance can be discontinued without prior notice to users.
+
+1. APPLICATION
+The test bench is designed to assess technical condition of shock absorbers in passenger cars through taking their force-displacement and force-velocity characteristics.
+
+The test bench for shock absorbers is used to do the following:
+- establish whether a faulty unit should be repaired or replaced;
+- check on the quality of repair;
+- assess the conformity of shock absorber performance to its technical specifications;
+- conduct prolonged tests.
+
+A shock absorber can be tested on the test bench both in manual and automatic modes.
+
+The test bench functionality enables the following:
+- test all types of passenger car shock absorbers having dumping force up to 1000 kg and equipped with different mounting mechanisms;
+- diagnostics of electronically controlled shock absorbers using the MS203 adapter;
+- save test-results;
+- compare test results with reference data (before and after repair);
+- generate test reports and print them on an external printer.
+
+2. SPECIFICATIONS
+Dimensions (L×W×H), mm	970×480×2500
+Weight, kg	350
+Power source	- three-phase electrical network; - compressed air
+Supply voltage, V	400
+Drive power, kW	3.7
+Working pressure of pneumatic line, bar	up 6 to 8
+Test bench control	on touch screen
+Shock absorber testing
+Size of tested shock absorber	maximum, mm	780
+Size of tested shock absorber	minimum, mm	250
+Height adjustment of shock absorber fixing	manual
+Shock absorber shaft stroke, mm	adjustable, from 50 to 150
+Shock absorber shaft stroke adjustment	manual
+Bound/rebound maximum load, kg	1000
+Frequency of shock absorber vibrations	Maximum, min-1	180
+Frequency of shock absorber vibrations	Minimum, min-1	10
+Shock absorber piston speed (at 50 mm travel)	Maximum, m/s	0.477
+Shock absorber piston speed (at 50 mm travel)	Minimum, m/s	0.026
+Shock absorber temperature measuring	available
+Additional features
+Saving diagnostic results	available
+Data printout	available
+Software update	available
+Connection to the Internet	Wi-Fi (802.11 a/b/g/ac)
+Connection of external devices	2 x USB 2.0
+
+3. DELIVERY SET
+
+The delivery set includes:
+Item name	Number of pcs
+Test bench MS201	1
+MS203 adapter (set)	1
+Pneumatic clamp foot control	1
+Handle for fixing pneumatic clamp lock nuts (see fig. 1 @D_17_IMG_001_PHOTO_handles-for-fixing-pneumatic-clamp-lock-nuts_fig1)	2
+Set of changeable fittings for shock absorber (see fig. 2 @D_17_IMG_002_PHOTO_shock-absorber-changeable-fittings_fig2)	1
+Universal prism for fixing shock absorbers with rod end (see fig. 3 @D_17_IMG_003_PHOTO_universal-prisms-for-fixing-shock-absorbers_fig3)	2
+Universal prism for fixing shock absorbers with uncalibrated holes (for shock absorbers with irregular shafts) (see fig. 3 @D_17_IMG_003_PHOTO_universal-prisms-for-fixing-shock-absorbers_fig3)	1
+Temperature sensor strip	1
+Vibration-damping support	4
+Wi-Fi module	1
+Bench door keys	2
+Power outlet 400V/16A	1
+User Manual (card with QR code)	1
+
+Figure 1. Handles for fixing pneumatic clamp lock nuts @D_17_IMG_001_PHOTO_handles-for-fixing-pneumatic-clamp-lock-nuts_fig1
+
+Figure 2. Shock absorber changeable fittings for lower pneumatic clamp (for various types of shock absorber mounting mechanisms) @D_17_IMG_002_PHOTO_shock-absorber-changeable-fittings_fig2
+
+Figure 3. Universal prisms for fixing shock absorbers: @D_17_IMG_003_PHOTO_universal-prisms-for-fixing-shock-absorbers_fig3
+1 - universal prisms for fixing shock absorbers with rod ends;
+2 - universal prism for fixing shock absorbers with uncalibrated holes (for shock absorbers with irregular shafts). The prism is a rough work piece which is to be processed (through tapping) into a special shock absorber lock.
+
+4. TEST BENCH DESCRIPTION
+The test bench consists of the following main components (Fig.4 @D_17_IMG_004_PHOTO_MS201-test-bench-main-components_fig4): 
+Figure 4. Main components of the test bench
+1 – mechanical compartment;
+2 – test compartment where a shock absorber is located during diagnostics;
+3 – display for diagnostic data output and test bench control;
+4 – control panel with ON/OFF switch, emergency button, and pneumatic clamp control buttons;
+5 – electrical compartment;
+6 – pneumatic clamp foot control performing the same functions as the respective buttons on the control panel.
+
+All the operations with the tested shock absorber are carried out in the test compartment (Fig.5 @D_17_IMG_005_PHOTO_test-compartment_fig5) equipped as follows:
+Figure 5. Test compartment @D_17_IMG_005_PHOTO_test-compartment_fig5
+1 – upper pneumatic clamp;
+2 – temperature sensor and strip for fastening it to a shock absorber;
+3 – lower pneumatic clamp;
+4 – lower clamp lock;
+5 – rotation wheel for lower clamp height adjustment;
+6 – retainer for lower clamp height adjustment.
+
+A shock absorber is secured inside the test compartment with pneumatic clamps consisting of the components shown in Fig. 6 @D_17_IMG_006_DIAGRAM_upper-pneumatic-clamp-components_fig6 and 7 @D_17_IMG_007_DIAGRAM_lower-pneumatic-clamp-components_fig7.
+Figure 6. Components of upper pneumatic clamp: @D_17_IMG_006_DIAGRAM_upper-pneumatic-clamp-components_fig6
+1 – linear cam; 2 – guide slide block; 3 – slide block; 4 – lock nut; 5 – push rod.
+
+The lower pneumatic clamp is equipped with changeable fittings (Fig.7) @D_17_IMG_007_DIAGRAM_lower-pneumatic-clamp-components_fig7 for securing shock absorbers with different mounting mechanisms.
+Figure 7. Components of lower pneumatic clamp: @D_17_IMG_007_DIAGRAM_lower-pneumatic-clamp-components_fig7
+1 – linear cam; 2 – guide slide block; 3 – slide block; 4 – lock nut; 5 – push rod; 6 – socket set screw; 7 – mechanism for shock absorber fixing.
+
+The following elements are located on the control panel (Fig. 8 @D_17_IMG_008_PHOTO_control-panel_fig8): 
+Figure 8. Control panel @D_17_IMG_008_PHOTO_control-panel_fig8
+1 – pneumatic clamp control buttons;
+2 – EMERGENCY STOP button for emergency power cutoff;
+3 – OFF/ON switch for test bench activation/deactivation. OFF/ON switch is inoperative when EMERGENCY STOP button is pressed.
+
+In the bottom of the test bench rear panel there is a port for a compressed air supply hose (Fig. 9, n.1 @D_17_IMG_009_PHOTO_compressed-air-connection-port_fig9) and power cord (Fig. 9, n.2 @D_17_IMG_009_PHOTO_compressed-air-connection-port_fig9).
+Figure 9. Port for connection of supply hose for compressed air @D_17_IMG_009_PHOTO_compressed-air-connection-port_fig9
+
+Shock absorber stroke adjustment along with some other maintenance operations are carried out in the mechanical unit of the test bench (Fig.10 @D_17_IMG_010_PHOTO_mechanical-section-of-bench_fig10). The unit includes the following components:
+Figure 10. Mechanical section of the bench @D_17_IMG_010_PHOTO_mechanical-section-of-bench_fig10
+1 – position sensor;
+2 – puller shaft;
+3 – puller stroke adjustment mechanism;
+4 – bearing.
+
+4.1. Test bench menu
+The initial menu of the bench (Fig. 11 @D_17_IMG_011_DIAGRAM_initial-menu-of-bench_fig11) is activated when the door of the test area of the bench is opened and contains:
+Figure 11. The initial menu of the bench @D_17_IMG_011_DIAGRAM_initial-menu-of-bench_fig11
+1 - Pneumatic clamp control buttons.
+2 - Information field that displays the current values of the stroke of the piston, the force on the rod.
+3 - Button to switch to the bench setup menu.
+4 - Button to switch to «Comparison of results» the menu.
+5 - Button «Turn off the bench». This button turns off the computer of the bench, complete bench disconnection is carried out by the button «ON/OFF» on the control panel.
+
+The main menu of the bench (fig. 12 @D_17_IMG_012_DIAGRAM_bench-main-menu_fig12) contains:
+1 - Information field in which the status of the bench readiness for diagnosis is displayed. The following values can be displayed:
+«OK» - bench is ready for diagnostics;
+«Failed» - sensor calibration error;
+«Low pressure» - low pressure in pneumatic system.
+2 - Buttons to prepare the bench for diagnosis:
+«Test turnover» - when pressed, the bench will perform one operating cycle of the shock absorber and will calibrate the position sensor. After the test turnover is completed, diagnostics will be available.
+«Sensor calibration» - when pressed, the bench will calibrate the force sensor.
+3 - Select the diagnostic mode. The buttons become active after the test turn and successful calibration of the sensors.
+Figure 12. Bench main menu @D_17_IMG_012_DIAGRAM_bench-main-menu_fig12
+
+The bench configuration menu (fig. 13 @D_17_IMG_013_DIAGRAM_bench-configuration-menu_fig13) contains:
+1 - Shock absorber temperature thresholds:
+«Tmax» - the maximum temperature value, after which the diagnostic process will be stopped;
+«Tmin» - the value of the temperature below which the diagnostics of the shock absorber after exceeding the temperature «Tmax» will be available.
+2 - On/off reading of temperature sensor.
+3 - Company logo selection field on the results report.
+4 - Field for specifying the name of the company and the employee who performed the diagnostics in the results report.
+5 - Interface language selection field.
+6 - Strain gauge settings. These settings can only be changed in consultation with MSG equipment Support.
+7 - Button of exit to the bench operating system.
+8 - Field for setting units of measurements: force, temperature and displacement.
+Figure 13. The bench configuration menu @D_17_IMG_013_DIAGRAM_bench-configuration-menu_fig13
+
+The menu of the bench «Automatic mode» (fig. 14 @D_17_IMG_014_DIAGRAM_bench-automatic-mode-menu_fig14) contains:
+1 - Information field in which the results of measurements are displayed graphically. If necessary, you can extend the selected feature fragment. This field contains two buttons:
+@D_17_IMG_015_DIAGRAM_chart-scale-reset-button - returns the original scale of the chart display;
+@D_17_IMG_016_DIAGRAM_chart-transition-button - transition between charts.
+2 – Automatic mode menu:
+«Settings» - setting parameters for recording the shock absorber characteristic;
+«Save» - go to the menu of saving diagnostic results.
+WARNING! Running the diagnostic process removes previous results if they have not been saved.
+«Print» - switch in the menu of printing the results of diagnostics.
+«Clean» - Removes current diagnostic results.
+«Open» - Opens stored diagnostic results.
+3 - «START» button starts the process of recording the measured data, the results are displayed on the screen in real time. Pressing again stops the process.
+4 - Information field in which the numerical values of the measured parameters are displayed in.
+5 - Button to go to the main menu.
+6 - Switch to manual mode.
+Figure 14. Menu of the bench «Automatic mode» @D_17_IMG_014_DIAGRAM_bench-automatic-mode-menu_fig14
+
+«Manual mode» menu of the bench contains (fig. 15 @D_17_IMG_017_DIAGRAM_manual-mode-menu_fig15):
+1 - information field in which graphical parameters of the shock absorber operation;
+2 - button to go to «Automatic mode» and «Clean» - removes current measurement results;
+3 - button returns the original scale of the chart display;
+4 -field in which the shock absorber frequency is specified:
+• 60/120/180 standard shock absorber diagnostic speeds;
+• buttons «+» and «-» you can specify random frequency of oscillations;
+5 - button «STOP» - stops the drive of the bench;
+6 - information field in which the measured parameters are displayed.
+Figure 15. Diagnostic results comparison screen @D_17_IMG_017_DIAGRAM_manual-mode-menu_fig15
+
+5. APPROPRIATE USE
+1. The bench is used only for its intended purpose (see sect. 1).
+2. In the test area, it is prohibited to carry out any repair work on the shock absorber. This may lead to the breakdown of the bench.
+3. The shock absorber mounts securely in the pneumatic clamp. Do not allow any backlash between the shock absorber and pneumatic clamps. This will result in unreliable diagnostic data and a breakdown of the bench.
+4. It is prohibited to test a knowingly defective shock absorber and shock absorber with a spring.
+5. The bench shutdown should be performed through the interface of the service program, by clicking on the «Turn off the bench». After the monitor goes out, you can turn the «ON/OFF» button into the «OFF» position.
+6. Use the button «EMERGENCY STOP» only if necessary to stop the diagnostic process in an emergency.
+7. The bench operating is prohibited in a defective condition and not connected to the ground.
+8. To avoid damage or failure of the bench, it is not allowed to make changes to the bench at one's discretion. The bench cannot change by anyone other than the official manufacturer.
+9. Computer equipment and software use not designed to work with this bench voids warranty obligations (even if the software and equipment were subsequently deleted). Only the original MSG Equipment software can be installed on this hardware.
+10. In the case of a breakdown in the operation of the bench, it should be stopped further and contact the manufacturer or the sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety Guidelines
+1. The operation of the bench is allowed only for individuals who have received special training, obtained the right to work with benches of specific types, and undergone safety training on proper procedures and methods.
+2. Do not power on the bench with open doors of mechanical and/or electrical compartments. It is also FORBIDDEN to open the door of the electrical compartment until 10 minutes after disconnecting the power.
+3. Exercise caution when installing and removing the shock absorber to prevent the unit from falling.
+4. Maintain a clean and well-lit workspace with sufficient free space at all times.
+5. Before performing any maintenance work on the bench, disconnect it from the electrical network.
+6. FORBIDDEN for electrical and fire safety:
+• Connect the bench to an electrical network without proper overload protection or with a malfunctioning one.
+• Use an outlet without grounding for connecting the bench.
+• Use extension cords to connect the bench to the electrical network.
+• Operate the bench in a faulty condition.
+• Perform repairs or modifications to the bench independently, as it may lead to serious damage and void the warranty.
+7. Do not leave the bench with the drive running unattended.
+
+5.2. Test bench mounting and setup
+The test bench is delivered in packaging. Unpack the test bench and make sure it has no damages. Packaging materials are fully recyclable and should be wasted separately from domestic garbage.
+Position the test bench upright (use a leveling gauge) on the level floor. When moving the test bench, do not hold it by its movable or perforated parts. Put vibration-absorbing pads under the test bench legs.
+Keep the distance of at least 0.5 meters between the test bench and the room walls or any other objects. The test bench ensures safe operation in the temperature range between +10 °С and +40 °С and relative humidity of 10-90% (without water condensation).
+
+Before launching the test bench, connect it as follows:
+1. Electrical network (400V): Use the socket included with the bench for connection. Follow the internal markings (L1, L2, L3, N, PE) when connecting the socket to the power supply network.
+2. Pneumatic line with a pressure of 6 to 8 bar.
+
+6. SHOCK ABSORBER DIAGNOSIS
+
+6.1. Preparing the test bench and shock absorber for mounting
+Install one of the sets of fixtures (see Figure 2) corresponding to the shock absorber attachment type into the lower pneumatic clamp (see Figure 16 @D_17_IMG_018_DIAGRAM_shock-absorber-mount-types_fig16). If the upper shock absorber attachment has a threaded part, screw the prism onto it (see Figure 3 @D_17_IMG_003_PHOTO_universal-prisms-for-fixing-shock-absorbers_fig3).
+Figure 16. Types of shock absorber mounts and a combination of devices for mounting them on the bench @D_17_IMG_018_DIAGRAM_shock-absorber-mount-types_fig16
+
+To replace the shock absorber fixation device in the lower pneumatic clamp, it is necessary to unscrew the mounting screw pos.6 fig. 5 @D_17_IMG_005_PHOTO_test-compartment_fig5 and pull out the device. Next, set the device to stop and spin the installation screw.
+
+Figure 17. Replacement of the shock absorber fixation in the lower pneumatic clamp. @D_17_IMG_019_PHOTO_shock-absorber-fixation-replacement-step1_fig17 @D_17_IMG_020_PHOTO_shock-absorber-fixation-replacement-step2_fig17
+
+6.2. Mounting the shock absorber on the test bench
+The shock absorber shall be mounted on the bench in the following sequence:
+1. Turn on the bench.
+2. Pull the shaft out of the shock absorber to the maximum value.
+3. Place and fix the shock absorber in the upper clamp with the shaft up, for this:
+3.1 Position the top mounting of the shock absorber (prism) coaxially with the pneumatic clamp pushers (see fig. 18 @D_17_IMG_021_PHOTO_correct-pneumatic-clamp-pusher-position_fig18) and «Clamp» it.
+3.2. Alternately rotating pushers (see pos.5 of Figure.4) position the shock absorber so that its shaft is located in the middle of the pneumatic clamp (Fig. 19 @D_17_IMG_022_PHOTO_shock-absorber-positioning-in-clamp_fig19). It is necessary to control the correct positioning of the cams (see pos. 1. fig. 4 @D_17_IMG_004_PHOTO_MS201-test-bench-main-components_fig4), they must be fully extended (see fig. 20 @D_17_IMG_023_PHOTO_pneumatic-clip-cams-incorrect-position_fig20a @D_17_IMG_024_PHOTO_pneumatic-clip-cams-correct-position_fig20b). 
+
+Figure 18. Correct position of pneumatic clamp pushers relative to shock absorber attachment before «clamping» @D_17_IMG_021_PHOTO_correct-pneumatic-clamp-pusher-position_fig18
+
+Figure 19. Shock absorber positioning in clamp @D_17_IMG_022_PHOTO_shock-absorber-positioning-in-clamp_fig19
+
+Figure 20. Position of the pneumatic clip cams in the «clamp» state a - not right; b - right. @D_17_IMG_023_PHOTO_pneumatic-clip-cams-incorrect-position_fig20a @D_17_IMG_024_PHOTO_pneumatic-clip-cams-correct-position_fig20b
+
+3.3. Additionally, tighten the pushers to the shock absorber mount (prism), and then tighten the lock nuts (see fig.21 @D_17_IMG_025_PHOTO_locking-nuts-tightening-in-clamp_fig21). 
+Figure 21. Tightening of the locking nuts in the clamp @D_17_IMG_025_PHOTO_locking-nuts-tightening-in-clamp_fig21
+
+4. Install and fix the shock absorber in the lower clamp, for this:
+4.1. Loosen the stopper of the lower clamp by turning the lever pos.4 fig. 5 @D_17_IMG_005_PHOTO_test-compartment_fig5 counterclockwise by 2 turns (see fig. 22 @D_17_IMG_026_PHOTO_bottom-clamp-stopper-loosening_fig22). 
+Figure 22. Loosening the bottom clamp stopper @D_17_IMG_026_PHOTO_bottom-clamp-stopper-loosening_fig22
+
+4.2. Loosen the stopper for adjusting the height of the lower clamp pos.6 fig. @D_17_IMG_005_PHOTO_test-compartment_fig5 by turning the lever counterclockwise (see fig. 23 @D_17_IMG_027_PHOTO_lower-clamp-height-adjustment-stopper-loosening_fig23). 
+Figure 23. Loosening the lower clamp height adjustment stopper @D_17_IMG_027_PHOTO_lower-clamp-height-adjustment-stopper-loosening_fig23
+
+4.3. While holding the pneumatic clamp from turning, use the lower pneumatic clamp height adjustment wheel to set the pneumatic clamp pushers coaxially with the lower shock absorber mount (prism) (see Fig. 24 @D_17_IMG_028_PHOTO_lower-pneumatic-clamp-height-adjustment_fig24). 
+Figure 24. Adjusting the height of the lower pneumatic clamp @D_17_IMG_028_PHOTO_lower-pneumatic-clamp-height-adjustment_fig24
+
+4.4. «Clamp» the pneumatic clamp and position the shock absorber along the middle of the pneumatic clamp in the same way as with the upper clamp.
+4.5. In addition, tighten the pushers to the shock absorber mount (prism), and then tighten the lock nuts.
+4.6. By turning the height adjustment wheel of the lower pneumatic clamp counterclockwise, set the working height of the shock absorber. Usually it is 3 - 5 turns, but at least 2 turns.
+4.7. Fix the height adjustment stopper and the lower clamp stopper.
+5. Place and clamp the temperature sensor on the shock absorber (Fig. 25 @D_17_IMG_029_PHOTO_installed-temperature-sensor_fig25).
+6. Close the test chamber door.
+Figure 25. Installed temperature sensor. @D_17_IMG_029_PHOTO_installed-temperature-sensor_fig25
+
+WARNING! Improper fixing of shock absorbers in pneumatic clamps is the most common cause of the test bench malfunction.
+
+6.3. Recording shock absorber characteristics
+The working diagram of the shock absorber helps identify any deviations in its operation. Recording the working diagram is done with the piston's movement ranging from 50 to 100 mm. The temperature of the shock absorber before testing should be between 15 and 30 °C.
+The sequence of operations, is as follows:
+1. On the main screen, press the "Test turnover" button and then "Sensor calibration" (see position 2, Figure 12 @D_17_IMG_012_DIAGRAM_bench-main-menu_fig12). After this, diagnostic modes become active.
+WARNING! During the test turnover, the operator's hand should be on the emergency shutdown button to instantly stop the bench's engine in case of an emergency.
+2. Before recording the working diagram, perform at least four cycles of shock absorber pumping at a frequency of oscillations from 10 to 30 cycles/min. To do this, activate the "Manual mode." In this menu, use the "+" button (see position 4, Figure 15 @D_17_IMG_017_DIAGRAM_manual-mode-menu_fig15) to set the required frequency of oscillations. After completing the desired number of cycles, stop the bench's drive with the "Stop" button.
+3. Activate the "Automatic mode." Then, go to the settings of this mode using the "Settings" button. In this menu, set parameters such as frequency of oscillations and duration for each stage. The maximum piston speed parameter is informational and is calculated automatically. To change the value, press the field with the value, delete the current value using the keyboard, and then enter the new one. The established sequence of operations can be saved and reused in the future.
+Figure 26. Setup menu for recording the working diagram of the shock absorber @D_17_IMG_030_DIAGRAM_setup-menu-recording-working-diagram_fig26
+
+3.1. For a more objective assessment of the shock absorber's condition, check its operation with closed and opening rebound and compression valves.
+3.2. Record the working diagram with closed valves at a maximum piston speed within the range of 0.08 to 0.20 m/s, corresponding to frequencies of:
+- 31 to 95 cycles/min with a piston stroke of 50 mm;
+- 20 to 47 cycles/min with a piston stroke of 100 mm
+3.3. Record the working diagram with opening rebound and compression valves at a maximum piston speed within the range of 0.25 to 0.52 m/s, corresponding to frequencies of:
+- 95 to 180 cycles/min with a piston stroke of 50 mm;
+- 47 to 98 cycles/min with a piston stroke of 100 mm.
+4. During the recording of the working diagram, pay attention to the sounds produced by the shock absorber. Knocking, squeaking, and other noises are not allowed. "Hissing" caused by fluid leakage through the valves is acceptable.
+5. During the recording of the working diagram, fluid leakage through the rod seals (aside from the inevitable lubrication of the sliding surfaces) is not allowed. Fluid leakage indicates a faulty shock absorber.
+6. After completing all recording stages, the bench's drive will stop. Save the recorded diagram by (see Figure 27 @D_17_IMG_031_DIAGRAM_bench-settings-menu_fig27): 
+Accessing the corresponding menu;
+Specifying the storage location (position 1);
+Creating a new folder if needed (position 2) by entering the folder name and pressing the "Add" button;
+Entering the result name (position 3) and pressing the "Add" button.
+Figure 27. Bench settings menu. @D_17_IMG_031_DIAGRAM_bench-settings-menu_fig27
+1 – Path to saved results.
+2 – Field for entering a new folder name.
+3 – Field for entering a new result name.
+4 – Buttons for creating or deleting a result (folder).
+5 – Field for searching saved results.
+6 – Button to call the on-screen keyboard.
+
+7. The assessment of the shock absorber's condition is performed by comparing the obtained working diagram with a reference diagram recorded from a new shock absorber of the same manufacturer.
+The process of comparing results is carried out in the "Testing results" menu (see Figure 28 @D_17_IMG_032_DIAGRAM_diagnostic-results-comparison-screen_fig28). Use buttons "1," "2," and "3" to select the displayed graphs.
+A shock absorber is considered functional if the deviations in resistance forces from the values of the reference sample (new shock absorber) are within ±15% for rebound and ±20% for compression. Additionally, the diagram's characteristics should be similar.
+Figure 28. Diagnostic results comparison screen @D_17_IMG_032_DIAGRAM_diagnostic-results-comparison-screen_fig28
+
+7. DIAGNOSIS OF ELECTRONICALLY CONTROLLED SHOCK ABSORBERS
+The bench allows testing the functionality of electronically controlled shock absorbers using the MS203 adapter. The adapter provides the ability to manually control one or two solenoid valves of the shock absorber. The adapter can adjust the degree of solenoid valve opening from 10% to 95%.
+
+7.1. Description of the MS203 Adapter
+The adapter has the following connectors (see Fig. 29 @D_17_IMG_033_PHOTO_MS203-adapter-appearance_fig29): 
+1 – USB connector for communication with the bench.
+2 – Power connector (type 5.5 x 2.5 mm).
+3 – Connector for connecting diagnostic cables.
+Figure 29. Appearance of the adapter @D_17_IMG_033_PHOTO_MS203-adapter-appearance_fig29
+
+The adapter kit includes five special cables and one universal cable, which are designed to connect the adapter to the solenoid valves of the shock absorber being tested. Each special cable (see Fig. 30 @D_17_IMG_034_PHOTO_special-cable-connectors_fig30) is equipped with a connector for connection to the adapter (position 1) and a connector for connection to the unit under test (position 2).
+Figure 30 @D_17_IMG_034_PHOTO_special-cable-connectors_fig30
+
+The universal cable (see Fig. 31 @D_17_IMG_035_PHOTO_universal-cable-connectors_fig31) is equipped with a connector for connection to the adapter (position 2) and alligator clips (position 1).
+Figure 31 @D_17_IMG_035_PHOTO_universal-cable-connectors_fig31
+
+The universal cable has the following color coding:
+Red – common positive contact;
+Black and blue – PWM signal control of the solenoid valves.
+
+The adapter should be connected to the bench in the following order:
+1. Connect the adapter to the power supply unit included in the kit.
+2. Connect the adapter's power supply unit to a single-phase 230V network.
+3. Connect the adapter to the bench using a USB cable. After this, the "Manual Diagnosis" menu on the bench will display buttons for activating the solenoid valves and sliders for adjusting the valve opening degree (see Fig. 32 @D_17_IMG_036_DIAGRAM_manual-mode-menu-with-MS203-adapter_fig32). 
+Figure 32. Manual mode menu with the MS203 adapter connected @D_17_IMG_036_DIAGRAM_manual-mode-menu-with-MS203-adapter_fig32
+
+7.2. Diagnostic Procedure
+1. Install the shock absorber on the stand as described in section 6.2.
+2. Connect the cable to the adapter, then to the shock absorber solenoid valve connector.
+3. On the main menu screen press the "Test turnover" button and then "Sensor calibration" see item 2 fig. 12. 2 Fig. 12 @D_17_IMG_012_DIAGRAM_bench-main-menu_fig12. After that the diagnostic modes become active.
+WARNING! During the test turnover, the operator's hand must be on the emergency shutdown button of the stand to immediately stop the bench's motor in case of an emergency.
+4. Activate the "Manual mode" diagnostic mode.
+5. Pump the shock absorber by performing at least four compression cycles at a frequency of 10 to 30 min⁻¹.
+6. After pumping, set the compression frequency of the shock absorber to 95 to 180 min⁻¹.
+7. Activate the solenoid valve(s) using the "Valve" button.
+8. Gradually increase and decrease the degree of opening of the solenoid valve(s).
+8.1 The functionality of the solenoid valve(s) is determined by the operating diagram graph, which should change proportionally to the valve(s) opening degree.
+9. After completing the diagnostics, stop the stand drive, disconnect the cable from the shock absorber, and then it can be removed from the bench.
+
+8 TEST BENCH MAINTENANCE
+Test bench is intended for long-lasting operation under twenty-four-hour schedule. However, for trouble-free enduring operation it is essential to inspect the test bench and observe preventive measures described below with recommended intervals. Inspection and preventive measures should be carried out by a qualified specialist.
+Special attention should be paid to the following aspects of daily inspection:
+• Appropriate operation of the motor (no unusual sounds, vibration, etc.).
+• Appropriate ambient conditions for the test bench use (temperature, humidity, air pollution, vibration, etc.)
+• Correspondence of supply voltage range to the test bench operation requirements.
+Weekly inspection of the test bench must include the following:
+• Visual inspection of the bearing unit and puller shaft for traces of oil leaks.
+• Check the moving parts of the upper and lower pneumatic clamps for sufficient lubrication.
+
+8.1. Changing shock absorber working stroke
+Figure 31. Shock absorber stroke adjustment mechanism @D_17_IMG_037_PHOTO_shock-absorber-stroke-adjustment-mechanism_fig31
+The working stroke of the shock absorber shall be adjusted as follows:
+1. Turn on the bench.
+2. Open the test area door and the mechanical compartment door.
+3. Loosen the 4th bolt pos.1 fig. 31 @D_17_IMG_037_PHOTO_shock-absorber-stroke-adjustment-mechanism_fig31.
+
+4. The change in the working stroke is caused by the rotation of the adjustment screw pos.2 of fig. 31 @D_17_IMG_037_PHOTO_shock-absorber-stroke-adjustment-mechanism_fig31: counterclockwise - increase, clockwise - decrease.
+4.1. You need to control the value of the change of turn by the parameter «Position» on the initial menu of the bench. The value of the parameter «Position» should be changed to the value calculated by the formula:
+
+Value of change of parameter «Position» = (New working stroke - current working stroke)/2.
+
+WARNING! It is prohibited to set the shock absorber at more than 80% of its maximum stroke because this may cause the shock absorber and/or the bench to break down.
+5. Tighten 4 bolts pos.1.
+6. Close the mechanical compartment door
+
+8.2. Pneumatic clamps oiling
+Once a month check the lubrication of wear surfaces of linear cams (n.1, Fig. 6, 7 @D_17_IMG_006_DIAGRAM_upper-pneumatic-clamp-components_fig6 @D_17_IMG_007_DIAGRAM_lower-pneumatic-clamp-components_fig7) and glide slide blocks (n.2, Fig. 6, 7 @D_17_IMG_006_DIAGRAM_upper-pneumatic-clamp-components_fig6 @D_17_IMG_007_DIAGRAM_lower-pneumatic-clamp-components_fig7). Litol-24 is a commonly used grease. Other lithium-based greases are also
+
+8.3. Bearing unit oiling
+As the lubricating grease picks up dirt and loses its qualities with time, it should be refreshed every once in a while. The intervals at which the lubrication should be replaced or refreshed depend on the severity of use. However, the maximum interval shouldn't exceed two years. During the first two times, lubrication can be refreshed. Subsequently, it must be replaced. Litol-24 is a commonly used lubricant. Other lithium-based greases are also usable.
+To replenish the lubricating oil, use the nipple on the bearing unit (Fig.32 @D_17_IMG_038_PHOTO_nipple-on-bearing-unit_fig32) and a special syringe.
+Follow the instruction below to oil the bearing unit:
+1. Disconnect the test bench form a supply line and wait for 10 minutes.
+2. Open the door of the mechanical unit.
+3. Remove the cap from the nipple, having it and the adjoining surfaces previously cleaned from dirt and dust.
+4. Use a special syringe to inject grease into the nipple. Continue to pump until you see grease squeezing out from the bearing.
+5. Upon finishing, remove the remaining grease with a cleaning cloth.
+Figure 32. Nipple on the bearing unit @D_17_IMG_038_PHOTO_nipple-on-bearing-unit_fig32
+
+8.4. Puller shaft oiling
+The lubricant type as well as grease replenishment and changing schedule are similar to the ones used for bearing unit maintenance (Section 8.2).
+Follow the instruction below to oil the puller shaft:
+1. Disconnect the test bench form a supply line and wait for 10 minutes.
+2. Open the door of the mechanical unit.
+3. Clean the grease nipples (Fig.33 @D_17_IMG_039_PHOTO_grease-nipples-on-puller-shaft_fig33) and adjoining surfaces from dust and dirt.
+4. Screw off one of the grease nipples.
+5. Use a special syringe to inject grease into the nipple. Continue to pump until you see grease squeezing out from the bearing.
+6. Upon finishing, remove the remaining grease with a cleaning cloth. Screw in the grease nipple.
+Figure33. Grease nipples on the puller shaft @D_17_IMG_039_PHOTO_grease-nipples-on-puller-shaft_fig33.
+
+8.5. Gear motor inspection and maintenance
+Perform the following maintenance procedures:
+Every 500 hours of work or every month:
+1) Inspect the gear motor visually for possible oil leakage.
+2) Remove dust with a vacuum cleaner - the layer of dust accumulated on the gear motor cannot exceed 5mm thick.
+Every 5 years:
+Replace synthetic oil.
+
+8.6. Cleaning and care
+Use soft tissues or waste cloth to clean the test bench surfaces. Clean the touch screen with a special fibrous tissue and spray for display screens. Do not use any abrasive materials or solvents to avoid damage to the screen or corrosion.
+
+9. TROUBLESHOOTING GUIDE
+Below you will find the table with the possible problems and the solutions on their elimination.
+Problem	Causes	Solutions
+When you switch the test bench on, a three-pole circuit-breaker is actuated.	Test bench wiring is damaged	Contact technical support.
+When you switch the test bench on, a three-pole circuit-breaker is actuated.	Too much dust inside the test bench	Clean the test bench
+Unrealistic dynamogram indication.	Loose lock nut of force sensor fixation (pressure sensor)	Check force sensor fixation. Adjust if necessary
+Unrealistic dynamogram indication.	Loose fixation of position sensor	Check position sensor fixation. Adjust if necessary
+Excessive steady noise emanates from electrical unit in the process of test bench operation.	Damage of gear motor bearings	Replace bearings
+Excessive steady noise emanates from electrical unit in the process of test bench operation.	Foreign particles in oil	Check oil quality. Change oil if necessary
+Motor is on – a gear input shaft rotates, while an output shaft does not	No engagement in gear	Contact technical support.
+Oil leak through gear cover.	Loss of tightness of rubber gasket under gear cover	Tighten bolts of gear cover fitting. If leakage continues, turn to sales representative
+Test bench diagnostic program load failure.	Test bench operating system failure	Contact technical support.
+Pneumatic clamps are out of work.	No pressure in pneumatic line	Check connection of compressed air supply
+Pneumatic clamps are out of work.	Condensed water in filter-dryer of air preparation unit	Remove filter-dryer plug and drain condensed water into prepared container
+Asynchronous operation of left and right pneumatic clamp pullers.	Different speed of pneumatic cylinders filling	Adjust speed of filling by air exhaust and air supply throttles
+Test mode activation failure.	EMERGENCY button on control panel is stuck	Check EMERGENCY button – it must be in neutral position
+Test turnaround failure.	Loose fixation of position sensor	Check position sensor fixation. Adjust if necessary
+Motor doesn't start.	Short circuit of either cable or motor windings to ground	Clear a fault. Restart test bench
+Motor doesn't start.	Low power supply voltage	Make sure there are no high-power consumers of high starting current nearby the test bench
+Excessive vibration in the process of shock absorber diagnostics.	Poor fixing of shock absorber in pneumatic clamp	Check fixing: lock nuts of pneumatic clamps should be safely tightened
+Excessive vibration in the process of shock absorber diagnostics.	One of the two bearings in upper/lower pneumatic clamp is faulty	Check bearing inner and outer races for integrity. Replace bearing in case of deformation
+Test bench is out of operation	No power supply	Check 400V power supply
+Test bench is out of operation	Automatic cutout is off	Check automatic cutout
+Test bench is out of operation	Test bench power supply unit failure	Contact technical support.
+No display respond to operator's touch.	Touch screen is damaged	Contact technical support.
+Test bench operating system load failure.	Test bench operating system failure	Contact technical support.
+
+10. DISPOSAL
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.

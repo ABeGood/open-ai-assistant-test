@@ -3,6 +3,7 @@ from docx.opc.constants import RELATIONSHIP_TYPE as RT
 import os
 from pathlib import Path
 import json
+from unidecode import unidecode
 
 def extract_and_map_images(document_path, output_image_dir, doc_prefix=""):
     document = Document(document_path)
@@ -98,37 +99,6 @@ def convert_docx_to_plain_text_with_markers(document, image_map):
 
     return "\n".join(plain_text_lines)
 
-# Alternative simpler approach using python-docx built-in functionality
-def convert_docx_simple_with_hyperlinks(document, image_map):
-    """
-    Simpler approach using python-docx built-in methods with manual hyperlink handling.
-    """
-    plain_text_lines = []
-    
-    for paragraph in document.paragraphs:
-        paragraph_text_parts = []
-        
-        # Get the paragraph's XML element to check for hyperlinks
-        p_element = paragraph._element
-        
-        # Extract all text including hyperlinks
-        paragraph_text = extract_text_from_element(p_element, image_map)
-        plain_text_lines.append(paragraph_text)
-    
-    # Handle tables
-    for table in document.tables:
-        for row in table.rows:
-            row_text = []
-            for cell in row.cells:
-                cell_text_parts = []
-                for paragraph in cell.paragraphs:
-                    p_element = paragraph._element
-                    cell_paragraph_text = extract_text_from_element(p_element, image_map)
-                    cell_text_parts.append(cell_paragraph_text)
-                row_text.append(" ".join(cell_text_parts).strip())
-            plain_text_lines.append("\t".join(row_text))
-            
-    return "\n".join(plain_text_lines)
 
 # Main processing function
 def process_docx_files():
@@ -149,9 +119,6 @@ def process_docx_files():
         # Use the enhanced function that handles hyperlinks
         processed_text = convert_docx_to_plain_text_with_markers(document_obj, image_mapping)
         
-        # Alternative: use the simpler approach
-        # processed_text = convert_docx_simple_with_hyperlinks(document_obj, image_mapping)
-
         with open(output_text_file, "w", encoding="utf-8") as f:
             f.write(processed_text)
 
@@ -161,5 +128,27 @@ def process_docx_files():
     with open("files_preproc/doc_mapping.json", "w", encoding="utf-8") as f:
         json.dump(doc_mapping, f, indent=2, ensure_ascii=False)
 
+def process_docx_file(file_path:str, doc_index:int):
+
+    filepath = Path(file_path)
+
+    filename_wo_extention = f"{str(filepath.name).split('.')[0]}"
+    output_images_directory = f"files_preproc/output/{filename_wo_extention}"
+    output_text_file = f"files_preproc/output/{filename_wo_extention}.txt"
+
+    document_obj, image_mapping = extract_and_map_images(filepath, output_images_directory, doc_prefix=f"D_{doc_index}")
+    
+    # Use the enhanced function that handles hyperlinks
+    processed_text = convert_docx_to_plain_text_with_markers(document_obj, image_mapping)
+    processed_text = unidecode(processed_text)
+    
+    with open(output_text_file, "w", encoding="utf-8") as f:
+        f.write(processed_text)
+
+    print(f"Images extracted to: {output_images_directory}")
+    print(f"Text with markers saved to: {output_text_file}")
+
+
 if __name__ == "__main__":
-    process_docx_files()
+    # process_docx_files()
+    process_docx_file(file_path='files_clean/equipment/MS004_COM_um_eng.docx', doc_index=24)

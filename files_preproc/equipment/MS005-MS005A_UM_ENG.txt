@@ -1,0 +1,564 @@
+MS005 MS005A TEST BENCH FOR DIAGNOSTICS OF ALTERNATORS AND STARTERS @D_22_IMG_000_PHOTO_test-bench-MS005-MS005A_general-view
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The present user manual consists of the information on the application, supply slip, specifications, methods of evaluation technical condition of automotive alternators and starters, as well as the rules of safe operation of MS005/MS005A test bench.
+Before using the MS005/MS005A test bench (hereinafter referred to as "the bench"), please carefully review this user manual.
+Due to the permanent improvements of the bench, the design, supply slip and software are subject to modifications that are not included to the present user manual. Pre-installed bench software is subject to update. In future, its support may be terminated without a prior notice.
+
+1. APPLICATION
+The MS005 bench is designed for assessing the technical condition of:
+1. Automotive alternators with a nominal voltage of 12 and 24 V of all types and with any connection terminals.
+2. Automotive alternators of the Valeo "Stop-Start" system with 12 V (in both alternator and starter modes) and "I-ELOOP" (Mazda).
+3. Automotive starters with a power of up to 11 kW and a nominal voltage of 12 and 24 V without load in idle mode.
+
+A feature of the MS005A stand is the ability to diagnose 48 V belt starter generators. The MS005A stand provides the ability to diagnose the control unit of this type of generators using a diagnostic scanner.
+
+The test bench displays key parameters in graphical form, providing more information on the unit's technical condition and increasing diagnostic accuracy. 12V/24V alternators and starters can be diagnosed in both manual and automatic modes. A report of the automatic test can then be printed on an external printer or saved to the test bench's memory. The test bench allows the use of custom automatic test algorithms for alternators.
+
+2. SPECIFICATIONS
+Dimensions (L x W x H), mm	655×900×1430
+Weight, kg	160
+Power source	three-phase electrical network
+Supply voltage, V	400
+Drive power, kW	7.5
+Quantity of storage batteries (not included into supply slip)	2 similar lead-acid by 12V
+Battery capacity	45 A·h min
+Storage battery automatic charging	yes
+Rated voltage of the diagnosed units, V	12, 24, 48*
+Maximum overall length of the diagnosed unit, mm (m)	410 (0,41)
+Bench control	on the 12" touchscreen display
+Diagnostic mode	automatic / manual
+
+Alternator diagnostics
+Maximum alternator current load, A	12 V	300
+Maximum alternator current load, A	24 V	150
+Maximum alternator current load, A	48 V (available for bench MS005A)	50
+Load adjustment (0-100%)		smoothly
+Drive speed, rpm		0-3000
+Selecting the direction of drive rotation		available
+Drive type (alternator drive)		V-belt drive/Poly V-belt drive
+Type of alternators to be tested	12 V	F/67, Lamp, SIG, RLO, RVC, C KOREA, P-D, G, C JAPAN, COM (LIN, BSS), IStars, I-ELOOP
+Type of alternators to be tested	24 V	Lamp, COM (LIN), PWM
+Type of alternators to be tested	48 V (available for bench MS005A)	CAN
+
+Starter diagnostics
+Power of diagnosed starters, kW	up to 11
+
+Additional features
+Software update	available
+Alternator database	available
+Diagnostics results storage	available
+Printing	available
+Internet connection	Wi-Fi (802.11 a/b/g/ac), Ethernet
+Connection of peripheral devices	2 x USB 2.0
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+
+Item name	Number of pcs
+Test bench MS005/MS005A	1
+MS33001 - a universal cable with a kit of adapting wires - for the connection to alternator connector	1
+Cable for connection of starter terminal 50	1
+Alternator positive terminal adapter	2
+MS0114 - Cutout fuse (type 22x58 mm, current 100А)	1
+Bench door keys	2
+Module Wi-Fi	1
+Power outlet 400V / 16A	1
+User Manual (card with QR code)	1
+
+4. TEST BENCH DESCRIPTION
+The bench consists of the following main elements (fig. 1 @D_22_IMG_001_PHOTO_diagnostic-bench-main-elements_fig1):
+1 - Door for access to the battery compartment.
+2 - Working platform.
+3 - Protective cover.
+4 - Touchscreen - displays diagnostic parameters of the tested unit and controls bench functions.
+5 - Control panel.
+6 - Swivel wheels with brakes.
+Figure 1. Overall view of the diagnostic bench @D_22_IMG_001_PHOTO_diagnostic-bench-main-elements_fig1
+
+Work Platform (Fig. 2 @D_22_IMG_002_PHOTO_work-platform_fig2) includes the following elements:
+1 - Alternator drive belts: V-belts and poly V-belts.
+2 - Power cables «В+» «В-».
+3 - Unit fixing chain.
+4 - The bracket for a diagnostic cable "alligator" clips.
+5 - Thermal vision camera.
+6 - Diagnostic cable connection socket.
+7 - Diagnostic cable connection socket to the starter terminal 50.
+Figure 2. Work platform of the bench @D_22_IMG_002_PHOTO_work-platform_fig2
+
+The control panel (fig.3 @D_22_IMG_003_PHOTO_control-panel_fig3) consists of:
+1 - buttons to control the tightening and loosening of alternator drive belt.
+2 - buttons to control the tightening and loosening of unit fixing chain.
+3 - button "COVER" - opens the protective housing.
+4 - button "OFF/ON" - is responsible for the power on the bench. The bench is turned off by pressing the button «Turn off the bench» in the main menu of the service program.
+5 - Button "EMERGENCY STOP" - emergency stop of alternator drive and chain/belt tightening.
+Figure 3. Control panel of the bench @D_22_IMG_003_PHOTO_control-panel_fig3
+
+In the bottom of the touch screen there are two USB ports (fig.4 @D_22_IMG_004_PHOTO_USB-LAN-ports-position_fig4 ref. 1) for connecting the computer periphery (mouse, keyboard, WiFi adapter) and network LAN port (ref. 2).
+Figure 4. Position of USB and LAN ports @D_22_IMG_004_PHOTO_USB-LAN-ports-position_fig4
+
+The bench supply slip includes the diagnostic cable (fig.5 @D_22_IMG_005_PHOTO_universal-diagnostic-cable-MS33001_fig5) that consists of the adapting wire kit (fig.6 @D_22_IMG_006_PHOTO_adapting-wire-kit_fig6) - for more convenient connection to alternator connection terminals.
+Figure 5. Universal diagnostic cable MS-33001 @D_22_IMG_005_PHOTO_universal-diagnostic-cable-MS33001_fig5
+Figure 6. Adapting wire kit @D_22_IMG_006_PHOTO_adapting-wire-kit_fig6
+
+The diagnostic cable MS-33001 has the following adapting wire color codes (see also Table 1):
+- Orange - S (Sense Pin) - the terminal that enables the measuring of the storage battery voltage by the voltage regulator as well as it compares the storage battery voltage with the alternator output voltage. This adapting cable is connected to terminal S;
+- Red - IG (Ignition) - the terminal is used for the connection of the ignition circuit, the terminals: 15, A, IG;
+- White - FR - the terminal that transmits the data on the regulator load. This adapting wire is connected to the following terminals: «FR», «DFM», «M»;
+- Gray - D+ - the terminal for the connection of the circuit of voltage regulator control lamp. It's connected to the terminals: «D+», «L», «IL», «61»;
+- Yellow - GC - is used for the connection of the channel of alternator voltage regulator control. This adapting wire is connected to the following terminals: «COM», «SIG», etc.
+- Brown - К30 - is connected to the starter terminal 30 that is connected to the storage battery terminal «+».
+- Violet - К45 - is connected to the starter solenoid output connected with starter electric motor.
+
+Table 1 - Color codes of cable MS-33001
+Wire	Terminal
+@D_22_IMG_007_PHOTO_orange-wire	S
+@D_22_IMG_008_PHOTO_red-wire	IG
+@D_22_IMG_009_PHOTO_white-wire	FR
+@D_22_IMG_010_PHOTO_gray-wire	D+
+@D_22_IMG_011_PHOTO_yellow-wire	GC
+@D_22_IMG_012_PHOTO_brown-wire	K30 (starter)
+@D_22_IMG_013_PHOTO_violet-wire	K45 (starter)
+
+For convenient usage of the diagnostic cable, it's recommended to put the alligator clips onto the bracket (ref. 4, fig.2 @D_22_IMG_002_PHOTO_work-platform_fig2).
+Figure 7. Diagnostic cable alligator clips that are set on the bracket. @D_22_IMG_014_PHOTO_diagnostic-cable-alligator-clips-bracket_fig7
+
+For diagnostics of 48 V belt starter generators special cables are used, which have the designation MS-334xx, where the last two digits denote the cable modification (not supplied in the set). General view of cables for testing 48 V belt starter generators is shown in Fig. 8 @D_22_IMG_015_PHOTO_48V-belt-starter-generator-cable_fig8.
+Figure 8. Cable for testing 48 V belt starter-generators @D_22_IMG_015_PHOTO_48V-belt-starter-generator-cable_fig8
+
+For quick and safe connection of the bench to the 12/24 V alternator connector, special cables are used (see Fig. 9 @D_22_IMG_016_PHOTO_special-cables-12-24V-alternators_fig9), designated MS-330xx, where the last two digits denote the cable modification (not supplied in the kit). The required cable can be found in the alternators database.
+Figure 9. Special cables for diagnosing 12/24 V alternators @D_22_IMG_016_PHOTO_special-cables-12-24V-alternators_fig9
+
+To diagnose the starter, it is necessary to use the MS-33001 cable and the cable for connecting to starter terminal 50 (see Fig. 10 @D_22_IMG_017_PHOTO_cable-starter-terminal-50_fig10).
+Figure 10. Cable for connecting to starter terminal 50 @D_22_IMG_017_PHOTO_cable-starter-terminal-50_fig10
+
+4.1. Test bench menu
+The main menu of the bench (Fig. 11 @D_22_IMG_018_DIAGRAM_main-menu-bench_fig11) includes:
+
+1 - Bench power-off button.
+2 - Alternator search menu based on the database.
+3 - Activation of the alternator diagnostic mode.
+4 - Connected cable number.
+5 - Selected type of diagnosed unit (alternator).
+6 - Indicator of chain and belt tension status.
+7 - Battery status indicators.
+8 - Indicator of open/closed protective cover.
+9 - Indicator of closed bench doors. Diagnosis is not possible with any door open.
+10 - Indicator of the "EMERGENCY STOP" button pressed.
+11 - Activation of the starter diagnostic mode.
+12 - Selection of the diagnosed starter voltage.
+13 - "SETTINGS" menu - adjustment of bench parameters.
+Figure 11. Main menu of the bench @D_22_IMG_018_XXX_main-menu-bench_fig11
+
+The "SETTINGS" menu contains 4 tabs:
+"General" - allows setting the company name and contact information. It also provides the option to choose the program interface language.
+"Automatic Testing" - allows selecting an automatic testing script for each alternator type. This tab also manages script and automatic testing report files, see Appendix 2.
+"Belt Tension" - allows adjusting the tension force of the belt and chain.
+"Service" - used by factory service specialists in case of software malfunctions, see Fig. 12 @D_22_IMG_019_DIAGRAM_settings-service-tab_fig12.
+Figure 12 @D_22_IMG_019_DIAGRAM_settings-service-tab_fig12
+
+5. APPROPRIATE USE
+1. Use the test bench as intended only (see Section 1).
+2. The test bench is intended for indoor use at temperatures ranging from +10 to +40 °C and with relative humidity not exceeding 75% without condensation.
+3. Turn off the bench through the service program interface by pressing the "Turn off the bench" button in the main menu.
+4. When switching the power off, use the "EMERGENCY STOP" button for emergency shutdown only.
+5. Connect the clamps of the universal diagnostic cable only to the terminals in the alternator socket.
+6. Turn off the bench when not in use.
+7. When working with the bench, it is prohibited to:
+  • Diagnose alternators with obvious mechanical faults.
+  • Interfere with the operation of the bench in any way.
+  • Obstruct the movement of rotating parts of the bench.
+8. To prevent the damage and the failure of the bench, do not make any modifications in the bench in your discretion. Any modifications can be effected by the official manufacturer only. Should the bench have defects contact the manufacturer or a dealer.
+8. In case of failures in the operation of the bench, stop further operation and contact the manufacturer or sales representative.
+
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. The test bench shall be operated by the workers qualified to work with certain types of equipment and received appropriate training in the safe operation.
+2. In case of a power outage, the test bench shutdown is mandatory when cleaning and lubricating the bench and in emergencies.
+4. To ensure electrical and fire safety PROHIBITED:
+  - connect the bench to the electrical network having faulty protection against current overloads or not having such protection;
+  - use a socket without a grounding contact to connect the bench;
+  - use extension cords to connect the bench to the electrical network. If the socket is far from the bench installation site, it is necessary to modify the electrical network and install the socket;
+  - operation of the bench in defective condition.
+  - Independently to repair and make changes to the design of the bench, because it can lead to serious damage to the bench and deprive the right to warranty repair.
+5. The units with a running drive must not be left unattended on the test bench.
+6. While mounting and dismounting of a unit from the bench, to prevent arms from harming, be more cautious.
+7. It is forbidden to open the door to access the power part of the stand if the stand is connected to the 400V power supply network.
+8. The diagnosed unit must be securely fastened.
+
+5.2. Preparing the bench for operation
+The bench is delivered packed. Release the bench from the packaging materials, remove the protective film from the display (if available). After unpacking, it is necessary to make sure that the bench is intact and does not have any damage. If damage is detected before the bench is activated, contact the manufacturer or the sales representative.
+The bench has to be placed on the level floor, with the pivot wheels fixed from rotating (min. two wheels) by the activating of the brake mechanism.
+When installing the bench, keep the minimum space gap 0.5 m from the rear bench side - for a proper air circulation.
+Prior to the bench operation, connect:
+- Storage batteries 12V that have to be located in the storage battery section of the bench (fig. 13 @D_22_IMG_020_PHOTO_storage-batteries-location_fig13). The left door is opened with the keys (included to the supply slip). While connecting the storage batteries refer to the power cable markings. If only one storage battery is connected just 12V diagnostic mode will be available, 24V diagnostic mode will be unavailable.
+Figure 13. Location of the storage batteries in the bench. @D_22_IMG_020_PHOTO_storage-batteries-location_fig13
+
+- Electric network 400V, for this purpose it is necessary to use the socket supplied with the bench, inside there is a marking L1 L2 L3 N PE which must be observed when connecting the socket to the supply network.
+
+6. DIAGNOSTICS OF 12/24 V ALTERNATOS
+The following common diagnostic steps are provided for all types of 12/24 V alternators:
+1. Installation of the alternator on the bench and its fixation.
+2. Installation of the belt on the pulley and its tensioning.
+3. Connection of power wires to the alternator. For convenient connection, an adapter should be screwed onto the positive terminal of the alternator for the connection of the power terminal B+.
+4. Connect the diagnostic cable to the terminals in the alternator socket.
+5. Select the appropriate parameters for the alternator test.
+6. Diagnosis of the alternator.
+7. Dismounting the unit from the bench.
+
+6.1. Installation and de-installation of the alternator
+1. Use the "Release Chain" button to increase the length of the chain sufficient for securing the alternator. A single press increases the length of the chain, and a subsequent press stops this process.
+2. Position the alternator on the working platform so that the pulley is directly above the belt.
+3. Place the chain on the alternator and secure the end of the chain on the bench. Then use the "Tighten Chain" button to tension the chain; the bench will automatically stop the chain tensioning process.
+
+CAUTION! Be careful not to injure your fingers.
+
+4. Use the "Release Belt" button to loosen the belt enough to fit it onto the alternator pulley. A single press loosens the belt, and a subsequent press stops this process.
+5. Use the "Tighten Belt" button to tension the belt. The bench will automatically stop the tensioning process.
+
+CAUTION! Ensure that the position of the chain on the alternator is such that after tightening the belt, the alternator is in a horizontal position (see Fig. 14 @D_22_IMG_021_PHOTO_alternator-installation-fixation_fig14). Misalignment of the alternator leads to belt slippage on the pulley and rapid wear.
+Figure 14. Installation and Fixation of the Alternator on the Bench @D_22_IMG_021_PHOTO_alternator-installation-fixation_fig14
+
+6. Screw the adapter onto the "B+" terminal (see Fig. 15 @D_22_IMG_022_PHOTO_adapter-B-plus-terminal_fig15).
+Figure 15 @D_22_IMG_022_PHOTO_adapter-B-plus-terminal_fig15
+
+7. Connect the black power wire "B-" to the unit's housing and the red power wire "B+" to the adapter (see Fig. 16 @D_22_IMG_023_PHOTO_power-wires-connection-alternator_fig16).
+Figure 16. Connection of Power Wires to the Alternator @D_22_IMG_023_PHOTO_power-wires-connection-alternator_fig16
+
+8. After diagnosis, disassembly of the alternator is performed in reverse order.
+WARNING! Disassembly of the alternator is allowed only after the drive has completely stopped, and the testing mode has been exited.
+
+6.2. Connecting the diagnostic cable to the alternator connector
+To assess the operability of the alternator, it is necessary to select an appropriate special cable or correctly connect the universal cable to the terminals in the alternator socket.
+To select a special cable, go to the alternator database (see Fig. 17 @D_22_IMG_024_DIAGRAM_alternator-database-search_fig17). Using the original alternator number, which is often located on the housing or rear cover, search for the alternator in the "Search" tab.
+ATTENTION! Diagnostics of alternators: Valeo "Stop-Start" 12 V system (alternator type IStars), "I-ELOOP" (Mazda) and alternators without voltage regulator (alternator type F/67), is possible only using a special cable (see appendix 1).
+Figure 17 @D_22_IMG_024_DIAGRAM_alternator-database-search_fig17
+
+If the desired alternator is in the bench's database, its type, main characteristics, photo, connection terminal designations, and the number of the required cable will be displayed. If the desired alternator is in the bench's database, its type, main characteristics, photo, connection terminal designations, and the number of the required cable will be displayed.
+Connect the special cable to the bench and the alternator, after which you can proceed with the diagnosis.
+Figure 18 @D_22_IMG_025_PHOTO_special-cable-connection_fig18
+
+To connect the universal cable, first find the designation of the terminals in the alternator connector on the internet. Then identify the alternator connector terminals to determine the alternator type using the information in appendix 1. When connecting the wires of the universal cable to the terminals in the alternator connector, also refer to appendix 1.
+As an example, let's consider connecting the universal cable to the Bosch 0986049191 alternator (Fig. 19 @D_22_IMG_026_PHOTO_bosch-alternator_fig19 @D_22_IMG_027_DIAGRAM_bosch-terminal-designations_fig19).
+Figure 19. Bosch 0986049191 Alternator and Terminal Designations in the Socket @D_22_IMG_026_PHOTO_bosch-alternator_fig19 @D_22_IMG_027_DIAGRAM_bosch-terminal-designations_fig19
+Based on the socket terminals in Fig. 19, we first determine the alternator type. In this case, terminal L defines the alternator type as Lamp. Next, using Appendix 1, we identify which diagnostic cable wires need to be connected to the alternator socket. The connection scheme is provided in Table 2.
+
+Table 2 - Connection of Bosch 0986049191 Alternator to the Bench
+Terminal in the alternator socket	Diagnostic cable wire	Color of the diagnostic cable wire
+L	Lamp	gray
+S	S	orange
+
+As another example, let's consider connecting the universal cable to the Toyota 2706020230 alternator (Fig. 20 @D_22_IMG_028_PHOTO_toyota-alternator_fig20 @D_22_IMG_029_DIAGRAM_toyota-terminal-designations_fig20).
+Figure 20. Toyota 2706020230 Alternator and Terminal Designations in the Socket @D_22_IMG_028_PHOTO_toyota-alternator_fig20 @D_22_IMG_029_DIAGRAM_toyota-terminal-designations_fig20
+Based on the socket terminals in Fig. 20, we determine the alternator type. In this case, terminal L defines the alternator type as Lamp. Next, using Appendix 1, we identify which diagnostic cable wires need to be connected to the alternator socket. The connection scheme is provided in Table 3.
+
+Table 3 - Connection of Toyota 2706020230 Alternator
+Terminal in the alternator socket	Diagnostic cable wire	Color of the diagnostic cable wire
+S	S	orange
+IG	IG	red
+L	Lamp	gray
+DFM (M)	FR	white
+
+As a final example, let's consider connecting the universal cable to the Nissan 23100EN000 alternator (Fig. 21 @D_22_IMG_030_PHOTO_nissan-alternator_fig21 @D_22_IMG_031_DIAGRAM_nissan-terminal-designations_fig21).
+Figure 21. Nissan 23100EN000 Alternator and Terminal Designations in the Socket @D_22_IMG_030_PHOTO_nissan-alternator_fig21 @D_22_IMG_031_DIAGRAM_nissan-terminal-designations_fig21
+Based on the socket terminals in Fig. 21, we determine the alternator type. In this case, terminal C and the association with Japanese vehicles define the alternator type as C JAPAN. Next, using Appendix 1, we identify which diagnostic cable wires need to be connected to the alternator socket. The connection scheme is provided in Table 4.
+
+Table 4 - Connection of Nissan 23100EN000 Alternator
+Terminal in the alternator socket	Diagnostic cable wire	Color of the diagnostic cable wire
+L	Lamp	gray
+S	S	orange
+С	GC	yellow
+
+6.3. Alternator test menu
+When the alternator diagnostic mode is activated, a menu for selecting the type of diagnosed alternator opens (see Figure 22 @D_22_IMG_032_DAIGRAM_alternator-type-selection-menu_fig22), which includes:
+1 - Button to return to the main menu.
+2 - Selection of the type of diagnosed alternator.
+3 - Selection of the nominal voltage of the diagnosed alternator.
+4 - Selection of the maximum current for testing the alternator.
+5 - Terminal markings in the sockets of the most common alternators of the selected type of alternator.
+6 - Selection of the alternator diagnostic mode.
+7 - Selection of the automatic test variant:
+  Advanced script - an advanced variant of the automatic test where the check is performed for the maximum number of criteria with obtaining the alternator's current-speed characteristic.
+  Quick script - a simple (faster) variant of the automatic test where the check is performed based on key criteria.
+  Any alternator test script can be modified by the user at their discretion (see Appendix 2).
+8 - Setting the value of the alternator pulley diameter. This parameter is set for diagnosing the alternator with rotation frequencies equal to those on the car.
+Figure 22. Menu for Selecting the Diagnosed Alternator Type @D_22_IMG_032_DAIGRAM_alternator-type-selection-menu_fig22
+
+During the diagnostic mode of any type of alternator, the following information may be displayed on the screen (see Figure 23 @D_22_IMG_033_DIAGRAM_alternator-test-mode-menu_fig23):
+1 - Indicator of the control lamp operation.
+2 - The "Test sense pin" button is used to check the operability of the "S" terminal. Via the "S" (Sense) terminal, the voltage regulator reads the actual battery voltage and increases the alternator's output voltage to compensate for charge loss.
+3 - The "K15" button simulates the ignition signal supplied to the alternator voltage regulator. If the alternator has a terminal: "A" or "IG," or "15," then it is necessary to press the "K15" button before testing the alternator.
+4 - Field for the graphic display of measured parameters.
+5 - Display of the aggregate temperature from the thermal imaging camera.
+6 - Control of the alternator's output voltage, if provided.
+7 - Control of the load on the alternator, the value is set in percentage of the value set in menu item 4 of Figure 22.
+8 - Control of the alternator drive rotation frequency.
+9 - Control of the alternator rotation direction. Usually, alternators rotate clockwise (viewed from the pulley side).
+10 - Button to stop the diagnostic process.
+Figure 23. Alternator Test Mode Menu @D_22_IMG_033_DIAGRAM_alternator-test-mode-menu_fig23
+"K15 U V" - Ignition circuit voltage value (K15).
+"K15 I mA" - Ignition circuit current value (K15).
+"Duty %" - Duty cycle of the signal received via channels FR, DFM, M (degree of rotor winding activation).
+"Frequency Hz" - Frequency value of the signal received via channels FR, DFM, M.
+"Speed RPM" - Alternator revolutions measured by the regulator.
+"Lamp voltage V" - Voltage value on the control lamp.
+"Lamp current mA" - Current strength value on the control lamp.
+"I AC, A" - Alternating current value in the B+ circuit.
+"I DC, A" - Direct current value in the B+ circuit.
+"U DC, V" - Voltage value at terminal B+.
+"Pulley RPM" - Rotation frequency on the alternator pulley. If the pulley size is not specified in menu item 8 of Figure 22, the drive revolution value is displayed.
+"Temp. °C" - Maximum temperature value of the diagnosed unit captured by the thermal imaging camera.
+Figure 23. Alternator Test Mode Menu @D_22_IMG_033_DIAGRAM_alternator-test-mode-menu_fig23
+
+On the diagnostics screen of COM 12V, 24V type alternators (see Figure 24 @D_22_IMG_034_DIAGRAM_COM-alternator-check-mode-menu_fig24), the following distinctive information is displayed:
+
+"Status" - indicator of the alternator connection status.
+"COM port" - indicator of the voltage regulator protocol version: BSS, LIN1, or LIN2.
+"ID" - identification number of the voltage regulator.
+"COM speed" - indicator of data transmission speed from the control unit to the voltage regulator. This parameter is displayed for alternators controlled by the LIN protocol. The following speed values are possible:
+• L - 2400 Baud (low);
+• M - 9600 Baud (medium);
+• H - 19200 Baud (high).
+"Type" - displays the code of the voltage regulator type operating under the "LIN" protocol: A1, A2, A3, A4, B1, B2, B3, B4, C3, D1, D2, E1.
+"Excitation" - the value of the excitation winding current of the alternator. Measured in percentage. Read from the voltage regulator via the LIN protocol.
+"Errors" - indicator of errors transmitted by the regulator to the engine control unit. The following errors are possible:
+  • E - electrical malfunction;
+  • M - mechanical malfunction;
+  • T (thermal) - overheating.
+"Temp. °С" - the voltage regulator's own temperature measured by it.
+Figure 24. Menu of the COM type alternator check mode @D_22_IMG_034_DIAGRAM_COM-alternator-check-mode-menu_fig24
+
+On the diagnostics screen of IStars 12V type alternators (see Figure 25 @D_22_IMG_035_DIAGRAM_IStars-alternator-check-mode-menu_fig25), information similar to COM type alternators is displayed, as well as the following parameters inherent to this type of alternators:
+"Speed RPM" - alternator revolutions measured by the voltage regulator.
+"Voltage" - stabilization voltage measured by the voltage regulator.
+The "Starter" button performs alternator testing in starter mode.
+Figure 25. Menu of the IStars 12V type alternator check mode @D_22_IMG_035_DIAGRAM_IStars-alternator-check-mode-menu_fig25
+
+6.4. Manual mode alternator diagnostics
+1. After fixing and connecting the alternator, go to the "Alternator" menu.
+2. In the opened window, select: the nominal voltage of the diagnosed alternator, 12 or 24 V, the type of alternator, the maximum test current, the diameter of the pulley. When using the alternator database, the test parameters are set automatically.
+  2.1. In the upper right corner of the program, select the maximum current that the alternator can provide, usually indicated on the alternator itself. During the testing process, this current will not be exceeded when the load reaches 100%.
+WARNING! Selecting a maximum test current for the alternator that exceeds its passport data may damage the alternator.
+3. To start the diagnostics process, press the "Manual test" button.
+  3.1. After activating the diagnostics mode, a preliminary alternator check window will open, see Figure 26 @D_22_IMG_036_DIAGRAM_preliminary-alternator-check-window_fig26.
+Figure 26 @D_22_IMG_036_DIAGRAM_preliminary-alternator-check-window_fig26
+  3.2. Using the alternator drive control buttons (see item 1 in Figure 26 @D_22_IMG_036_DIAGRAM_preliminary-alternator-check-window_fig26), set the speed of the alternator pulley rotation within the range of 100 to 150 rpm.
+WARNING! If the alternator pulley has a freewheel clutch, carefully select the direction of rotation.
+  3.3. Visually assess whether the alternator rotates normally. If there are noises or vibrations from the alternator indicating mechanical malfunction or incorrect alternator installation, stop the diagnostics by pressing the "Cancel" button.
+  3.4. To continue the diagnostics, press the "Ok" button.
+4. Evaluate the operation of the voltage regulator according to the following criteria:
+  4.1. If the diagnosed alternator is of the COM or IStars 12V type, the bench should identify the alternator's ID, COM speed, and TYPE, and the Errors indicator should display a message about mechanical malfunction "MEC".
+  4.2. If the alternator has a control lamp, the indicator of the control lamp should light up (see item 1 in Figure 23 @D_22_IMG_033_DIAGRAM_alternator-test-mode-menu_fig23).
+5. Conduct a check to determine at what RPM the alternator starts generating, for this:
+WARNING! For alternators with a voltage regulator terminal labeled "A" or "IG" or "15", activate the "K15" button.
+  5.1. Gradually increase the speed using the alternator drive control buttons until the output 5.1 For alternators that have a control lamp indicator, it goes out at the moment of generation start.
+  5.2 For alternators without control lamp indicator, the moment of generation start is determined at the moment of establishment of operating voltage from 13.9 to 14.8 V for 12V alternators, and from 28 to 29.8 V for 24V alternators.
+  5.3 For alternators of COM or IStars 12V type, the mechanical error disappears at the moment of generation start.
+6. Evaluate the operation of the voltage regulator by:
+  6.1. Setting the drive speed within 1500-2000 rpm.
+  6.2 (For Lamp-type alternators without output voltage control, this step is not required). Using the output voltage control buttons (see item 6 in Figure 23 @D_22_IMG_033_DIAGRAM_alternator-test-mode-menu_fig23), smoothly adjust the alternator's output voltage within the range from minimum to maximum. The measured voltage should change proportionally.
+  6.3. For C JAPAN type alternators, set the stabilization voltage setting to "OFF" mode - the measured stabilization voltage should be equal to the battery voltage. Then set the stabilization voltage setting to "ON" mode - the measured stabilization voltage should be within 14 to 14.7 V.
+7. Evaluate the alternator's performance under load by:
+  7.1. Setting the drive speed within 2500-3000 rpm.
+  7.2. Setting the generation voltage within 14 to 14.8 V. For C JAPAN type alternators, switch to the "ON" mode.
+  7.3. Smoothly increase the load on the alternator while the value of output voltage should remain constant and the value of alternating current in the circuit B+ "I, AC" should not exceed 10% of the value of the set load (for example, with a load of 50A the value of "I, AC" should not exceed 5A). Also, the current oscillogram should not show large peaks, the values should fluctuate within the same limits.
+    To determine the technical condition of the alternator, it is sufficient to set a load from 50 to 80 A.
+8. For IStars 12V type alternators, perform a check of its operation in starter mode by:
+  8.1. Stopping the alternator drive.
+  8.2. Pressing the "Starter" button to start the test mode, during which the alternator should reach the idle speed of the engine.
+9. To complete the alternator diagnostics, stop the alternator drive and then exit the test mode. After that, the alternator can be removed from the bench.
+10. Failure to comply with any of the requirements in points 4 - 8.2 indicates a fault in the alternator.
+
+6.5. Diagnostics of alternators without voltage regulator
+The diagnosis of alternators without voltage regulators is performed using the MS-33042 (42A) cable. The sequence of operations is as follows:
+1. Fix the alternator on the bench. Put the belt on the pulley and tension the belt.
+2. Connect the MS-33042 (42A) cable to the alternator according to Table 5.
+
+Table 5 - Connection of a alternator without a voltage regulator
+Terminal in the alternator socket	Color of the diagnostic cable wire
+B+	Red
+B-	Black
+F1	Green
+F2	Green
+
+3. Go to the "Alternator" menu and in the opened window select: the nominal voltage of the alternator being diagnosed (12 V), the type of alternator (Lamp), the maximum test current, and the pulley diameter (if the value is known).
+4. Before activating the diagnostic mode, a preliminary alternator check window will open, see Fig. 26 @D_22_IMG_036_DIAGRAM_preliminary-alternator-check-window_fig26.
+  4.1. Using the alternator drive control buttons, set the alternator pulley speed within the range of 100 to 150 rpm.
+  4.2. Visually assess: is the alternator rotating normally. If there are noises or vibrations from the alternator indicating mechanical failure or incorrect mounting, stop the diagnosis by pressing the "Cancel" button.
+  4.3. To continue the diagnosis, press the "Ok" button.
+5. Conduct a check at which speed alternator begins, for this smoothly increase the drive speed until the output voltage increases and becomes equal to 13.9 to 14.8 V.
+6. Evaluate alternator performance under load by:
+  6.1. Set the drive speed within the range of 2500 - 3000 rpm.
+  6.2. Smoothly increase the load on the alternator, while the output voltage value should remain constant and the value of alternating current in circuit B+ "I, AC" should not exceed 10% of the set load value. Also, the current oscillogram should not show large peaks, the values should fluctuate within the same limits.
+7. To complete the alternator diagnostics, stop the alternator drive and then exit the test mode. The alternator can then be removed from the bench.
+8. Failure to fulfill one of the requirements of paragraphs. 5 - 6.2 indicates a faulty alternator winding.
+
+6.6. Automatic alternator diagnostic mode
+1. After fixing and connecting the alternator, go to the "Alternator" menu.
+2. In the opened window, select: the nominal voltage of the diagnosed alternator, 12 or 24 V, the type of alternator, the maximum test current, the diameter of the pulley (if the value is known). When using the alternator database, the test parameters are set automatically.
+3. Next, select the script to be used during the automatic test: Advanced script or Quick script, then press the "Automatic test" button.
+@D_22_IMG_037_DIAGRAM_automatic-test-script-selection
+4. After clicking the "Automatic test" button, a preliminary alternator check window will appear, see Figure 26 @D_22_IMG_036_XXX_preliminary-alternator-check-window_fig26.
+  4.1. Using the alternator drive control buttons (see item 1 in Figure 26 @D_22_IMG_036_DIAGRAM_preliminary-alternator-check-window_fig26), set the speed of the alternator pulley rotation within the range of 100 to 150 rpm.
+  4.2. Visually assess whether the alternator rotates normally. If there are noises or vibrations from the alternator indicating mechanical malfunction or incorrect alternator installation, diagnostics should be stopped by pressing the "Cancel" button.
+  4.3. To continue the diagnostics, press the "Ok" button.
+5. To start the test, press the button @D_22_IMG_038_DIAGRAM_start-button in the opened window (see Figure 27 @D_22_IMG_040_DIAGRAM_automatic-test-mode-menu_fig27). Then, the bench will automatically perform all checks according to the selected script. If necessary, the test process can be interrupted by pressing the button @D_22_IMG_040_DIAGRAM_stop-button.
+6. After completing all the test stages, the bench automatically generates a report and opens it. Reports are saved in the folder C:\UserFiles\Reports. If it is necessary to find a specific test result in the future, it is necessary to save the obtained report under your name (for example, order number, client name, and date) in another folder.
+7. Exit the diagnostic mode, after which the alternator can be removed from the bench.
+Figure 27. Menu of the automatic test mode @D_22_IMG_041_DIAGRAM_automatic-test-mode-menu_fig27
+
+7. DIAGNOSTICS OF 48 V BELT STARTER GENERATORS
+In the alternator diagnostic mode for 48 V alternators (see Figure 28 @D_22_IMG_042_DIAGRAM_48V-alternator-testing-mode-menu_fig28), the following distinctive information may be displayed on the screen:
+1 - Measured alternator speed by the control unit.
+2 - Current resistance or torque, which is set by buttons at position 5.
+3 - Activation of testing in starter mode.
+4 - Activation of testing in alternator mode.
+5 - Selection of resistance moment (in alternator mode) or torque moment (in starter mode).
+6 - Stop the testing process.
+Figure 28. 48V alternator testing mode menu @D_22_IMG_042_DIAGRAM_48V-alternator-testing-mode-menu_fig28
+
+The sequence of operations is as follows:
+1. Fix the alternator on the bench, connect the power leads. Use special cable MS-334xx to connect to the socket.
+2. Go to the "Alternator" menu, and then enter the diagnostic mode for 48 V alternators.
+3. Before activating the diagnostic mode, a preliminary alternator check window will appear, see Figure 26 @D_22_IMG_036_DIAGRAM_preliminary-alternator-check-window_fig26.
+
+
+  3.1. Using the alternator drive control buttons (see position 1 in Figure 26), set the alternator pulley rotation speed within the range of 100 to 150 rpm.
+  3.2. Visually assess whether the alternator rotates normally. If there are noises or vibrations from the alternator indicating mechanical malfunction or incorrect alternator installation, diagnostics should be stopped by pressing the "Cancel" button.
+  3.3. To continue the diagnostics, press the "Ok" button.
+4. Connect the diagnostic scanner to the OBD II connector of the special cable and try to read data from the alternator connector.
+5. Set the drive speed within the range of 1500 to 3000 rpm.
+6. Activate the testing in alternator mode.
+  6.1. Sequentially increase or decrease the resistance moment (position 5 in Figure 28). At the same time, the current value "I DC, A" should also increase or decrease proportionally.
+  6.2. Stop the testing mode by pressing the "Stop" button (position 6 in Figure 28).
+7. Stop the alternator drive with the "Stop motor" button. After the alternator drive is completely stopped, activate the testing in starter mode.
+  7.1. By setting the torque value, the alternator should start rotating. Increasing or decreasing the torque moment should proportionally increase or decrease the current value "I DC, A".
+  7.2. Stop the testing mode by pressing the "Stop" button (position 6 in Figure 28).
+8. Exit the diagnostic mode, after which the alternator can be removed from the bench.
+
+8. STARTER DIAGNOSTICS
+When switching to the starter diagnostic mode, the following information is displayed on the screen (see Figure 29 @D_22_IMG_043_DIAGRAM_starter-testing-mode-menu_fig29):
+1 - Graph of measured parameters for the entire test duration.
+2 - Graph of measured parameters at the moment of starter engagement.
+3 - Display of the unit's temperature from the thermal imaging camera.
+4 - Values changed one second after the start of the test.
+5 - Current values.
+
+Figure 29. Starter Testing Mode Menu @D_22_IMG_043_DIAGRAM_starter-testing-mode-menu_fig29
+
+6 - Test initiation buttons:
+"MANUAL" - initiates the test in manual mode, the test lasts as long as the button is pressed;
+"AUTO" - initiates the test in automatic mode, the test lasts for 2 seconds. After the test, a report is generated.
+"I AC, A" - Alternating current value in the B+ circuit (terminal 30).
+"I DC, A" - Direct current value in the B+ circuit (terminal 30).
+"U DC, V" - Voltage in the B+ circuit (terminal 30).
+"Temp. C" - Maximum temperature value of the diagnosed unit recorded by the thermal imaging camera.
+"K50 I, A" - Current strength at terminal 50.
+"K30 K45, mV" - Voltage at terminal 45.
+
+The sequence of operations for starter diagnostics is as follows:
+1. Place the starter on the workbench and secure the unit.
+2. Attach the adapter to the positive terminal of the starter and connect the power cable "B+" there. Connect the power cable "B-" to the unit's housing.
+3. Connect the bench connector "50" with a cable to the control output of the starter solenoid terminal 50, see Figure 30 @D_22_IMG_044_DIAGRAM_starter-terminal-locations_fig30.
+4. Connect the universal diagnostic cable K30 and K45 wires to the corresponding terminals of the starter, see Figure 30 @D_22_IMG_044_DIAGRAM_starter-terminal-locations_fig30.
+5. In the main menu, select the starter testing mode, then choose the nominal voltage of 12 or 24 V.
+Figure 30. Terminal Locations on the Starter @D_22_IMG_044_DIAGRAM_starter-terminal-locations_fig30
+
+6. Press the "AUTO" start button if a report needs to be generated. After the specified time, the bench will stop the diagnostic process. Conclusions about the technical condition of the starter and possible causes of malfunctions are drawn based on the graphs of voltage and current changes.
+  6.1. If it's necessary to find a specific test result in the future, it's essential to save the generated report under your name (for example, order number, client name, and date) in another folder.
+7. Press and hold the "MANUAL" start button if manual diagnostics are required. We do not recommend holding the button for more than 15 seconds to avoid damaging the starter.
+8. Exit the diagnostic mode, after which the starter can be removed from the bench.
+
+9. TEST BENCH MAINTENANCE
+The bench is designed for a long operation life and doesn't have any special maintenance requirements. At the same time, to ensure the maximum operation life, the regular monitoring of bench technical condition should be made as follows:
+  • motor operation inspection (uncommon noises, vibration etc.);
+  • alternator drive belts condition (visual inspection);
+  • power wires condition (visual inspection);
+  • inspection of bench operation environment (temperature, humidity etc.).
+
+9.1. Test bench firmware update
+Being connected to the Internet, with every switching on, the test bench checks for software updates of diagnostics program, database and bench firmware. In case the bench finds the software update at company server, you'll be offered to install the update or disregard it. To start updating, press OK, to decline - SKIP.
+ATTENTION! Updates may take a while to install.
+WARNING! It's forbidden to switch off the bench supply to stop the updating.
+
+9.2. Cleaning and care
+Use soft tissues or wipe cloths to clean the surface of the device with neutral detergents. Clean the display with a special fiber cloth and a cleaning spray for touch screens. To prevent corrosion, failure, or damage to the test bench, do not use any abrasives or solvents.
+
+10. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+
+Problem	Causes	Solutions
+The bench doesn't start.	The automatic switch behind the bench left door got activated	Open the left door with the key from the supply kit, turn on the automatic switch to the up position.
+The bench doesn't start.	The left door is open, the protective terminal switch of the left door got activated	Close the left door.
+The bench doesn't start.	One of the bench supply phases (L1/L2/L3) or neutral N are lacking	Restore the supply.
+The bench runs but the electric motor doesn't start.	The variable speed drive software error.	Contact the dealer.
+The bench runs but the electric motor doesn't start.	The bench wiring is damaged.	Contact the dealer.
+When the bench runs the abnormal noises are heard.	The diagnosed unit is mounted wrong. (The driving belt is over tightened or out of alignment)	Re-mount the unit for the diagnostics.
+When the bench runs the abnormal noises are heard.	The belt tightening is not enough	Stop the drive and check the tightening intensity
+When the bench runs the abnormal noises are heard.	The wear of the belt.	Replace the belt.
+During the alternator test the contact clips heat up much. (alligator clips)	The contact area is small.	Use a positive terminal adapter of the alternator.
+
+11. DISPOSAL
+Equipment deemed unserviceable is subject to disposal.
+The bench does not have in its design any chemical, biological or radioactive elements, which, if the storage and operation rules are observed, could cause damage to human health or the environment.
+Disposal of the equipment must comply with local, regional and national legislative norms and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) into the environment. To dispose of such materials, it is necessary to contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, which are non-ferrous metal waste, should be collected and sold.
+
+APPENDIX 1
+Alternator connection terminals
+
+Code	Application	Type of alternator	Cable wire/cable
+B+	Battery (+)		
+30	Battery (+)		
+A	(Ignition) Ignition start input		IG
+IG	(Ignition) Ignition start input		IG
+15	(Ignition) Ignition start input		IG
+AS	Alternator Sense Terminal for measuring of battery voltage		S
+BVS	Battery Voltage Sense Terminal for measuring of battery voltage		S
+S	Sense Terminal for measuring of battery voltage		S
+B-	Battery (-)		
+31	Battery (-)		
+E	(Earth) Earth, battery (-)		
+D+	For the connection of indicating lamp that supplies the initial voltage excitation and indicates the alternator performance capacity.	Lamp	Lamp
+I	Indicator	Lamp	Lamp
+IL	Illumination	Lamp	Lamp
+L	(Lamp) Output for the alternator performance capacity indicating lamp	Lamp	Lamp
+61	Output for the alternator performance capacity indicating lamp	Lamp	Lamp
+FR	(Field Report) Output for the control of the alternator load by the engine control unit		FR
+DFM	Digital Field Monitor		FR
+M	Monitor		FR
+LI	(Load Indicator) Similar to FR, just with the inverted signal		FR
+D	(Drive) Input for the P-D regulator control, for the alternators Mitsubishi (Mazda) and Hitachi (Kia Sephia 1997-2000)	P/D	GC
+
+Code	Application	Type of alternator	Cable wire/cable
+SIG	(Signal) Voltage code setting input	SIG	GC
+D	(Digital) Input for voltage code setting on the American Ford, similar to SIG	SIG	GC
+RC	(Regulator Control) Similar to SIG	SIG	GC
+L(RVC)	(Regulated Voltage Control) Similar to SIG, with just the voltage variation range 11.0-15.5V. The control signal is supplied to the terminal L	RVC	GC
+L(PWM)	(Regulated Voltage Control) Similar to SIG, with just the voltage variation range 11.0-15.5V. The control signal is supplied to the terminal L	RVC	GC
+C	(Communication) Input for the control of voltage regulator by engine control unit. Korean cars.	C KOREA	GC
+С (G)	Input for the control of voltage regulator by engine control unit. Japanese cars.	C JAPAN	GC
+RLO	(Regulated Load Output) Regulator stabilizing voltage control within11.8-15V (TOYOTA)	RLO	GC
+COM	(Communication) The general references of the physical control interface and alternator diagnostics. The protocols BSD (Bit Serial Device), BSS (Bit Synchronized Signal) or LIN (Local Interconnect Network) can be used	COM	GC
+LIN	Direct reference to the control and diagnostics of alternator through the protocol LIN (Local Interconnect Network)	COM	GC
+PWM	Used for 24V alternators where one of the pins in the connector is marked as PWM	PWM	GC
+Stop motor Mode	The control of the operation of Valeo alternator that are installed into the cars with the Start-Stop option	IStars	MS-33039 MS-33043
+K	I-ELOOP system alternator control terminal (Mazda)	I-ELOOP	MS-33040
+F1, F2	Rotor winding coil output Connection of the regulator with the rotor winding coil	F/67	MS-33042
+DF	Rotor winding coil output Connection of the regulator with the rotor winding coil	F/67	MS-33042
+FLD	Rotor winding coil output Connection of the regulator with the rotor winding coil	F/67	MS-33042
+67	Rotor winding coil output Connection of the regulator with the rotor winding coil	F/67	MS-33042
+
+Code	Application	Type of alternator	Cable wire/cable
+P	Output of one of the alternator stator winding coils It's used for the identification of the alternator excitation level by the voltage regulator		FR
+S	Output of one of the alternator stator winding coils It's used for the identification of the alternator excitation level by the voltage regulator		FR
+STA	Output of one of the alternator stator winding coils It's used for the identification of the alternator excitation level by the voltage regulator		FR
+Stator	Output of one of the alternator stator winding coils It's used for the identification of the alternator excitation level by the voltage regulator		FR
+W	(Wave) Output of one of the alternator stator winding coils - to connect the speed gauge in the diesel cars		
+N	(Null) Stator winding coil centerpoint output For the control of the performance capacity indicating lamp of alternator with the mechanical voltage regulator		
+D	(Dummy) Empty, no connection, mainly in Japanese cars		
+N/C	(No connect) No connection		

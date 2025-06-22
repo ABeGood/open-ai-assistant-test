@@ -1,0 +1,53 @@
+KIT002A UPGRADE KIT FOR THE MS002 COM TEST BENCH @D_15_IMG_000_PHOTO_KIT002A-upgrade-kit-cover
+INSTALLATION INSTRUCTIONS
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The KIT002A kit is designed for upgrading the MS002 COM test bench. The upgrade involves replacing the control module of the bench with a new one, which will allow for the following:
+
+Diagnose a broader range of units, including the most modern ones.
+Improve diagnostic precision.
+Reduce the time spent on diagnosing a unit.
+Enable new features.
+
+Before performing installation work, carefully read this manual.
+The upgrade of the test bench includes the following steps:
+
+Removing the bench panels.
+Removing the control module of the bench, hereafter referred to as the "head."
+Installing the wiring.
+Installing the new control unit of the bench.
+Reinstalling the bench panels in their original position.
+
+DELIVERY SET
+The delivery set includes:
+Item name	Number of pcs
+MS002A bench control module	1
+Power wire harness	1
+Installation instructions (card with QR code)	1
+
+OPERATION SEQUENCE
+1. Tools required for the installation @D_15_IMG_001_PHOTO_tools-required-for-installation_step1:
+Straight wrench
+Flexible shaft extension
+7 mm socket wrench
+10 mm socket wrench
+PH1 screwdriver
+
+2. Disconnect the power to the bench and unplug it. Using the supplied key, unlock the front and rear panel locks and remove the panels. @D_15_IMG_002_PHOTO_panel-removal-front_step2 @D_15_IMG_003_PHOTO_panel-removal-rear_step2
+
+3. Disconnect all connectors from the "head" at the front (as shown in the diagram @D_15_IMG_004_PHOTO_head-connector-disconnection-front_step3) and the rear @D_15_IMG_005_PHOTO_head-connector-disconnection-rear_step3, after first unscrewing the D-SUB connector mounting screws with a PH1 screwdriver.
+The round shiny connector, not shown in the photo, must also be disconnected and will no longer be used in the new configuration.
+
+4. Using the flexible shaft and a 7 mm socket wrench, unscrew the five nuts securing the "head" to the bench frame from the bottom. Four nuts are located at the corners, and one in the middle. Then, remove the MS002 "head" from the frame. @D_15_IMG_006_PHOTO_head-removal-from-frame_step4
+
+5. Using a 10 mm socket wrench, unscrew the nut and disconnect the positive power wire from the load block. @D_15_IMG_007_PHOTO_power-wire-disconnection-step1_step5 @D_15_IMG_008_PHOTO_power-wire-disconnection-step2_step5
+
+6. Next, connect the supplied power wire harness to the load block, selecting convenient connection points. @D_15_IMG_009_PHOTO_power-harness-connection-step1_step6 @D_15_IMG_010_PHOTO_power-harness-connection-step2_step6
+
+7. Install the new MS002A "head" onto the bench frame. Then, connect the positive power wires to the terminals from below, as shown in the photo. @D_15_IMG_011_PHOTO_new-head-installation-and-wiring_step7 The diagram shows: on the left — wires previously disconnected from the load block in step 6, and on the right — the wire harness connected to the load block in step 5.
+
+8. Tighten four of the five nuts securing the "head" using a 7 mm socket wrench and flexible shaft.
+
+9. Reconnect all connectors that were disconnected in step 3 of this manual, except for the current sensor connector, which is not used in this configuration. @D_15_IMG_012_PHOTO_connector-reconnection_step9
+
+10. Close the front and rear panels; otherwise, the bench will not turn on. This completes the KIT002A installation.
