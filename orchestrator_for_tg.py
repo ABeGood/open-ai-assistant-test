@@ -206,7 +206,7 @@ class TelegramMultiAssistantOrchestrator:
             return {"success": False,
                     "error": "Session not found",
                     "specialists": [],
-                    "reasoning": None,
+                    "reason": None,
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -237,7 +237,7 @@ USER REQUEST:
             return {"success": False,
                     "error": f"Error creating routing message: {e}",
                     "specialists": [],
-                    "reasoning": None,
+                    "reason": None,
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -253,7 +253,7 @@ USER REQUEST:
             return {"success": False,
                     "error": f"Error creating routing run: {e}",
                     "specialists": [],
-                    "reasoning": None,
+                    "reason": None,
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -267,7 +267,7 @@ USER REQUEST:
                 return {"success": False,
                         "error": "Routing decision timed out",
                         "specialists": [],
-                        "reasoning": None,
+                        "reason": None,
                         "user_query": user_message,
                         "raw_response": None
                         }
@@ -280,7 +280,7 @@ USER REQUEST:
                 return {"success": False,
                         "error": f"Error checking routing status: {e}",
                         "specialists": [],
-                        "reasoning": None,
+                        "reason": None,
                         "user_query": user_message,
                         "raw_response": None
                         }
@@ -293,7 +293,7 @@ USER REQUEST:
             return {"success": False,
                     "error": f"Error retrieving routing decision: {e}",
                     "specialists": [],
-                    "reasoning": None,
+                    "reason": None,
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -311,7 +311,7 @@ USER REQUEST:
                 return {"success": False,
                         "error": "Empty assistants list",
                         "specialists": [],
-                        "reasoning": None,
+                        "reason": None,
                         "user_query": user_message,
                         "raw_response": None
                         }
@@ -320,7 +320,7 @@ USER REQUEST:
             return {"success": False,
                     "error": f"Error parsing orchestrator response: {e}",
                     "specialists": [],
-                    "reasoning": None,
+                    "reason": None,
                     "user_query": user_message,
                     "raw_response": None
                     }
@@ -695,15 +695,18 @@ USER REQUEST:
 
             if len(sources_list) > 0:
                 files_path = assistant_files_mapping.get(assistant_name)
-                source_mapping_filepath = files_path + 'pdf_mapping.json'
-                with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
-                    pdf_mapping = json.load(file)
-                for source in sources_list:
-                    source_filename = source.filename
-                    name_without_ext = os.path.splitext(source_filename)[0]
-                    source_file_path = pdf_mapping[name_without_ext]
-                    sources_files_list.append(source_file_path)
-                    sources_files_list = list(set(sources_files_list))
+                try:
+                    source_mapping_filepath = files_path + 'pdf_mapping.json'
+                    with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
+                        pdf_mapping = json.load(file)
+                    for source in sources_list:
+                        source_filename = source.filename
+                        name_without_ext = os.path.splitext(source_filename)[0]
+                        source_file_path = pdf_mapping[name_without_ext]
+                        sources_files_list.append(source_file_path)
+                        sources_files_list = list(set(sources_files_list))
+                except Exception as e:
+                    logging.warning(f'Failed find source in pdf_mapping.json. {e}',exc_info=True)
 
             if len(img_markers_list) > 0:
                 files_path = assistant_files_mapping.get(assistant_name)
