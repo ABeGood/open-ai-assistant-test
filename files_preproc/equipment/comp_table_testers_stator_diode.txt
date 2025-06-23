@@ -1,0 +1,39 @@
+MS014, MS021 COMPARISON TABLE OF AUTOMOTIVE STATORS AND DIODES TESTERS
+
+MS014:
+Supply voltage, V: 230 AC
+Tested diode voltage, V: 12/24
+Diode bridge diagnostics: Yes
+Stator winding diagnostics: Yes
+Wire break diagnostics: Yes
+Short circuit test: Yes
+Diode type diagnostics: No
+Avalanche diode characteristics: No
+Current type on device probes: pulse
+Voltage on device probes, V: 12.6
+Current strength on device probes, A: 30
+Types of stator windings tested: "Star", "Triangle"
+Intercommutator short circuit: Yes
+Interphase short circuit: Yes
+Phase-to-housing short circuit: Yes
+Phase break: Yes
+
+MS021:
+Supply voltage, V: 230 AC
+Tested diode voltage, V: 12/24
+Diode bridge diagnostics: Yes
+Stator winding diagnostics: No
+Wire break diagnostics: Yes
+Short circuit test: Yes
+Diode type diagnostics: Yes
+Avalanche diode characteristics: Yes
+Current type on device probes: variable
+Voltage on device probes, V: 30
+Current strength on device probes, A: 0.9
+Types of stator windings tested: -
+Intercommutator short circuit: No
+Interphase short circuit: No
+Phase-to-housing short circuit: No
+Phase break: No
+
+MS014, MS021 COMPARISON TABLE OF AUTOMOTIVE STATORS AND DIODES TESTERS

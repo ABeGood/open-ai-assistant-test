@@ -1,0 +1,318 @@
+MS112 TEST BENCH FOR DIAGNOSTICS OF ELECTRIC COMPRESSORS OF AUTOMOTIVE AIR CONDITIONERS @D_33_IMG_000_PHOTO_ms112-test-bench-general-view
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing products from TM MSG Equipment.
+This User Manual provides information about the purpose, components, technical specifications, and operating rules of the MS112 test bench.
+Before using the MS112 test bench, carefully review this User Manual. If necessary, undergo specific training at the test bench's manufacturing facility.
+Due to continuous improvements to the test bench, changes may be made to the design, delivery package, and software (SW) that are not reflected in this User Manual. The pre-installed software in the test bench is subject to updates, and its support may be discontinued without prior notice.
+CAUTION! Study and strictly adhere to all safety requirements for the safe operation of the test bench, as described in section 5.1.
+
+1. APPLICATION
+The MS112 test bench is designed for diagnosing electric compressors in hybrid and electric vehicles air conditioners. The test bench conducts checks on any electric compressors with a built-in inverter and power voltage ranging from 200 to 400V (direct current). Compressor diagnosis is carried out in a fully automatic mode, assessing the electrical component's functionality and conducting a performance test. Compressed nitrogen is used as the working medium.
+
+2. SPECIFICATIONS
+Supply voltage, V	230
+Supply mains type	Single-phase
+Demanded power, kW	3
+Dimensions (L x W x H), mm	740×600×550
+Weight, kg	40
+Compressor check
+Tested units	2-pin high voltage connection, with built-in inverters
+Tested units supply voltage, VDC	from 200 to 400
+Working gas	Compressed nitrogen (external source required )
+The working pressure at the output of the nitrogen cylinder regulator	7..8 Bar (100..110 psi)
+Nitrogen consumption	100 normal liters per test
+Required nitrogen flow rate, l/min	400
+Nitrogen recovery	No.Waste gas is discharged into the atmosphere
+Nitrogen connection	SAE 1/4"
+Additional features
+Software update	Available
+Connection of USB flash drive	USB Type-C
+
+3. EQUIPMENT SET
+
+The equipment complete set includes:
+Item name	Quantity, pc
+MS112 Test Bench	1
+Filtering element in Certools F701 (KN-701) filter (with sealing rings)	1
+Key for replacing the combined filter	1
+Combined 10" cartridge filter, polypropylene-carbon	1
+USB Type-C flash drive	1
+Manual (card with QR code)	1
+
+4. TEST BENCH DESCRIPTION
+Main Components of the Test Bench (see Figure 1 @D_33_IMG_001_PHOTO_test-bench-main-components_fig1):
+1 - Unit Fastening Belt.
+2 - High- and Low-pressure hoses.
+3 - "Danger" Signal Lamp - warns of the danger of electric shock from high voltage; do not touch metal parts of the test bench or compressor when the lamp is lit.
+4 - "CAB" Connector for data cable connection (compressor control).
+5 - "HV" Connector for high-voltage compressor power cable connection.
+6 - Touch Screen - displays diagnostic parameters of the tested unit and controls test bench functions.
+7 - USB Type-C Connector for flash drive connection.
+"EMERGENCY STOP" Button - emergency stop of diagnostics process and discontinuation of high voltage supply to the diagnosed compressor.
+"OFF/ON" Button - controls test bench power.
+Figure 1. General View of the Diagnostic Test Bench @D_33_IMG_001_PHOTO_test-bench-main-components_fig1
+
+To connect the compressor to the test bench, use: data cable (Figure 2 @D_33_IMG_002_PHOTO_data-cable_fig2), power cable (Figure 3 @D_33_IMG_003_PHOTO_power-cable_fig3), and 2 connectors (Figure 4 @D_33_IMG_004_PHOTO_connectors_fig4) corresponding to the compressor.
+
+WARNING! Data cables, power cables, and connectors are not included in the package.
+Figure 2 @D_33_IMG_002_PHOTO_data-cable_fig2
+Each high-voltage cable is equipped with a "crocodile" clamp that must be connected to the compressor body.
+Figure 3 @D_33_IMG_003_PHOTO_power-cable_fig3
+Figure 4 @D_33_IMG_004_PHOTO_connectors_fig4
+
+4.1. Test bench menu
+In the main menu, you can select the model of the diagnosed compressor (Figure 5 @D_33_IMG_005_PHOTO_compressor-selection-menu_fig5), which includes:
+1 - Visual representation of the compressor (additional check for correct model selection).
+2 - List of cables and connectors required for diagnosing the selected compressor. In Figure 5 @D_33_IMG_005_PHOTO_compressor-selection-menu_fig5, item 2 corresponds to the following designations:
+8-H - power cable;
+2-D - data cable;
+48-HP - connector for high-pressure line connection;
+8-LP - connector for low-pressure line connection.
+3 - Displays the number of connected data cable.
+4 - List of compressors available for diagnosis.
+"Ok" button - activates the diagnostic mode for the selected unit. The button is inactive until the following condition is met: "The data cable specified in field 2 must be inserted into the test bench connector."
+"Back" Button returns to the compressor testing interface.
+Figure 5 @D_33_IMG_005_PHOTO_compressor-selection-menu_fig5
+
+The compressor diagnostics menu contains (Figure 6 @D_33_IMG_006_PHOTO_compressor-diagnostics-menu_fig6):
+
+1 - Current connection status of the compressor, diagnostic data received from the compressor.
+2 - Errors that occurred during the test or active compressor errors.
+3 - Diagnostic results for the compressor, see Table 3.
+4 - Current pressure values in the high and low-pressure lines.
+5 - Current stage of testing.
+6 - Entry to the compressor selection menu.
+7 - Pressure dependence graph for the high-pressure line (HP) over time.
+"STOP" Button stops the diagnostics process.
+"EXPRESS TEST" Button starts a test of only the compressor motor, without nitrogen supply to the compressor; fittings do not need to be connected to the compressor. Press "STOP" to stop.
+"FULL TEST" Button starts a complete compressor test cycle, requiring the test bench to be connected to a nitrogen line.
+8 - Entry to the service menu.
+9 - Control of tightening and loosening the compressor fastening belt.
+Figure 6 @D_33_IMG_006_PHOTO_compressor-diagnostics-menu_fig6
+
+5. APPROPRIATE USE
+1. Use the test bench only for its intended purpose (see section 1).
+2. The test bench is designed for indoor use at temperatures between +10 and +40 °C, with air humidity not exceeding 75% without condensation.
+3. After transporting the test bench at an ambient temperature below 0°C, allow it to reach the operating temperature for at least 24 hours before turning it on.
+4. Use the "EMERGENCY STOP" button only when necessary to urgently stop the diagnostic process.
+5. Turn off the test bench when not in use.
+6. In case of malfunctions in the test bench's operation, discontinue its use and contact technical support or your sales representative.
+
+WARNING! e manufacturer is not responsible for any damage or harm to health resulting from failure to comply with the requirements of this User Manual.
+
+5.1. Safety guidelines
+1. Trained personnel with authorization for specific types of test benches and knowledge of safe practices and methods are allowed to operate the test bench.
+2. The room where the test bench is used should be well-ventilated. Existing exhaust systems in the room should be activated.
+3. Exercise caution when installing or removing a unit from the test bench to prevent dropping the unit or injuring hands.
+4. Before performing any maintenance work on the test bench, disconnect it from the power source and close the nitrogen supply valve.
+5. Maintain a clean, well-lit, and adequately spacious work area at all times.
+6. For electrical and fire safety, it is FORBIDDEN to:
+• Connect the test bench to an electrical supply without proper protection against current overloads or with faulty protection.
+• Use an outlet without grounding for connecting the test bench.
+• Use adapters, multi-outlet sockets, or extension cords to connect the test bench to the electrical supply.
+• Operate the test bench in a faulty condition.
+• Attempt to repair or modify the test bench's structure.
+7. When working on the test bench, wear protective glasses and gloves.
+8. When placing a nitrogen cylinder, ensure that radiators, heaters, and other heating devices are at least 1 meter away from the cylinders. Open flame heat sources should be at least 5 meters away from the cylinders.
+9. In case of regulator malfunction on the nitrogen cylinder, return it to the filling station for proper release of gas as per the instructions.
+10. DO NOT touch the compressor or the metal parts of the test bench during compressor testing, especially when the red "Danger" signal lamp is lit.
+11. DO NOT connect connectors to high or low-pressure hoses unless they are attached to the compressor.
+
+@D_33_IMG_007_PHOTO_safety-warning-1
+
+12. Securely attach connectors to the compressor before connecting high and low-pressure hoses.
+@D_33_IMG_008_PHOTO_safety-warning-2
+
+13. DO NOT start any tests if the high-voltage cable is not connected to both the compressor and the test bench.
+@D_33_IMG_009_PHOTO_safety-warning-3
+
+14. DO NOT disconnect hoses from connectors or dismantle connectors while nitrogen is pressurized in the compressor. DANGER
+@D_33_IMG_010_PHOTO_safety-warning-4
+
+14.1. In case of an emergency situation (test bench malfunction) during compressor diagnostics, release pressure from the test bench before conducting repairs (see section 7.2).
+15. The compressor under diagnosis must be securely fastened.
+
+5.2. Preparing the test bench for use
+The test bench is delivered in packaging. Unpack the test bench, remove the protective film from the display (if present). After unpacking, ensure that the test bench is intact and free from any damage. If any damage is detected, contact technical support or your sales representative before turning on the test bench.
+The test bench is designed for tabletop use. When installing the test bench, make sure it rests on its legs, which can be adjusted in height by turning them in or out. The test bench should stand stably.
+Before using the test bench, you need to connect:
+1) A 230V (single-phase) power supply with grounding, capable of delivering a current of at least 16 A. If the socket is distant from the test bench's location, electrical network modifications and socket installation are necessary.
+2) A source of compressed nitrogen (see Figure 7 @D_33_IMG_011_DIAGRAM_nitrogen-cylinders_fig7), refer to Table 1.
+The compressed nitrogen cylinder should be equipped with a pressure regulator with a working pressure output of 7..8 Bar (100..110 psi) and a flow rate at the working pressure of at least 400 L/min (see Table 2).
+Figure 7. High-Pressure Industrial Gas Cylinders @D_33_IMG_011_DIAGRAM_nitrogen-cylinders_fig7
+
+Table 1. Approximate number of tests depending on cylinder volume (With residual pressure in the cylinder below 20 Bar (290 psi), the cylinder's gas reducer may not provide the required gas flow. The table's data takes this feature into account.).
+Cylinder volume	Number of tests
+300CF	75
+250CF	60
+40L 150Bar	52
+40L 200Bar	75
+125CF	31
+80CF	20
+20СF	3..4
+
+WARNING! Before purchasing a gas reducer, contact your industrial gas supplier to confirm the type of connection used on the cylinder valve (see Figure 8 @D_33_IMG_012_PHOTO_cylinder-valve-connection_fig8).
+
+Figure 8 @D_33_IMG_012_PHOTO_cylinder-valve-connection_fig8
+
+Table 2. List of recommended gas reducers.
+Name	Input connection type	Region
+TurboTorch 0386-0813 245-02P Nitrogen Type R Regulator	CGA 580	USA
+GCE ProControl Nitrogen 0-10Bar	DIN477 W 24.32 × 1/14"	EU
+ДОНМЕТ® БАЗО-50ДМ	G 3/4"	Eastern Europe
+
+Figure 9. Recommended Gas Reducers @D_33_IMG_013_PHOTO_recommended-gas-reducers_fig9
+To connect the test bench to the nitrogen supply line, it is recommended to use a hose not longer than 90 cm (36") with SAE 1/4" threaded connectors (see Figure 10 @D_33_IMG_014_PHOTO_nitrogen-connection-hose_fig10).
+Figure 10 @D_33_IMG_014_PHOTO_nitrogen-connection-hose_fig10
+
+WARNING! Before connecting the hose, remove the depressor if it's installed (see Figure 11 @D_33_IMG_015_PHOTO_depressor-removal_fig11-1 @D_33_IMG_016_PHOTO_depressor-removal_fig11-2 @D_33_IMG_017_PHOTO_depressor-removal_fig11-3).
+Figure 11 @D_33_IMG_015_PHOTO_depressor-removal_fig11-1 @D_33_IMG_016_PHOTO_depressor-removal_fig11-2 @D_33_IMG_017_PHOTO_depressor-removal_fig11-3
+
+6. DIAGNOSIS OF THE COMPRESSOR
+The diagnosis procedure consists of the following steps:
+1. In the test bench's database, find and select the model of the unit you want to diagnose. The test bench will indicate the numbers of the cables and connectors required for its diagnosis.
+2. Connect the connectors to the compressor and secure them (see Figure 12 @D_33_IMG_018_PHOTO_compressor-connector-installation_fig12).
+2.1. If an "EXPRESS TEST" is to be performed to check the compressor's electric motor, the connectors can be omitted.
+Figure 12 @D_33_IMG_018_PHOTO_compressor-connector-installation_fig12
+3. Secure the unit on the test bench (see Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13).
+4. Connect the high-voltage cable and the data cable to the compressor. Attach the "crocodile" clamp of the high-voltage cable to the compressor's body (see Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13).
+
+5. Connect the high-pressure and low-pressure hoses (see Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13).
+
+6. Start the "FULL TEST" or "EXPRESS TEST". After this, touching the metal parts of the test bench or the compressor is FORBIDDEN.
+6.1. If you started the "FULL TEST," the diagnostic process will run automatically. Upon completion, the screen will display the results of the measurements or the reasons for test interruption (see Table 3 and 4).
+6.2. If you started the "EXPRESS TEST," you should stop the process by pressing the "STOP" button.
+7. Upon completing the compressor diagnosis, you can remove it from the test bench.
+
+Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13
+
+Table 3. Messages after "FULL TEST" completion
+Message	Meaning	Recommendations
+PASS	Compressor has passed the test.	The compressor's performance meets the standard.
+HV short circuit	Short circuit in the high-voltage circuit of the air conditioner compressor's inverter.	Ensure the correct high-voltage cable is used.
+HV short circuit	Short circuit in the high-voltage circuit of the air conditioner compressor's inverter.	Some high-voltage cables have the same connector but different polarity.
+HV short circuit	Short circuit in the high-voltage circuit of the air conditioner compressor's inverter.	Replace the air conditioner compressor's inverter.
+LV short circuit	Short circuit in the low-voltage circuit of the air conditioner compressor.	Ensure the correct data cable is used.
+LV short circuit	Short circuit in the low-voltage circuit of the air conditioner compressor.	Replace the air conditioner compressor's inverter.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	Make sure the selected program matches the tested compressor.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	Some compressor models won't establish communication without high-voltage power. Ensure the correct cable type is used and properly connected.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	Check the data cable connection and rerun the test.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	The air conditioner compressor's inverter is faulty. Replace the inverter.
+Compressor is not starting	Connection with the compressor is established, but the compressor did not execute the rotor start command.	Indicates a faulty air conditioner compressor inverter or a jammed compressor rotor.
+Compressor is not starting	Connection with the compressor is established, but the compressor did not execute the rotor start command.	Ensure the high-voltage cable is connected, the correct program is selected from the database, and there is no "Voltage out of range" message.
+No nitrogen	LP pressure during the compressor blow-out stage is less than 1.5 Bar (22 psi).	Ensure the nitrogen source is connected to the test bench, valves are open, and the gas reducer pressure is set correctly.
+Hoses not connected	Occurs if, after opening the nitrogen supply valve, LP pressure is normal, but HP pressure did not increase.	Ensure the hoses are correctly connected to the compressor.
+Hoses not connected	Occurs if, after opening the nitrogen supply valve, LP pressure is normal, but HP pressure did not increase.	This message can also appear if gas is not passing through the compressor due to corrosion or mechanical blockage.
+Abnormal LP	LP sensor reading higher than HP pressure during the compressor blow-out stage.	HP and LP pressure sensor connectors are swapped. Contact technical support.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	The results of such a test won't be reliable; even a good compressor can't pass the test.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	Adjust the external nitrogen source pressure.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	Ensure that during the test, the nitrogen source output pressure remains within acceptable limits.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	If the above steps don't help, contact technical support.
+The compressor is not building pressure	Compressor couldn't create pressure above 5 Bar (72 psi).	Indicates a mechanical malfunction of the compressor.
+The compressor is not building pressure	Compressor couldn't create pressure above 5 Bar (72 psi).	Lack or excess of lubricant in the compressor. See section 6.1.
+Poor compressor performance	Compressor couldn't generate the required pressure within the allocated time.	Indicates a mechanical malfunction of the compressor.
+Poor compressor performance	Compressor couldn't generate the required pressure within the allocated time.	Lack or excess of lubricant in the compressor. See section 6.1.
+
+Table 4. Diagnostic Data Obtained from the Compressor.
+Message	Meaning	Recommendations
+HVIL	High-voltage interlock loop (HVIL) jumper not closed.	Compressors 926002618R, 926008231R, 926005501R cannot be started with an open HVIL circuit. Check the HVIL circuit, close the HVIL contacts manually, or use the 18-H cable instead of the 3-H cable.
+Inverter fault	Inverter is faulty or lacks high-voltage inverter power.	Ensure the issue is not in the test bench's high-voltage cable.
+Inverter fault	Inverter is faulty or lacks high-voltage inverter power.	Replace the air conditioner compressor's inverter.
+Compressor rotor suddenly stops	Compressor rotor spontaneously stopped during the test.	Indicates a faulty air conditioner compressor inverter or mechanical part jamming.
+Compressor rotor suddenly stops	Compressor rotor spontaneously stopped during the test.	his message can also arise due to unstable communication or insufficient compressor power. Ensure cables are correctly connected.
+Voltage out of range	High-voltage power is outside the permissible range.	Indicates a fault in the high-voltage part of the air conditioner compressor's inverter.
+Voltage out of range	High-voltage power is outside the permissible range.	Ensure the high-voltage cable is correctly connected.
+Voltage out of range	High-voltage power is outside the permissible range.	Ensure the correct program is selected since the power voltage for hybrid and fully electric vehicle compressors is different.
+Overheat		Wait for 15 minutes and repeat the test
+
+6.1. Possible issues during compressor diagnosis and their solutions
+To obtain accurate results, it's important that the compressor has the correct amount of oil. Excess or insufficient oil can lead to erroneous test results. Before testing, it's recommended to pour 30 ml (cm3) of oil into the LP hose of the compressor. The oil type is indicated on the compressor's label.
+Because nitrogen doesn't mix with the compressor oil, the oil tends to accumulate in the cavity of the front cover of the compressor, behind the valve plate (Figure 14 @D_33_IMG_020_DIAGRAM_compressor-oil-accumulation_fig14). This is especially relevant for Denso compressors.
+
+Figure 14 @D_33_IMG_020_DIAGRAM_compressor-oil-accumulation_fig14
+
+The test might fail, and the test bench will display one of the messages: "The compressor is not building pressure" or "Poor compressor performance." If this happens, try one of the two actions described below and repeat the test.
+
+Option 1
+Conduct the compressor test in a vertical position as shown in Figure 15 @D_33_IMG_021_PHOTO_vertical-test-position_fig15.
+Figure 15 @D_33_IMG_021_PHOTO_vertical-test-position_fig15
+
+Option 2
+Dismount the compressor from the test bench.
+Unscrew the safety valve on the compressor and drain the oil into a clean container (Figure 16 @D_33_IMG_022_PHOTO_oil-draining-procedure_fig16-1 @D_33_IMG_023_PHOTO_oil-draining-procedure_fig16-2). Then screw the safety valve back into place.
+
+Figure 16 @D_33_IMG_022_PHOTO_oil-draining-procedure_fig16-1 @D_33_IMG_023_PHOTO_oil-draining-procedure_fig16-2
+
+Next, unscrew the fitting from the LP line and pour approximately 30 ml (cm3) of oil into it. The oil type is indicated on the compressor's label.
+Install and secure the fitting. Afterward, place the compressor back on the test bench and repeat the test.
+
+7. TEST BENCH MAINTENANCE
+The test bench is designed for long-term operation and has no special maintenance requirements. The need for maintenance will be indicated by an appropriate message. The maintenance procedure involves three stages (see section 7.1 for details):
+• Draining the separated compressor oil.
+• Replacing the combined 10" filter.
+• Replacing the filtering element in the Certools F701 filter (KN-701).
+
+In addition to periodic maintenance, it's necessary to regularly inspect its technical condition, namely:
+• Checking for any unusual sounds.
+• Inspecting the condition of cables and quick-connect fittings (visual inspection).
+
+7.1. Periodical service maintenance
+Regular maintenance of the test bench is carried out as follows:
+1. Disconnect the test bench from the electrical power supply.
+2. Unscrew all screws on the rear panel and remove it.
+3. Disconnect the sensor connector (see item 4 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17) located on the compressor oil collection container, item 2 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17.
+3.1. Unscrew the container bulb and drain the oil into a disposal container.
+3.2. Screw the container bulb back and reconnect the sensor connector.
+4. Unscrew the container bulb with the combined 10" filter (item 3 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17). Replace the filter and screw the bulb back.
+5. Using an adjustable wrench or socket, rotate the Certools F-701 filter cover (item 1 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17) counterclockwise to disconnect it from the filter bowl.
+5.1. Assess the condition of the sealing rings. Replace them if necessary.
+5.2. Replace the filtering element.
+5.3. Place the filter cover back and screw it clockwise.
+6. Reinstall the rear panel and secure it with screws.
+
+1 - Certools F-701 filter; 
+2 - oil separator; 
+3 - combined 10" filter; 
+4 - sensor connector for used oil level control.
+Figure 17. Location of test bench elements requiring maintenance: @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17
+7.2. Pressure release from the test bench
+In the event of an abnormal situation (test bench malfunction) during compressor diagnosis, it is necessary to release the pressure from the test bench before performing repair work.
+To release the pressure, follow these steps:
+1. Remove the rear panel of the test bench.
+2. Connect the manifold hose to the service port (ensure the fitting has a depressor installed), see Figure 18 @D_33_IMG_025_PHOTO_pressure-release-procedure_fig18-1 @D_33_IMG_026_PHOTO_pressure-release-procedure_fig18-2.
+3. Slowly open the valve on the manifold and release excess pressure from the system.
+4. Disconnect the manifold from the service port and screw the rear panel of the test bench back into place.
+WARNING! If the manifold is not available, you can depress the valve using a screwdriver. In this case, wrap the service port with a rag to prevent oil splatter.
+
+Figure 18 @D_33_IMG_025_PHOTO_pressure-release-procedure_fig18-1 @D_33_IMG_026_PHOTO_pressure-release-procedure_fig18-2
+
+7.3. Test bench software update
+To update the test bench software, you will need a USB Type-C Flash drive formatted with the FAT32 file system (the USB Type-C Flash drive is included with the test bench).
+The update procedure is as follows:
+• Download the file containing the latest software version from the servicems.eu website, which is located in the product card for MS112;
+• Copy the "Update.bin" file to the root directory of the USB Type-C Flash drive;
+• Connect the flash drive to the test bench's port;
+• In the compressor diagnostics menu, press the "Service Menu" button, see item 8 in Figure 6 @D_33_IMG_006_PHOTO_compressor-diagnostics-menu_fig6;
+• In the service menu, press the "FW Update" button;
+• Wait for the update process to complete.
+WARNING! It's forbidden to stop the updating process by the tester switching off from the power circuit or by the USB card extracting.
+
+7.4. Cleaning and care
+To clean the surfaces, use the soft napkins or rags, and neutral cleansers. The display should be cleaned with a special fiber cleaning cloth and with a spray for display cleaning. To prevent the device from the failure and corrosion, do not use abrasive materials and solvents. Blow through the dust from the cooling radiators carefully, preventing the damage of the fans.
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Problem	Causes	Solutions
+1. Test Bench doesn't start up.	No connection to external power supply	Check the electrical connection of the bench
+	Pressed button EMERGENCY STOP	Check the position of the "EMERGENCY STOP" button
+	Defective the bench power supply	Contact the sales representative
+2. The display does not respond to the touch of the operator.	Damaged sensory pane	Contact the sales representative
+
+9. DISPOSAL
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.

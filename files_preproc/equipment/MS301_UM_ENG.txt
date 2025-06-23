@@ -1,0 +1,162 @@
+MS301 TEST BENCH FOR DIAGNOSTICS OF BRAKE CALIPERS @D_29_IMG_000_PHOTO_ms301-test-bench_general-view
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The present user manual consists of the information on the application, equipment set, technical specifications, as well as the rules for safe operation of the MS301 test bench.
+Read carefully this manual before putting MS301 (hereinafter "the bench") into operation.
+Due to the permanent improvements of the tester, the design and supply slip are subject to modifications that are not included to the present user manual. Therefore, no claims can be made regarding the data and illustrations in this User Manual.
+
+1. APPLICATION
+The MS301 bench is designed for diagnosing brake calipers of passenger cars and light commercial vehicles. The test bench allows determining the unit's tightness by creating hydraulic pressure within it.
+
+2. TECHNICAL SPECIFICATIONS
+Dimensions (L×W×H), mm	560х560х445
+Weight, kg	50
+Power source	- single-phase power supply - compressed air
+Supply voltage, V	100 - 240
+Power consumption, W	60
+Working pressure of pneumatic line, bar	6 - 10
+Air consumption, l/min	125
+Operating fluid	DOT4, DOT3
+Operating fluid tank capacity, l	3.5
+Working pressure of the bench hydraulic system, bar	135-150 (limited by bench settings)
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+Item name	Number of pcs
+Test bench MS301	1
+Connector М10х1	1
+Connector М10х1,25	1
+Connector М12х1,25	1
+Adapter М10х1-М12х1 WP 5-600-129	1
+Adapter М10х1-7/16"20UNF WP 5-600-230	1
+Adapter М10х1-3/8''24UNF WP 5-600-231	1
+1/4" male threaded quick disconnect coupling (QDC) socket	1
+High Pressure Cylinder Shirt DS106 12x20x5.5 EPDM	1
+PVC tube Ø6 mm (0.5 m)	1
+PVC tube Ø8 mm (0.5 m)	1
+Supply cable	1
+Filter change wrench	1
+User Manual (card with QR code)	1
+
+4. TEST BENCH DESCRIPTION
+The bench consists of the following main elements (see Fig. 1 @D_29_IMG_001_DIAGRAM_bench-main-elements_fig1):
+1 - Tray for collecting working fluid.
+2 - High-pressure hose.
+3 - Indicators:
+NO AIR - lights up when there is insufficient pressure in the supply air line;
+TANK MAX - lights up when the internal tank is full during the "draining the working fluid collection tray" mode. When this indicator is activated, the draining process stops.
+TANK MIN - lights up during the "pumping" mode when the internal tank is empty. When this indicator is activated, the pumping process stops.
+Figure 1. Main elements of the bench @D_29_IMG_001_DIAGRAM_bench-main-elements_fig1
+4 - Hydraulic pressure gauge, shows the pressure created in the "high pressure creation" mode.
+5 - Bench power switch.
+6 - Mode switch (illuminates when the mode is active):
+DRAIN - "draining the working fluid collection tray" mode;
+PUMP - "system pumping" mode;
+«0» - neutral position.
+7 - Switch activates the "high pressure creation" mode.
+8 - Pressure release valve.
+9 - Bleeding tubes.
+
+5. APPROPRIATE USE
+1. Use the test bench as intended only (see Section 1).
+2. The bench is intended for indoor use at temperatures ranging from +10 to +40 °C and with relative humidity not exceeding 75% without condensation.
+3. When the bench is idle, valve 8 in Fig. 1 @D_29_IMG_001_DIAGRAM_bench-main-elements_fig1 should be in the "OPEN" position.
+4. Operate the bench in a manner that protects the environment and natural resources of our planet. Do not allow leakage of working fluid into the ground or sewage.
+5. To prevent the damage and the failure of the bench, do not make any modifications in the bench in your discretion. Any modifications can be effected by the official manufacturer only. Should the bench have defects contact the manufacturer or a dealer.
+6. In case of failures in the operation of the bench, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. The test bench shall be operated by the workers qualified to work with certain types of equipment and received appropriate training in the safe operation.
+2. The workplace must be kept clean and well lit. Clutter and unlit areas of the workplace can lead to accidents.
+3. When working with the bench, personal protective equipment for eyes and hands must be used - technical rubber gloves (nitrile gloves) and closed protective goggles.
+4. It is FORBIDDEN to use open flames, smoke, or conduct welding within a 2-meter radius of the bench's installation site. Brake fluid is a flammable liquid.
+5. The room where the bench, is operated must be well-ventilated. The exhaust systems in the room must be turned on.
+6. It is FORBIDDEN to disconnect the high-pressure hose from the fitting (adapter) or unscrew the fitting while the brake caliper is under pressure.
+7. It is FORBIDDEN to use a damaged high-pressure hose.
+8. It is FORBIDDEN to use fittings and adapters with damaged threads.
+9. When diagnosing the brake caliper, do not allow fingers to get between the caliper body and the piston to avoid injury. A metal object of the appropriate size, such as the metal part of a hammer, should be used to block the piston.
+
+5.2. Preparing the bench for operation
+The bench is delivered packaged. Unpack the bench. After unpacking, ensure that the bench is intact and free of any damage. If damage is found, contact the manufacturer or sales representative before turning on the bench.
+The bench is designed for tabletop installation. When installing the bench, it must rest on its feet and be stable. For proper operation of the bench, ensure a tilt of 1° to 3° by adjusting the height of the feet by screwing them in or out (see Fig. 2 @D_29_IMG_002_PHOTO_bench-correct-position_fig2).
+Figure 2. Correct position of the bench @D_29_IMG_002_PHOTO_bench-correct-position_fig2
+
+Before operating the bench:
+1) Install the quick-release fitting in the designated place on the right side of the bench (see Fig. 3 @D_29_IMG_003_PHOTO_quick-disconnect-fitting-mounting_fig3).
+Figure 3. Mounting the quick disconnect fitting for connecting the compressed air supply @D_29_IMG_003_PHOTO_quick-disconnect-fitting-mounting_fig3
+2) Connect the electrical network to 230V (see Fig. 4 @D_29_IMG_004_PHOTO_electrical-air-connections_fig4).
+3) Connect the compressed air source (see Fig. 4 @D_29_IMG_004_PHOTO_electrical-air-connections_fig4).
+Figure 4 @D_29_IMG_004_PHOTO_electrical-air-connections_fig4
+4) Insert the 6 mm and 8 mm PVC tubes into the holes in the drain tray cover, which have round holes of the appropriate size (see Fig. 5 @D_29_IMG_005_PHOTO_pvc-tubing-installation_fig5).
+Figure 5: Installation of PVC tubing @D_29_IMG_005_PHOTO_pvc-tubing-installation_fig5
+5) Fill the bench's tank with working fluid. To do this:
+6.1) Turn on the bench.
+6.2) Activate the DRAIN mode and pour 3.5 liters of brake fluid into the collection tray (see Fig. 6 @D_29_IMG_006_PHOTO_brake-fluid-filling_fig6).
+Figure 6 @D_29_IMG_006_PHOTO_brake-fluid-filling_fig6
+6.3) When the bench's tank is full, the TANK MAX indicator will light up, the bench will stop the draining process, and the mode switch backlight will turn off (see Fig. 7 @D_29_IMG_007_PHOTO_tank-max-indicator_fig7).
+Figure 7 @D_29_IMG_007_PHOTO_tank-max-indicator_fig7
+6.4) Set the mode switch to the "0" position. The bench is now ready for operation.
+
+6. BRAKE CALIPER DIAGNOSIS
+The diagnosis of the brake caliper is performed in the following sequence:
+1. Select a fitting or a combination of a fitting and adapter that matches the caliper thread.
+Figure 8. Connector and adapter matched to caliper threads @D_29_IMG_008_PHOTO_connector-adapter-selection_fig8
+2. Screw the fitting into the caliper and tighten it with a wrench. The tightening torque should be:
+- for the fitting - moderate, as the sealing will occur due to the rubber-metal ring;
+- for the fitting with an adapter - the same as on the vehicle, as the sealing will occur metal-to-metal.
+Figure 9. Installing the coupling with adapter on the caliper @D_29_IMG_009_PHOTO_coupling-adapter-installation_fig9
+3. Turn the pressure release valve to the "OPEN" position, then connect the high-pressure hose to the fitting.
+Figure 10. Connecting the high-pressure hose @D_29_IMG_010_PHOTO_high-pressure-hose-connection_fig10
+
+4. Loosen the bleed fitting on the brake caliper by 1/4 or 1/2 turn, then attach a transparent bleed tube to it.
+Figure 11. Connected PVC tube for pumping @D_29_IMG_011_PHOTO_pvc-tube-connection_fig11
+5. Install a stopper for the caliper piston to prevent it from falling out. For this, you can use a metal object of the appropriate size, such as the metal part of a hammer.
+Figure 12. Installing the piston stop @D_29_IMG_012_PHOTO_piston-stop-installation_fig12
+
+6. Bleed the brake caliper:
+6.1. Turn on the "PUMP" mode. Wait until the fluid starts to flow out of the PVC tube, then turn the pressure release valve to the "CLOSED" position.
+6.2. Wait until fluid flows through the tube without bubbles, then tighten the bleed fitting on the brake caliper.
+6.3. During bleeding, hold the piston stopper by hand until the piston extends and presses against it.
+Figure 13. Tightening the pumping connection @D_29_IMG_013_PHOTO_pumping-connection-tightening_fig13
+WARNING! If the piston does not press against the stopper during bleeding, activate the high-pressure mode several times until the piston presses against the stopper.
+6.4. Remove the bleed tube from the fitting. The brake caliper is ready for testing.
+7. Conduct the test.
+7.1. Activate the "INCREASE PRESSURE" mode and wait for the working pressure to be established on the pressure gauge. Turn off the "INCREASE PRESSURE" mode and set the mode switch to the "0" position.
+7.2. Leave the caliper under pressure for some time (no more than 30 seconds) and monitor for any pressure drop and fluid leaks. The presence of fluid leaks and pressure drop as indicated by the gauge signifies a faulty caliper.
+7.3. Release the pressure from the caliper - turn the pressure release valve to the "OPEN" position, then disconnect the high-pressure hose and unscrew the fitting from the caliper.
+
+7. TEST BENCH MAINTENANCE
+The bench is designed for long-term operation and does not have special maintenance requirements. However, for maximum trouble-free operation, it is necessary to regularly monitor its technical condition, namely:
+• Tightness of the hydraulic system (visual inspection);
+• Condition of the working fluid - assessed visually by appearance. It should be clear, homogeneous, and without sediment.
+• Replace the fine filter (model PP-5SL, filtration rating 5-20 microns) every 6 months.
+
+7.1. Replacing the fine filter
+The fine filter of the bench is replaced in the following sequence:
+1. Turn on the bench.
+2. Connect any of the fittings to the high-pressure hose and submerge it in a container for collecting used working fluid.
+3. Turn the pressure release valve to the "CLOSED" position. Then activate the "PUMP" mode, and the working fluid will flow from the tank into the container.
+Figure 14 @D_29_IMG_014_PHOTO_fluid-drainage-setup_fig14
+4. Drain the fluid until the "TANK MIN" indicator lights up. Then set the mode switch to the "0" position and the pressure release valve to the "OPEN" position.
+5. Remove the back panel of the bench by unscrewing the screws around the perimeter.
+Figure 15 @D_29_IMG_015_PHOTO_back-panel-removal_fig15-1 @D_29_IMG_016_PHOTO_back-panel-removal_fig15-2
+6. Activate the drain tray mode by setting the mode switch to the "DRAIN" position. Pump the fluid out of the filter flask until the fluid level is minimal.
+Figure 16 @D_29_IMG_017_PHOTO_filter-flask-drainage_fig16
+
+7. Unscrew the filter flask and replace the filter cartridge with a new one (model PP-5SL, filtration rating 5-20 microns).
+Figure 17 @D_29_IMG_018_PHOTO_filter-cartridge-replacement_fig17
+
+8. Reassemble everything in reverse order and refill the brake fluid as specified in the "Preparing the bench for operation" section.
+
+7.2. Cleaning and care
+Use soft tissues or wipe cloths to clean the surface of the device with neutral detergents. Clean the display with a special fiber cloth and a cleaning spray for touch screens. To prevent corrosion, failure, or damage to the test bench, do not use any abrasives or solvents.
+
+8. RECYCLING
+European WEEE Directive 2002/96/EC (Waste Electrical and Electronic Equipment Directive) applies to the test bench waste.
+Obsolete electronic equipment and electric appliances, including cables, hardware, and batteries, must be disposed of separately from household wastes.
+Use available waste collection systems to dispose of outdated equipment.
+Proper disposal of old appliances prevents harm to the environment and personal health.

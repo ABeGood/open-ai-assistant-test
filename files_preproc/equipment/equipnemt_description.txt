@@ -1,0 +1,61 @@
+Starters and Generators	Brief Description
+MS021	The MS021 tester provides reliable assessment of the technical condition of generator diode bridge or individual diodes. The tester determines the type and characteristics of the diode, informs about the type of malfunction and can determine diode degradation.
+MS005A	The MS005A diagnostic stand is designed for fast and accurate diagnostics of generators and starters for passenger and commercial vehicles. The stand has high power, which in combination with the electronic stand control system provides the ability to diagnose a large range of units. Thanks to the generator database, automatic diagnostic mode and the ability to use special cables, the time spent on unit testing is reduced. A feature of the MS005A stand is the ability to diagnose 48V belt starter-generators of hybrid MHEV vehicles.
+MS015A	MS015A is a simple and user-friendly device for express diagnostics of 12V and 24V automotive generators with controlled or digital voltage regulator directly on the vehicle. The tester will be useful for both small car repair shops and large service stations to identify typical generator malfunctions - voltage regulator failure.
+KIT005A	The KIT005-48V kit is designed to upgrade the MS005 stand. Installing the kit will allow the stand to diagnose 48V belt starter-generators of mild hybrid vehicles.
+MS008	MS008 is a multifunctional diagnostic stand designed for fast and accurate diagnostics of automotive generators and starters for passenger cars and medium-duty trucks, as well as voltage regulators separately from the generator.
+MS002A	MS002A is a multifunctional diagnostic stand designed for fast and accurate diagnostics of generators, starters and generator voltage regulators for passenger and commercial vehicles.
+MS002 COM	MS002 COM is a multifunctional diagnostic stand designed for fast and quality diagnostics of generators and starters for passenger cars and medium-duty trucks.
+MS004 COM	MS004 COM is a multifunctional diagnostic stand designed for fast and quality diagnostics of generators and starters for passenger cars and light-duty trucks.
+MS005	The MS005 diagnostic stand is designed for fast and accurate diagnostics of generators and starters for passenger and commercial vehicles. The stand has high power, which in combination with the electronic stand control system provides the ability to diagnose a large range of units. Thanks to the generator database, automatic diagnostic mode and the ability to use special cables, the time spent on unit testing is reduced.
+MS006	The MS006 diagnostic stand allows assessment of the technical condition of 12/24V automotive generators for passenger cars and light-duty trucks, start-stop system 12V generators and "I-ELOOP" (Mazda) generators.
+MS012 COM	The tester simulates a working generator for the voltage regulator, which allows for a complete assessment of its functionality, as well as selection of a replacement regulator.
+MS013 COM	The MS013 COM tester is a compact device designed for express diagnostics of 12V automotive generators directly on the vehicle and assessment of relay-regulator functionality separately from the generator.
+MS016	The MS016 tester is a compact multifunctional device designed for express diagnostics of 12/24V automotive generators, 12V start-stop system generators and starters directly on the vehicle. The tester allows assessment of voltage regulator functionality separately from the generator, as well as reading and saving data transmitted via the vehicle's LIN bus.
+MS016A	MS016A is a compact multifunctional tester designed for diagnostics of vehicle electrical equipment: generator, starter, 12V start-stop system generator. The tester can check units and assemblies removed from the vehicle: generator voltage regulator and 48V belt starter-generators. The tester also has a function for checking data bus operation: LIN, CAN, CAN-FD.
+MS015	MS015 is a simple and user-friendly device for express diagnostics of 12V automotive generators with controlled or digital voltage regulator directly on the vehicle.
+MS014	The tester identifies all possible malfunctions of stator windings and diode bridges of automotive generators and makes diagnostics as simple and fast as possible.
+
+Climate Control System	
+MS111	MS111 is designed to check the technical condition of automotive climate system compressors operating on R134a or R1234yf refrigerant, break-in compressors after repair, pre-sale testing of new analog compressors and preparation of test result reports.
+MS112	MS112 allows assessment of the technical condition of electric compressors in air conditioning systems of hybrid and electric vehicles. The stand checks compressor performance and inverter functionality.
+MS121	The MS121 tester is a compact device that combines the ability to test electromagnetic clutches and control valves of automotive climate system compressors.
+MS101P	The MS101P station provides quality cleaning of pipelines and elements of automotive air conditioning systems from contamination or old oil.
+
+Suspension	
+MS201	The MS201 stand allows assessment of the technical condition of passenger car shock absorbers of all types and determination of the need for their repair, as well as assessment of the quality of repaired shock absorbers and verification of compliance of shock absorber operating characteristics with technical requirements.
+MS203	The adapter allows for complete diagnostics of electronically controlled shock absorbers on the MS201 stand.
+MS200	The MS200 system is designed for filling single-tube and twin-tube shock absorbers with gas after repair work.
+
+Brake System	
+MS301	The MS301 stand is designed for diagnostics of brake calipers of passenger cars and light commercial vehicles. The stand allows determination of unit tightness by creating hydraulic pressure within it.
+MS300	The MS300 stand is designed for diagnostics and repair of brake calipers. It allows determination of unit functionality and tightness. The ability to test electromechanical parking brake operation is provided.
+
+Electric Power Steering (EPS)	
+MS561 PRO	The MS561 PRO tester is designed for diagnostics of EPS units removed from vehicles, controlled by protocols: CAN, CAN-FD and FlexRay, as well as controlled by two independent CAN buses. In maximum configuration, the tester allows diagnostics of units from almost 4000 vehicle models, including the most modern ones.
+MS550	MS550 is created for joint operation with the MS561 PRO tester and is designed for diagnostics of power steering racks without a control unit (typically for Japanese vehicle brands).
+MS570	MS570 is an electronics repair master's table designed for quality workplace organization: Adapted for working with diagnostic equipment for EPS steering rack repair - MS561 controller. Has two built-in laboratory power supplies. Provides illumination in the work area of at least 750 lux.
+
+Hydraulic Power Steering (HPS)	
+MS521	The mechanism provides the most reliable and complete assessment of the technical condition of steering racks with hydraulic and electric power steering, and allows identification of malfunctions that manifest only when there is resistance to rack rod movement.
+MS510	The MS510 tester is used for diagnostics of steering hydraulic systems by determining the pressure created by the vehicle's HPS pump in different operating modes (with and without load).
+MS511	The MS511 tester is designed to check hydraulic power steering elements: pump and rack, on the vehicle without dismounting the units. The tester allows determination of the technical condition of units and the need for their subsequent removal from the vehicle for repair.
+MS504	The MS504 stand allows assessment of functionality and output characteristics of single- and dual-circuit mechanically driven HPS pumps, and allows simulation of the tested pump operation on the vehicle.
+MS502M	MS502M is a stand designed for assessment of the technical condition of hydraulic power steering racks and allows determination of the presence and nature of malfunctions.
+MS522	The vise is designed for quick fixation of cylindrical objects with diameters from 35 to 85mm with clamping force up to 1400 Newtons. Vise control is performed using a pneumatic distributor.
+MS503N	MS503N is a universal stand for vehicle HPS systems with 230V mains power. The stand allows system flushing and checking the technical condition of the steering rack and hydraulic power steering pump.
+
+High Voltage System	
+MS800	The MS800 tester is designed for diagnostics of high-voltage nickel-metal hydride (Ni-Mh) and lithium-ion (Li-ion) batteries of hybrid and electric vehicles.
+MS800A	The MS800A tester is designed for diagnostics of high-voltage nickel-metal hydride (Ni-Mh) and lithium-ion (Li-ion) batteries of hybrid and electric vehicles. The tester provides simultaneous testing of 12 battery modules.
+MS801	The MS801 tester is designed for diagnostics of lithium-ion modules of high-voltage batteries in electric and hybrid vehicles, as well as 48-volt batteries of "mild hybrids" (MHEV).
+
+Ecology	
+MS900	MS900 represents a complex of equipment for cleaning particulate filters of passenger cars and trucks by washing them. MS900 uses a unique cleaning methodology that effectively removes ash and soot from the particulate filter without using chemicals. The washing and drying work process is automated. The control menu is simple and intuitive, and the closed filter washing process ensures cleanliness and order in the chamber and workplace.
+
+Diagnostic Scanners	
+LOKI	LOKI implements all necessary service functionality for repair and maintenance of Tesla Model S, Model X, Model 3 and Model Y vehicles.
+
+Other	
+MS402	The MS402 polishing machine is designed for polishing various shafts, steering rack rods and other products to remove corrosion and achieve required surface roughness.
+MS410	The EPS diagnostic cable storage system allows: organizing diagnostic cable storage; quickly finding the needed cable; maintaining workplace order; protecting cables from tangling and mechanical damage. MS410 is recommended for purchase when using 10 or more cables.

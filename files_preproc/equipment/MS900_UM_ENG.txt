@@ -1,0 +1,457 @@
+MS900 STAND FOR WASHING OF PARTICULATE FILTERS (DPF, FAP) @D_27_IMG_000_PHOTO_ms900-stand_general-view
+
+USER MANUAL
+INTRODUCTION
+Thank you for choosing TM "MSG Equipment" products.
+This User Manual contains information about the purpose, equipment, technical specifications, and operating rules of the MS900 stand.
+Before using the MS900 stand (hereinafter referred to as the "stand"), carefully study this User Manual and, if necessary, undergo special training at the stand manufacturer's facility.
+Due to continuous improvements in the stand's design, equipment, and software (hereinafter referred to as "software"), changes may be made that are not reflected in this User Manual. The pre-installed software on the stand is subject to updates, and its support may be discontinued without prior notice.
+
+1. APPLICATION
+The stand is designed for cleaning particulate filters (hereinafter referred to as "filters") of passenger cars, trucks, and buses. Cleaning the particulate filters is done by flushing them with a stream of warm water. By periodically changing the direction of the flow and delivering compressed air pulses, high-quality cleaning of the particulate filter is achieved without the use of cleaning agents. For convenience in keeping track of serviced filters, the stand allows saving the results of the cleanings and printing them on an external Bluetooth printer.
+
+The stand consists of three modules:
+MS900A - diagnostic and drying module;
+MS900B - flushing module;
+MS900C - washing and drying chamber.
+The MS900A and MS900B modules are self-sufficient and operate independently of each other.
+
+2. SPECIFICATIONS
+Dimensions (L×W×H), mm	2750×860×2070
+Weight, kg	636
+Power source	- three-phase and single-phase electrical power supply; - compressed air
+Supply voltage, V	400 and 230
+Power consumption of MS900A module, kW	maximum	12
+Power consumption of MS900A module, kW	nominal	9.3
+Power consumption of MS900B module, kW	maximum	10.5
+Power consumption of MS900B module, kW	nominal	8.25
+Power consumption of MS900C module, kW	0.02
+Working pressure of pneumatic line, bar	6 - 12bar
+Air consumption, l/min	200
+Exhaust ventilation system connection required	minimum 300 m^3^/h
+Control	touchscreen
+Type of filters to be flushed	DPF (DPF + SCR)
+Type of filters to be flushed	FAP (FAP + SCR)
+Type of filters to be flushed	GPF
+
+Diagnosis and drying of the particulate filter
+Diagnostic time, minutes	up to 1
+Recommended drying time, minutes	10 - 20
+Air temperature during drying, °C	up to 80
+Dimensions of the washing chamber (W×D×H), mm	1600×750×955
+Workspace lighting	available
+
+Particulate filter flushing	Particulate filter flushing
+Recommended washing time, minutes	20 - 30
+Flushing liquid	water
+Water storage tank capacity, liters	250
+Water temperature during flushing, °C	up to 60
+Filtering system for the flushing liquid	• tank filter; • hydrocyclone; • 3 BB20 filters (5-20 microns).
+
+Additional features
+Saving of washing results	available
+Printing of results	available via external Bluetooth printer
+Software update	available (free)
+
+3. EQUIPMENT SET
+WARNING! The appearance of the component may differ from that shown in the table.
+Description	External appearance	Quantity, pcs.
+MS900A module		1
+MS900В module		1
+MS900С module		1
+Set of fittings for connecting particle filters see appendix 1		1
+MS900D - Rigging cart	@D_27_IMG_001_PHOTO_rigging-cart	1
+MS900C.20 - Base for placing the MS900C module on the floor without frame	@D_27_IMG_002_PHOTO_base-for-ms900c	4
+MS900C.19 - Tube for moving the MS900C module	@D_27_IMG_003_PHOTO_tube-for-moving-ms900c	2
+Particulate filter connection hose set (2 m, 1.8 m, 1.3 m)	@D_27_IMG_004_PHOTO_connection-hose-set	1
+Filter BB20 (5-20 µm)	@D_27_IMG_005_PHOTO_filter-bb20	3
+Bulb key for filter change BB20	@D_27_IMG_007_PHOTO_bulb-key-filter	1
+MS70017 -Regulation key for three-way valves VMR 25	@D_27_IMG_008_PHOTO_regulation-key-vmr25	1
+The key to the booth door	@D_27_IMG_010_PHOTO_booth-door-key	2
+Power outlet 400V / 16A	@D_27_IMG_011_PHOTO_power-outlet-400v	2
+Water drain connection	@D_27_IMG_012_PHOTO_water-drain-connection	1
+PVC hose 50mm for water drain	@D_27_IMG_013_PHOTO_pvc-hose-50mm	1
+Socket brass 1/2 male thread 18mm	@D_27_IMG_014_PHOTO_socket-brass-half-inch	2
+Worm clamp 16-27 mm	@D_27_IMG_015_PHOTO_worm-clamp-16-27mm	2
+Worm clamp 50-70 mm	@D_27_IMG_016_PHOTO_worm-clamp-50-70mm	1
+Worm clamp 120-140 mm	@D_27_IMG_017_PHOTO_worm-clamp-120-140mm	2
+Worm clamp 170-190 mm	@D_27_IMG_018_PHOTO_worm-clamp-170-190mm	1
+Hose 3/4" (2m)	@D_27_IMG_019_PHOTO_hose-three-quarter-inch	1
+Hose 1" (5m)	@D_27_IMG_020_PHOTO_hose-one-inch	1
+Air hose spiral polyurethane air hose 5.5 x 8 mm, 5 m	@D_27_IMG_021_PHOTO_air-hose-spiral-polyurethane	1
+Flexible duct Ø125 mm (10 m)	@D_27_IMG_022_PHOTO_flexible-duct-125mm	1
+USB Type-C flash drive	@D_27_IMG_023_PHOTO_usb-type-c-flash-drive	1
+Bluetooth printer	@D_27_IMG_024_PHOTO_bluetooth-printer	1
+User Manual (card with QR code)	User Manual (card with QR code)	1
+
+4. STAND DESCRIPTION
+In assembled form, the stand looks as depicted in Figure 1 @D_27_IMG_025_PHOTO_stand-external-view_fig1. Module MS900A is positioned on the left side of the flushing chamber (MS900C module) and features two buttons on the front panel: power on and emergency stop (see item 1). Control of module MS900A is performed via the touch panel (see item 2).
+Module MS900B is located on the right side of the flushing chamber, with two buttons on the front panel: power on and emergency stop (see item 4). Module MS900B is operated through the touchscreen (see item 3). Three bottles with replaceable filtering elements are situated on module MS900B (see item 5). Removable panels on the front and rear of the stand provide access to the module components for maintenance purposes (see item 6).
+Figure 1. External view of the stand @D_27_IMG_025_PHOTO_stand-external-view_fig1
+
+For moving the stand modules, the following rigging devices are provided:
+MS900D Rigging Trolley: Designed for transporting MS900A and MS900B modules.
+Figure 2. Location of the rigging cart under the MS900A and MS900B modules @D_27_IMG_026_PHOTO_rigging-cart-location_fig2 @D_27_IMG_027_PHOTO_rigging-cart-location_fig2
+
+The trolley is collapsible and consists of two axles and two carriages. Lifting the modules to the transport height is achieved by rotating the screw on the carriage (see Fig. 4 @D_27_IMG_029_PHOTO_carriage-screw-mechanism_fig4) using a 19mm ratcheting wrench.
+
+Figure 3. Installing the rigging cart under the module @D_27_IMG_028_PHOTO_rigging-cart-installation_fig3
+
+Figure 4 @D_27_IMG_029_PHOTO_carriage-screw-mechanism_fig4
+CAUTION! Moving the MS900B module is possible only with an empty tank.
+
+2. MS900C Module: Equipped with lifting eyes on top (Fig. 5a @D_27_IMG_030_PHOTO_lifting-eyes_fig5a) for crane lifting and bottom slots for installing MS900C.19 pipes for lifting with four persons (item 1, Fig. 5b @D_27_IMG_031_PHOTO_bottom-slots-transport-pipes_fig5b). It also has transport pipes for moving with a forklift (item 2, Fig. 5b @D_27_IMG_031_PHOTO_bottom-slots-transport-pipes_fig5b).
+Figure 5 @D_27_IMG_030_PHOTO_lifting-eyes_fig5a @D_27_IMG_031_PHOTO_bottom-slots-transport-pipes_fig5b
+
+4.1. MS900A Module Control Menu
+Module MS900A has two operating modes (see Fig. 6 @D_27_IMG_032_PHOTO_ms900a-main-control-screen_fig6): filter drying (item 1) and filter diagnostics (item 2). The module maintains a history of serviced filters (item 3). Module settings are adjusted in the corresponding menu (item 4).
+Figure 6. MS900A main control screen @D_27_IMG_032_PHOTO_ms900a-main-control-screen_fig6
+
+The "History of Checked Filters" menu displays a calendar with the number of saved checks (see Fig. 7 @D_27_IMG_033_PHOTO_history-calendar-menu_fig7). Clicking on a date reveals filter check data for that day.
+Figure 7 @D_27_IMG_033_PHOTO_history-calendar-menu_fig7
+
+The MS900A module settings menu includes (see Fig. 8 @D_27_IMG_034_PHOTO_ms900a-settings-menu_fig8):
+"heating up" - air temperature during filter drying;
+"drying time" - duration of filter drying;
+"cooling down to" - temperature to which the filter will cool after drying;
+"Printer Setting" - Bluetooth printer connection menu;
+"Update" - module software update;
+"Service" - service menu for the manufacturing plant's service department.
+Date and time adjustment is done using the "Set Date" and "Set Time" buttons.
+Figure 8 @D_27_IMG_034_PHOTO_ms900a-settings-menu_fig8
+
+4.2. MS900B Module Control Menu
+Control of module MS900B is performed through the menu in Fig. 9 @D_27_IMG_035_PHOTO_ms900b-control-menu_fig9:
+1 - Control of water temperature in the tank. Water temperature can be adjusted during flushing. The "Filtration" button activates pre-filtration, and the "Heating" button initiates pre-heating of the water.
+2 - Current module status.
+3 - Warning sign indicating module malfunction. Pressing the sign displays errors causing the malfunction (see Fig. 11 @D_27_IMG_034_PHOTO_error-information-window_fig11).
+4 - Date and current time. Clicking the area opens the "Service" menu.
+5 - Saved flushing parameters. Long-pressing the button opens the settings menu (see Fig. 10 @D_27_IMG_033_PHOTO_flushing-settings-window_fig10).
+6 - Field displaying selected flushing parameters.
+7 - Button for additional air purging of the filter to remove water. Air is supplied while the button is held.
+8 - Remaining flushing time (can be increased or decreased during flushing).
+9 - Button opens the tank water draining menu.
+10 - Button activates the water tank filling process. Pressing again stops the process.
+Figure 9 @D_27_IMG_035_PHOTO_ms900b-control-menu_fig9
+
+The flushing process settings window allows the configuration of the following parameters (see Fig. 10 @D_27_IMG_036_PHOTO_flushing-settings-window_fig10):
+"Time cycle" - total flushing time.
+"Impulse time" - time of compressed air pulse delivery.
+"Impulse pause" - time between compressed air pulses.
+"Blow after wash" - time for air purging the filter after flushing.
+"Min tank level" - minimum water level in the tank at which the flushing process stops. It is recommended to maintain a 50% level for car filter flushing and 90% for trucks.
+Figure 10 @D_27_IMG_036_PHOTO_flushing-settings-window_fig10
+
+The information window (Fig. 11 @D_27_IMG_037_PHOTO_error-information-window_fig11) displays a list of detected errors. After resolving them, errors can be cleared with the "Clear error" button, allowing the module to continue its function. This window also provides access to the service menu.
+Figure 11 @D_27_IMG_037_PHOTO_error-information-window_fig11
+
+The module's service menu (see Fig. 12 @D_27_IMG_038_PHOTO_service-menu_fig12) includes:
+1 - Buttons for manual control of module components.
+2 - List of detected errors.
+3 - Information about the current software version of the module.
+"Clear error" - button to erase errors.
+"Update" - button to update the module's software.
+Figure 12 @D_27_IMG_038_PHOTO_service-menu_fig12
+
+5. INTENDED USE
+1. Use the stand only for its intended purpose (see section 1).
+2. The stand is designed for indoor use at temperatures ranging from +10 to +40 °C and relative air humidity of 10 to 75% without condensation.
+3. Modifying the design and electrical circuit of the stand is not allowed.
+4. Turn off the stand when it is not in use.
+5. In case of failures in the operation of the stand, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. Only specially trained personnel who have been authorized to work on specific types of stands (instruments) and have undergone instruction on safe practices and methods may work with the stand.
+2. It is prohibited to open the door of the washing chamber during washing, drying, or diagnosing the soot filter.
+3. During operation, all removable panels must be properly installed.
+4. The filter becomes highly heated during the drying process, so allow it to cool down to an acceptable level before touching it.
+5. Always open and close the door of the washing chamber (module MS900C) using the handle.
+5.2. Stand Assembly and Installation Instructions
+The stand is delivered in packaging. After unpacking, ensure that the stand is intact and free from any damage. Packaging materials can be fully recycled; please collect them in designated areas for waste separation.
+The installation and assembly of the stand are to be carried out by the customer. For stand installation, a space with the following minimum dimensions is required (see Fig. 13-15 @D_27_IMG_039_DIAGRAM_required-communications_fig13):
+
+- Ceiling Height: 2500 mm;
+
+- Length: 3400 mm;
+
+- Width: 2400 mm.
+
+The stand should be placed in a room with a level and sturdy floor. The floor should be made of cement-concrete with a minimum thickness of 25 mm, and it should have a concrete class of B22.5.
+
+Before installing the stand, the installation area should be equipped with the following utilities (see Fig. 13 @D_27_IMG_039_DIAGRAM_required-communications_fig13 @D_27_IMG_040_DIAGRAM_profile-dimensions_fig14 @D_27_IMG_041_DIAGRAM_frontal-dimensions_fig15):
+Figure 13. Required communications for the stand operation @D_27_IMG_039_DIAGRAM_required-communications_fig13
+
+1 - Exhaust system with a main duct diameter of 125 mm and a capacity of at least 300 m^3^/hour. IP34 protection class.
+2 - Two power outlets 400V / 16A. The outlets should have the following potentials (3L+N+GND) with proper phase arrangement.
+3 - One power outlet 230V / 16A.
+4 - Pneumatic main with pressure ranging from 6 to 12 bar and a minimum capacity of 200 l/min. The main should end with a ½" valve and a pneumatic quick-release coupling.
+5 - Water supply with a working pressure up to 5 Bar. The water supply should end with a ½" valve with internal threads.
+6 - Drain for used water. The pipe size and material are chosen based on the future water discharge method:
+- Option 1: Under pressure up to 2 Bar, requires a pipe diameter of 50 mm or more, with a capacity of 21 m^3^/hour.
+- Option 2: Under pressure up to 0.5 Bar, requires a pipe diameter of 110 mm or more, with a capacity of 21 m^3^/hour.
+- Option 3: Gravity flow. Achieved using a nozzle behind the right front cover of the MS900B module into a container below floor level.
+
+Figure 14. Profile dimensions of the stand and required space behind it @D_27_IMG_040_DIAGRAM_profile-dimensions_fig14
+Figure 15. Frontal dimensions of the stand and required space on the side of the stand @D_27_IMG_041_DIAGRAM_frontal-dimensions_fig15
+
+For comfortable operation of the stand, a minimum working area is required (see Fig. 16 @D_27_IMG_042_DIAGRAM_minimum-working-area_fig16).
+Figure 16. Minimum working area in front of the stand @D_27_IMG_042_DIAGRAM_minimum-working-area_fig16
+
+Stand assembly is performed in the following sequence:
+1. Using a hydraulic or rigging trolley from the stand kit, place the MS900B module in the location equipped with all necessary utilities. Ensure a distance of at least 0.6m from the walls or other equipment for unobstructed stand servicing. Use height-adjustable supports to level the module horizontally.
+2. Lift the MS900C module with four people or using a lifting device through the upper lifting eyes and move it towards the MS900B module (see Fig. 17 @D_27_IMG_043_PHOTO_module-positioning_fig17).
+3. Adjust the position of the modules using supports so that the CAMLOCK connectors on the MS900B module are precisely centered over the openings in the MS900C module (see Fig. 17 @D_27_IMG_043_PHOTO_module-positioning_fig17).
+Figure 17 @D_27_IMG_043_PHOTO_module-positioning_fig17
+Figure 18 @D_27_IMG_044_PHOTO_camlock-alignment_fig18
+
+4. Place the rigging trolley under the MS900A module. Lift the module by 10-20 mm and move it towards the MS900C module, aligning the opening on the MS900C module with the CAMLOCK on the MS900A module (see Fig. 19 @D_27_IMG_045_PHOTO_ms900a-alignment_fig19).
+Figure 19 @D_27_IMG_045_PHOTO_ms900a-alignment_fig19
+
+5. Lower the MS900A module and remove all rigging devices.
+6. Adjust the position of the modules using supports so that the CAMLOCK connectors on the modules are precisely centered over the openings in the MS900C module (see Fig. 20 @D_27_IMG_046_PHOTO_final-camlock-positioning_fig20).
+Figure 20 @D_27_IMG_046_PHOTO_final-camlock-positioning_fig20
+Connect the neck of the tank on the MS900B module to the drain hole on the MS900C module using a cuff secured with a worm gear clamp (170-190 mm) (see Fig. 21 @D_27_IMG_047_DIAGRAM_drain-collar-mounting_fig21)..
+Figure 21. Mounting the drain collar @D_27_IMG_047_DIAGRAM_drain-collar-mounting_fig21
+
+8. Connect utilities as shown in Fig. 22 @D_27_IMG_048_DIAGRAM_utility-connections_fig22:
+
+Рисунок 22. Communications connection @D_27_IMG_048_DIAGRAM_utility-connections_fig22
+- Compressed air source using a coiled air hose (item 1, Fig. 22 @D_27_IMG_048_DIAGRAM_utility-connections_fig22).
+- Water supply. Screw a brass ½'' connector into the stand, sealing the thread. Put a hose on the connector and secure it with a worm gear clamp (16-27 mm) (item 2). Similarly, connect the other end of the hose to the water supply tap.
+- Water drain. Screw a drain water connector into the stand (item 3), sealing the thread. Put a PVC hose (50 mm) on it and secure it with a worm gear clamp (50-70 mm). Insert the other end of the hose into the water drain pipe.
+
+9. Connect the 400V power supply to the MS900A and MS900B modules and the 230V power supply to the MS900C module (see Fig. 23 @D_27_IMG_049_DIAGRAM_power-supply-connections_fig23).
+
+Figure 23. Connection of the stand power supply @D_27_IMG_049_DIAGRAM_power-supply-connections_fig23
+
+10. Connect the exhaust ventilation of the MS900C module (see Fig. 24 @D_27_IMG_050_PHOTO_ventilation-connection_fig24). When installing the Ø125 mm air duct, it should be stretched out, and excess air duct should be trimmed to eliminate pressure losses and bends. The radius of the air duct bend should exceed its diameter. Fix the air duct on the module's flange with a worm gear clamp (120-140 mm).
+
+Figure 24. Ventilation connection @D_27_IMG_050_PHOTO_ventilation-connection_fig24
+
+11. Connect the hoses for connecting the soot filter. A hose with a diameter of 50 mm is connected to the MS900A module, and two remaining hoses with a diameter of 32 mm each are connected to the MS900B module.
+Figure 25. How the Camlock system works @D_27_IMG_051_DIAGRAM_camlock-system-operation_fig25
+
+5.3. First startup of the stand
+During the initial startup of the stand, perform the following actions:
+1. Open the doors on the MS900A and MS900B modules and switch on the circuit breaker (see Fig. 26 @D_27_IMG_052_PHOTO_circuit-breaker-switching_fig26). After switching on, the green indicator on the HRN-54N relay of the MS900B module should light up. If it is red, it indicates incorrect phase alignment in the socket, and the module will not operate.
+Figure 26. Switching of circuit breakers @D_27_IMG_052_PHOTO_circuit-breaker-switching_fig26
+
+1.1. In case of incorrect phase alignment in the socket, swap the L1 and L2 phases, as shown in Fig. 27 @D_27_IMG_053_DIAGRAM_phase-swapping_fig27.
+Figure 27 @D_27_IMG_053_DIAGRAM_phase-swapping_fig27
+
+2. Open the valves for supplying compressed air and water. Ensure the tightness of the connections.
+3. Install the PP20 polypropylene filters into the flasks (see item 5, Fig. 1 @D_27_IMG_025_PHOTO_stand-external-view_fig1).
+4. Turn on the stand modules. On the main menu of the MS900B module, press the button for filling the tank with water (see item 10, Fig. 9 @D_27_IMG_035_PHOTO_ms900b-control-menu_fig9). Use the same button to stop the filling process. Fill the tank with the required water level.
+5. The stand is ready for operation.
+WARNING! Before diagnostics and filter drying, turn on the exhaust ventilation of the MS900C module.
+
+5.4. Connecting a Bluetooth printer to the stand
+To connect a Bluetooth printer, follow these steps:
+1. Turn on the Bluetooth printer and the MS900A module.
+2. Go to the "SETTINGS" menu, then press the "Printer Setting" button. In the opened window (see Fig. 28 @D_27_IMG_054_PHOTO_bluetooth-printer-menu_fig28), press the "Printer search" button.
+3. After the search for available devices within the Bluetooth range (not more than 5 meters) is complete, click on the address of the connected printer. When a green checkmark appears to the right of the address, it indicates that the printer is connected and ready for operation.
+4. Test the printer's functionality by pressing the "Print test page" button. Press the "Ok" button to exit this menu.
+Figure 28. Bluetooth printer connection menu @D_27_IMG_054_PHOTO_bluetooth-printer-menu_fig28
+
+6. PARTICULATE FILTER CLEANING USING A STAND
+The process of cleaning the soot filter through washing involves four stages:
+
+Filter Testing:
+- Install and secure a suitable fitting on the soot filter.
+Figure 29. Mounting the fitting on the filter @D_27_IMG_055_PHOTO_fitting-mounting_fig29
+- Connect the hose from the MS900A module to the filter inlet (see Fig. 30 @D_27_IMG_056_PHOTO_hose-connection_fig30).
+Figure 30 @D_27_IMG_056_PHOTO_hose-connection_fig30
+- On the main screen of the MS900A module, initiate the diagnostic mode.
+- In the opened window, press the "Start" button (see Fig. 31 @D_27_IMG_057_PHOTO_diagnostic-before-start_fig31 @D_27_IMG_058_PHOTO_diagnostic-after-start_fig31).
+Figure 31 @D_27_IMG_057_PHOTO_diagnostic-before-start_fig31 @D_27_IMG_058_PHOTO_diagnostic-after-start_fig31
+
+- After the diagnostic process is complete, the measurement results will be displayed on the screen. Save the results by pressing the "Save" button (see Fig. 31 @D_27_IMG_057_PHOTO_diagnostic-before-start_fig31 @D_27_IMG_058_PHOTO_diagnostic-after-start_fig31). Two saving options are provided (see Fig. 32a @D_27_IMG_059_PHOTO_save-options_fig32a):
+"New" - for the first filter diagnostics, enter customer information and order number, then press the "Save file" button (see Fig. 32b @D_27_IMG_060_PHOTO_save-new-file_fig32b).
+"Existing" - save data to a file for an already tested filter after washing.
+- Disconnect the hose from the filter.
+Figure 32 @D_27_IMG_059_PHOTO_save-options_fig32a @D_27_IMG_060_PHOTO_save-new-file_fig32b
+
+Filter Washing:
+- Connect the filter to the hoses of the MS900B module; the connection side is not critical. In the menu of the MS900B module, select suitable washing parameters (see item 5, Fig. 9 @D_27_IMG_035_PHOTO_ms900b-control-menu_fig9) or set the required ones. Start the washing process by pressing the "Start" button. The process can be interrupted or extended at any time if necessary.
+- After washing is complete, the stand will stop operating. Subsequently, disconnect the hoses from the filter.
+
+Filter Drying:
+- Connect the hose from the MS900A module to the filter outlet. Activate the drying mode and start the process by pressing the "Start" button (see Fig. 33 @D_27_IMG_061_PHOTO_drying-mode_fig33). The process can be interrupted or extended at any time using the "+" and "-" buttons located near the timer.
+Figure 33 @D_27_IMG_061_PHOTO_drying-mode_fig33
+
+Re-Testing of the Filter:
+- Connect the hose from the MS900A module to the filter outlet. Initiate the diagnostic mode.
+- After completing the test, save the result in a previously saved file: «Save» → «Existing».
+- Evaluate the quality of washing by comparing the filter test results before and after washing. The minimum difference should be at least 30 mBar for passenger vehicles and 60 mBar for commercial vehicles.
+- View (or print) the test results in the "History of Tested Filters" menu by selecting the date of the initial filter test and then the file with the results.
+Figure 34 @D_27_IMG_062_PHOTO_test-results-history_fig34 @D_27_IMG_063_PHOTO_test-results-file_fig34
+
+7. STAND MAINTENANCE INSTRUCTIONS
+The stand is designed for long-term operation and requires regular maintenance for reliable performance, including:
+1) Replacement of Three Polypropylene Filters BB20 (5-20 μm):
+Replacement is recommended after 3-4 cleaned particulate filters for passenger cars and 1-2 filters for commercial vehicles.
+2) Cleaning of the Hydrocyclone in the MS900B Module:
+Recommended after every 50 cleaned filters.
+3) Check the Operation of the Three-Way Valve VMR 25:
+Perform before each working shift and clean if clogged.
+4) Cleaning of the Tank Filter:
+Recommended before each working shift.
+5) Replacement of the Vortex Compressor Air Filter:
+Recommended every 500 cleaned filters.
+6) Water Replacement in the Tank:
+Recommended monthly, the replacement frequency depends on the type of serviced filters (more frequent for commercial vehicle filters, less frequent for passenger vehicle filters).
+Figure 35 @D_27_IMG_064_DIAGRAM_maintenance-overview_fig35
+
+7.1. Replacement of three polypropylene filters
+Before replacing the filter, turn off the MS900B module.
+Using the filter replacement key, unscrew the three filter flasks one by one.
+@D_27_IMG_065_PHOTO_filter-replacement-process
+Replace the filters with new ones and screw the flasks back.
+
+7.2. Cleaning the hydrocyclone
+Before cleaning the hydrocyclone, turn off the MS900B module. Remove the front and rear panels of the casing (see Fig. 36 @D_27_IMG_066_PHOTO_panel-removal_fig36).
+Figure 36 @D_27_IMG_066_PHOTO_panel-removal_fig36
+Connect a 1" hose attached to the fitting (item 1, Fig. 37 @D_27_IMG_067_PHOTO_hydrocyclone-drain_fig37) to a container for collecting used water. The container should be positioned below the floor level of the stand. Open the valve (item 2, Fig. 37 @D_27_IMG_067_PHOTO_hydrocyclone-drain_fig37) and drain all water from the hydrocyclone.
+Figure 37 @D_27_IMG_067_PHOTO_hydrocyclone-drain_fig37
+
+Unscrew two bolts on the hydrocyclone (see item 1, Fig. 38 @D_27_IMG_068_PHOTO_hydrocyclone-cover-removal_fig38) and remove the cover (item 2).
+Figure 38 @D_27_IMG_068_PHOTO_hydrocyclone-cover-removal_fig38
+
+Remove all filter cleaning products from the hydrocyclone casing.
+Reassemble the hydrocyclone in reverse order, close the valve (item 1, Fig. 37 @D_27_IMG_067_PHOTO_hydrocyclone-drain_fig37), and place the stand panels back in their place.
+
+7.3. Checking and cleaning the three-way valve
+To check the operation of the three-way valve VMR 25 (see item 1, Fig. 39 @D_27_IMG_069_PHOTO_three-way-valve-location_fig39 @D_27_IMG_070_DIAGRAM_three-way-valve-location_fig39) in the MS900B module, perform the following actions:
+Figure 39. Location of the three-way valve VMR 25 @D_27_IMG_069_PHOTO_three-way-valve-location_fig39 @D_27_IMG_070_DIAGRAM_three-way-valve-location_fig39
+
+1. Enter the "Service" menu.
+2. Open the door with the touch panel.
+3. In the "Service" menu, press the "Valve direction water" button several times (see Fig. 40 @D_27_IMG_071_PHOTO_service-menu-valve-control_fig40) and assess how the valve direction changes, as shown in Fig. 41 @D_27_IMG_072_PHOTO_valve-position-changes_fig41. A properly functioning valve smoothly moves and always returns to its original position. If there are deviations in the movement (usually hanging in the middle position), cleaning is required.
+Figure 40 @D_27_IMG_071_PHOTO_service-menu-valve-control_fig40
+Figure 41 @D_27_IMG_072_PHOTO_valve-position-changes_fig41
+
+To restore the operation of the three-way valve VMR 25, follow these steps:
+1) Dismount the valve actuator. Press the button under the actuator (see item 2, Fig. 42 @D_27_IMG_073_PHOTO_valve-design_fig42) and turn the valve actuator counterclockwise by 90°. Then remove it from the valve by lifting it up.
+
+1 - valve actuator; 2 - button for removing the valve actuator; 3 - valve.
+Figure 42. Design of the three-way valve VMR 25: @D_27_IMG_073_PHOTO_valve-design_fig42
+
+2) Using the valve key (included in the kit), unscrew the valve cartridge (see Fig. 43 @D_27_IMG_074_PHOTO_valve-cartridge-removal_fig43).
+
+3) Rinse it under a stream of water.
+4) Install the valve cartridge back in place.
+5) Put the valve actuator back in place.
+Figure 43 @D_27_IMG_074_PHOTO_valve-cartridge-removal_fig43
+
+7.4. Cleaning the tank filter
+Tank filter cleaning for the MS900B module is performed in the following sequence:
+1. Remove the working surface grates from the MS900C module (see Fig. 44 @D_27_IMG_075_PHOTO_grate-removal-1_fig44 @D_27_IMG_076_PHOTO_grate-removal-2_fig44).
+Figure 44 @D_27_IMG_075_PHOTO_grate-removal-1_fig44 @D_27_IMG_076_PHOTO_grate-removal-2_fig44
+
+2. Grasp the filter by hand and turn it slightly clockwise, then pull it upward (see Figs. 45 @D_27_IMG_077_PHOTO_tank-filter-removal_fig45 and 46 @D_27_IMG_078_PHOTO_removed-tank-filter_fig46).
+Figure 45 @D_27_IMG_077_PHOTO_tank-filter-removal_fig45
+
+3. Clean the filter under running water and place it back in its position.
+Figure 46. Removed tank filter @D_27_IMG_078_PHOTO_removed-tank-filter_fig46
+
+7.5. Replacement of the vortex compressor air filter
+To replace the air filter (B21053PR and its analogs), open the door of the MS900A module. Then, loosen the nuts (item 1, Fig. 47 @D_27_IMG_079_PHOTO_air-filter-replacement_fig47), remove the cover (item 2), and dismount the filter (item 3). Install a new filter and secure it.
+Figure 47 @D_27_IMG_079_PHOTO_air-filter-replacement_fig47
+
+7.6. Water replacement in the tank
+Draining water under a pressure of up to 2 Bar is performed as follows:
+1. Remove the front right panel of the casing.
+2. Open valves 1 and 2 and close valve 3 (see Fig. 48 @D_27_IMG_080_PHOTO_water-drain-2bar_fig48).
+3. Enter the water draining menu (see item 10, Fig. 5). In the opened menu, press the "Draining" button.
+4. Upon completion of water draining, the stand will stop the pump.
+5. Close valves 1 and 2, and open valve 3.
+6. Place the front panel of the casing back in its place.
+7. Fill the tank with water to the desired level.
+Figure 48 @D_27_IMG_080_PHOTO_water-drain-2bar_fig48
+
+Draining water under a pressure of up to 0.5 Bar is performed as follows:
+1. Remove the front right panel of the casing.
+2. Open valves 1 and 2 (see Fig. 49 @D_27_IMG_081_PHOTO_water-drain-05bar_fig49).
+3. Enter the water draining menu (see item 10, Fig. 9 @D_27_IMG_035_PHOTO_ms900b-control-menu_fig9). In the opened menu, press the "Draining" button.
+4. Upon completion of water draining, the stand will stop the pump.
+5. Close valves 1 and 2 (see Fig. 49 @D_27_IMG_081_PHOTO_water-drain-05bar_fig49).
+6. Place the front panel of the casing back in its place.
+7. Fill the tank with water to the desired level.
+Figure 49 @D_27_IMG_081_PHOTO_water-drain-05bar_fig49
+
+Gravity drainage is performed as follows:
+1. Remove the front right panel of the casing.
+2.Connect a flexible 1" hose to the fitting (see item 2, Fig. 50 @D_27_IMG_082_PHOTO_gravity-drainage_fig50). Connect the other end of the hose to a container for collecting wastewater, positioned below the floor level of the stand.
+3.Open valve (item 2) and drain all water from the tank.
+4. Upon completion of water draining, close valve (item 2), disconnect the flexible hose, and place the stand panel back in its place.
+ATTENTION! Dispose of water in accordance with the legislation of your region.
+Figure 50 @D_27_IMG_082_PHOTO_gravity-drainage_fig50
+
+7.7. Software update
+The process of updating the software for the MS900A and MS900B modules is the same. To update the software, you will need a USB Type-C flash drive with a capacity of up to 32 GB (maximum), formatted in the FAT32 file system.
+The software update procedure is as follows:
+1) Download the file with the latest version of the software from the website servicems.eu, which is located on the product card MS900.
+2) Extract the files «ForcedUpdateDry.bin» and «ForcedUpdateWash.bin» from the downloaded archive to the root directory of the USB flash drive.
+3) Open the door module with the touch panel.
+4) Connect the USB flash drive to the USB port on the module's board (refer to Figure 51 @D_27_IMG_083_PHOTO_usb-connection_fig51).
+5) Go to the settings menu and press the "Update" button.
+6) Wait for the update process to complete.
+
+WARNING! It is prohibited to interrupt the update process by disconnecting the power or removing the USB flash drive.
+
+Figure 51 @D_27_IMG_083_PHOTO_usb-connection_fig51
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Failure symptom	Potential cause	Troubleshooting tips
+MS900A module	MS900A module	MS900A module
+1. Doesn't turn on	No power supply	Restore power
+1. Doesn't turn on	The stand is out of order	Contact the dealer
+2. Error «Low voltage (Lv)»	Low voltage in the power supply network	Restore power
+3. Error «Overheat blower 80°C»	Clogged air filter	Replace filter
+4. Error «Overload (oL)»	Clogged air filter	Replace filter
+
+MS900B module
+5. Doesn't turn on	No power supply	Restore power
+5. Doesn't turn on	The stand is out of order	Contact the dealer
+6. Three-way valve sticking	Cartridge clogged	Disassembling and washing the cartridge
+6. Three-way valve sticking	Cartridge destruction	Cartridge replacement
+7. Pumps do not pump water	Clogged impeller	Disassemble and clean the impeller
+7. Pumps do not pump water	Broken pump motor	Contact the dealer
+8. Doesn't fill the tank with water	Valve out of order	Contact the dealer
+9. Water does not heat up	The heating element burned out	Contact the dealer
+10. Water leak	The tightness of threaded connections is broken	Fix the leak
+11. Error «Low level»	Low water level in the tank	Add water to the tank
+12. Error «Need replace filter»	BB20 filters are dirty	Replace filter
+13. Error «Overcurrent pump wash»	Clogged pump impeller	Disassemble and clean the impeller
+
+9. DISPOSAL
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.
+
+APPENDIX 1
+Fittings for connecting particulate filters
+Description	External appearance	Quantity, pcs.
+MS70001 - Universal fitting for connecting diesel particulate filters with a flange onto two studs or bolts, suitable for light commercial and passenger vehicles. Operating diameters range from 55 to 79 mm.	@D_27_IMG_084_PHOTO_ms70001-fitting @D_27_IMG_085_PHOTO_ms70001-fitting	2
+MS70002 - Universal fitting for connecting diesel particulate filters with a flange onto three studs or bolts, suitable for light commercial and passenger vehicles. Operating diameters range from 55 to 85 mm.	@D_27_IMG_086_PHOTO_ms70002-fitting @D_27_IMG_087_PHOTO_ms70002-fitting	2
+MS70003 - Universal fitting for connecting diesel particulate filters with a small spigot at the end, suitable for light/heavy commercial and passenger vehicles, to the MS900 system. Operating diameters range from 50 to 150 mm.	@D_27_IMG_088_PHOTO_ms70003-fitting @D_27_IMG_089_PHOTO_ms70003-fitting	2
+MS70004 - Universal fitting for connecting barrel-type diesel particulate filters, suitable for light/heavy commercial vehicles. Operating diameters range from 240 to 388 mm.	@D_27_IMG_090_PHOTO_ms70004-fitting @D_27_IMG_091_PHOTO_ms70004-fitting	2
+MS70004.08 - Plate	@D_27_IMG_092_PHOTO_ms70004-08-plate	2
+MS70006 - Universal fitting for connection of particulate filters with a large socket on the end and small "barrel" type filters, for light/heavy commercial and passenger cars to the MS900 system. Working diameters 50-250 mm.	@D_27_IMG_093_PHOTO_ms70006-fitting @D_27_IMG_094_PHOTO_ms70006-fitting	2
+M10 Stud L=0.5	@D_27_IMG_095_PHOTO_m10-stud	5
+M10 Flange Nut	@D_27_IMG_096_PHOTO_m10-flange-nut	10
+Plug NR 12x1.25 (Bolt)	@D_27_IMG_097_PHOTO_plug-nr-12x125	4
+Plug with external thread 14х1.5	@D_27_IMG_098_PHOTO_plug-external-14x15	4
+Plug with external thread 16х1.5	@D_27_IMG_099_PHOTO_plug-external-16x15	4
+Plug with external thread НР 18х1.5	@D_27_IMG_100_PHOTO_plug-external-18x15	4
+Plug with external thread НР 20х1.5	@D_27_IMG_101_PHOTO_plug-external-20x15	4
+Plug with external thread 22х1.5	@D_27_IMG_102_PHOTO_plug-external-22x15	4
+Plug with internal thread 14х1.5	@D_27_IMG_103_PHOTO_plug-internal-14x15	4
+Plug with internal thread 16х1.5	@D_27_IMG_104_PHOTO_plug-internal-16x15	4
+Camlock with a 90-degree angle	@D_27_IMG_105_PHOTO_camlock-90-degree	2
+Adapter (silicone)	@D_27_IMG_107_PHOTO_adapter-silicone	2
+MS70027 - Specialized adapter for mounting diesel particulate filters from SCANIA Serie G and R series vehicles.	@D_27_IMG_108_PHOTO_ms70027-scania-adapter	1
+MS70028 - Specialized adapter for mounting diesel particulate filters from VOLVO FH4 and RENAULT Serie T series vehicles.	@D_27_IMG_109_PHOTO_ms70028-volvo-renault-adapter	1

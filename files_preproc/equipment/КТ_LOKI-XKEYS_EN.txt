@@ -1,0 +1,11 @@
+LOKI-XKEYS - LOKI Plugin for Key Programming on Tesla Model X
+
+Additional software for the LOKI scanner that allows programming keys to Tesla Model X vehicles.
+
+DESCRIPTION
+The LOKI-XKEYS plugin extends the functionality of the LOKI diagnostic scanner and allows programming keys to Tesla Model X vehicles. This procedure is especially relevant for vehicles manufactured before 2022.
+Tesla Model X supports three types of keys:
+- Key card
+- Phone key
+- Key fob
+The LOKI-XKEYS plugin supports programming key fobs for Tesla Model X with any version of the key security module to vehicles with Tegra and Intel processors. The key fob can be programmed even in case of loss of all keys.

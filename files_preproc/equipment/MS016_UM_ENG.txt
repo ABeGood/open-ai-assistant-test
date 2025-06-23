@@ -1,0 +1,540 @@
+MS016 TESTER FOR DIAGNOSTICS OF ALTERNATOR'S VOLTAGE REGULATORS @D_30_IMG_000_PHOTO_ms016-tester-general-view
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing TM "MSG Equipment" products.
+This User Manual contains information about the purpose, equipment, technical specifications, and operating rules of the MS016 tester.
+Before using the MS016 tester (referred to as the tester below), carefully read this User Manual and undergo special training at the tester's manufacturing plant if necessary.
+Due to constant improvement of the tester's design, equipment, and software (SW), changes may be made that are not reflected in this User Manual. The pre-installed SW in the tester may be updated, and its support may be discontinued without prior notice.
+
+1. APPLICATION
+The tester purpose is as follows:
+1. Assessing performance of automotive alternators with a nominal voltage of 12/24V and stop-start alternators with a nominal voltage of 12/24V (VALEO I-StARS). The diagnosis is carried out either on a car or on the test bench that provides its drive and a load on the alternator.
+2. Assessing performance of voltage regulators separately from alternators.
+3. Reading and saving data transmitted via the LIN bus of a vehicle ("LIN analyzer" function).
+4. Diagnosing starters directly on cars without their removal or on the test bench that provides proper unit fixation and power supply using cable MS-33503.
+WARNING! Cable MS-33503 is not included in the equipment set and can be purchased separately.
+
+2. SPECIFICATIONS
+Supply voltage, V	during alternator testing	12-48 - either battery or test bench supply
+Supply voltage, V	during voltage regulator testing	power unit with "Quick Charge 2.0" function
+Dimensions (L×W×H), mm	157×85×18
+Weight, kg	0,3
+Touch screen	IPS 4.3" Capacitive touch
+
+Voltage regulator/Alternator testing
+Nominal voltage of tested alternators, V	12, 24
+Types of tested alternators	12 V	Lamp, SIG, RLO, RVC, C KOREA, P/D, G, COM (LIN, BSS), C JAPAN, I-StARS
+Types of tested alternators	24 V	Lamp, COM (LIN), PWM (SCANIA)
+Voltage measurement accuracy, V	±0,1
+
+Additional functions
+Software update	Yes
+Voltage regulator database	Yes
+Load on voltage regulator	No
+Load on alternator	No
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+Item name	Number of pcs
+Tester MS016	1
+MS-33501 - diagnostic cable for alternators	1
+MS-33502 - diagnostic cable for voltage regulators and a set of adapter cables	1
+USB Cable Type-C	1
+A power unit with a function "Quick Charge 2.0" (Input 100-240V 50/60Hz; Output 9V-2A)	1
+User Manual (card with QR code)	1
+
+4. TESTER DESCRIPTION
+The tester is a portable device, its functions controlled via the touch-screen (Fig.1 @D_30_IMG_001_PHOTO_tester-general-view_fig1).
+Figure 1. General view of the tester @D_30_IMG_001_PHOTO_tester-general-view_fig1
+In the upper part of the device, there is a terminal for connection of diagnostic cables (Fig.2 @D_30_IMG_002_PHOTO_terminal-connection_fig2).
+Figure 2. Terminal for connection of diagnostic cables @D_30_IMG_002_PHOTO_terminal-connection_fig2
+
+There is a USB Type-C port in the bottom part of the tester, through which the power is supplied to the tester during the diagnostics of voltage regulators. The USB port serves as well for connection of the tester to a computer either for software updating or for data copying (Fig.3 @D_30_IMG_003_PHOTO_usb-port-type-c_fig3).
+Figure 3. USB port, Type-C @D_30_IMG_003_PHOTO_usb-port-type-c_fig3
+
+A diagnostic cable for voltage regulators (Fig.4 @D_30_IMG_004_PHOTO_diagnostic-cable-voltage-regulators_fig4) and adapter cables (Fig.5 @D_30_IMG_005_PHOTO_adapter-cables-voltage-regulators_fig5) for easy connection to the voltage regulator output terminals are included in the tester set.
+Figure 4. Diagnostic cable for voltage regulators MS-33502 @D_30_IMG_004_PHOTO_diagnostic-cable-voltage-regulators_fig4
+Figure 5. Adapter cables for connection to voltage regulators @D_30_IMG_005_PHOTO_adapter-cables-voltage-regulators_fig5
+
+The diagnostic cable for voltage regulators (Fig.4 @D_30_IMG_004_PHOTO_diagnostic-cable-voltage-regulators_fig4) has the following color markings (Table 1):
+- Red cable with a clip - B+ - voltage regulator terminal B+ (terminal 30);
+- Black cable with a clip - B- - voltage regulator terminal B- (GND, terminal 31);
+- Orange cable with a terminal - S (Sense pin) - through this terminal, the voltage regulator measures the battery voltage and compares it with the alternator/voltage regulator output voltage. This cable is connected to terminals S of the voltage regulator;
+- Red cable with a terminal - IG (Ignition) - the ignition terminal (terminal 15, A, IG);
+- White cable with a terminal - FR - through this terminal, the data on the voltage regulator load are transmitted. The cable connects to FR, DFM, and M terminals of the voltage regulator;
+- Grey cable with a terminal - D+ - the terminal through which the control lamp of the voltage regulator is connected to terminals D+, L, IL, and 61 of the voltage regulator;
+- Yellow cable with a terminal - GC - for connection of the tester to the control channel of the voltage regulator through voltage regulator terminals COM, SIG, and others;
+- Green cables with clips - F1, F2 - for connection of the tester to the brushes of the voltage regulator or their corresponding terminals: DF, F, FLD;
+- Blue cables with clips - ST1, ST2 - for connection of the tester to the stator terminals of the voltage regulator: P, S, STA, Stator.
+
+Table 1. Color markings of cable MS-33502
+Clip/Terminal	Tester output terminal
+@D_30_IMG_006_PHOTO_b-plus-clip	B+
+@D_30_IMG_007_PHOTO_b-minus-clip	B-
+@D_30_IMG_008_PHOTO_s-terminal	S
+@D_30_IMG_009_PHOTO_ig-terminal	IG
+@D_30_IMG_010_PHOTO_fr-terminal	FR
+@D_30_IMG_011_PHOTO_d-plus-terminal	D+
+@D_30_IMG_012_PHOTO_gc-terminal	GC
+@D_30_IMG_013_PHOTO_f1-f2-clips	F1, F2
+@D_30_IMG_014_PHOTO_st1-st2-clips	ST1, ST2
+
+The equipment set includes a cable for alternator diagnostics (Fig.6 @D_30_IMG_015_PHOTO_diagnostic-cable-alternators_fig6).
+Figure 6. Diagnostic cable for alternators MS-33501 @D_30_IMG_015_PHOTO_diagnostic-cable-alternators_fig6
+
+The diagnostic cable (Fig.6 @D_30_IMG_015_PHOTO_diagnostic-cable-alternators_fig6) has the following color markings:
+- Red clip, big - "B+" - battery positive terminal, alternator output terminal. It is used to supply power to the tester and read the alternator output voltage;
+- Black clip, big - "B-" - battery negative terminal (alternator body);
+- Orange clip, small - "S" (Sense pin);
+- Red clip, small - "IG" (Ignition);
+- White clip, small - "FR";
+- Grey clip, small - "D+";
+- Yellow clip, small - "GC".
+
+4.1. Tester menu
+The tester main menu (Fig. 7 @D_30_IMG_016_PHOTO_tester-main-menu_fig7) contains:
+1 - Button to enter a search menu of the voltage regulator database;
+2 - Button to enable "LIN Analyzer";
+3 - Button to enter the menu for selection of the tested voltage regulator type;
+4 - Button to enter the menu for selection of the tested alternator type;
+5 - Tag number of the connected cable;
+6 - Current power supply voltage;
+7 - Power supply of the tester:
+@D_30_IMG_017_DIAGRAM_usb-icon - USB,
+@D_30_IMG_018_DIAGRAM_battery-icon - BATTERY.
+8 - Button to enter the tester settings.
+Figure 7. Tester main menu @D_30_IMG_016_PHOTO_tester-main-menu_fig7
+
+The tester is supplied with an integrated database of voltage regulators along with their connection diagrams.
+Figure 8. Database search menu @D_30_IMG_019_PHOTO_database-search-menu_fig8
+
+Figure 9. Menu for selection of the tested voltage regulator type @D_30_IMG_020_PHOTO_voltage-regulator-selection-menu_fig9-1 @D_30_IMG_021_PHOTO_voltage-regulator-selection-menu_fig9-2
+Press the button with the required type of the voltage regulator to enter the alternator/voltage regulator test mode.
+
+Press @D_30_IMG_022_DIAGRAM_back-button button to return to the main menu.
+
+Upon entering the test mode for voltage regulators, the following information will appear on the screen (Fig.10 @D_30_IMG_023_PHOTO_diagnostic-screen-information_fig10):
+Figure 10. Diagnostic screen information @D_30_IMG_023_PHOTO_diagnostic-screen-information_fig10
+
+1 - Preset stabilizing voltage (for controlled voltage regulators).
+2 - Preset rpm (this parameter will not be displayed in alternator test mode).
+3* - Button to check the SENSE terminal through which the voltage regulator measures the battery voltage.
+4 - Duty cycle of PWM signal received through FR channel (the proportion of the rotor winding "on" time).
+5 - Measured stabilizing voltage.
+6 - Test mode nominal voltage.
+7 - Voltage regulator type.
+8 (Color indication of the button: red - ON; white - OFF.) - Activation of the pull-up resistor to the FR channel. Used when the FR wire is connected to the regulator, but the frequency is not shown on the display.
+9 (Color indication of the button: red - ON; white - OFF.) - Switching on the ignition.
+10 - Alternator control lamp indicator (for voltage regulators that directly control the lamp).
+
+The diagnostic screen for voltage regulators of COM type displays the following information:
+"ID" - voltage regulator identification number. The engine control unit identifies the type of the installed alternator by this number;
+"Type" - voltage regulator type. The type codes of voltage regulators operating under LIN protocol are as follows: A1, A2, A3, A4, B1, B2, B3, B4, C3, D1, D2, E1;
+"Duty" - PWM signal duty cycle (the proportion of the rotor winding "on" time);
+"Version LIN" - indicator of voltage regulator protocol version (LIN1 or LIN2);
+"Errors" - indicator of errors transmitted by the voltage regulator to the engine control unit. Types of potential errors:
+• E - electrical error;
+• M - mechanical error;
+• TH - thermal error.
+"Speed" - indicator of data exchange rate under LIN protocol supported by a COM voltage regulator. The following rate values may be displayed:
+• "L" - 2400 baud (low);
+• "M" - 9600 baud (medium);
+• "H" - 19200 baud (high).
+The "Starter" button performs a test of the alternator in the starter mode.
+Figure 11. Diagnostic screen of the generator/regulator type COM (12/24 V) and the generator of the 12 V start-stop system @D_30_IMG_024_DIAGRAM_diagnostic-screen-alternator-COM_fig11 @D_30_IMG_025_DIAGRAM_diagnostic-screen-voltage-regulator-COM_fig11 @D_30_IMG_026_DIAGRAM_diagnostic-screen-alternator-I-StARS_fig11
+
+Figures 12-15 show the information displayed when different voltage regulator types are tested.
+Figure 12. Diagnostic screen for alternators/voltage regulators of RLO, RVC, C KOREA types @D_30_IMG_027_PHOTO_diagnostic-screen-rlo-rvc-ckorea-alternator_fig12 @D_30_IMG_028_PHOTO_diagnostic-screen-rlo-rvc-ckorea-voltage-regulator_fig12
+Figure 13. Diagnostic screen for alternators/voltage regulators of C JAPAN type @D_30_IMG_029_PHOTO_diagnostic-screen-cjapan-alternator_fig13 @D_30_IMG_030_PHOTO_diagnostic-screen-cjapan-voltage-regulator_fig13
+Figure 14. Diagnostic screen for alternators/voltage regulators (12/24V) of Lamp type @D_30_IMG_031_PHOTO_diagnostic-screen-lamp-type-alternator_fig14 @D_30_IMG_032_PHOTO_diagnostic-screen-lamp-type-voltage-regulator_fig14
+Figure 15. Diagnostic screen for alternators/voltage regulators of SIG type @D_30_IMG_033_PHOTO_diagnostic-screen-sig-type-alternator_fig15 @D_30_IMG_034_PHOTO_diagnostic-screen-sig-type-voltage-regulator_fig15
+Figure 16. Diagnostic screen for alternators/voltage regulators of P/D type @D_30_IMG_035_PHOTO_diagnostic-screen-pd-type-alternator_fig16 @D_30_IMG_036_PHOTO_diagnostic-screen-pd-type-voltage-regulator_fig16
+
+5. APPROPRIATE USE
+1. Use the tester as intended (see Section 1).
+2. The tester is designed for indoor use. Be aware of the following operating constraints:
+2.1. The tester should be used in the spaces equipped at the temperature range from +10 °C up to +40 °C and the relative humidity range from 10 up to 75% without moisture condensation.
+2.2. Do not use the tester at the low temperature and high humidity (more than 75%). When the tester is brought from the cold place (outdoors) into the warm place, the condensate can appear on its elements. Thus, do not turn on the tester at once. Wait for 30 minutes until switching it on.
+3. Keep the tester far from the direct sunlight.
+4. Keep away from heating devices, microwaves, and other temperature-raising equipment.
+5. Avoid dropping the tester or spilling technical liquids on it.
+6. Any interference with the electric diagram of the device is strictly prohibited.
+7. Make sure the crocodile clips are completely insulated before connecting them to the alternator/voltage regulator terminals.
+8. Avoid the crocodile clips short circuit between themselves or to any conductive parts of a vehicle, including its body.
+9. Do not put the tester on the vehicle battery or other elements of the underhood space. Avoid short circuit of the tester housing to the conductive parts of a vehicle.
+10. Do not use the device with a faulty power unit.
+11. Turn off the tester when it is not in operation.
+12. In case of failures in the operation of the tester, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+Only specially trained personnel who have been authorized to work on specific types of stands (instruments) and have undergone instruction on safe practices and methods may work with the tester.
+
+5.2. Mode of operation
+Mode 1 - Powered from a power unit.
+Testing voltage regulators with a nominal voltage of 12/24V requires the use of a power unit: either the one included in the equipment set or any other power unit with the "Quick Charge 2.0" function. In this mode, the supply voltage (9V) will be displayed at the top of the tester screen. When the tester is powered from a 5V power unit, the only available test mode is for 12V units.
+WARNING! The operation of some voltage regulators requires heavy current that the tester cannot provide. The diagnosis of such voltage regulators is not possible.
+Mode 2 - Powered from a vehicle power system.
+Use a diagnostic cable for alternators included in the equipment set (Fig.6 @D_30_IMG_015_PHOTO_diagnostic-cable-alternators_fig6). The tester will switch on and function in alternator test mode only when we connect big crocodile clips "B+" and "B-" to the alternator output terminals.
+Mode 3 - Connecting to a computer.
+When we connect the tester to a computer via a USB Type-C port, it operates in a data transmit receive mode. In this mode, a new bootloader, software, and database versions can be uploaded to the device memory. Also, it is possible to read information stored in the tester memory.
+
+6. VOLTAGE REGULATOR TESTING
+Generally, most voltage regulators are tested as follows:
+1) Connection of a voltage regulator to the tester;
+2) Selection of the type and nominal voltage of the tested voltage regulator;
+3) Assessment of the control lamp operability: when speed is about 0 rpm, the battery indicator must light up (red). As the speed increases up to 800-1200 rpm, the indicator must go out.
+4) Assessment of the "S" terminal operability;
+5) Assessment of the voltage regulator capability to adjust to the preset stabilizing voltage. Use a cursor (Fig.10 @D_30_IMG_023_PHOTO_diagnostic-screen-information_fig10, n.1) to set the voltage.
+WARNING! The test mode (Fig.9 @D_30_IMG_020_PHOTO_voltage-regulator-selection-menu_fig9-1 @D_30_IMG_021_PHOTO_voltage-regulator-selection-menu_fig9-2) should correspond to the type of the tested voltage regulator.
+Connect both cable MS-33502 and a power unit equipped with "Quick Charge 2.0" to the tester through USB Type-C port to launch the diagnostic procedure.
+WARNING! If the connected power unit doesn't feature "Quick Charge 2.0", the tester can test 12V voltage regulators only.
+WARNING! Operation of some TM Bosch voltage regulators requires a heavy current, the tester cannot deliver. Voltage regulators of this type cannot be tested.
+6.1. Voltage regulator connection
+Assessment of the voltage regulator operability requires a proper connection of the diagnostic cable to the voltage regulator.
+Use the voltage regulator OEM number to search the terminal markings against the database (Fig.17 @D_30_IMG_037_PHOTO_voltage-regulator-database-search_fig17 @D_30_IMG_038_PHOTO_voltage-regulator-database-search_fig17).
+Figure 17. Voltage regulator search against the database and search results @D_30_IMG_037_PHOTO_voltage-regulator-database-search_fig17 @D_30_IMG_038_PHOTO_voltage-regulator-database-search_fig17
+
+Connect the diagnostic cable to the voltage regulator as shown on the diagram.
+WARNING! To avoid damage (failure) to the voltage regulator, extra care should be taken when connecting the cable clips to the contacts in the terminals. Use either a well-insulated clip (Fig.18 @D_30_IMG_039_PHOTO_well-insulated-clip_fig18 @D_30_IMG_040_PHOTO_clip-connect-to-terminals_fig18) or a proper adapter cable (Fig.5 @D_30_IMG_005_PHOTO_adapter-cables-voltage-regulators_fig5).
+Figure 18 - Connection of cable clips to the contacts in the terminals @D_30_IMG_039_PHOTO_well-insulated-clip_fig18 @D_30_IMG_040_PHOTO_clip-connect-to-terminals_fig18
+
+When the connection is made, press "OK" - the tester will automatically switch over to the test mode appropriate for the tested voltage regulator. Then, proceed to the voltage regulator testing (the process is described below).
+If the information on the markings of the voltage regulator terminals cannot be found in the database, research online. Appendix 3 is yet another source of information. There you can find connection diagrams of the most common voltage regulator types. Use the diagram with terminal markings found online and the examples below to connect the diagnostic cable.
+Figure 19 shows a diagram (an example) for connection of voltage regulator ARE1054.
+Figure 19 - Voltage regulator ARE1054 @D_30_IMG_041_DIAGRAM_voltage-regulator-are1054_fig19
+
+Identify the type of the voltage regulator by the terminal contacts shown in Fig.19 @D_30_IMG_041_DIAGRAM_voltage-regulator-are1054_fig19 and use information set out in Appendices 1, 2 of the actual Instruction. Shown here are terminals DFM and L(RVC) (can also be marked as L(PWM)). By terminal L (RVC) we identify this voltage regulator as RVC type.
+Then, using Appendix 1, we determine which clips (connectors) of the diagnostic cable must be connected to the voltage regulator. A diagram of voltage regulator ARE1054 connection to the tester is shown both in Table 2 and Figure 20.
+
+Table 2. Connection of voltage regulator ARE1054 to the tester
+Voltage regulator terminal	Tester output terminal	Color marking of cable
+DFM	FR	white
+L(RVC)	GC	yellow
+Ps	ST1	blue
+B+	B+	red
+DF	F1	green
+DF	F2	green
+B-	B-	black
+
+Figure 20. Diagram of voltage regulator ARE1054 connection to the tester @D_30_IMG_042_DIAGRAM_are1054-connection-diagram_fig20
+
+Figure 21 shows a diagram of voltage regulator ARE6076 connection as an example.
+Figure 21. Voltage regulator ARE6076 @D_30_IMG_043_DIAGRAM_voltage-regulator-are6076_fig21
+
+The voltage regulator type is identified by the terminal contacts and based on the information set out in Appendices 1, 2. In the example given, terminals IG, S, FR(M) do not identify the type of the voltage regulator. Terminal L identifies it as a Lamp type.
+Then we refer to Appendix 1 to determine which clips (connectors) of the diagnostic cable must be connected to the voltage regulator. The connection diagram of voltage regulator ARE6076 is shown in both Table 3 and Figure 22.
+
+Table 3. Connection of voltage regulator ARE6076 to the tester
+Voltage regulator terminal	Tester output terminal	Color marking of cable
+IG	IG	red
+L	D+	grey
+S	S	orange
+FR(M)	FR	white
+B+	B+	red
+B+	F2	green
+F	F1	green
+Ps	ST1	blue
+GND	B-	black
+
+Figure 22. Diagram of voltage regulator ARE6076 connection to the tester @D_30_IMG_035_DIAGRAM_are6076-connection-diagram_fig22
+
+Connection of voltage regulator ARE6076 has a specific feature. There is only one terminal shown in Figure 21 - terminal F, to which we connect cable F1. The other green cable (F2) must be connected to terminal B+, since one of the brushes is permanently connected to B+ while the excitation winding is controlled through the brush connected to the alternator negative terminal (A-circuit type).
+
+Figure 23 shows the connection diagram of voltage regulator ARE6149P as an example.
+
+Figure 23. Voltage regulator ARE6149P @D_30_IMG_042_DIAGRAM_voltage-regulator-are6149p_fig23
+
+The voltage regulator type is identified by terminal contacts and based on the information set out in Appendices 1, 2. There is only one terminal - LIN, which identifies this voltage regulator as COM type.
+
+Consult Appendix 1 to determine which clips (connectors) of the diagnostic cable must be connected to the voltage regulator. The diagram of voltage regulator ARE6149P connection to the tester is shown in both Table 4 and Figure 24.
+
+Table 4 - Connection of voltage regulator ARE6149P to the tester
+Voltage regulator terminal	Tester output terminal	Color marking of cable
+B+	B+	red
+F	F1	green
+Ps	ST1	blue
+LIN	GC	yellow
+G	B-	black
+G	F2	green
+
+Connection of voltage regulator ARE6149P has a specific feature. We connect cable F1 to the only terminal - F. As the actual voltage regulator is B-circuit type, the other cable (F2) must be connected to terminal B-. Consequently, one of the brushes is permanently connected to B- of the alternator, while the excitation winding is controlled through terminal B+.
+
+Figure 24. Voltage regulator ARE6149P connected to the tester terminals @D_30_IMG_046_DIAGRAM_are6149p-connection-terminals_fig24
+
+6.2. Diagnostics of Lamp-type voltage regulators
+1. Connect the voltage regulator as described in item 6.1.
+2. Enter the menu for voltage regulator type selection, select the nominal voltage (12V or 24V) and activate the test mode for Lamp-type regulators.
+3. Upon activation, stabilizing voltage must set in the range from 14 to14.8 volts for 12V voltage regulators and from 28 to 29.8 volts - for 24V regulators, and must correspond to the voltage regulator characteristics.
+4. Turn off simulation of the alternator rotation by pressing K15 and setting rpm to zero - the control lamp indicator (Fig.10 @D_30_IMG_023_PHOTO_diagnostic-screen-information_fig10, n.10) will light up. Press K15 again to restart simulation, the control lamp indicator must go out.
+5. If the voltage regulator is equipped with terminal S, press SENSE to check its operability - the stabilizing voltage must increase. Press SENSE once again - the stabilizing voltage must decrease to its initial values.
+6. Failure to perform as described in sub-items 3-5 signals the voltage regulator malfunction.
+7. Press BACK to exit the test mode. Disconnect the clips form the voltage regulator.
+
+6.3. Diagnostics of voltage regulators of RLO, RVC, and C KOREA types
+1. Connect the voltage regulator as described in item 6.1.
+2. Enter the menu for voltage regulator type selection (Fig.9 @D_30_IMG_020_PHOTO_voltage-regulator-selection-menu_fig9-1 @D_30_IMG_021_PHOTO_voltage-regulator-selection-menu_fig9-2), select the nominal voltage and activate the test mode that corresponds to the type of the tested voltage regulator.
+3. Upon diagnostic mode activation, the stabilizing voltage must set at 13.8V, the allowable deviation is ±0,2V.
+WARNING! If "Duty" value is 99%, press "Pull FR" to switch over.
+4. Turn off simulation of the alternator rotation by pressing K15 and setting rpm to zero. The control lamp indicator (Fig.10 @D_30_IMG_023_PHOTO_diagnostic-screen-information_fig10, n.10) will light up. Press K15 again to restart simulation, the control lamp indicator must go out.
+5. Adjust the preset stabilizing voltage in the range from 13.2 to 14.5 volts. The measured voltage must vary in proportion to the pre-set one.
+@D_30_IMG_047_PHOTO_voltage-adjustment-screens @D_30_IMG_048_PHOTO_voltage-adjustment-screens
+6. Press BACK to exit the test mode. Disconnect the clamps form the voltage regulator.
+7. Failure to perform as described in sub-items 3-5 indicates the voltage regulator malfunction.
+
+6.4. Diagnostics of voltage regulators of C JAPAN type
+1. Connect the voltage regulator as described in item 6.1.
+2. Enter the menu for voltage regulator type selection (Fig.9 @D_30_IMG_020_PHOTO_voltage-regulator-selection-menu_fig9-1 @D_30_IMG_021_PHOTO_voltage-regulator-selection-menu_fig9-2), select the nominal voltage and activate the test mode that corresponds to the type of the tested voltage regulator.
+3. In diagnostic mode the stabilizing voltage must set in the range from 14 to 14.5 volts.
+4. Press K15 and set rpm to zero to stop simulation of the alternator rotation. The control lamp indicator (Fig.10 @D_30_IMG_023_PHOTO_diagnostic-screen-information_fig10, n.10) must light up. Press K15 once again to turn the simulation on - the control lamp indicator will go out.
+5. Switch the preset stabilizing voltage to OFF. The measured stabilizing voltage must set in the range from 12 to 12.7 volts.
+6. If the voltage regulator is equipped with terminal S, press SENSE to check its operability - the stabilizing voltage must increase. Press SENSE once again, the stabilizing voltage must decrease to its initial values.
+7. Press BACK to exit the test mode. Disconnect the clips from the voltage regulator.
+8. Failure to perform as described in sub-items 3-6 signals the voltage regulator malfunction.
+
+6.5. Diagnostics of voltage regulators of SIG and P/D types
+1. Connect the voltage regulator as described in item 6.1
+2. Enter the menu for voltage regulator type selection (Fig.9 @D_30_IMG_020_PHOTO_voltage-regulator-selection-menu_fig9-1 @D_30_IMG_021_PHOTO_voltage-regulator-selection-menu_fig9-2), select the nominal voltage and activate the test mode that corresponds to the type of the tested voltage regulator.
+3. Upon diagnostic mode activation, the stabilizing voltage must set at 13.8V, the allowable deviation is ±0,2V.
+4. Adjust the preset stabilizing voltage in the range from 13.2 to 14.5 volts. The measured voltage must vary in proportion to the preset one.
+5. Press BACK to exit the test mode. Disconnect the clips from the voltage regulator.
+6. Failure to perform as described in sub-items 3-4 signals the voltage regulator malfunction.
+
+6.6. Diagnostics of 12/24V voltage regulators of COM type
+1. Connect the voltage regulator as described in item 6.1.
+2. Enter the voltage regulator type selection mode, select the nominal voltage (12 or 24 volts) and activate the test mode for COM voltage regulators.
+3. Wait for the tester to read-out data. As soon as the values are displayed in ID, Version LIN, and Type boxes we can proceed to testing.
+3.1. After the data read-out is completed, the stabilizing voltage must set at 13.8V. The allowable deviation is ±0,2V.
+4. Set rpm to zero, the M value must appear in box ERRORS. As soon as the alternator speed increases up to 800-1200 rpm, M is no longer displayed in the box ERRORS. It means, the system of voltage regulator self-diagnosis is fault-free.
+4.1 The E value displayed in box ERRORS upon speeding up the rotation to 1200 rpm, signals electrical fault of the voltage regulator. At this point any further diagnostics makes no sense.
+5. Change the preset stabilizing voltage in the range from minimum to maximum values. The measured stabilizing voltage must vary in proportion to it.
+6. Failure to perform as described in sub-items 3-5 signals the voltage regulator malfunction.
+7. Press BACK to exit the test mode. Disconnect the clips form the voltage regulator
+
+7. ALTERNATOR TESTING
+Alternator testing on a vehicle is performed as follows:
+WARNING! The tester does not allow the diagnostics of alternators without voltage regulators.
+1. Search the information on markings of the alternator terminals by the voltage regulator OEM number. Identify the alternator type by the contacts of the alternator terminals and based on the information set out in Appendices 1 and 2.
+2. Connect the tester to the alternator observing the markings of cable MS-33501 (see Section 1). Follow the instructions set out in Appendix 1.
+2.1. Connect a cable clip "B+" to a positive terminal of the alternator and a cable clip "B-" - either to the alternator body or to the battery negative terminal. Powered by a battery, the tester will be on and the main menu will be displayed.
+2.2. Connect the appropriate clips of cable MS-33501 to the pins of the alternator terminals.
+3. In the tester menu select the test mode for alternators (Fig.7 @D_30_IMG_016_PHOTO_tester-main-menu_fig7, n.3) and then, select the alternator type (Fig.9 @D_30_IMG_020_PHOTO_voltage-regulator-selection-menu_fig9-1 @D_30_IMG_021_PHOTO_voltage-regulator-selection-menu_fig9-2). The tester will switch over to the test mode.
+3.1 (This does not apply to the alternators of SIG and P/D types) Upon activation of the test mode, the control lamp indicator must light up.
+3.2 If this is the alternator with COM terminal, wait for the tester to readout the data. As soon as the values appear in ID, Version LIN, and Type boxes, proceed to testing.
+4. Start the vehicle engine and turn the load off. Wait for it to run steadily at idle speed. The stabilizing voltage shall set at 13.8V, the allowable deviation is ±0,2V.
+4.1 The stabilizing voltage for Lamp-type alternators must set as follows: for 12V alternators - in the range from 14 to 14.8 volts, for 48V alternators - from 28 to 29.8 volts.
+4.2 The stabilizing voltage for alternators of C JAPAN type must set in the range from 14 to 14.5 volts.
+5 (This does not apply to Lamp-type alternators). Change the stabilizing voltage in the range from 13.2 to 14.8 volts. The measured voltage must vary in proportion.
+5.1 When testing alternators of C JAPAN type, switch the preset stabilizing voltage to OFF. The measured stabilizing voltage must set in the range from 12 to 12.7 volts.
+6. Set the alternator voltage in the range from 13.2 to 14.8 volts. For C JAPAN alternators, switch the preset voltage to ON. Increase the engine crankshaft rotation speed to medium. The measured voltage must not change (the deviation by ±0,2V, is within the norm).
+7. Without reducing the engine crankshaft speed, increase the load on the alternator by switching on headlights and other lights. The voltage must not change (the voltage can reduce no more than by 0.3V from the preset one).
+8. Stop the engine.
+9. For "Start-stop" 12V alternators, conduct a check of its operation in starter mode, for this:
+9.1. Press the "Starter" button to start the test mode, during which the generator pulley should begin to rotate. We recommend limiting the duration of the test to 5 seconds.
+9.2. Press the "Starter" button again to stop the testing process.
+10. Exit diagnostic mode. Disconnect the clamps from the alternator.
+11. Failure to perform as described in sub-items 2.1, 3-7 indicates the voltage regulator malfunction.
+WARNING! Test alternators either outdoors or in premises equipped either with a supply-and-extract ventilation or an exhaust system.
+
+A connection diagram for Valeo IST60C017 is shown as an example in Fig.25 @D_30_IMG_049_DIAGRAM_valeo-ist60c017_fig25 @D_30_IMG_050_DIAGRAM_valeo-ist60c017-terminal-markings_fig25.
+
+ATTENTION! When diagnosing 12V "Start-Stop" system alternators, it is necessary to use the MS-33502 cable (see fig. 4 @D_30_IMG_004_PHOTO_diagnostic-cable-voltage-regulators_fig4).
+
+Figure 25. Valeo IST60C017: marking of terminal pins @D_30_IMG_049_DIAGRAM_valeo-ist60c017_fig25 @D_30_IMG_050_DIAGRAM_valeo-ist60c017-terminal-markings_fig25
+
+A diagram for connection of diagnostic cable MS-33502 to an alternator is shown in Table 5.
+
+Table 5 - Connection of Valeo IST60C017
+Terminal	Tester output terminal	Cable color
++ bat	IG (Ignition)	red
+stop motor mode	ST1	blue
+D	No connection	
+LIN	GC	yellow
+- bat (The "-bat" terminal needs to be connected to the generator housing using a wire, which should be manufactured independently)	Connection to alternator body	
+
+8. FUNCTION "LIN Analyzer"
+Function "LIN Analyzer" connects the tester to a LIN bus to read (save) data broadcasted via the bus. There are two modes in LIN Analyzer - Analyzer and Bomber.
+Figure 26. Screen to select a mode and a LIN bus speed @D_30_IMG_051_PHOTO_lin-analyzer-mode-selection_fig26
+
+Information displayed on Analyzer/Bomber screens (Fig. 27 @D_30_IMG_052_PHOTO_analyzer-screen-information_fig27):
+1 - Unit ID number.
+2 - Request status:
+M - Response;
+S - Request sent, no response (in Analyzer only);
+Err - Tester cannot read the data (the bus speed can be selected incorrectly).
+3 - Read Data;
+4 - Data Count;
+5 - LIN-bus Type:
+C - LIN 1.3 bus;
+E - LIN 2.1 bus;
+Err - Bus type is not identified;
+6 - Control total. "Err" means "no data displayed".
+Figure 27. Information displayed on Analyzer screen @D_30_IMG_052_PHOTO_analyzer-screen-information_fig27
+
+8.1. Analyzer Mode
+Analyzer Mode is used to read data transmitted via a LIN bus to assess the bus continuity and the performance of a Master module. In this test mode the tester will save the obtained data.
+Data reading and saving:
+WARNING! Perform all the operation in the below-described order. Otherwise, a data exchange via a LIN bus will be interrupted. It will lead to errors in a corresponding control module.
+1. Connect cable MS-33501 to the tester.
+2. The tester can be powered either by a battery or from an external power supply via a USB. If powered by a battery, connect red "B+" and black "B-" clips to the tester. Insert flexible probe pins (not included) to the LIN bus terminal from the side of the cable.
+3. In the main menu on the tester screen select "LIN Analyzer" and then "Analyzer" (Fig.26 @D_30_IMG_051_PHOTO_lin-analyzer-mode-selection_fig26) and the bus speed. As you push "Ok", the data transmitted via the LIN bus will appear on the tester screen (Fig. 28 @D_30_IMG_053_PHOTO_analyzer-mode-screen_fig28-1 @D_30_IMG_054_PHOTO_analyzer-mode-screen_fig28-2).
+Figure 28. Analyzer Mode Screen @D_30_IMG_053_PHOTO_analyzer-mode-screen_fig28-1 @D_30_IMG_054_PHOTO_analyzer-mode-screen_fig28-2
+
+4. Connect a "GC" clip (yellow) to the LIN bus wire using a flexible probe pin. The tester will start reading data.
+5. To stop data reading, disconnect the "GC" clip from the bus.
+6. Push "REC" to save data to the device storage. Once the data have been read, push "Save", name the file, and push "Ok".
+7. To view the saved data, connect the tester to a computer and upload the file you saved from the "Trace" folder in the tester storage.
+
+8.2. Bomber Mode
+Bomber Mode is intended to identify PID of the units controlled via a LIN bus.
+WARNING! Do not connect the tested unit to a Master module.
+The procedure for PID identification is as follows:
+1. Connect cable MS-33501 to the tester and supply power to the device.
+2. Supply power to the tested unit.
+3. In the menu on the device screen select "LIN Analyzer", then "Bomber" and set a LIN bus speed (Fig. 26 @D_30_IMG_051_PHOTO_lin-analyzer-mode-selection_fig26). Once you push "OK", the test mode window will appear (Fig. 29 @D_30_IMG_055_PHOTO_bomber-mode-screen_fig29).
+4. Connect a "GC" clip (yellow) to the LIN bus wire and push "RUN".
+5. After data reading is completed, the response data will be displayed on the screen.
+Figure 29. Bomber Mode Screen @D_30_IMG_055_PHOTO_bomber-mode-screen_fig29
+
+9. TESTER MAINTENANCE
+The tester is intended for long-term operation. However, regular inspection of the device and preventive measures performed as recommended can ensure its long and trouble-free service life.
+Below are the key points that require special attention during the daily inspection of the device:
+• Compliance of the environmental conditions to the requirements for the tester operation: temperature, humidity, air pollution level, vibration, etc.
+• Condition of diagnostic cables (visual inspection for damage).
+• Condition of a power unit and a USB cable.
+
+9.1. Software update
+The updates are available for:
+• Firmware
+• Databases
+• Bootloader
+
+Software update:
+1) Download the file (archive) with the latest version of the software from the website servicems.eu, which is located in the product card MS016.
+2) Connect the tester to the computer using a USB Type-C cable. The tester will be recognized as a flash drive.
+3) From the downloaded archive, copy (replace) the file "Update.bin" to the root directory of the tester's memory.
+4) Disconnect the tester from the computer.
+5) Connect the tester to the power supply (supplied in the kit). The tester will turn on, and the software update process will start automatically.
+6) Wait for the update to install. Upon finishing, the tester will re-boot and be ready for use.
+
+Database update:
+1) Download the file (archive) with the latest version of the software from the website servicems.eu, which is located in the product card MS016.
+2) Connect the tester to a computer via a USB cable Type-C. The computer will identify the tester as a flash drive.
+3) From the downloaded archive, copy (replace) the file "Base.bin" to the root directory of the tester's memory.
+4) Disconnect the tester from the computer. The tester is ready for use.
+
+Bootloader update:
+1) Download the file (archive) with the latest version of the software from the website servicems.eu, which is located in the product card MS016.
+2) Connect the tester to a computer via a USB cable Type-C. The computer will identify the tester as a flash drive.
+3) From the downloaded archive, copy (replace) the file "Bootloader.bin" to the root directory of the tester's memory.
+4) Disconnect the tester from the computer.
+5) Connect the tester to the power unit (included in the equipment set). The tester will be ON.
+6) Go to the tester settings and press "Update bootloader".
+7) Press "Update" and wait until the installation is finished.
+8) Upon finishing the installation, the tester will re-boot and be ready for use.
+WARNING! Do not disconnect the tester from the power unit to cancel the update.
+
+9.2. Cleaning and care
+To clean the tester surfaces, use either the soft napkins or rags, and neutral cleansers. The display should be cleaned with a special fiber display cleaning cloth and with a spray for display cleaning. To prevent the tester from the failure and corrosion, do not use abrasive materials and solvents.
+
+10. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Failure symptom	Potential cause	Troubleshooting tips
+1. Tester does not turn on when connected to a power unit.	Power supply failure.	Recover power supply.
+1. Tester does not turn on when connected to a power unit.	Power unit failure.	Check the tester by connecting it to another power unit.
+1. Tester does not turn on when connected to a power unit.	USB cable failure.	Check the tester by connecting another USB cable.
+2. Computer cannot identify the tester.	USB cable failure.	Check the tester by connecting another USB cable.
+2. Computer cannot identify the tester.	USB cable failure.	Software error.	Contact technical support.
+2. Computer cannot identify the tester.	USB cable failure.	Tester failure.	
+3. Incorrect display of tested parameters.	Loose terminal connection.	Reconnect.
+3. Incorrect display of tested parameters.	Diagnostic cable breakdown	Replace the diagnostic cable.
+3. Incorrect display of tested parameters.	Software error.	Contact technical support.
+3. Incorrect display of tested parameters.	Tester failure.	
+4. Test mode failure.	Loose terminal connection.	Reconnect.
+4. Test mode failure.	Diagnostic cable breakdown.	Replace the diagnostic cable.
+4. Test mode failure.	Tester failure.	Contact technical support.
+
+11. RECYCLING
+European WEEE Directive 2002/96/EC (Waste Electrical and Electronic Equipment Directive) applies to the tester waste.
+Obsolete electronic equipment and electric appliances, including cables, hardware, and batteries, must be disposed of separately from household wastes.
+Use available waste collection systems to dispose of outdated equipment.
+Proper disposal of old appliances prevents harm to the environment and personal health.
+
+APPENDIX 1
+Connection of terminals to alternators and regulators
+Indicial notation	Functional purpose	Alternator/Voltage regulator type	Output terminal
+B+	Battery (+)		B+
+30	Battery (+)		B+
+A	(Ignition) Input for switch starting		IG
+IG	(Ignition) Input for switch starting		IG
+15	(Ignition) Input for switch starting		IG
+AS	Alternator Sense Terminal for measuring battery voltage		S
+BVS	Battery Voltage Sense Terminal for measuring battery voltage		S
+S	Sense Terminal for measuring battery voltage		S
+B-	Battery (-)		B-
+31	Battery (-)		B-
+E	Earth, battery (-)		B-
+D+	Used for connection to an indicator lamp that transfers initial driving voltage and indicates alternator operability	Lamp	D+
+I	Indicator	Lamp	D+
+IL	Illumination	Lamp	D+
+L	(Lamp) Output for alternator operability indicator lamp	Lamp	D+
+61	(Lamp) Output for alternator operability indicator lamp	Lamp	D+
+FR	(Field Report) Output for alternator load control by an engine control unit		FR
+DFM	Digital Field Monitor		FR
+M	Monitor		FR
+LI	(Load Indicator) Same as FR, but with universal signal		
+D	(Drive) Input of voltage regulator control with terminal P-D of Mitsubishi (Mazda) and Hitachi (KiaSephia1997-2000) alternators	P/D	GC
+
+Indicial notation	Functional purpose	Alternator/Voltage regulator type	Output terminal
+SIG	(Signal) Input of code voltage installation	SIG	GC
+D	(Digital) Input of code voltage installation on Ford, same as SIG	SIG	GC
+RC	(Regulator control), same as SIG	SIG	GC
+L(RVC)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+L(PWM)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+C	(Communication) Voltage regulator input to control engine ECU. Korean cars.	C KOREA	GC
+C (G)	Voltage regulator input to control engine ECU. Japanese cars.	C JAPAN	GC
+G	Voltage regulator control input. Unlike Japanese cars, these regulators are controlled by a PWM signal.	G	GC
+RLO	(Regulated Load Output) Input to control stabilizing voltage in the range of 11.8-15V (TOYOTA)	RLO	GC
+COM	(Communication) General term for physical interface for alternator control and diagnostics. Protocols of use: BSD (Bit Serial Device), BSS (Bit Synchronized Signal), or LIN (Local Interconnect Network)	COM	GC
+LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+PWM	Used for 24V alternators where one of the pins in the connector is marked as PWM	PWM	GC
+Stop motor Mode	The control of the operation of Valeo alternator that are installed into the cars with the Start-Stop option	I-StARS	ST1 or ST2
+
+Indicial notation	Functional purpose	Alternator/Voltage regulator type	Output terminal
+DF	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+F	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+FLD	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+67	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+P	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+S	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+STA	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+Stator	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+W	(Wave) Output of one of alternator stator windings for connection of a tachometer in diesel engine cars		
+N	(Null) Output of average stator winding point. Usually used to control operability indicator lamp of the alternator with mechanical voltage regulator		
+D	(Dummy) Blank, no connection, mostly in Japanese cars		
+N/C	(No connect) No connection		
+LRC (Options of voltage regulators)	(Load Response Control) Function of voltage regulator response delay on load increase on an alternator. Delay duration ranges from 2.5 to 15 seconds. On increasing the load (lights, cooler fan on), a voltage regulator adds driving voltage smoothly ensuring stability of engine drive rotation. Remarkably seen under idle running.		
+
+APPENDIX 2
+@D_30_IMG_056_DIAGRAM_L-FR-connection
+@D_30_IMG_057_DIAGRAM_sig-connection
+@D_30_IMG_058_DIAGRAM_RLO-connection
+@D_30_IMG_059_DIAGRAM_RVC-connection
+@D_30_IMG_060_DIAGRAM_C-KOREA-connection
+@D_30_IMG_061_DIAGRAM_PD-connection
+@D_30_IMG_062_DIAGRAM_COMM-LIN-BSS-connection
+@D_30_IMG_063_DIAGRAM_C-JAPAN-connection
+
+APPENDIX 3
+@D_30_IMG_064_DIAGRAM_voltage-regulators-bosch
+@D_30_IMG_065_DIAGRAM_voltage-regulators-bosch
+@D_30_IMG_066_DIAGRAM_voltage-regulators-delco-remy
+@D_30_IMG_067_DIAGRAM_voltage-regulators-denso
+@D_30_IMG_068_DIAGRAM_voltage-regulators-hitachi
+@D_30_IMG_069_DIAGRAM_voltage-regulators-hitachi-magneti-marelli
+@D_30_IMG_070_DIAGRAM_voltage-regulators-mitsubishi
+@D_30_IMG_071_DIAGRAM_voltage-regulators-mitsubishi
+@D_30_IMG_072_DIAGRAM_voltage-regulators-mitsubishi-valeo

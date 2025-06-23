@@ -151,4 +151,4 @@ def process_docx_file(file_path:str, doc_index:int):
 
 if __name__ == "__main__":
     # process_docx_files()
-    process_docx_file(file_path='files_clean/equipment/MS004_COM_um_eng.docx', doc_index=24)
+    process_docx_file(file_path='files_clean/equipment/MS112_um_eng.docx', doc_index=33)

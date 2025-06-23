@@ -1,0 +1,23 @@
+LOKI-SECURECONFIG - LOKI Plugin for Tesla Vehicle Configuration Editing
+
+Additional software for the LOKI scanner that allows editing protected configuration parameters of Tesla Model 3, Model S, Model X vehicles.
+
+DESCRIPTION
+
+Tesla vehicles have approximately 140 configuration parameters through which the vehicle understands which specific elements (components) are installed in it. These parameters are divided into two groups: standard and protected (secured). The LOKI scanner can edit all values in the standard configuration of any Tesla model. For editing protected configuration parameters, the LOKI-SECURECONFIG plugin and LC005-SEC cable are used to connect the LOKI scanner to the vehicle.
+
+The LOKI-SECURECONFIG plugin allows editing protected values in the vehicle configuration, as well as bypassing Tesla protection, on vehicles:
+- Model 3 up to 2020 model year, up to firmware 2024.14.8;
+- Model S and Model X with Tegra / Intel processor.
+
+The LOKI-SECURECONFIG plugin allows editing of the following parameters:
+
+- Vin - editing the vehicle VIN number, necessary when replacing MCU.
+- Carcomputer_pn, Carcomputer_sn - necessary when replacing MCU.
+- Country - changing country configuration, necessary for switching headlight flashing algorithm to European, converting vehicles from Asian market to European.
+- Autopilot - activation of various types of autopilot such as Autopilot Safety Features / Highway Basic / Enhanced / FSD (available only in USA and Canada).
+- Supercharging - activation of supercharger (v1, v2), necessary for vehicles after accidents.
+- PerformancePack - activation of Performance or Acceleration Boost depending on motor types.
+- Connectivity - activation of Premium Connectivity for life.
+- SoftRange - removal of software limitation on battery capacity.
+- ImmersiveAudio - activation of additional audio system features.

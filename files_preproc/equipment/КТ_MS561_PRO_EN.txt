@@ -1,0 +1,35 @@
+MS561 PRO - Tester for Diagnostics of Electric Power Steering Systems
+
+The MS561 PRO tester is designed for diagnostics of EPS (Electric Power Steering) units removed from vehicles: steering racks, columns and pumps. Works with any data transmission protocols: CAN, CAN-FD, FlexRay, two independent CAN buses, as well as connection of units with PWM control. The tester software is constantly updated, expanding the database of diagnosable units and additional diagnostic capabilities.
+
+DESCRIPTION
+
+The MS561 PRO tester is used for diagnostics and repair of EPS steering racks and columns, EHPS pumps. The tester also allows diagnostics of torque sensors separately from the steering rack. The tester simulates a vehicle for the electric power steering system, which allows running it separately from the vehicle's electrical system (on a bench) and obtaining necessary diagnostic information:
+• current consumption through two terminals K15 (ignition) and K30 (motor) with indication of normal values;
+• current ("live") data from the control unit;
+• DTC error list, with ability to clear them;
+• unit data: VIN, hardware version, software version, etc.
+
+The tester also has a set of special functions for electric power steering repair (The list of units for which special functions are available depends on the specific unit and vehicle. This list is constantly expanding with new tester software updates):
+• Flash programming (allows clearing errors that cannot be erased by normal error deletion). Relevant for Ford, Audi, VW, Porsche.
+• Parameter loading (allows preparing the rack for a specific vehicle). Relevant for VAG groups.
+• VIN change for GM racks.
+• Virginizing - erasing rack binding to vehicle (allows installing racks from other vehicles). Relevant for Renault/Nissan.
+• EEPROM read/write. You can select a file to load from the tester database or choose your own file.
+• Software recovery of faulty control units.
+
+Features:
+• Huge list of supported vehicles with unit photographs.
+• Convenient unit search by: OEM number, vehicle make and model, connected cable number.
+• Large database of connection diagrams.
+• Works with any data transmission protocols, including: CAN-FD, FlexRay, dual CAN buses.
+• Dynamic CAN indication that allows real-time monitoring of connection correctness and integrity to the amplifier.
+• Kit includes universal cable that allows testing up to 80% of units.
+• Large assortment of high-quality specialized cables available.
+• Firmware file database for special functions.
+• Ability to use your own firmware files for special functions.
+• Built-in instructions for troubleshooting typical faults.
+• Ability to test units under full load.
+• Automatic OBDII connector pinout switching.
+• Offline operation.
+• Regular software updates.

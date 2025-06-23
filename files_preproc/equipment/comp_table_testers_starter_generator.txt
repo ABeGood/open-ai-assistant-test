@@ -1,0 +1,103 @@
+MS012, MS013, MS015, MS016, MS014, MS021 STARTERS AND GENERATORS TESTERS COMPARISON TABLE
+
+MS012:
+Supply voltage, V	230AC
+Tested unit voltage, V	12/24
+Generator diagnostics	No
+Relay-regulator diagnostics	Yes
+Starter diagnostics	No
+Types of tested generators/regulators	Lamp, COM, P-D, RLO, SIG, C KOREA, C JAPAN
+Output parameters - Value	Yes
+Output parameters - Oscillogram	No
+Load simulation on voltage regulator	Yes
+Voltage regulator database	No
+Oscilloscope (single-channel)	No
+PWM signal generator	No
+LIN-bus data reading	No
+Software updates	Yes
+
+MS013:
+Supply voltage, V	10-16 DC (230AC->5DC)
+Tested unit voltage, V	12
+Generator diagnostics	Yes
+Relay-regulator diagnostics	Yes
+Starter diagnostics	No
+Types of tested generators/regulators	Lamp, COM, P-D, RLO, SIG, C KOREA, C JAPAN
+Output parameters - Value	Yes
+Output parameters - Oscillogram	No
+Load simulation on voltage regulator	No
+Voltage regulator database	No
+Oscilloscope (single-channel)	Yes
+PWM signal generator	Yes
+LIN-bus data reading	No
+Software updates	No
+
+MS015:
+Supply voltage, V	10-16 DC
+Tested unit voltage, V	12
+Generator diagnostics	Yes
+Relay-regulator diagnostics	No
+Starter diagnostics	No
+Types of tested generators/regulators	COM, P-D, RLO, SIG, C KOREA, C JAPAN
+Output parameters - Value	Yes
+Output parameters - Oscillogram	No
+Load simulation on voltage regulator	No
+Voltage regulator database	No
+Oscilloscope (single-channel)	No
+PWM signal generator	No
+LIN-bus data reading	No
+Software updates	Yes
+
+MS016:
+Supply voltage, V	10-48 DC (230AC->9DC)
+Tested unit voltage, V	12/24
+Generator diagnostics	Yes
+Relay-regulator diagnostics	Yes
+Starter diagnostics	Yes
+Types of tested generators/regulators	Lamp, COM, P-D, RLO, SIG, C KOREA, C JAPAN, I-STARS
+Output parameters - Value	Yes
+Output parameters - Oscillogram	Yes (For starter diagnostics features, they apply to MS016 model when testing starter functions)
+Load simulation on voltage regulator	No
+Voltage regulator database	Yes
+Oscilloscope (single-channel)	No
+PWM signal generator	No
+LIN-bus data reading	Yes
+Software updates	Yes
+
+MS014:
+Supply voltage, V	230AC
+Tested diode voltage, V	12/24
+Diode bridge diagnostics	Yes
+Stator windings diagnostics	Yes
+Wire break diagnostics	Yes
+Short circuit test	Yes
+Diode type diagnostics	No
+Avalanche diode characteristics	No
+Current type on device probes	pulse
+Voltage on device probes, V	12.6
+Current strength on device probes, A	-
+Types of stator windings tested	Star, Triangle
+Intercommutator short circuit	Yes
+Interphase short circuit	Yes
+Phase-to-housing short circuit	Yes
+Phase break	Yes
+
+MS021:
+Supply voltage, V	230AC
+Tested diode voltage, V	12/24
+Diode bridge diagnostics	Yes
+Stator windings diagnostics	No
+Wire break diagnostics	Yes
+Short circuit test	Yes
+Diode type diagnostics	Yes
+Avalanche diode characteristics	Yes
+Current type on device probes	variable
+Voltage on device probes, V	30
+Current strength on device probes, A	0.9
+Types of stator windings tested	-
+Intercommutator short circuit	No
+Interphase short circuit	No
+Phase-to-housing short circuit	No
+Phase break	No
+
+MS012, MS013, MS015, MS016, MS014, MS021 STARTERS AND GENERATORS TESTERS COMPARISON TABLE

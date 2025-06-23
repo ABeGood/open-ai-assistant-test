@@ -1,0 +1,234 @@
+MS503N TEST BENCH FOR DIAGNOSTICS AND FLUSHING OF POWER STEERING SYSTEM @D_31_IMG_000_PHOTO_ms503n-test-bench-general-view
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The present user manual consists of the information on the application, equipment set, technical specifications, as well as the rules for safe operation of the MS503N test bench.
+Read carefully this manual before putting MS503N (hereinafter "the bench") into operation.
+Due to the permanent improvements of the tester, the design and supply slip are subject to modifications that are not included to the present user manual.
+
+1. APPLICATION
+The MS503N bench is used to solve a wide range of tasks during the maintenance and repair of the hydraulic power steering (HPS) system:
+1) Flushing the HPS system when replacing the working fluid. The bench ensures complete cleaning of the system from old fluid that has lost its operational properties and contains mechanical impurities formed during the operation of the vehicle.
+2) Diagnostics of the power steering rack with hydraulic booster. Rack diagnostics using the bench can be performed both on the vehicle and on the disassembled rack. During diagnostics, the bench allows determining:
+• Seal integrity;
+• Wear of hydraulic parts of the housing;
+• Condition of Teflon rings of the spool valve.
+3) Diagnostics of the HPS pump. Pump diagnostics can only be performed on the vehicle. During diagnostics, the bench allows determining:
+• Leakage;
+• Noise;
+• Wear of internal pump components;
+• Malfunction of the relief valve.
+
+2. TECHNICAL SPECIFICATIONS
+Supply voltage, V	230
+Electric motor capacity, kW	2.2
+Dimensions (L×W×H), mm	610×600×1180
+Weight, kg	83
+Fluid level sensor	Yes
+Flowmeter, l/min	0-18
+Manometer, bar	0-160
+Operating fluid	ATF DEXRON II
+Pure fluid tank volume, l	18
+Impure fluid tank volume, l	18
+Hydraulic system flushing
+Generated pressure in the system, bar	140
+Generated fluid flow, l/min	5.6
+Measured parameters	Flushing fluid contamination level
+Steering pump testing
+Maximum measured pressure, bar	160
+Tested parameters	Pressure
+Pump load	Available. Simulation of steering rack in extreme position
+Power steering rack testing
+Maximum test pressure, bar	140
+Maximum flow used for testing, l/min	5.6
+Measured parameters	- Pressure - Flow
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+Item name	Number of pcs
+Test bench MS503N	1
+MS00555 - Fitting Set	1
+MS00553 - Fitting Set	1
+High pressure hoses (L-2500mm)	2
+Funnel for liquid filling	1
+1/4 nipple plug	2
+Key to the bench	2
+User Manual (card with QR code)	1
+
+4. TEST BENCH DESCRIPTION
+The bench consists of the following main elements (see Fig. 1 @D_31_IMG_001_PHOTO_test-bench-general-view_fig1):
+1 - Swivel wheels with brakes. The brake is used to fix the bench.
+2 - Connectors (PUMP INPUT/PUMP OUTPUT) are used in "Pump Check" mode.
+3 - Control panel.
+4 - Connectors (RACK INPUT/RACK OUTPUT) are used in "Power Steering Rack Check" and "System Flushing" modes.
+Figure 1. General view of the test bench @D_31_IMG_001_PHOTO_test-bench-general-view_fig1
+
+The control panel (Fig. 2 @D_31_IMG_002_PHOTO_control-panel_fig2) contains the following elements:
+1 - PUMP switch turns the bench pump on/off.
+2 - Bench power switch lock.
+3 - PUMP OPEN/PUMP CLOSE valve in "Pump Check" mode creates a load, simulating the extreme position of the power steering rack.
+4 - Power indicator signals the bench power is on.
+5 - Sight glass operates in "System Flushing" mode, used for visual monitoring of the cleanliness of the fluid pumped through the vehicle's power steering hydraulic system.
+6 - "EMERGENCY STOP" button - emergency pump shutdown.
+7 - Pressure gauge for measuring the pressure of the diagnosed pump, only operates in "Pump Check" mode.
+8 - Dirty fluid tank level indicator operates in "System Flushing" mode. When the tank is full, it lights up, and the bench pump shuts off - it is necessary to drain the used fluid, see section 9.1.
+9 - Pressure gauge for measuring the pressure of the diagnosed power steering rack, operates in "Power Steering Rack Check" mode.
+10 - Indicator of the level of working fluid in the clean fluid tank.
+11 - Flow meter measures the flow of fluid passing through the power steering rack at different spool valve positions. Operates in "Power Steering Rack Check" mode.
+12 - Pump activation indicator signals the bench pump is running.
+13 - RACK CHECK/SYSTEM FLUSHING valve switches between bench operation modes: "Power Steering Rack Check" and "System Flushing".
+Figure 2. Control panel of the bench @D_31_IMG_002_PHOTO_control-panel_fig2
+
+Main internal elements of the bench (Fig. 3 @D_31_IMG_003_PHOTO_internal-elements_fig3):
+1 - Tank with clean (new) working fluid.
+2 - Working fluid filter.
+3 - Filling neck.
+4 - Tank with used (dirty) working fluid.
+5 - Valve for draining used working fluid.
+Figure 3 @D_31_IMG_003_PHOTO_internal-elements_fig3
+
+5. APPROPRIATE USE
+1. Use the test bench as intended only (see Section 1).
+2. The bench is intended for indoor use at temperatures ranging from +10 to +40 °C and with relative humidity not exceeding 75% without condensation.
+3. It is prohibited to turn on the bench if leaks in the hydraulic system are detected or if there is insufficient working fluid in the tank.
+4. Use the "EMERGENCY STOP" button of the bench only when it is necessary to urgently stop the bench drive.
+5. Turn off the bench when not in use.
+6. When working with the bench, it is prohibited to:
+• Diagnose generators with obvious mechanical faults.
+• Interfere with the operation of the bench in any way.
+• Obstruct the movement of rotating parts of the bench.
+7. When connecting the bench to the power supply via a power strip, its cross-section must be at least 1.5 mm2.
+8. Operate the bench in a manner that protects the environment and natural resources of our planet. Do not allow leakage of working fluid into the ground or sewage.
+9. To prevent the damage and the failure of the bench, do not make any modifications in the bench in your discretion. Any modifications can be effected by the official manufacturer only. Should the bench have defects contact the manufacturer or a dealer.
+10. In case of failures in the operation of the bench, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. The test bench shall be operated by the workers qualified to work with certain types of equipment and received appropriate training in the safe operation.
+2. The workplace must be kept clean and well lit. Clutter and unlit areas of the workplace can lead to accidents.
+3. When working with the bench it is necessary to use personal eye and hand protection - safety glasses and gloves. It is not allowed to get the working fluid on the exposed parts of the body (in case of contact, wash off with warm water and soap).
+4. To ensure electrical and fire safety PROHIBITED:
+- connect the bench to the electrical network having faulty protection against current overloads or not having such protection;
+- use a socket without a grounding contact to connect the bench;
+- use extension cords to connect the bench to the electrical network. If the socket is far from the bench installation site, it is necessary to modify the electrical network and install the socket;
+- operation of the bench in defective condition.
+- Independently to repair and make changes to the design of the bench, because it can lead to serious damage to the bench and deprive the right to warranty repair.
+5. To avoid electric shock, check the integrity of the power cable and grounding of the bench before working.
+6. Disconnecting or connecting high (low) pressure hoses and removing quick-connect fittings during bench operation (when the pump drive is rotating) is prohibited.
+7. Using damaged high-pressure hoses is prohibited.
+
+5.2. Preparing the bench for operation
+The bench is delivered packaged. Unpack the bench, remove the protective film from the display (if present). After unpacking, ensure that the bench is intact and free of any damage. If damage is found, contact the manufacturer or sales representative before turning on the bench.
+Before operating the bench:
+1) Pour in new ATF oil. Open the rear panel of the bench with a wrench and pour ATF oil into the tank through the filler neck (Fig. 4 @D_31_IMG_004_PHOTO_filler-neck-and-filter_fig4).
+Figure 4. Filler neck 1 and filter 2 @D_31_IMG_004_PHOTO_filler-neck-and-filter_fig4
+WARNING! To avoid malfunctions in the operation of the bench and diagnosed units, use only new ATF oil.
+2) Connect the 230V electrical network.
+
+6. POWER STEERING SYSTEM FLUSHING
+WARNING! Before starting the system flushing, it is necessary to ensure its integrity, check the fastening of all fittings, and secure the bench using the brake.
+1. Connect the bench to the hydraulic system of the vehicle as shown in Figure 5 @D_31_IMG_005_DIAGRAM_power-steering-system-flushing-connection_fig5:
+- Disconnect the high and low-pressure lines from the vehicle's power steering pump;
+- Connect the RACK INPUT fitting of the bench to the high-pressure line of the vehicle's power steering system;
+- Connect the RACK OUTPUT fitting of the bench to the low-pressure line.
+1 - High-pressure line; 
+2 - Low-pressure line;
+3 - RACK INPUT fitting; 
+4 - RACK OUTPUT fitting.
+Figure 5. Connection to the power steering during system flushing: @D_31_IMG_005_DIAGRAM_power-steering-system-flushing-connection_fig5
+
+2. Set the RACK CHECK/SYSTEM FLUSHING valve to the SYSTEM FLUSHING position.
+3. Turn on the power to the bench, then activate the bench's pump using the PUMP button, thus initiating the flushing process. Accompany the flushing by alternately turning the steering wheel to the right/left until it stops.
+4. Monitor the degree of fluid contamination using the flask at position 5 on Figure 2 @D_31_IMG_002_PHOTO_control-panel_fig2.
+5. When clean fluid circulates in the flask (position 5), the flushing can be completed. The expansion tank is flushed separately.
+6. Turn off the bench's pump using the PUMP button and switch off the bench's power. Disconnect the bench from the vehicle's hydraulic system.
+WARNING! Monitor the fluid level in the tanks.
+
+7. POWER STEERING PUMP TEST
+WARNING! Before starting the system flushing, it is necessary to ensure its integrity, check the fastening of all fittings, and secure the bench using the brake.
+1. Connect the bench to the pump as indicated in Figure 6 @D_31_IMG_006_DIAGRAM_power-steering-pump-connection_fig6:
+- Disconnect the high-pressure line from the pump;
+- Connect the PUMP INPUT fitting of the bench to the pump;
+- Connect the PUMP OUTPUT fitting of the bench to the high-pressure line.
+1 - High-pressure line; 2 - PUMP OUTPUT fitting; 3 - PUMP INPUT fitting.
+2. Set the PUMP OPEN/PUMP CLOSE valve to the PUMP OPEN position.
+3. Start the vehicle engine.
+4. Measure the fluid pressure readings at different engine speeds under different loads.
+Figure 6. Power steering pump connection: @D_31_IMG_006_DIAGRAM_power-steering-pump-connection_fig6
+
+4.1. To create a load, slowly turn the PUMP OPEN/PUMP CLOSE valve towards the PUMP CLOSE position for several seconds.
+Note: The pump load time should not exceed 10 seconds. Exceeding this parameter may result in fluid overheating and pump damage.
+4.2. Based on the readings of gauge 7 and flowmeter 11 (Figure 2 @D_31_IMG_002_PHOTO_control-panel_fig2), and the criteria outlined in Table 1, draw conclusions about the pump's operation.
+5. Turn off the vehicle engine. Disconnect the bench from the pump.
+
+Table 1. Main indicators for diagnostics of the hydraulic power steering pump
+Creating a load (imitate the rail in the extreme position, all the way to the stop)	Meter indication		Leak	Defect
+	Flow	Pressure		
+No	Minimal	Minimal	No	No
+No	Minimal	Slight increase from the minimum	No	Deformation of sealing plate tearing of pump working section
+No	After each load creation, the indicator changes	Maximum pump output	No	Wear out of operating steam (rotor with blades and working chamber). Wear out of bearing
+Yes	No drop to minimum	No increase to maximum	No	Wear out of operating steam (rotor with blades and working chamber). Deformation of sealing plate tearing of pump working section
+Cyclical	After each load creation, the indicator changes	No	No	Loss of bypass valve mobility, wear out of valve seat
+Yes/No	No	No	Yes	Loss of bypass valve mobility
+Yes/No	No	No	Yes	Wear out of seals, gaskets
+
+
+8. POWER STEERING RACK TEST
+The bench allows for checking the rack both when installed stationary on the vehicle and when removed from the vehicle. This instruction describes the inspection of a removed rack. The inspection of a rack installed on the vehicle is performed similarly.
+WARNING! If the steering rack design includes shims under the steering tie rod, install them.
+WARNING! Strictly observe the connection of high and low pressure. Incorrect connection leads to abrupt spontaneous rotation of the steering wheel shaft, which can cause injury.
+
+1. Secure the rack in a vice.
+2. Connect the bench to the rack as indicated in Figure 7 @D_31_IMG_007_DIAGRAM_steering-rack-connection_fig7:
+- Disconnect the high and low-pressure lines from the steering rack;
+- Connect the RACK INPUT fitting to the high-pressure line;
+- Connect the RACK OUTPUT fitting to the low-pressure line.
+3. Install limit stops or steering tie rods on the ends of the rack shaft.
+4. Set the RACK CHECK/SYSTEM FLUSHING valve to the RACK CHECK position.
+5. Turn on the bench's power, then activate the bench's pump using the PUMP button.
+6. Measure pressure and fluid flow readings at different spool valve positions.
+6.1. Move the rack shaft smoothly to the right/left by rotating the spool valve shaft until it stops, first putting locking pliers on it.
+6.2. Based on the readings of gauge 7 and flowmeter 11 (Figure 2 @D_31_IMG_002_PHOTO_control-panel_fig2), and the criteria outlined in Table 2, draw conclusions about the condition of the steering rack.
+7. Turn off the bench's pump and switch off the bench's power.
+8. Disconnect the bench from the rack.
+
+
+1 - High-pressure line; 
+2 - Low-pressure line;
+3 - RACK INPUT fitting; 
+4 - RACK OUTPUT fitting.
+Figure 7: Connecting the steering rack to the bench: @D_31_IMG_007_DIAGRAM_steering-rack-connection_fig7
+
+Table 2. Main indicators for diagnostics of steering rack
+Steering rack shaft position	Meter indication		Leak	Defect
+	Flow	Pressure		
+All positions of operating area without rotation of pinion shaft	Maximum, generated by the pump	Minimum	No	No
+All over operating area when rotating pinion shaft	In significant indication increase from maximum	In significant indication increase from minimum	No	No
+Maximum extreme position	Minimum	Maximum, generated by the pump	No	No
+Maximum extreme position	No drop to minimum	No increase to maximum	No	Wear out of valve gear. Damage of Teflon ring of hydraulic cylinder piston
+When supplying pressure, spontaneous shaft rotation	-	-	No	Failure of valve gear (standard for particular power steering racks. For example, Alfa Romeo 145, Audi 80)
+In any position	-	-	Yes	Wear out of seals
+
+9. TEST BENCH MAINTENANCE
+The bench is designed for long-term operation and does not have special maintenance requirements. However, for maximum trouble-free operation, it is necessary to regularly monitor its technical condition, namely:
+• Is the engine operating normally (any unusual sounds, vibrations, etc.)?
+• Hydraulic system tightness (visual inspection);
+• Check the condition of the filter (filter element CR091C10R) every 6 months. Replace if necessary. The filter should be replaced at least once a year.
+
+9.1. Draining of used fluid
+To drain the used (dirty) oil from the bench tank, follow these steps:
+1) Open the rear door of the bench.
+2) Open valve 5 (see Fig. 3 @D_31_IMG_003_PHOTO_internal-elements_fig3) and drain the used oil into a container.
+3) Close the valve once the process is complete.
+4) Close the rear door of the bench.
+
+9.2. Cleaning and care
+Soft cloths or rags should be used to clean the surface of the bench using neutral cleaning agents. Do not use abrasives and solvents to avoid corrosion, malfunction or damage to the bench.
+
+10. RECYCLING
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.

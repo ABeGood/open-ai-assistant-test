@@ -174,7 +174,7 @@ To clean the surface of the tester, use soft wipes or a rag, using neutral clean
 Table with the possible problems and the solutions on their elimination:
 Problem	Causes	Solutions
 1. You cannot switch on the tester, or the measured parameters are displayed wrong.	Bad connection between the diagnostic cable and the tester connector.	Check the connection density.
-	The diagnostic cable is damaged.	Check the integrity of the diagnostic cable. If required, replace the diagnostic cable.
+1. You cannot switch on the tester, or the measured parameters are displayed wrong.The diagnostic cable is damaged.	Check the integrity of the diagnostic cable. If required, replace the diagnostic cable.
 2. The touchscreen doesn't respond to the touches of the operator.	The touchscreen is damaged.	Contact the dealer.
 3. The diagnostics mode cannot start.	Contact the dealer.	Contact the dealer.
 

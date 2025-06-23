@@ -1,0 +1,346 @@
+MS800 MS800A TESTER FOR DIAGNOSTICS OF BATTERY HYBRID AND ELECTRIC VEHICLES @D_32_IMG_000_PHOTO_ms800-tester-general-view
+
+USER MANUAL
+
+INTRODUCTION
+We appreciate you have chosen the products of TM MSG Equipment.
+This user manual contains the information about the application, the technical characteristics, the operation principles of the tester MS800/MS800A.
+Before using the tester MS800/MS800A (hereinafter, "the tester"), study this user manual thoroughly. If required, get the special training at the manufacturer facilities.
+Due to the permanent improvements of the tester, the design, the supply slip and the software can be modificated. All changes are not included in the present user manual. Pre-installed software can be updated. Support can be terminated without prior notice in the future. Therefore, no claims can be made regarding the data and illustrations in this User Manual.
+
+1. APPLICATION
+Tester is designed for the diagnostics of high-voltage nickel-metal hydride (Ni-Mh) and lithium-ion (Li-ion) batteries of hybrid cars and electric vehicles. The tester allows:
+• determine the capacity of the battery modules;
+• prepare the battery for installation on the car balancing all modules by voltage;
+• prepare the module for long-term storage by charging to a certain level.
+The testers have identical capabilities and differ in the number of simultaneously diagnosable modules:
+- MS800 - 36 modules;
+- MS800A - 12 modules.
+The tester has independent, galvanically isolated channels for testing battery modules (Ni-MH or Li-Ion). The process of diagnosing (balancing) the battery modules occurs automatically. The management and control of the diagnostic process are performed on a touchscreen. The diagnostic results are saved in the tester's memory and can then be copied to a USB flash drive.
+
+2. SPECIFICATIONS
+Model	MS800	MS800A
+Dimensions (L x W x H), mm	1430×300×220	640×320×225
+Weight, kg	53	20
+Power source	single-phase power supply	single-phase power supply
+Supply voltage, V	230	230
+Demanded power (max.), kW	3.5	1.2
+Control	on the touchscreen 9"	on the touchscreen 9"
+Battery diagnostics
+Number of test channels	36	12
+Max. channel voltage, V	for Ni-Mh	20	20
+	for Li-Ion	4.2	4.2
+Charge rate, A	from 0.1 up to 4.5	from 0.1 up to 4.5
+Discharge rate, A	from 0.1 up to 5 (max. 50W per channel)	from 0.1 up to 5 (max. 50W per channel)
+Measured parameters	- capacity - voltage - current - temperature	- capacity - voltage - current - temperature
+Measurement accuracy: voltage current	0.02 % 0.5 %	0.02 % 0.5 %
+Additional features
+Protection from	- reverse polarity; - short circuit of the connected cable; - overheat.	- reverse polarity; - short circuit of the connected cable; - overheat.
+Diagnostics results storage	Available	Available
+Software update	Available	Available
+Connection of USB flash drive	1 x USB 2.0	1 x USB 2.0
+
+3. TESTER COMPLETE SET
+The equipment complete set includes:
+Item name	Quantity, pc
+Tester MS800/MS800A	1
+Diagnostic cable	36 or 12
+USB Type-C flash drive	1
+Supply cable	1
+Funnel	1
+Manual (card with QR code)	1
+
+4. TESTER DESCRIPTION
+The tester consists of the following main elements (fig. 1 @D_32_IMG_001_PHOTO_main-elements-tester_fig1):
+1 - Diagnostic cable connection ports.
+2 - Module voltage indicator.
+3 - Touch screen - to display the diagnostic parameters of a diagnosed battery and tester function control.
+Figure 1. Main elements of the tester @D_32_IMG_001_PHOTO_main-elements-tester_fig1
+
+The tester monitors the temperature of each module, during the diagnostic process. For this purpose, each diagnostic cable (fig. 2 @D_32_IMG_002_PHOTO_diagnostic-cable_fig2) has a temperature sensor. The tester stops charging any module whose temperature has exceeded the previously set permissible value. This provides additional diagnostic process security and reduces the probability of module failure.
+Figure 2. Diagnostic cable @D_32_IMG_002_PHOTO_diagnostic-cable_fig2
+
+4.1. Tester menu
+The tester main menu (fig. 3 @D_32_IMG_003_PHOTO_tester-main-menu_fig3) consists of:
+1 - Selection of the operating mode:
+CHARGE - battery modules charging;
+DISCHARGE - battery module discharge;
+TEST CYCLE - configurable cycle of the tester. Allows setting the sequence of operations that the tester will automatically perform;
+BALANCING - battery module balancing mode (battery module voltage balancing).
+2 - Temperature readings of the tester power elements.
+3 - Tester cooling system pump operation indicator.
+4 - Indicator of the lack of the required amount of coolant in the tester's cooling system.
+5 - Indicator of connected USB flash drive and internal SD card.
+6 - SETTINGS button - to enter tester settings menu.
+Figure 3. Tester main menu @D_32_IMG_003_PHOTO_tester-main-menu_fig3
+
+Charge/discharge control/diagnostics/balancing menu (fig. 4 @D_32_IMG_004_PHOTO_charge-discharge-control-menu_fig4):
+1 - Button to return to the main menu.
+2 - Indicators of the state of connected modules.
+3 - Indicator of selected tester operating mode.
+4 - Button to start the selected tester operation mode.
+5 - Button to return to the settings of the selected tester operation mode.
+Figure 4. Battery charge/discharge control menu @D_32_IMG_004_PHOTO_charge-discharge-control-menu_fig4
+
+The battery module status indicators @D_32_IMG_005_PHOTO_module-status-indicator_fig5 contain the following information:
+1 - Channel operation indicators.
+2 - Channel sequential number.
+3 - Module ongoing temperature.
+4 - Module ongoing voltage.
+5 - Charge/discharge current rate ongoing value.
+6 - The current value of the capacity ongoing of the test.
+Figure 5. Battery module charge/discharge control indicator @D_32_IMG_005_PHOTO_module-status-indicator_fig5
+
+The "SETTINGS" menu includes the following (see fig. 6 @D_32_IMG_006_PHOTO_tester-settings-menu_fig6):
+1 - Button to return to the main menu.
+2 - Indications from internal sensors of the tester (information is needed by specialists of MSG Equipment Service).
+3 - The slider is used to manually adjust the speed of rotation of the fans of the cooling system of the tester.
+Button "Update" is used to update the software tester.
+Button "Service" - this menu is designed to test the tester by specialists MSG Equipment.
+Button "Move file to USB" is used to copy saved diagnostic results to a USB flash drive formatted FAT32.
+Button "Set Data" - date setting.
+Button "Set Time" - time setting.
+Button "Reset setting" - restore factory settings of the tester.
+4 - Change the control circuit of the pump of the cooling system of the tester.
+5 - Touch screen setting.
+Figure 6. Tester settings menu @D_32_IMG_006_PHOTO_tester-settings-menu_fig6
+
+4.1.1. Settings menu for Ni-Mh battery diagnostics
+It is possible to select the number of cells in the module from the standard list of values or specify your own, choosing any mode of operation with Ni-Mh batteries.
+
+Figure 7. Menu to select the number of cells in the Ni-Mh battery module @D_32_IMG_007_PHOTO_ni-mh-cell-selection-menu_fig7
+
+Menu settings charge/discharge of the Ni-Mh modules contains:
+Figure 8. Charge/discharge mode menu for Ni-Mh batteries @D_32_IMG_008_PHOTO_ni-mh-charge-menu_fig8 @D_32_IMG_009_PHOTO_ni-mh-discharge-menu_fig8
+1 - Charge/discharge parameters:
+Cutoff voltage 1 Cell - maximum/minimum voltage per cell.
+ΔU 1 Cell - amount of voltage drop per cell at which the charge process is stopped.
+Timeout ΔU - ΔU measuring delay at the charging start - to prevent the beforehand charge stop.
+Limit capacity - maximum charge capacity.
+Tmax, °C - maximum module temperature above which the charging process is interrupted.
+2 - The value input field. Window appears with the setting, when clicking.
+@D_32_IMG_010_PHOTO_value-input-field
+3 - Activate the trickle charge mode that will occur after the main cycle.
+"Save" button - saving the settings and switching the tester to the charge/discharge mode of the battery modules.
+
+Ni-Mh battery module balance mode settings menu @D_32_IMG_011_PHOTO_ni-mh-balancing-menu_fig9 contains:
+1 - Balancing parameters:
+Current balancing - current at the start of balancing.
+Balancing voltage - voltage that should be after balancing the modules.
+Cutoff current balancing - end current of balancing process.
+Difference voltage C/D - specified difference between charged and discharge elements.
+Tmax, °C - maximum temperature of the module above which the charge/discharge process is interrupted.
+
+2 - Input field for values.
+
+3 - Information values:
+Charge voltage to - Voltage to which the cells are charged.
+Discharge voltage to - Voltage to which the cells are discharged.
+Figure 9. Menu of options for balancing Ni-Mh modules @D_32_IMG_011_PHOTO_ni-mh-balancing-menu_fig9
+
+Settings menu of cyclic mode of the tester with Ni-Mh modules @D_32_IMG_012_PHOTO_ni-mh-cyclic-mode-menu_fig10 contains:
+1 - Customizable stages.
+Five stages is the maximum that can be set, consisting of modes of operation: CHARGE, DISCHARGE, BALANCING. Working with the Ni-Mh battery after each step (except the last) it is recommended to set an exposure of 30-240 minutes. The stage is added by pressing "+" button. The stage is removed by pressing "X" button.
+2 - Set stage of the tester. Clicking on the stage field opens a window. It is an opportunity to change the mode and settings.
+Figure 10. Settings menu of cyclic mode of the tester with Ni-Mh modules @D_32_IMG_012_PHOTO_ni-mh-cyclic-mode-menu_fig10
+
+4.1.2. Settings menu for Li-Ion battery diagnostics
+The settings menu for the charge/discharge mode of the Li-Ion modules of the cell contains:
+1 - Charge parameters.
+2 - Input values field.
+Figure 11. Li-Ion cell charge/discharge mode settings menu @D_32_IMG_013_PHOTO_li-ion-charge-menu_fig11 @D_32_IMG_014_PHOTO_li-ion-discharge-menu_fig11
+
+The Li-Ion cell balancing mode settings menu contains:
+1 - Balancing parameters:
+Current balancing - current at the start of balancing.
+Balancing average voltage - voltage after balancing.
+Cutoff current balancing - end current of balancing process.
+Difference voltage C/D - specified difference between charged/discharged cells.
+2 - Input field for values.
+3 - Information values:
+Charge voltage to - voltage to which the cells are charged.
+Discharge voltage to - voltage to which the cells are discharged.
+Figure 12. Li-Ion cell balancing mode settings menu @D_32_IMG_015_PHOTO_li-ion-balancing-menu_fig12
+
+The settings menu for the cyclic operation of the tester with Li-Ion cells contains:
+1 - Customizable stages. The maximum can be set to five stages, consisting of the modes of operation of the tester: CHARGE, DISCHARGE, BALANCING. Stage is added by pressing "+". Stage is removed by pressing "x"
+2 - Set stage of the tester. Clicking on the stage field opens a window where you can change the mode and its settings.
+Figure 13. Settings menu for cyclic operation of the tester with Li-Ion cells @D_32_IMG_016_PHOTO_li-ion-cyclic-mode-menu_fig13
+
+5. APPROPRIATE USE
+1. Use tester only for intended purpose (sect. 1).
+2. Use tester in the premises equipped with the supply-and-exhaust ventilation, at the temperature range from +5 °C up to +25 °C and the relative humidity range from 10 up to 75% without moisture condensation.
+3. Connection\disconnection of diagnostic cables to the battery modules must be done when the charge\discharge or balancing mode is switched off.
+4. During the charge, discharge, and balancing process, the high-voltage battery must be cool.
+5. Incorrectly selected battery test parameters can lead to additional damage or failure of the battery.
+6. In case of failures in the operation, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety Guidelines
+1. Specially trained persons who have been instructed in safe techniques and methods of working with high-voltage batteries and have an appropriate electrical safety group are allowed to work with the tester.
+2. Compliance with country-specific safety regulations, such as those of trade unions, social insurance funds, labor protection agencies, and others, is required.
+3. Anyone using the tester for the first time must be familiar with this User Manual or be instructed by an experienced user on the proper handling of the tester, or complete a specialized training course.
+4. The tester must be turned off during cleaning and in emergency situations.
+5. The workspace must be kept clean and well-lit. Clutter and poorly lit areas can lead to accidents.
+6. To ensure electrical and fire safety FORBIDDEN:
+- connect the tester to the electrical network having faulty protection against current overloads or not having such protection;
+- use a socket without a grounding contact;
+- use extension cords;
+- exploitation in defective condition;
+- independently repair and make design changes, it can lead to serious damage and lose warranty.
+7. It is FORBIDDEN to specify an incorrect number of elements in the module.
+
+5.2. Tester installation and connection
+The tester is supplied packed. Once unpacked, it should be inspected to make sure it has no damages and/or liquid leakages. If the damages and/or the liquid leakages were revealed, prior to the equipment starting, contact the manufacturer or a dealer.
+During the installation, provide the minimal gap 0.5 m on the left and the right sides of the tester, keep 25 mm under the tester - to provide the free air circulation.
+Before the operation of the tester it is necessary:
+1) connect the 230V electric network (single-phase) with a grounding contact and with the presence of a protective automatic device (25A). If the socket is removed from the place of installation, it is necessary to make adjustments to the electrical network and install the socket.
+2) fill (refill) cooling liquid.
+
+5.2.1. Filling the tester with cooling liquid
+The tester's cooling system uses a cooling liquid (antifreeze) of G12 class, either ready-to-use or a concentrate mixed with distilled water in a 1:3 ratio (1 part antifreeze and 3 parts distilled water). Approximately 1 liter for MS800 and 0.3 liter for MS800A is required to completely fill the system.
+The procedure for filling the tester with cooling liquid is as follows:
+1. Open the lid on the top of the tester.
+@D_32_IMG_017_PHOTO_opening-tester-lid
+
+2. Unscrew the cap on the expansion tank.
+@D_32_IMG_018_PHOTO_expansion-tank-cap
+3. Using a funnel (included in the kit), pour the cooling liquid into the expansion tank until it is filled to 80% (visually check through the perforated side wall of the tester).
+4. Turn on the tester for a few minutes.
+5. Turn off the tester.
+6. Repeat steps 3-5 several times until the level of the cooling liquid stops decreasing.
+7. Screw the cap back on and close the lid.
+
+6. BATTERY DIAGNOSTICS
+The diagnosis of a battery means determining the capacity of its modules. To determine the condition of the battery it is necessary to make a charge and discharge cycle of each of the modules. We recommend that a module is considered operational if it has retained more than 70% of its original capacity.
+6.1. Diagnostics of Ni-Mh modules
+Determining the capacity of Ni-Mh modules includes the following steps:
+1. Discharge modules to 0.9V per cell.
+2. Exposure 30-60 min. Do nothing with modules.
+3. Charging modules with obligatory activation of the trickle charging mode, for the maximum degree of charging.
+4. Exposure 30-60 min.
+5. Discharge of modules up to 0.9V per cell. The capacity of the modules is determined.
+WARNING! To prevent battery damage during the diagnosis process, it is recommended to:
+- Battery diagnostics must be in the assembled state, or the battery modules be properly compressed between themselves in any available way to prevent deformation.
+- Advisable to remove all contact tires from the battery.
+- Battery must be cooled by airflow in the diagnosis process.
+
+The procedure for diagnosing modules consists of 6 cells each illustrated below.
+The sequence of operations is as follows:
+1. Connect the diagnostic cables to the terminals observing polarity and attach a temperature sensor to each module of the appropriate channel.
+2. Select "DISCHARGE Ni-Mh" mode. Configure the discharge current 4 - 5 A, the minimum voltage 0.9V, and the maximum temperature of the module 55°C and press the button "Save". The tester will go to the control menu of the charging/discharging process. Make sure that all plugged-in battery modules are determined by the tester. Click "START" to start the discharge process.
+3. Do pause in the diagnostics for 30 minutes to 1 hour after the discharge.
+4. Next, charge the battery. Choose "CHARGE Ni-Mh". Adjust the charge current 4A at battery temperature 22 - 25°C, maximum voltage 1.47V, delta 1.5-2mV, and activate the charge mode.
+@D_32_IMG_019_PHOTO_charge-configuration
+5. After the end of the charge, pause the diagnosis for 30 minutes to 1 hour.
+6. After the battery is charged, measure its capacity. Choose "DISCHARGE Ni-Mh". Configure the discharge current 4 - 5 A, the minimum voltage 0.9V, and the maximum temperature of the module 45°C and activate the discharge mode. At the end of the discharge process, fix the capacity of each module.
+7. After determining the capacity of the modules of the battery, it must be charged, pausing for 30 minutes to 1 hour.
+WARNING! The battery must not disassemble to prevent deformation after the charge! The battery must be allowed to cool for several hours.
+If required, items 2 - 6 of the tester can be performed independently, for this configures the mode "TEST CYCLE Ni-Mh". An example of configured mode shows in Figure 14 @D_32_IMG_020_PHOTO_configured-cyclic-mode-menu_fig14.
+WARNING! Once the tester has started the cycle, the settings cannot be changed.
+If necessary, save the results of module diagnostics, connect the USB flash drive to the tester, enter the tester settings and click "Move the file to USB".
+At the end of the cycle, fix the measured cell capacity. The battery must then charge by taking a break of 30 minutes to 1 hour.
+Figure 14. Configured cyclic mode tester menu @D_32_IMG_20_PHOTO_configured-cyclic-mode-menu_fig14
+
+6.2. Recommendations for charging Ni-Mh batteries
+Typically, Ni-Mh modules charge with a charge current of 0.5 to 1C, where C is the cell capacity in Ah. Cell capacity ranges from 6 to 6.5A for almost all hybrid car batteries. We recommend charging modules with a current of 4 - 5A (maximum for tester MS800).
+There is a problem charging Ni-Mh modules in determining when the module will charge. It is because the Ni-Mh modules of hybrid cars consist of several sequentially connected cells. It is, therefore, impossible to control the voltage of each cell, but only voltage of the module. Consequently, there may be a situation when the cell voltages in the module are, for example, 1.35V, 1.35V, 1.35V, 1.35V, 1.35V, 1.35V, 1.5V. The total voltage of 8.25V is normal, provided that all cells inside have the same capacity, but 5 of them are undercharged and one, is already recharged. Thus, the tester has four parameters that indicate that the module is already fully charged and the charging process must stop:
+1. Maximum voltage.
+In the charge settings, set this voltage based on the voltage of one element, and the tester multiplies it by the specified number of cells.
+2. Parameter ΔU 1 Cell.
+During the charging process of the Ni-Mh cell, the voltage on it grows. When the charging process comes to an end, the temperature of the cell begins to rise. Voltage drop occurs on the cell, in this case, due to the increase in its temperature. This ΔU 1 Cell drop shows in red in Figure 15 @D_32_IMG_021_DIAGRAM_ni-mh-charge-graph_fig15.
+Figure 15. Charge graph of one Ni-Mh cell @D_32_IMG_021_DIAGRAM_ni-mh-charge-graph_fig15
+
+The tester constantly monitors the voltage and tracks drop. The value of ΔU 1 Cell set per cell, i.e., setting the value to -2mV the tester will stop the charge as soon as the voltage is reduced by 12mV (if in module 6 cells).
+Important note! For this parameter to work, initially the battery must be at room temperature. If the battery at the beginning of the charge is already heated, there will not be a noticeable drop, it is possible to reload and even fire. Therefore it is strongly recommended, to install temperature sensors on each charging module.
+3. Maximum temperature, Tmax.
+The critical temperature at the charge of Ni-Mh cells is approximately 50°C. Therefore recommend setting this temperature at 45°C so as not to harm the battery. It is important to consider thermal inertia - the sensor shows the temperature increase with delay, which depends on both the module, and the location and method of installation of the sensor.
+4. Capacity limit, A/h
+The limited capacity of the charge additionally protects against battery damage.
+
+TRICKLE CHARGE
+Ni-Mh elements are afraid of overcharging, because after the end of the charge, almost all energy turns into heat and causes overheating and failure of the element. There is a method of charging Ni-Mh batteries with a small current (1/20 C) - a so-called trickle charge. At this charge and at room temperature, the energy generated will not be enough to harm the elements. This allows the undercharged cells to be charged and charged safely recharged.
+The tester allows activating the trickle charge after the main charge cycle. The time and current of the trickle charge are set in the menu of charge mode settings.
+
+COMMON CHARGING ERRORS
+1. Bad connection of "crocodile clip" to the module.
+If connect the tester clamps to the module improperly, the clamp contact will not be stable. That leads to voltage surges that the tester takes for a voltage drop on the ΔU 1 Cell and stops the fast charge. Cell remains undercharged.
+Figure 16. Voltage change on the module with the not proper connection of clamps @D_32_IMG_022_DIAGRAM_improper-connection-voltage-change_fig16
+
+2. Incorrect settings.
+Charge/discharge settings should be monitored and rechecked very carefully. Incorrect settings will lead to undercharging of the module or to overcharging, as result - module failure or fire.
+
+6.3. Li-Ion cell diagnostics
+WARNING! Li-Ion modules' diagnostics of the battery should be only element by element.
+The lithium elements charge by CC/CV (DC / DC) up to a certain point, most often 4.2V.
+As an example, below is the diagnostic procedure of the Li-Ion module of the Nissan Leaf battery with an output-rated voltage of 7.6V and a passport capacity of 60Ah. This module has a 2S2P configuration, i.e. two elements are connected in parallel, and then two parallel connected elements are connected in series.
+Two channels must be connected, to diagnose the Li-Ion of the Nissan Leaf module, as shown in Figure 17 @D_32_IMG_023_DIAGRAM_nissan-leaf-module-connection_fig17.
+Figure 17. Nissan Leaf battery module connection to the tester @D_32_IMG_023_DIAGRAM_nissan-leaf-module-connection_fig17
+
+Next, charge the module. Select "CHARGE Li-Ion" mode. Configure the charge current 4A, the maximum voltage is 4.2V, and press the "Save" button. The tester will go to the control menu of the charging/discharging process. Make sure that all connected battery cells are identified by the tester. Click "START" to start the charging process.
+After the charge finish, measure capacity. Choose "DISCHARGE Li-Ion" mode. Configure the discharge current 4A, and the minimum voltage 3.0V, and activate the discharge mode. After the discharge process, fix the capacity of each module.
+If required, it is possible to make the tester independently determine the capacity of the module, it is necessary to configure the mode "TEST CYCLE Li-Ion". An example of configured mode shows in Figure 18 @D_32_IMG_024_PHOTO_li-ion-cyclic-mode-configured_fig18.
+
+Figure 18. Configured menu of the cyclic operation mode of the tester for diagnosing the Li-Ion module of the Nissan Leaf battery @D_32_IMG_024_PHOTO_li-ion-cyclic-mode-configured_fig18
+
+6.4. Viewing diagnostic results on a PC
+The tester stores all measured data in its memory after pressing the "START" button. To view the results, the TesterLogReader program is used, which can be downloaded from the website servicems.eu, located on the product card of MS800.
+The TesterLogReader program window (Fig. 19 @D_32_IMG_025_PHOTO_testerlogreader-program-window_fig19) contains:
+
+1 - Channel selection for displaying data in numerical form. The data is displayed in the "Data grid" tab (see item 6).
+2 - Channel selection for displaying data in graphical form. The data is displayed in the "Chart" tab (see item 6).
+3 - Measured module capacity in A·h.
+4 - Remaining module capacity in %.
+5 - Displays the reason for channel shutdown (temperature exceeded, min/max voltage, etc.).
+6 - Tabs:
+Data grid - Displays data in numerical form.;
+Chart - Displays data in graphical form;
+Settings - Program settings.
+
+Figure 19 @D_32_IMG_025_PHOTO_testerlogreader-program-window_fig19
+
+To view the diagnostic results on a PC, follow these steps:
+1. After the diagnostic or module balancing process is completed, connect a USB flash drive to the tester.
+2. Once the USB flash drive icon appears on the main screen, go to the tester settings and click the "Move file to USB" button. The tester will copy all previously saved results to the flash drive. Wait for the file copying to finish, then remove the flash drive.
+3. Connect the USB flash drive to the PC and launch the TesterLogReader program.
+4. From the program menu, select "File → Open" and open the newest file based on the date.
+5. When opening the file, the program will display a dialog box where you need to specify the module capacity in A·h.
+6. The program will load the data, and then you can analyze all channels together or each channel separately. If needed, the program allows you to save the results as a report in PDF format.
+
+7. TESTER MAINTENANCE
+Tester is designed for a long operation life and doesn't have any special maintenance requirements. To ensure the maximum operation life, the regular monitoring technical condition should be made as follows:
+• uncommon noises monitoring; 
+• diagnostic cable visual inspection
+• tester power component temperature control;
+• coolant level control.
+Provide the free air flow through the air vents.
+Follow the ambient condition requirements (temperature, humidity), see the section 5.
+
+7.1. Tester software update
+To update the tester's software, you will need a USB flash drive with a capacity of up to 32 GB (maximum) formatted to the FAT32 file system.
+The update procedure is as follows:
+1) Download the file with the latest software version from the official website of the tester manufacturer.
+2) Extract the file "ForcedUpdate.bin" from the downloaded archive to the root directory of the USB flash drive.
+WARNING! There should be only one file "ForcedUpdate.bin" on the USB flash drive.
+3) Connect the USB flash drive to the USB port of the tester.
+4) Once the USB flash drive icon is displayed on the main screen (see Fig. 3 @D_32_IMG_003_PHOTO_tester-main-menu_fig3 item 4), go to the "SETTINGS" menu and press the "Update" button.
+5) Wait for the installation to complete.
+WARNING! It is forbidden to interrupt the software update process by disconnecting the tester or removing the MicroSD drive.
+6) After the installation is complete, the tester will reboot.
+7) Remove the USB flash drive. The tester is ready to use.
+
+7.2. Cleaning and care
+To clean the surfaces, use the soft napkins or rags, and neutral cleansers. The display should be cleaned with a special fiber cleaning cloth and with a spray for display cleaning. To prevent the device from the failure and corrosion, do not use abrasive materials and solvents. Blow through the dust from the cooling radiators carefully, preventing the damage of the fans.
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Problem	Causes	Solutions
+1. The tester doesn't turn off.	There is no the required voltage in the circuit - 230V	Restore the supply
+2. The tester is on, at the same time, the charge/discharge doesn't start.	Software error	Contact the dealer
+3. When the tester runs the abnormal noises are heard.	Dust has accumulated on the cooling system fans, the intrusion of the foreign objects	Clean the inner space of the tester from the dust and the foreign objects.
+
+9. DISPOSAL
+Equipment deemed unserviceable is subject to disposal.
+The bench does not have in its design any chemical, biological or radioactive elements, which, if the storage and operation rules are observed, could cause damage to human health or the environment.
+Disposal of the equipment must comply with local, regional and national legislative norms and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) into the environment. To dispose of such materials, it is necessary to contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, which are non-ferrous metal waste, should be collected and sold.

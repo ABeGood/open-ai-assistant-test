@@ -1,0 +1,121 @@
+MS002A, MS004 COM, MS005, MS005A, MS006 STARTERS AND GENERATORS TEST BENCHES COMPARISON TABLE
+
+MS002A:
+Supply voltage, V: 400
+Drive power, kW: 5.5
+Tested unit voltage, V: 12/24
+Generator diagnostics: Yes
+Generator voltage regulator diagnostics: Yes
+Starter diagnostics: Yes
+Belt starter-generator 48V diagnostics: No
+Maximum load current on generator 12V, A: 200
+Maximum load current on generator 24V, A: 100
+Maximum load current on generator 48V, A: -
+Automatic generator test mode: Yes
+Automatic starter test mode: No
+Special cables for quick generator connection: Yes
+Power of tested starters, kW: up to 6
+Output parameters - Values: Yes
+Output parameters - Oscillogram: Yes
+Temperature measurement of tested unit: No
+Generator database: Yes
+Voltage regulator database: Yes
+Software updates: Yes
+Print results: Yes
+Display: 9" Touch
+
+MS004 COM:
+Supply voltage, V: 230
+Drive power, kW: 2.2
+Tested unit voltage, V: 12/24
+Generator diagnostics: Yes
+Generator voltage regulator diagnostics: Yes
+Starter diagnostics: Yes
+Belt starter-generator 48V diagnostics: No
+Maximum load current on generator 12V, A: 100
+Maximum load current on generator 24V, A: 50
+Maximum load current on generator 48V, A: -
+Automatic generator test mode: No
+Automatic starter test mode: No
+Special cables for quick generator connection: No
+Power of tested starters, kW: up to 4
+Output parameters - Values: Yes
+Output parameters - Oscillogram: No
+Temperature measurement of tested unit: No
+Generator database: No
+Voltage regulator database: No
+Software updates: No
+Print results: No
+Display: TFT 4.3"
+
+MS005:
+Supply voltage, V: 400
+Drive power, kW: 7.5
+Tested unit voltage, V: 12/24
+Generator diagnostics: Yes
+Generator voltage regulator diagnostics: No
+Starter diagnostics: Yes
+Belt starter-generator 48V diagnostics: No
+Maximum load current on generator 12V, A: 300
+Maximum load current on generator 24V, A: 150
+Maximum load current on generator 48V, A: -
+Automatic generator test mode: Yes
+Automatic starter test mode: Yes
+Special cables for quick generator connection: Yes
+Power of tested starters, kW: up to 11
+Output parameters - Values: Yes
+Output parameters - Oscillogram: Yes
+Temperature measurement of tested unit: Yes
+Generator database: Yes
+Voltage regulator database: No
+Software updates: Yes
+Print results: Yes
+Display: PC 12" Touch
+
+MS005A:
+Supply voltage, V: 400
+Drive power, kW: 7.5
+Tested unit voltage, V: 12/24/48
+Generator diagnostics: Yes
+Generator voltage regulator diagnostics: No
+Starter diagnostics: Yes
+Belt starter-generator 48V diagnostics: Yes
+Maximum load current on generator 12V, A: 300
+Maximum load current on generator 24V, A: 150
+Maximum load current on generator 48V, A: 50
+Automatic generator test mode: Yes
+Automatic starter test mode: Yes
+Special cables for quick generator connection: Yes
+Power of tested starters, kW: up to 11
+Output parameters - Values: Yes
+Output parameters - Oscillogram: Yes
+Temperature measurement of tested unit: Yes
+Generator database: Yes
+Voltage regulator database: No
+Software updates: Yes
+Print results: Yes
+Display: PC 12" Touch
+
+MS006:
+Supply voltage, V: 230
+Drive power, kW: 1.5
+Tested unit voltage, V: 12/24
+Generator diagnostics: Yes
+Generator voltage regulator diagnostics: No
+Starter diagnostics: No
+Belt starter-generator 48V diagnostics: No
+Maximum load current on generator 12V, A: 50
+Maximum load current on generator 24V, A: 25
+Maximum load current on generator 48V, A: -
+Automatic generator test mode: Yes
+Automatic starter test mode: No
+Special cables for quick generator connection: No
+Power of tested starters, kW: -
+Output parameters - Values: No
+Output parameters - Oscillogram: No
+Temperature measurement of tested unit: No
+Generator database: Yes
+Voltage regulator database: No
+Software updates: Yes
+Print results: Yes
+Display: 7.0" Touch

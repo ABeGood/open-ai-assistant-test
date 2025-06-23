@@ -1,0 +1,135 @@
+MS300 TEST BENCH FOR DIAGNOSTICS AND FLUSHING OF POWER STEERING SYSTEM @D_28_IMG_000_PHOTO_ms300-test-bench_general-view
+
+USER MANUAL
+
+INTRODUCTION
+Thank you for choosing the product of MSG Equipment.
+The present user manual consists of the information on the application, equipment set, technical specifications, as well as the rules for safe operation of the MS300 test bench.
+Read carefully this manual before putting MS300 (hereinafter "the bench") into operation.
+Due to the permanent improvements of the tester, the design and supply slip are subject to modifications that are not included to the present user manual. Therefore, no claims can be made regarding the data and illustrations in this User Manual.
+
+1. APPLICATION
+The MS300 bench is designed for diagnosing brake calipers of passenger cars and light commercial vehicles. The bench allows for determining the unit's tightness by creating hydraulic pressure within it, as well as testing the operability of the electromechanical parking brake actuator. Additionally, the bench serves as a workstation for repairing the vehicle's brake calipers.
+
+2. TECHNICAL SPECIFICATIONS
+Dimensions (L×W×H), mm	1520×810×1480
+Weight, kg	120
+Power source	three-phase electrical power supply
+Supply voltage, V	400
+Power consumption, kW	0.55
+Operating fluid	DOT4
+Operating fluid tank capacity, l	4
+Working pressure of the bench hydraulic system, bar	140 (limited by bench settings)
+Power supply voltage of electromechanical parking brake actuator, V	12
+
+3. EQUIPMENT SET
+The equipment complete set includes:
+Item name	Number of pcs
+Test bench MS300	1
+Wiring kit for checking the electromechanical parking brake actuator	1
+Set of connection fittings for the units to be tested	1
+High pressure hose (HPS) L=1.2 m	1
+1/4" male threaded quick disconnect coupling (QDC) socket	1
+Rubber-metal ring	3
+Power outlet 400V / 16A	1
+Bench foot	4
+User Manual (card with QR code)	1
+
+4. TEST BENCH DESCRIPTION
+The bench consists of the following main elements (see Fig. 1 @D_28_IMG_001_DIAGRAM_bench-main-elements_fig1):
+1 - Place for brake caliper repair.
+2 - Perforated wall for storing tools on special holders (not supplied).
+3 - Control panel.
+4 - High pressure hose.
+5 - Tray for collecting the operating fluid.
+6 - Operating fluid filter.
+7 - Operating fluid tank.
+8 - Operating liquid level gauge in the tank.
+9 - Operating fluid drain cock.
+Figure 1. Main elements of the bench @D_28_IMG_001_DIAGRAM_bench-main-elements_fig1
+
+The control panel (Fig. 2 @D_28_IMG_002_DIAGRAM_control-panel_fig2), contains the following elements:
+1 - Pressure boost button.
+2 - Pressure release button.
+3 - Pressure gauge.
+4 - Button for switching the bench on/off.
+5 - Button for emergency shutdown of the bench.
+6 - Rotary button for switching on the 12 V power supply, polarity reversal.
+7 - 12 V power supply terminals.
+Figure 2. Control panel @D_28_IMG_002_DIAGRAM_control-panel_fig2
+
+5. APPROPRIATE USE
+1. Use the test bench as intended only (see Section 1).
+2. The bench is intended for indoor use at temperatures ranging from +10 to +40 °C and with relative humidity not exceeding 75% without condensation.
+3. Operate the bench in a manner that protects the environment and natural resources of our planet. Do not allow leakage of working fluid into the ground or sewage.
+4. To ensure electrical and fire safety, it is FORBIDDEN to:
+- connect the bench to an electrical network that has faulty overload protection or lacks such protection;
+- use a socket without a grounding contact to connect the bench;
+- use extension cords to connect the bench to the electrical network. If the socket is far from the installation site of the bench, it is necessary to modify the electrical network and install a socket;
+- operate the bench in a faulty condition.
+5. To prevent the damage and the failure of the bench, do not make any modifications in the bench in your discretion. Any modifications can be effected by the official manufacturer only. Should the bench have defects contact the manufacturer or a dealer.
+6. In case of failures in the operation of the bench, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this user manual.
+
+5.1. Safety guidelines
+1. The test bench shall be operated by the workers qualified to work with certain types of equipment and received appropriate training in the safe operation.
+2. The workplace must be kept clean and well lit. Clutter and unlit areas of the workplace can lead to accidents.
+3. When working with the bench, personal protective equipment for eyes and hands must be used - technical rubber gloves (nitrile gloves) and closed protective goggles.
+4. It is FORBIDDEN to use open flames, smoke, or conduct welding within a 2-meter radius of the bench's installation site. Brake fluid is a flammable liquid.
+5. The room where the bench, is operated must be well-ventilated. The exhaust systems in the room must be turned on.
+6. It is FORBIDDEN to disconnect the high-pressure hose from the fitting (adapter) or unscrew the fitting while the brake caliper is under pressure.
+7. It is FORBIDDEN to use a damaged high-pressure hose.
+8. It is FORBIDDEN to use fittings and adapters with damaged threads.
+9. When diagnosing the brake caliper, do not allow fingers to get between the caliper body and the piston to avoid injury. A metal object of the appropriate size, such as the metal part of a hammer, should be used to block the piston.
+
+5.2. Preparing the bench for operation
+The bench is delivered packaged. Unpack the bench. After unpacking, ensure that the bench is intact and free of any damage. If damage is found, contact the manufacturer or sales representative before turning on the bench.
+The bench is installed on a flat floor surface. The bench's design does not require it to be anchored to the foundation. The legs of the bench are equipped with height adjusters.
+Before operating the bench, it is necessary to:
+1) Connect to a 400V electrical network. Use the socket included with the bench, ensuring to follow the labeling inside: L1 L2 L3 N PE when connecting the socket to the power supply.
+WARNING! After connecting the power to the bench, check the direction of the motor's rotation. Viewed from above, the impeller should rotate clockwise. If the rotation does not match the required direction, swap any two phases in the socket, such as L1 and L2.
+2) Install the high-pressure hose.
+3) Fill the bench's tank with working fluid. Pour 4 liters of brake fluid into the working fluid collection tray.
+
+6. BRAKE CALIPER DIAGNOSIS
+Diagnosis of the brake caliper is performed in the following sequence:
+1. Select a fitting that matches the caliper's thread.
+2. Screw the fitting into the caliper and tighten it with a wrench.
+@D_28_IMG_003_PHOTO_fitting-installation_step2
+3. Connect the high-pressure hose to the fitting.
+@D_28_IMG_004_PHOTO_hose-connection_step3
+4. Loosen the bleeder screw on the brake caliper by 1/4 or 1/2 turn, then attach a small transparent tube to it.
+5. Install a support for the caliper piston to prevent it from falling out. You can use a metal object of the appropriate size, such as the metal part of a hammer.
+@D_28_IMG_005_PHOTO_piston-support-installation_step5
+
+6. Bleed the brake caliper as follows:
+6.1. Briefly press the pressure application button. This may need to be done several times.
+6.2. Wait until fluid flows through the tube without bubbles, then tighten the bleeder screw on the brake caliper. During bleeding, hold the piston support by hand until the piston extends and rests against it.
+6.3. Remove the bleeding tube from the fitting. The brake caliper is now ready for inspection.
+7. Perform a leak test:
+7.1. Press and hold the pressure application button. Wait until the working pressure is established on the gauge, then release the button.
+7.2. Leave the caliper under pressure for a short time (no more than 30 seconds) and monitor for pressure drop and fluid leakage. Evidence of fluid leakage and pressure drop on the gauge indicates a faulty caliper.
+7.3. Release the pressure from the caliper using button 2 in Fig. 2 @D_28_IMG_002_DIAGRAM_control-panel_fig2, then disconnect the high-pressure hose and unscrew the fitting from the caliper.
+8. If necessary, perform a test of the caliper's electric parking brake:
+8.1. Using the wire set, connect the caliper's electric motor to the power terminals 7 (Fig. 2 @D_28_IMG_002_DIAGRAM_control-panel_fig2).
+@D_28_IMG_006_PHOTO_electric-motor-connection_step8-1
+8.2. Place a metal bar or another hard object between the caliper body and the piston to prevent the piston from falling out of the body.
+8.3. Turn on the 12V power by turning button 6 (Fig. 2 @D_28_IMG_002_DIAGRAM_control-panel_fig2). If the electric parking brake is functioning correctly, the caliper piston will extend and rest against the installed support.
+WARNING! The engaged state of the electric parking brake must not exceed 30 sec.
+@D_28_IMG_007_PHOTO_electric-parking-brake-test_step8-3
+8.4. Turn button 6 (Fig. 2 @D_28_IMG_002_DIAGRAM_control-panel_fig2) to reverse the polarity of the connection terminals. If the parking brake is functioning correctly, the piston will retract from the support and move back into the caliper.
+
+7. TEST BENCH MAINTENANCE
+The bench is designed for long-term operation and does not have special maintenance requirements. However, for maximum trouble-free operation, it is necessary to regularly monitor its technical condition, namely:
+• Tightness of the hydraulic system (visual inspection);
+• Condition of the working fluid - assessed visually by appearance. It should be clear, homogeneous, and without sediment.
+• Check the condition of the filter (filter element CR091C10R) every 6 months. Replace if necessary. The filter must be replaced at least once a year.
+
+7.1. Cleaning and care
+Soft cloths or rags should be used to clean the surface of the bench using neutral cleaning agents. Do not use abrasives and solvents to avoid corrosion, malfunction or damage to the bench.
+
+8. RECYCLING
+Equipment deemed unfit for use must be disposed of.
+The equipment does not contain any chemical, biological, or radioactive elements that could harm human health or the environment when proper storage and usage rules are followed.
+Disposal of the equipment must comply with local, regional, and national laws and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) in the environment. For the disposal of such materials, contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, considered non-ferrous metal waste, should be collected and sold.
