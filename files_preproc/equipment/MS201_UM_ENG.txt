@@ -58,7 +58,7 @@ Connection of external devices	2 x USB 2.0
 The delivery set includes:
 Item name	Number of pcs
 Test bench MS201	1
-MS203 adapter (set)	1
+MS203 adapter (set) @D_17_IMG_034_PHOTO_MS203-adapter-appearance_fig29	1
 Pneumatic clamp foot control	1
 Handle for fixing pneumatic clamp lock nuts (see fig. 1 @D_17_IMG_001_PHOTO_handles-for-fixing-pneumatic-clamp-lock-nuts_fig1)	2
 Set of changeable fittings for shock absorber (see fig. 2 @D_17_IMG_002_PHOTO_shock-absorber-changeable-fittings_fig2)	1
@@ -306,11 +306,11 @@ Figure 28. Diagnostic results comparison screen @D_17_IMG_032_DIAGRAM_diagnostic
 The bench allows testing the functionality of electronically controlled shock absorbers using the MS203 adapter. The adapter provides the ability to manually control one or two solenoid valves of the shock absorber. The adapter can adjust the degree of solenoid valve opening from 10% to 95%.
 
 7.1. Description of the MS203 Adapter
-The adapter has the following connectors (see Fig. 29 @D_17_IMG_033_PHOTO_MS203-adapter-appearance_fig29): 
+The adapter has the following connectors (see Fig. 29 @D_17_IMG_034_PHOTO_MS203-adapter-appearance_fig29): 
 1 – USB connector for communication with the bench.
 2 – Power connector (type 5.5 x 2.5 mm).
 3 – Connector for connecting diagnostic cables.
-Figure 29. Appearance of the adapter @D_17_IMG_033_PHOTO_MS203-adapter-appearance_fig29
+Figure 29. Appearance of the adapter @D_17_IMG_034_PHOTO_MS203-adapter-appearance_fig29
 
 The adapter kit includes five special cables and one universal cable, which are designed to connect the adapter to the solenoid valves of the shock absorber being tested. Each special cable (see Fig. 30 @D_17_IMG_034_PHOTO_special-cable-connectors_fig30) is equipped with a connector for connection to the adapter (position 1) and a connector for connection to the unit under test (position 2).
 Figure 30 @D_17_IMG_034_PHOTO_special-cable-connectors_fig30
@@ -325,8 +325,8 @@ Black and blue – PWM signal control of the solenoid valves.
 The adapter should be connected to the bench in the following order:
 1. Connect the adapter to the power supply unit included in the kit.
 2. Connect the adapter's power supply unit to a single-phase 230V network.
-3. Connect the adapter to the bench using a USB cable. After this, the "Manual Diagnosis" menu on the bench will display buttons for activating the solenoid valves and sliders for adjusting the valve opening degree (see Fig. 32 @D_17_IMG_036_DIAGRAM_manual-mode-menu-with-MS203-adapter_fig32). 
-Figure 32. Manual mode menu with the MS203 adapter connected @D_17_IMG_036_DIAGRAM_manual-mode-menu-with-MS203-adapter_fig32
+3. Connect the adapter to the bench using a USB cable. After this, the "Manual Diagnosis" menu on the bench will display buttons for activating the solenoid valves and sliders for adjusting the valve opening degree (see Fig. 32 @D_17_IMG_037_DIAGRAM_manual-mode-menu-with-MS203-adapter_fig32). 
+Figure 32. Manual mode menu with the MS203 adapter connected @D_17_IMG_037_DIAGRAM_manual-mode-menu-with-MS203-adapter_fig32
 
 7.2. Diagnostic Procedure
 1. Install the shock absorber on the stand as described in section 6.2.

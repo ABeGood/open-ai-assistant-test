@@ -7,6 +7,7 @@ import asyncio
 import logging
 from typing import Optional
 from validators import OrchestratorResponse
+from config import assistant_configs, price_per_token_in, price_per_token_out
 from response_processing_utils import (
     process_image_markers, 
     delete_sources_from_text, 
@@ -16,11 +17,18 @@ from response_processing_utils import (
 )
 
 logging.basicConfig(
-    level=logging.DEBUG, 
+    level=logging.INFO, 
     filename='bot.log', 
     filemode='w', 
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
+# Add console handler
+console = logging.StreamHandler()
+console.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console.setFormatter(formatter)
+logging.getLogger('').addHandler(console)
+
 
 class TelegramMultiAssistantOrchestrator:
     """Multi-assistant orchestrator optimized for Telegram bot integration"""
@@ -31,50 +39,25 @@ class TelegramMultiAssistantOrchestrator:
         self.shared_threads = {}
         self.context_store = {}
         self._initialize_assistants()
-        
+
+
     def _initialize_assistants(self):
         """Initialize all registered assistants"""
-        assistant_configs = {
-            "orchestrator": {
-                "id": "asst_aU6DIODwxNlFRxrY3WipBPjz",
-                "purpose": "Route requests and coordinate other assistants"
-            },
-            "equipment": {
-                "id": "asst_1dQLsAz9p6T2cQyGtnjSeXnv",
-                "purpose": "Equipment expert"
-            },
-            "tools": {
-                "id": "asst_jtOdIxiHK1UsVkXaCxM8y0PS",
-                "purpose": "Tools expert"
-            },
-            "cables": {
-                "id": "asst_cErO4m6RZdfHQPAT3wVagp2z",
-                "purpose": "Cables for equipment connection expert"
-            },
-            "commonInfo": {
-                "id": "asst_nJzNpbdII7UzbOGiiSFcu09u",
-                "purpose": "Expert with common information knowledge"
-            },
-            "combinator": {
-                "id": "asst_FM5jrNCeRHxy3MpMueV1RkED",
-                "purpose": "Combine experts responses into a final response for user"
-            }
-        }
-        
+
         for name, config in assistant_configs.items():
-            self.register_assistant(name, config["id"], config["purpose"])
-    
-    def register_assistant(self, name: str, assistant_id: str, purpose: str):
-        """Register an assistant in the orchestrator"""
-        try:
-            self.assistants[name] = {
-                'id': assistant_id,
-                'purpose': purpose,
-                'assistant_obj': self.client.beta.assistants.retrieve(assistant_id)
-            }
-        except Exception as e:
-            print(f"Warning: Could not register assistant {name}: {e}")
-    
+            try:
+                self.assistants[name] = {
+                    'id': config['id'],
+                    'purpose': config["purpose"],
+                    'truncation_strategy': config["truncation_strategy"],
+                    'max_prompt_tokens': config["max_prompt_tokens"],
+                    'max_completion_tokens':config["max_completion_tokens"],
+                    'assistant_obj': self.client.beta.assistants.retrieve(config['id'])
+                }
+            except Exception as e:
+                print(f"Warning: Could not register assistant {name}: {e}")
+
+
     def create_session(self, telegram_user_id: Optional[int] = None) -> tuple[str, str]:
         """
         Create a session for user
@@ -89,6 +72,7 @@ class TelegramMultiAssistantOrchestrator:
         
         # Create thread
         thread = self.client.beta.threads.create()
+        logging.info(f'Thread was created with id {thread.id}')
         self.shared_threads[session_id] = thread.id
         self.context_store[session_id] = {
             'conversation_history': [],
@@ -223,6 +207,10 @@ USER REQUEST:
         # Route to orchestrator for decision
         thread_id = self.shared_threads[session_id]
         orchestrator_id = self.assistants['orchestrator']['id']
+        truncation_strategy_type = self.assistants['orchestrator']['truncation_strategy']['type']
+        truncation_strategy_last_n = self.assistants['orchestrator']['truncation_strategy']['last_n_messages']
+        max_prompt_tokens = self.assistants['orchestrator']['max_prompt_tokens']
+        max_completion_tokens = self.assistants['orchestrator']['max_completion_tokens']
         
         # Add routing message
         try:
@@ -246,7 +234,10 @@ USER REQUEST:
         try:
             run = self.client.beta.threads.runs.create(
                 thread_id=thread_id,
-                assistant_id=orchestrator_id
+                assistant_id=orchestrator_id,
+                truncation_strategy={"type": truncation_strategy_type, "last_messages": truncation_strategy_last_n},
+                max_prompt_tokens=max_prompt_tokens,
+                max_completion_tokens=max_completion_tokens
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
@@ -284,7 +275,7 @@ USER REQUEST:
                         "user_query": user_message,
                         "raw_response": None
                         }
-        
+        logging.info(f'ORCHESTRATOR RUN COMPLETED:\nInput tokens: {run.usage.prompt_tokens} ({run.usage.prompt_tokens*price_per_token_in}$)\nInput tokens: {run.usage.completion_tokens} ({run.usage.completion_tokens*price_per_token_out}$)')
         try:
             messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
             routing_decision_raw = messages.data[0].content[0].text.value
@@ -317,13 +308,14 @@ USER REQUEST:
                         }
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error parsing orchestrator response: {e}",
-                    "specialists": [],
-                    "reason": None,
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return {
+                "success": False,
+                "error": f"Error parsing orchestrator response: {e}",
+                "specialists": [],
+                "reason": None,
+                "user_query": user_message,
+                "raw_response": None
+                }
         
         # Log routing decision
         if session_id in self.context_store:
@@ -360,18 +352,23 @@ USER REQUEST:
         combinator_prompt = f"""USER QUERY: 
 {user_message}
 
+SPECIALISTS RESPONSES:
 {specialist_responses}
 """
         
         # Route to combinator for decision
         thread_id = self.shared_threads[session_id]
         combinator_id = self.assistants['combinator']['id']
+        truncation_strategy_type = self.assistants['combinator']['truncation_strategy']['type']
+        truncation_strategy_last_n = self.assistants['combinator']['truncation_strategy']['last_n_messages']
+        max_prompt_tokens = self.assistants['combinator']['max_prompt_tokens']
+        max_completion_tokens = self.assistants['combinator']['max_completion_tokens']
         
         # Add routing message
         try:
             self.client.beta.threads.messages.create(
                 thread_id=thread_id,
-                role="user",
+                role="assistant",
                 content=combinator_prompt,
                 metadata={"type": "combinator_call"}
             )
@@ -391,7 +388,10 @@ USER REQUEST:
         try:
             run = self.client.beta.threads.runs.create(
                 thread_id=thread_id,
-                assistant_id=combinator_id
+                assistant_id=combinator_id,
+                truncation_strategy={"type": truncation_strategy_type, "last_messages": truncation_strategy_last_n},
+                max_prompt_tokens=max_prompt_tokens,
+                max_completion_tokens=max_completion_tokens
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
@@ -519,100 +519,22 @@ USER REQUEST:
         
         thread_id = self.shared_threads[session_id]
         assistant_id = self.assistants[assistant_name]['id']
-
-        # Determine which thread to use
-        if new_thread:
-            # Force creation of temporary thread for parallel execution
-            try:
-                temp_thread = self.client.beta.threads.create()
-                thread_id = temp_thread.id
-                use_temp_thread = True
-            except Exception as e:
-                logging.error(f"Error occurred: {e}", exc_info=True)
-                return {"success": False,
-                        "error": f"Error creating temporary thread: {e}",
-                        "specialist": assistant_name,
-                        "response": None,
-                        "sources": [],
-                        "images": [],
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
-        else:
-            # Use shared thread, but check if it's busy first
-            thread_id = self.shared_threads[session_id]
-
-            try:
-                runs = self.client.beta.threads.runs.list(thread_id=thread_id, limit=5)
-                for existing_run in runs.data:
-                    if existing_run.status in ['queued', 'in_progress', 'requires_action']:
-                        # Thread is busy, create a temporary thread
-                        try:
-                            temp_thread = self.client.beta.threads.create()
-                            thread_id = temp_thread.id
-                            use_temp_thread = True
-                            break
-                        except Exception as e:
-                            logging.error(f"Error occurred: {e}", exc_info=True)
-                            return {"success": False,
-                                    "error": f"Error creating temporary thread: {e}",
-                                    "specialist": assistant_name,
-                                    "response": None,
-                                    "sources": [],
-                                    "images": [],
-                                    "user_query": user_message,
-                                    "raw_response": None
-                                    }
-            except Exception as e:
-                # If we can't check runs, proceed with original thread
-                pass
-            
-        # Add context if requested
-        if include_context and session_id in self.context_store:
-            # context = self.get_shared_context(session_id)
-            full_message = f"USER REQUEST: {user_message}"
-        else:
-            full_message = user_message
-        
-        # Add user message to thread
-        try:
-            message = self.client.beta.threads.messages.create(
-                thread_id=thread_id,
-                role="user",
-                content=full_message,
-                metadata={"routed_to": assistant_name, "temp_thread": str(use_temp_thread)}
-            )
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            if use_temp_thread:
-                try:
-                    self.client.beta.threads.delete(thread_id=thread_id)
-                except:
-                    pass
-            return {"success": False,
-                    "error": f"Error creating message: {e}",
-                    "specialist": assistant_name,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+        truncation_strategy_type = self.assistants[assistant_name]['truncation_strategy']['type']
+        truncation_strategy_last_n = self.assistants[assistant_name]['truncation_strategy']['last_n_messages']
+        max_prompt_tokens = self.assistants[assistant_name]['max_prompt_tokens']
+        max_completion_tokens = self.assistants[assistant_name]['max_completion_tokens']
         
         # Run with specific assistant
         try:
             run = self.client.beta.threads.runs.create(
                 thread_id=thread_id,
-                assistant_id=assistant_id
+                assistant_id=assistant_id,
+                truncation_strategy={"type": truncation_strategy_type, "last_messages": truncation_strategy_last_n},
+                max_prompt_tokens=max_prompt_tokens,
+                max_completion_tokens=max_completion_tokens
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            # Clean up temp thread if run creation failed
-            if use_temp_thread:
-                try:
-                    self.client.beta.threads.delete(thread_id=thread_id)
-                except:
-                    pass
             return {"success": False,
                     "error": f"Error creating run: {e}",
                     "specialist": assistant_name,
@@ -645,11 +567,6 @@ USER REQUEST:
             except Exception as e:
                 logging.error(f"Error occurred: {e}", exc_info=True)
                 # Clean up temp thread on error
-                if use_temp_thread:
-                    try:
-                        self.client.beta.threads.delete(thread_id=thread_id)
-                    except:
-                        pass
                 return {"success": False,
                         "error": f"Error retrieving run status: {e}",
                         "specialist": assistant_name,
@@ -662,11 +579,6 @@ USER REQUEST:
             
             if run.status == "failed":
                 # Clean up temp thread on error
-                if use_temp_thread:
-                    try:
-                        self.client.beta.threads.delete(thread_id=thread_id)
-                    except:
-                        pass
                 return {"success": False,
                         "error": f"Assistant run failed: {run.last_error}",
                         "specialist": assistant_name,
@@ -704,7 +616,7 @@ USER REQUEST:
                         name_without_ext = os.path.splitext(source_filename)[0]
                         source_file_path = pdf_mapping[name_without_ext]
                         sources_files_list.append(source_file_path)
-                        sources_files_list = list(set(sources_files_list))
+                    sources_files_list = list(set(sources_files_list))
                 except Exception as e:
                     logging.warning(f'Failed find source in pdf_mapping.json. {e}',exc_info=True)
 
@@ -719,17 +631,13 @@ USER REQUEST:
                         img_dir = img_mapping[img_info['img_file_key']]
                         file = find_file_by_name(files_path+img_dir, img_info['img_file_key']+'_'+img_info['img_name'])  # TODO Kostyl
                         img_files_list.append(file[0].replace('\\', '/'))
+                img_files_list = list(set(img_files_list))
 
             response_clean = delete_sources_from_text(text_wo_markers)
 
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
             # Clean up temp thread on error
-            if use_temp_thread:
-                try:
-                    self.client.beta.threads.delete(thread_id=thread_id)
-                except:
-                    pass
             return {"success": False,
                     "error": f"Error processing response: {e}",
                     "specialist": assistant_name,
@@ -760,14 +668,6 @@ USER REQUEST:
                 'content': response,
                 'message_type': 'response'
             })
-
-        # Clean up temp thread on error
-        if use_temp_thread:
-            try:
-                self.client.beta.threads.delete(thread_id=thread_id)
-            except:
-                pass
-        
         return response
     
     async def route_to_assistant_async(self, 
@@ -786,8 +686,8 @@ USER REQUEST:
             session_id, 
             assistant_name, 
             user_message, 
-            include_context,
-            new_thread
+            include_context, 
+            new_thread 
         )
     
     async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> dict:
@@ -798,11 +698,34 @@ USER REQUEST:
             session_id, session_msg = self.get_or_create_session(telegram_user_id)
         
         # Determine which assistant to use
-        orchestrator_response_dict = self.process_with_orchestrator(session_id, user_message)
+        return self.process_with_orchestrator(session_id, user_message)
+    
+    def call_specialists_sequentially(self, session_id:str, specialists_names: list[str], user_message:str) -> dict:
+        specialist_responses = []
+        for specialist in specialists_names:
+            response = self.route_to_assistant(
+                session_id=session_id,
+                assistant_name=specialist,
+                user_message=user_message,
+                include_context=False,
+                new_thread=False
+                )
+            specialist_responses.append(response)
+            
+        # Process responses
+        successful_responses = []
+        failed_responses = []
 
-        return orchestrator_response_dict
-        
-        
+        # TODO: Check how do we detect successfull messages
+        for i, response in enumerate(specialist_responses):
+            if isinstance(response, Exception):
+                failed_responses.append(response)
+            else:
+                successful_responses.append(response)
+
+        return {"successful_responses": successful_responses, "failed_responses": failed_responses}
+
+
     async def call_specialists_parallel(self, session_id: str, specialists_names: list[str], user_message:str) -> dict:
         # Create async tasks for all specialists
         async def call_single_assistant(specialist_name: str):

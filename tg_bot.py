@@ -292,7 +292,7 @@ class TelegramBot:
 
                     chosen_specialists = orchestrator_response_dict.get('specialists', [])
 
-                    if len(chosen_specialists) < 1:
+                    if len(chosen_specialists) < 1:  # TODO: Handle this case
                         if DEBUG:
                             debug_msg = "⚠️ Что-то пошло не так:\n\n" \
                                 "Не был выбран ни один специалист..."
@@ -305,7 +305,11 @@ class TelegramBot:
                             f"{chosen_specialists}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    specialists_responses = await self.orchestrator.call_specialists_parallel(session_id=session_id, 
+                    # specialists_responses = await self.orchestrator.call_specialists_parallel(session_id=session_id, 
+                    #                                                                           specialists_names=chosen_specialists,
+                    #                                                                           user_message=user_message)
+                    
+                    specialists_responses = self.orchestrator.call_specialists_sequentially(session_id=session_id, 
                                                                                               specialists_names=chosen_specialists,
                                                                                               user_message=user_message)
                     
