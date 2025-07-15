@@ -22,7 +22,40 @@ class ProductCodeDetector:
             'MS50035-HPS', 'MS50037-HPS', 'MS50043-HPS', 'MS50089-HPS', 'MS50133-HPS',
             'MS50136-HPS', 'MS50011-EPS', 'MS50029-EPS', 'MS50034-EPS', 'MS50036-EPS',
             'MS50079-EPS', 'MS50084-EPS', 'MS50116-EPS', 'MS50146-EPS', 'MS50012-HPS',
-            'MS50021-HPS', 'MS50023-HPS', 'MS50024-HPS'
+            'MS50021-HPS', 'MS50023-HPS', 'MS50024-HPS', 'MS50027-HPS', 'MS50028-HPS',
+            'MS50038-HPS', 'MS50039-HPS', 'MS50044-HPS', 'MS50064-HPS', 'MS50065-HPS',
+            'MS50066-HPS', 'MS50067-HPS', 'MS50068-HPS', 'MS51014-HPS', 'MS51015-HPS',
+            'MS51016-HPS', 'MS51017-HPS', 'MS50018-HPS', 'MS50019-HPS', 'MS50025-HPS',
+            'MS50033-HPS', 'MS50020-EPS', 'MS50022-EPS', 'MS50026-EPS', 'MS50031-EPS',
+            'MS50072-EPS', 'MS50092-EPS', 'MS50094-EPS', 'MS50098-EPS', 'MS50102-EPS',
+            'MS50103-EPS', 'MS50137-EPS', 'MS50165-EPS', 'MS50174-EPS', 'MS50177-EPS',
+            'MS50178-EPS', 'MS50023-EPS', 'MS50097-EPS', 'MS50153-EPS', 'MS5230-HPS',
+            'MS50032-HPS', 'MS51040-HPS', 'MS50041-EPS', 'MS51042-HPS', 'MS53045-HPS',
+            'MS53060-HPS', 'MS53061-HPS', 'MS53111-HPS', 'MS53128-HPS', 'MS52046-HPS',
+            'MS50047-HPS', 'MS50048-HPS', 'MS53050-HPS', 'MS53051-HPS', 'MS53052-HPS',
+            'MS53053-HPS', 'MS53054-HPS', 'MS52055-HPS', 'MS52056-HPS', 'MS52057-HPS',
+            'MS51058-HPS', 'MS51059-HPS', 'MS53049-HPS', 'MS53062-HPS', 'MS53063-HPS',
+            'MS53069-HPS', 'MS53070-HPS', 'MS53114-HPS', 'MS53127-HPS', 'MS53130-HPS',
+            'MS53140-HPS', 'MS50071-HPS', 'MS50073-HPS', 'MS50077-HPS', 'MS50078-HPS',
+            'MS50083-HPS', 'MS50091-HPS', 'MS50096-HPS', 'MS50101-HPS', 'MS50104-HPS',
+            'MS50105-HPS', 'MS50107-HPS', 'MS50150-HPS', 'MS52074-HPS', 'MS52075-HPS',
+            'MS52076-HPS', 'MS51080-HPS', 'MS51081-HPS', 'MS51082-HPS', 'MS50085-HPS',
+            'MS50086-HPS', 'MS50087-HPS', 'MS50088-HPS', 'MS52093-HPS', 'MS50095-EPS',
+            'MS5299-EPS', 'MS51100-HPS', 'MS52106-HPS', 'MS52108-EPS', 'MS52109-HPS',
+            'MS5210-HPS', 'MS5312-HPS', 'MS52113-HPS', 'MS52115-HPS', 'MS50117-EPS',
+            'MS52118-HPS', 'MS52119-HPS', 'MS52120-HPS', 'MS52121-HPS', 'MS52122-HPS',
+            'MS52123-HPS', 'MS52124-HPS', 'MS52125-HPS', 'MS52126-HPS', 'MS52129-HPS',
+            'MS50131-HPS', 'MS5203-HPS', 'MS50134-EPS', 'MS50135-EPS', 'MS50138-EPS',
+            'MS50139-EPS', 'MS52141-EPS', 'MS51142-EPS', 'MS51143-EPS', 'MS50144-EPS',
+            'MS50145-EPS', 'MS50148-EPS', 'MS50149-EPS', 'MS50173-EPS', 'MS50179-EPS',
+            'MS50180-EPS', 'MS50182-EPS', 'MS50188-EPS', 'MS50151-EPS', 'MS50152-EPS',
+            'MS50156-EPS', 'MS50154-EPS', 'MS50155-EPS', 'MS50157-EPS', 'MS50158-EPS',
+            'MS50159-EPS', 'MS50160-EPS', 'MS50162-EPS', 'MS50161-EPS', 'MS50163-EPS',
+            'MS50164-EPS', 'MS50166-EPS', 'MS50167-EPS', 'MS50169-EPS', 'MS50168-EPS',
+            'MS50170-EPS', 'MS50171-EPS', 'MS50172-EPS', 'MS50176-EPS', 'MS50183-EPS',
+            'MS50184-EPS', 'MS51185-EPS', 'MS51185A-EPS', 'MS54185A-EPS', 'MS50186-EPS',
+            'MS50187-EPS', 'MS50189-EPS', 'MS50190-EPS', 'MS50191-EPS', 'MS50192-EPS',
+            'MS5353-HPS', 'MS5354-HPS', 'MS5355-HPS', 'MS5001-HPS', 'MS5202-HPS'
         }
         
         # Routing keywords by domain
@@ -75,8 +108,9 @@ class ProductCodeDetector:
         
         # Create regex patterns for different code formats
         patterns = [
-            r'MS\d{3}[A-Z]*',  # MS### or MS###A format
-            r'MS\d{2}-\d{3}-[A-Z]{3}',  # MS##-###-XXX format
+            r'MS\d{3}[A-Z]*(?:\s+COM)?',  # MS### or MS###A format, with optional " COM"
+            r'MS\d{4,5}-[A-Z]{3}',  # MS####-XXX or MS#####-XXX format (tools)
+            r'MS\d{4}[A-Z]*-[A-Z]{3}',  # MS####A-XXX format (tools with letter suffix)
             r'KIT\d{3}[A-Z]*',  # KIT### format
             r'LOKI'  # Special case
         ]
@@ -84,12 +118,24 @@ class ProductCodeDetector:
         for pattern in patterns:
             matches = re.findall(pattern, query_upper)
             for match in matches:
-                if match in self.equipment_codes:
-                    detected['equipment'].append(match)
-                elif match in self.tool_codes:
-                    detected['tools'].append(match)
+                # Clean up the match (remove spaces, normalize)
+                clean_match = match.replace(' ', '')
+                
+                # Check against equipment codes first
+                if clean_match in self.equipment_codes:
+                    detected['equipment'].append(clean_match)
+                elif clean_match in self.tool_codes:
+                    detected['tools'].append(clean_match)
                 else:
-                    detected['unknown'].append(match)
+                    # Check if it matches the pattern but with space (like "MS002 COM")
+                    if ' COM' in match:
+                        base_code = match.replace(' COM', 'COM')
+                        if base_code in self.equipment_codes:
+                            detected['equipment'].append(base_code)
+                        else:
+                            detected['unknown'].append(clean_match)
+                    else:
+                        detected['unknown'].append(clean_match)
         
         return detected
     
