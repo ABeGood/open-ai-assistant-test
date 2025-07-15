@@ -4,6 +4,8 @@ from enum import Enum
 class SpecialistType(str, Enum):
     """Enum for valid specialist types"""
     EQUIPMENT = "equipment"
+    DIAGNOSTICS = "diagnostics"
+    COMPATIBILITY = "compatibility"
     TOOLS = "tools"
     CABLES = "cables"
     SUPPORT = "support"

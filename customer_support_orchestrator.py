@@ -65,7 +65,7 @@ class ProductCodeDetector:
                 'uk': ['стенд', 'обладнання', 'модель', 'навантаження', 'тиск', 'максимальний', 'специфікації', 'відрізняється'],
                 'en': ['stand', 'equipment', 'model', 'load', 'pressure', 'maximum', 'specifications', 'compare', 'difference', 'recommend']
             },
-            'testing': {
+            'diagnostics': {
                 'ru': ['проверить', 'тест', 'измерить', 'параметры', 'диагностика', 'режим', 'ручной', 'автоматический', 'выпрямляч'],
                 'uk': ['перевірити', 'тест', 'виміряти', 'параметри', 'діагностика', 'режим', 'ручний', 'автоматичний', 'випрямляч', 'діодний'],
                 'en': ['test', 'check', 'measure', 'parameters', 'diagnostic', 'mode', 'manual', 'automatic', 'rectifier', 'diode']
@@ -269,10 +269,10 @@ class CustomerSupportOrchestrator:
         enhanced_context = self._create_enhanced_context(user_query, analysis)
         
         # Step 3: Get LLM routing decision (mock for now)
-        llm_routing = self._get_llm_routing(enhanced_context)
+        keyword_routing = self._get_keyword_routing(enhanced_context)
         
         # Step 4: Combine Python analysis with LLM decision
-        final_routing = self._combine_routing_decisions(analysis, llm_routing)
+        final_routing = self._combine_routing_decisions(analysis, keyword_routing)
         
         return final_routing
     
@@ -284,6 +284,10 @@ class CustomerSupportOrchestrator:
             "",
             "=== DETECTED INFORMATION ==="
         ]
+
+        # Add detected product codes
+        if analysis['primary_domains']:
+            context_parts.append(f"Primary domains assigned by static analyzer: {', '.join(analysis['primary_domains'])}")
         
         # Add detected product codes
         if analysis['product_codes']['equipment']:
@@ -311,11 +315,10 @@ class CustomerSupportOrchestrator:
         # Add confidence
         context_parts.append(f"Routing confidence: {analysis['routing_confidence']:.2f}")
         context_parts.append("")
-        context_parts.append("Based on this analysis, determine the most appropriate specialist(s) to handle this query.")
         
         return "\n".join(context_parts)
     
-    def _get_llm_routing(self, enhanced_context: str) -> Dict:
+    def _get_keyword_routing(self, enhanced_context: str) -> Dict:
         """Send enhanced context to LLM for routing decision"""
         # This is a mock implementation - replace with actual LLM call
         # For demonstration, we'll use simple keyword-based routing
@@ -329,7 +332,7 @@ class CustomerSupportOrchestrator:
             reasoning += "Equipment-related query detected. "
         
         if any(word in context_lower for word in ['test', 'check', 'проверить', 'перевірити']):
-            specialists.append('testing')
+            specialists.append('diagnostics')
             reasoning += "Testing procedure query detected. "
         
         if any(word in context_lower for word in ['oem', 'car brands', 'bmw', 'ford', 'mercedes']):
@@ -348,9 +351,9 @@ class CustomerSupportOrchestrator:
             specialists.append('support')
             reasoning += "Support issue detected. "
         
-        if any(word in context_lower for word in ['script', 'скрипт', 'programming']):
-            specialists.append('programming')
-            reasoning += "Programming query detected. "
+        # if any(word in context_lower for word in ['script', 'скрипт', 'programming']):
+        #     specialists.append('programming')
+        #     reasoning += "Programming query detected. "
         
         if not specialists:
             specialists = ['support']
@@ -362,11 +365,11 @@ class CustomerSupportOrchestrator:
             "confidence": 0.85
         }
     
-    def _combine_routing_decisions(self, analysis: Dict, llm_routing: Dict) -> Dict:
+    def _combine_routing_decisions(self, analysis: Dict, keyword_routing: Dict) -> Dict:
         """Combine Python analysis with LLM routing decision"""
         
         # Start with LLM decision
-        final_specialists = set(llm_routing.get("specialists", []))
+        final_specialists = set(keyword_routing.get("specialists", []))
         
         # Add specialists based on product code detection
         if analysis['product_codes']['equipment']:
@@ -386,8 +389,8 @@ class CustomerSupportOrchestrator:
         return {
             "specialists": sorted(list(final_specialists)),
             "analysis": analysis,
-            "llm_routing": llm_routing,
-            "final_confidence": min(analysis['routing_confidence'], llm_routing.get('confidence', 0.5)),
+            "keyword_routing": keyword_routing,
+            "final_confidence": min(analysis['routing_confidence'], keyword_routing.get('confidence', 0.5)),
             "routing_context": self._generate_specialist_context(analysis, list(final_specialists))
         }
     
@@ -417,7 +420,6 @@ class CustomerSupportOrchestrator:
         context_parts.extend([
             "",
             f"Routing Confidence: {analysis['routing_confidence']:.2f}",
-            "Expected Response Format: Provide detailed, helpful response addressing the user's specific needs",
             "=== END CONTEXT ==="
         ])
         

@@ -7,6 +7,7 @@ import asyncio
 import logging
 from typing import Optional
 from validators import OrchestratorResponse
+from customer_support_orchestrator import CustomerSupportOrchestrator
 from config import assistant_configs, price_per_token_in, price_per_token_out
 from response_processing_utils import (
     process_image_markers, 
@@ -39,6 +40,7 @@ class TelegramMultiAssistantOrchestrator:
         self.shared_threads = {}
         self.context_store = {}
         self._initialize_assistants()
+        self.static_check = CustomerSupportOrchestrator()
 
 
     def _initialize_assistants(self):
@@ -122,66 +124,7 @@ class TelegramMultiAssistantOrchestrator:
                 return session_id, f"Using existing session for user {telegram_user_id}"
         
         return self.create_session(telegram_user_id)
-    
-    # def add_context_message(self, session_id: str, assistant_name: str, content: str, role: str = "assistant"):
-    #     """Add contextual message to maintain consistency"""
-    #     if session_id not in self.context_store:
-    #         return
-        
-    #     thread_id = self.shared_threads[session_id]
-        
-    #     # Add to context store
-    #     context_entry = {
-    #         'timestamp': time.time(),
-    #         'assistant': assistant_name,
-    #         'role': role,
-    #         'content': content,
-    #         'message_type': 'context_update'
-    #     }
-        
-    #     self.context_store[session_id]['conversation_history'].append(context_entry)
-        
-    #     # Add hidden context message to thread
-    #     context_message = f"[CONTEXT UPDATE from {assistant_name}]: {content}"
-        
-    #     try:
-    #         self.client.beta.threads.messages.create(
-    #             thread_id=thread_id,
-    #             role="assistant",
-    #             content=context_message,
-    #             metadata={"type": "context", "source_assistant": assistant_name}
-    #         )
-    #     except Exception as e:
-    #         print(f"Error adding context message: {e}")
-    
-    # def get_shared_context(self, session_id: str) -> str:
-    #     """Get formatted shared context for assistant"""
-    #     if session_id not in self.context_store:
-    #         return "=== NO CONTEXT ==="
-        
-    #     context = self.context_store[session_id]
-        
-    #     context_summary = "=== SHARED CONTEXT ===\n"
-    #     context_summary += f"Previous assistants involved: {set(h['assistant'] for h in context['conversation_history'])}\n"
-    #     context_summary += f"Last assistant: {context['last_assistant']}\n"
-        
-    #     # Recent conversation summary
-    #     recent_history = context['conversation_history'][-5:]  # Last 5 interactions
-    #     context_summary += "\nRECENT INTERACTIONS:\n"
-        
-    #     for entry in recent_history:
-    #         if entry['role'] == 'user':
-    #             context_summary += f"User: {entry['content']['response'][:100]}...\n"
-    #         else:
-    #             context_summary += f"{entry['assistant']}: {entry['content']['response'][:100]}...\n"
-        
-    #     # Shared data
-    #     if context['shared_context']:
-    #         context_summary += f"\nSHARED DATA: {json.dumps(context['shared_context'], indent=2)}\n"
-        
-    #     context_summary += "=== END CONTEXT ===\n"
-        
-    #     return context_summary
+
 
     def process_with_orchestrator(self, session_id: str, user_message: str) -> dict:
         """Use orchestrator assistant to determine routing"""
@@ -197,11 +140,15 @@ class TelegramMultiAssistantOrchestrator:
         
         # Get current context
         # context = self.get_shared_context(session_id)
+        user_message_metadata = self.static_check.route_query(user_message)
         
         # Create routing prompt
         routing_prompt = f"""
 USER REQUEST: 
 {user_message}
+
+USER REQUEST METADATA FROM STATIC ANALYSIS:
+{user_message_metadata}
 """
         
         # Route to orchestrator for decision
@@ -323,7 +270,7 @@ USER REQUEST:
         
         return orchestrator_response_dict
     
-    def get_bot_response(self, session_id: str, user_message: str, specialists_responses: list[dict]) -> dict:
+    def process_with_combinator(self, session_id: str, user_message: str, specialists_responses: list[dict]) -> dict:
         """Use combinator assistant to prepare the final answer"""
         specialists_names = [v['specialist'] for v in specialists_responses]
 
@@ -690,7 +637,7 @@ SPECIALISTS RESPONSES:
             new_thread 
         )
     
-    async def process_user_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> dict:
+    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> dict:
         """Complete request processing with routing and context"""
         
         # Ensure session exists

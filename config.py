@@ -21,6 +21,28 @@ assistant_configs = {
         "max_completion_tokens": None
     },
 
+    "diagnostics": {
+        "id": "asst_II6EhFFETHGmydpVxGrOVzQG",
+        "purpose": "Diagnostics expert",
+        "truncation_strategy": {
+            "type": "last_messages",
+            "last_n_messages": 20
+        },
+        "max_prompt_tokens": None,
+        "max_completion_tokens": None
+    },
+
+    "compatibility": {
+        "id": "asst_nmFEiTZ2mE7XlUVlUv5PXAzu",
+        "purpose": "Compatibility expert",
+        "truncation_strategy": {
+            "type": "last_messages",
+            "last_n_messages": 20
+        },
+        "max_prompt_tokens": None,
+        "max_completion_tokens": None
+    },
+
     "tools": {
         "id": "asst_jtOdIxiHK1UsVkXaCxM8y0PS",
         "purpose": "Tools expert",
@@ -43,7 +65,7 @@ assistant_configs = {
         "max_completion_tokens": None
     },
 
-    "commonInfo": {
+    "support": {
         "id": "asst_nJzNpbdII7UzbOGiiSFcu09u",
         "purpose": "Expert with common information knowledge",
         "truncation_strategy": {
