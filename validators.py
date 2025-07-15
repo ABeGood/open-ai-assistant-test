@@ -6,7 +6,7 @@ class SpecialistType(str, Enum):
     EQUIPMENT = "equipment"
     TOOLS = "tools"
     CABLES = "cables"
-    COMMON_INFO = "commonInfo"
+    SUPPORT = "support"
 
 
 class OrchestratorResponse(BaseModel):

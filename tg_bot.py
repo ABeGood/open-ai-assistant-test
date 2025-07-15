@@ -282,7 +282,7 @@ class TelegramBot:
                     session_id = f"tg-{telegram_user_id}"
                     user_message = msg.text
 
-                    orchestrator_response_dict = await self.orchestrator.process_request(session_id, user_message, telegram_user_id)
+                    orchestrator_response_dict = await self.orchestrator.process_user_request(session_id, user_message, telegram_user_id)
 
                     if DEBUG:
                         debug_msg = "🔀 STEP 1.2 \nOrchestrator response\n\n"\
@@ -337,7 +337,7 @@ class TelegramBot:
                                 "➡️ Направляем их в бот-комбинатор для составления финального ответа."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
                             
-                            final_answer_dict = self.orchestrator.process_with_combinator(session_id, user_message, successfull_spec_resps)
+                            final_answer_dict = self.orchestrator.get_bot_response(session_id, user_message, successfull_spec_resps)
 
                             if DEBUG:
                                 debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\

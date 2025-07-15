@@ -323,7 +323,7 @@ USER REQUEST:
         
         return orchestrator_response_dict
     
-    def process_with_combinator(self, session_id: str, user_message: str, specialists_responses: list[dict]) -> dict:
+    def get_bot_response(self, session_id: str, user_message: str, specialists_responses: list[dict]) -> dict:
         """Use combinator assistant to prepare the final answer"""
         specialists_names = [v['specialist'] for v in specialists_responses]
 
@@ -690,7 +690,7 @@ SPECIALISTS RESPONSES:
             new_thread 
         )
     
-    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> dict:
+    async def process_user_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> dict:
         """Complete request processing with routing and context"""
         
         # Ensure session exists
