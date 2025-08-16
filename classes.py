@@ -2,39 +2,47 @@ import json
 from collections import deque
 from typing import Any, Dict, List, Optional
 
-import psycopg 
+import psycopg
+
 
 class Message:
     def __init__(
         self,
         author: str,
         content: str,
-        reaction: Optional[Any] = None  # заглушка под будущую логику реакций
+        reaction: Optional[Any] = None,  # заглушка под будущую логику реакций
+        message_id: Optional[int] = None,
+        chat_id: Optional[int] = None,
     ):
         self.author: str = author
         self.content: str = content
         self.reaction: Optional[Any] = reaction
+        self.message_id: Optional[int] = message_id
+        self.chat_id: Optional[int] = chat_id
 
-    def get_author(self) -> str:
-        return self.author
-    def set_author(self, author: str) -> None:
-        self.author = author
+    # --- getters / setters ---
+    def get_author(self) -> str: return self.author
+    def set_author(self, author: str) -> None: self.author = author
 
-    def get_content(self) -> str:
-        return self.content
-    def set_content(self, content: str) -> None:
-        self.content = content
+    def get_content(self) -> str: return self.content
+    def set_content(self, content: str) -> None: self.content = content
 
-    def get_reaction(self) -> Optional[Any]:
-        return self.reaction
-    def set_reaction(self, reaction: Any) -> None:
-        self.reaction = reaction
+    def get_reaction(self) -> Optional[Any]: return self.reaction
+    def set_reaction(self, reaction: Any) -> None: self.reaction = reaction
+
+    def get_message_id(self) -> Optional[int]: return self.message_id
+    def set_message_id(self, message_id: Optional[int]) -> None: self.message_id = message_id
+
+    def get_chat_id(self) -> Optional[int]: return self.chat_id
+    def set_chat_id(self, chat_id: Optional[int]) -> None: self.chat_id = chat_id
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "author": self.author,
             "content": self.content,
-            "reaction": self.reaction
+            "reaction": self.reaction,
+            "message_id": self.message_id,
+            "chat_id": self.chat_id,
         }
 
     @classmethod
@@ -42,7 +50,9 @@ class Message:
         return cls(
             author=d["author"],
             content=d["content"],
-            reaction=d.get("reaction")
+            reaction=d.get("reaction"),
+            message_id=d.get("message_id"),
+            chat_id=d.get("chat_id"),
         )
 
 
@@ -50,32 +60,29 @@ class User:
     def __init__(self, user_id: str, name: str, cache_maxlen: int = 200):
         self.user_id: str = user_id
         self.name: str = name
-        self.chat_history: deque[Message] = deque(maxlen=cache_maxlen)
+        self.chat_history: deque[Message] = deque(maxlen=cache_maxlen) # кеш последних n сообщений. существует только внутри класса User
         self.additional_info: Dict[str, Any] = {}
 
-    def get_user_id(self) -> str:
-        return self.user_id
-    def set_user_id(self, user_id: str) -> None:
-        self.user_id = user_id
+    # --- getters / setters ---
+    def get_user_id(self) -> str: return self.user_id
+    def set_user_id(self, user_id: str) -> None: self.user_id = user_id
 
-    def get_name(self) -> str:
-        return self.name
-    def set_name(self, name: str) -> None:
-        self.name = name
+    def get_name(self) -> str: return self.name
+    def set_name(self, name: str) -> None: self.name = name
 
-    def get_chat_history(self) -> List[Message]:
-        return list(self.chat_history)
+    def get_chat_history(self) -> List[Message]: return list(self.chat_history)
     def set_chat_history(self, history: List[Message]) -> None:
         self.chat_history = deque(history, maxlen=self.chat_history.maxlen)
 
-    def get_additional_info(self) -> Dict[str, Any]:
-        return self.additional_info
+    def get_additional_info(self) -> Dict[str, Any]: return self.additional_info
     def set_additional_info(self, key: str, value: Any) -> None:
         self.additional_info[key] = value
 
-
-    def add_message(self, author: str, content: str, reaction: Optional[Any] = None) -> Message:
-        msg = Message(author=author, content=content, reaction=reaction)
+    # --- cache operations ---
+    def add_message(self, author: str, content: str, reaction: Optional[Any] = None,
+                    message_id: Optional[int] = None, chat_id: Optional[int] = None) -> Message:
+        msg = Message(author=author, content=content, reaction=reaction,
+                      message_id=message_id, chat_id=chat_id)
         self.chat_history.append(msg)
         return msg
 
@@ -85,61 +92,120 @@ class User:
         return list(self.chat_history)[-n:]
 
     def get_last_n_messages_JSON(self, n: int) -> List[Dict[str, Any]]:
-        msgs = self.get_last_n_messages(n)
-        return [m.to_dict() for m in msgs]
+        return [m.to_dict() for m in self.get_last_n_messages(n)]
 
-    # сериализация всего пользователя для записи в БД
-    def to_row(self) -> Dict[str, Any]:
-        return {
-            "user_id": self.user_id,
-            "name": self.name,
-            "additional_info": self.additional_info,
-            "chat_history": [m.to_dict() for m in self.chat_history],
-        }
+    # --- DB helpers ---
+    @staticmethod
+    def ensure(conn, user_id: str, name: str, cache_maxlen: int = 200) -> "User":
+        """
+        Гарантирует, что пользователь есть в БД; возвращает объект User.
+        """
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                INSERT INTO users (user_id, name, additional_info)
+                VALUES (%s, %s, %s)
+                ON CONFLICT (user_id) DO NOTHING;
+                """,
+                (user_id, name, json.dumps({}))
+            )
+        conn.commit()
 
-# ---------- РАБОТА С БД ----------
+        loaded = load_user(conn, user_id)
+        if loaded is None:
+            loaded = User(user_id=user_id, name=name, cache_maxlen=cache_maxlen)
+        else:
+            # перезададим лимит кеша и очистим (перечитаем из БД отдельным методом)
+            loaded.chat_history = deque(maxlen=cache_maxlen)
+        return loaded
+
+    def refresh_last_n_from_db(self, conn, n: int) -> None:
+        """
+        Подтягивает последние n сообщений из таблицы messages (по id DESC), складывает в кеш chronologically.
+        """
+        if n <= 0:
+            self.chat_history.clear()
+            return
+
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT author, content, reaction, message_id, chat_id
+                FROM messages
+                WHERE user_id = %s
+                ORDER BY id DESC
+                LIMIT %s
+                """,
+                (self.user_id, n)
+            )
+            rows = cur.fetchall()
+
+        # rows идут от новых к старым — развернём, чтобы в кеше было по возрастанию времени
+        msgs = [
+            Message(author=a, content=c, reaction=r, message_id=mid, chat_id=cid)
+            for (a, c, r, mid, cid) in reversed(rows)
+        ]
+        self.set_chat_history(msgs)
+
+    def persist_append_messages(self, conn, messages: List[Message]) -> None:
+        """
+        Пишет сообщения в таблицу messages и добавляет их в кеш.
+        """
+        if not messages:
+            return
+        with conn.cursor() as cur:
+            cur.executemany(
+                """
+                INSERT INTO messages (user_id, author, content, reaction, message_id, chat_id)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                """,
+                [
+                    (self.user_id, m.author, m.content, m.reaction, m.message_id, m.chat_id)
+                    for m in messages
+                ]
+            )
+        conn.commit()
+        # добавим в кеш (в порядке добавления)
+        for m in messages:
+            self.chat_history.append(m)
+
+
+# ---------- users: upsert / load (без chat_history в БД) ----------
 
 def save_user(conn, user: User) -> None:
     """
-    Простой upsert: если user_id уже есть — обновим запись.
+    Upsert только по таблице users.
     """
-    row = user.to_row()
     with conn.cursor() as cur:
         cur.execute(
             """
-            INSERT INTO users (user_id, name, additional_info, chat_history)
-            VALUES (%s, %s, %s, %s)
+            INSERT INTO users (user_id, name, additional_info)
+            VALUES (%s, %s, %s)
             ON CONFLICT (user_id) DO UPDATE
               SET name = EXCLUDED.name,
-                  additional_info = EXCLUDED.additional_info,
-                  chat_history = EXCLUDED.chat_history;
+                  additional_info = EXCLUDED.additional_info;
             """,
-            (
-                row["user_id"],
-                row["name"],
-                json.dumps(row["additional_info"]),      # Python -> JSON
-                json.dumps(row["chat_history"]),         # список dict -> JSON
-            )
+            (user.user_id, user.name, json.dumps(user.additional_info))
         )
     conn.commit()
 
+
 def load_user(conn, user_id: str) -> Optional[User]:
     """
-    Пример чтения обратно из БД в объект User.
+    Возвращает User из таблицы users (без загрузки истории).
     """
     with conn.cursor() as cur:
-        cur.execute("SELECT user_id, name, additional_info, chat_history FROM users WHERE user_id = %s", (user_id,))
+        cur.execute(
+            "SELECT user_id, name, additional_info FROM users WHERE user_id = %s",
+            (user_id,)
+        )
         r = cur.fetchone()
-        if not r:
-            return None
 
-        u = User(user_id=r[0], name=r[1])
-        # восстановим additional_info
-        if r[2]:
-            u.additional_info = r[2] if isinstance(r[2], dict) else json.loads(r[2])
-        # восстановим chat_history
-        if r[3]:
-            ch = r[3] if isinstance(r[3], list) else json.loads(r[3])
-            msgs = [Message.from_dict(d) for d in ch]
-            u.set_chat_history(msgs)
-        return u
+    if not r:
+        return None
+
+    u = User(user_id=r[0], name=r[1])
+    if r[2]:
+        # psycopg3 обычно даёт dict, но на всякий случай:
+        u.additional_info = r[2] if isinstance(r[2], dict) else json.loads(r[2])
+    return u

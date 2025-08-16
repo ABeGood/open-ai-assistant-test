@@ -1,9 +1,9 @@
-2025-08-10 18:10:10,331 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_aU6DIODwxNlFRxrY3WipBPjz "HTTP/1.1 200 OK"
-2025-08-10 18:10:10,900 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_1dQLsAz9p6T2cQyGtnjSeXnv "HTTP/1.1 200 OK"
-2025-08-10 18:10:11,410 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_II6EhFFETHGmydpVxGrOVzQG "HTTP/1.1 200 OK"
-2025-08-10 18:10:12,052 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_nmFEiTZ2mE7XlUVlUv5PXAzu "HTTP/1.1 200 OK"
-2025-08-10 18:10:13,302 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_jtOdIxiHK1UsVkXaCxM8y0PS "HTTP/1.1 200 OK"
-2025-08-10 18:10:15,845 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_cErO4m6RZdfHQPAT3wVagp2z "HTTP/1.1 200 OK"
-2025-08-10 18:10:16,342 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_nJzNpbdII7UzbOGiiSFcu09u "HTTP/1.1 200 OK"
-2025-08-10 18:10:16,833 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_FM5jrNCeRHxy3MpMueV1RkED "HTTP/1.1 200 OK"
-2025-08-10 18:10:16,833 - INFO - Starting bot...
+2025-08-16 18:45:58,152 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_aU6DIODwxNlFRxrY3WipBPjz "HTTP/1.1 200 OK"
+2025-08-16 18:45:58,709 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_1dQLsAz9p6T2cQyGtnjSeXnv "HTTP/1.1 200 OK"
+2025-08-16 18:45:59,270 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_II6EhFFETHGmydpVxGrOVzQG "HTTP/1.1 200 OK"
+2025-08-16 18:45:59,913 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_nmFEiTZ2mE7XlUVlUv5PXAzu "HTTP/1.1 200 OK"
+2025-08-16 18:46:00,447 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_jtOdIxiHK1UsVkXaCxM8y0PS "HTTP/1.1 200 OK"
+2025-08-16 18:46:00,917 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_cErO4m6RZdfHQPAT3wVagp2z "HTTP/1.1 200 OK"
+2025-08-16 18:46:02,977 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_nJzNpbdII7UzbOGiiSFcu09u "HTTP/1.1 200 OK"
+2025-08-16 18:46:03,505 - INFO - HTTP Request: GET https://api.openai.com/v1/assistants/asst_FM5jrNCeRHxy3MpMueV1RkED "HTTP/1.1 200 OK"
+2025-08-16 18:46:03,521 - INFO - Starting bot...
