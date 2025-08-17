@@ -1,0 +1,66 @@
+{
+    "table_name": "extracted_data",
+    "description": "Table containing data for extracted_data",
+    "columns": [
+        {
+            "name": "# time",
+            "type": "float64",
+            "description": "This column represents the recorded time in seconds, capturing the precise moment each corresponding measurement was taken.",
+            "unit": "seconds"
+        },
+        {
+            "name": " velocity",
+            "type": "float64",
+            "description": "This column represents the speed of an object in motion, measured in units per second. It provides a scalar value indicating how fast the object is moving at any given point in time.",
+            "unit": "m/s"
+        },
+        {
+            "name": " latitude",
+            "type": "float64",
+            "description": "This column represents the geographical coordinate that specifies the north-south position of a point on the Earth's surface, measured in degrees.",
+            "unit": "degrees"
+        },
+        {
+            "name": " longitude",
+            "type": "float64",
+            "description": "This column represents the geographic coordinate that specifies the east-west position of a point on the Earth's surface, measured in degrees.",
+            "unit": "degrees"
+        },
+        {
+            "name": " angular_vel_x",
+            "type": "float64",
+            "description": "This column represents the rate of rotation around the x-axis, measured in radians per second.",
+            "unit": "radians per second"
+        },
+        {
+            "name": " angular_vel_y",
+            "type": "float64",
+            "description": "This column represents the rate of change of angular velocity around the y-axis, measured in radians per second. It indicates how quickly an object is rotating or spinning about the vertical axis.",
+            "unit": "radians per second"
+        },
+        {
+            "name": " angular_vel_z",
+            "type": "float64",
+            "description": "This column represents the rate of rotational motion around the z-axis, measured in radians per second. It indicates how quickly an object is spinning or rotating in the vertical plane.",
+            "unit": "radians per second"
+        },
+        {
+            "name": " linear_acceleration_x",
+            "type": "float64",
+            "description": "This column represents the linear acceleration along the x-axis, measured in meters per second squared (m/s\u00b2). It indicates the rate of change of velocity in the horizontal direction, providing insight into the forces acting on the object in that specific axis.",
+            "unit": "m/s\u00b2"
+        },
+        {
+            "name": " linear_acceleration_y",
+            "type": "float64",
+            "description": "This column represents the acceleration experienced along the Y-axis in a linear direction. The values are measured in units of acceleration, typically meters per second squared (m/s\u00b2), and indicate how quickly the velocity is changing along the Y-axis.",
+            "unit": "m/s\u00b2"
+        },
+        {
+            "name": " linear_acceleration_z",
+            "type": "float64",
+            "description": "This column represents the acceleration experienced along the Z-axis, measured in meters per second squared (m/s\u00b2). It captures the rate of change of velocity in the vertical direction, providing insight into movements such as upward or downward acceleration.",
+            "unit": "m/s\u00b2"
+        }
+    ]
+}
