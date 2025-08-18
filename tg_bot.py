@@ -274,7 +274,7 @@ class TelegramBot:
 
             with psycopg.connect(DATABASE_URL) as conn:
                 # создадим (если нет) и инициализируем объект User
-                user = User.ensure(conn, user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
+                user = User(user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
 
                 # подгрузим последние n сообщений (для локального кеша в User)
                 user.refresh_last_n_from_db(conn, n=200)

@@ -2,7 +2,8 @@ import os
 from dotenv import load_dotenv
 import psycopg
 
-from classes import User, Message, save_user, load_user
+from classes import User, Message
+from ..db_manager import save_user, load_user
 
 def main():
     load_dotenv()
@@ -15,7 +16,7 @@ def main():
         print("OK: подключение установлено.")
 
         # гарантируем пользователя
-        user = User.ensure(conn, user_id="u_demo_001", name="Alice", cache_maxlen=5)
+        user = User(user_id="u_demo_001", name="Alice", cache_maxlen=5)
 
         # сохраним пару сообщений
         incoming = Message(author="user", content="Привет!", message_id=101, chat_id=777)

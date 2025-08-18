@@ -1,8 +1,5 @@
-import json
 from collections import deque
 from typing import Any, Dict, List, Optional
-
-import psycopg
 
 
 class Message:
@@ -94,118 +91,31 @@ class User:
     def get_last_n_messages_JSON(self, n: int) -> List[Dict[str, Any]]:
         return [m.to_dict() for m in self.get_last_n_messages(n)]
 
-    # --- DB helpers ---
-    @staticmethod
-    def ensure(conn, user_id: str, name: str, cache_maxlen: int = 200) -> "User":
+    def ensure(self, conn, user_id: str, name: str, cache_maxlen: int = 200) -> "User":
         """
-        Гарантирует, что пользователь есть в БД; возвращает объект User.
+        Ensures user exists in DB; returns User object.
         """
-        with conn.cursor() as cur:
-            cur.execute(
-                """
-                INSERT INTO users (user_id, name, additional_info)
-                VALUES (%s, %s, %s)
-                ON CONFLICT (user_id) DO NOTHING;
-                """,
-                (user_id, name, json.dumps({}))
-            )
-        conn.commit()
+        from db_utils.db_manager import ensure_user
+        return ensure_user(conn, user_id, name, cache_maxlen)
 
-        loaded = load_user(conn, user_id)
-        if loaded is None:
-            loaded = User(user_id=user_id, name=name, cache_maxlen=cache_maxlen)
-        else:
-            # перезададим лимит кеша и очистим (перечитаем из БД отдельным методом)
-            loaded.chat_history = deque(maxlen=cache_maxlen)
-        return loaded
+    def save(self, conn) -> None:
+        """
+        Saves this user to database.
+        """
+        from db_utils.db_manager import save_user
+        save_user(conn, self)
 
     def refresh_last_n_from_db(self, conn, n: int) -> None:
         """
-        Подтягивает последние n сообщений из таблицы messages (по id DESC), складывает в кеш chronologically.
+        Loads last n messages from messages table (by id DESC), puts them in cache chronologically.
         """
-        if n <= 0:
-            self.chat_history.clear()
-            return
-
-        with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT author, content, reaction, message_id, chat_id
-                FROM messages
-                WHERE user_id = %s
-                ORDER BY id DESC
-                LIMIT %s
-                """,
-                (self.user_id, n)
-            )
-            rows = cur.fetchall()
-
-        # rows идут от новых к старым — развернём, чтобы в кеше было по возрастанию времени
-        msgs = [
-            Message(author=a, content=c, reaction=r, message_id=mid, chat_id=cid)
-            for (a, c, r, mid, cid) in reversed(rows)
-        ]
-        self.set_chat_history(msgs)
+        from db_utils.db_manager import refresh_user_last_n_from_db
+        refresh_user_last_n_from_db(conn, self, n)
 
     def persist_append_messages(self, conn, messages: List[Message]) -> None:
         """
-        Пишет сообщения в таблицу messages и добавляет их в кеш.
+        Writes messages to messages table and adds them to cache.
         """
-        if not messages:
-            return
-        with conn.cursor() as cur:
-            cur.executemany(
-                """
-                INSERT INTO messages (user_id, author, content, reaction, message_id, chat_id)
-                VALUES (%s, %s, %s, %s, %s, %s)
-                """,
-                [
-                    (self.user_id, m.author, m.content, m.reaction, m.message_id, m.chat_id)
-                    for m in messages
-                ]
-            )
-        conn.commit()
-        # добавим в кеш (в порядке добавления)
-        for m in messages:
-            self.chat_history.append(m)
+        from db_utils.db_manager import persist_append_messages
+        persist_append_messages(conn, self, messages)
 
-
-# ---------- users: upsert / load (без chat_history в БД) ----------
-
-def save_user(conn, user: User) -> None:
-    """
-    Upsert только по таблице users.
-    """
-    with conn.cursor() as cur:
-        cur.execute(
-            """
-            INSERT INTO users (user_id, name, additional_info)
-            VALUES (%s, %s, %s)
-            ON CONFLICT (user_id) DO UPDATE
-              SET name = EXCLUDED.name,
-                  additional_info = EXCLUDED.additional_info;
-            """,
-            (user.user_id, user.name, json.dumps(user.additional_info))
-        )
-    conn.commit()
-
-
-def load_user(conn, user_id: str) -> Optional[User]:
-    """
-    Возвращает User из таблицы users (без загрузки истории).
-    """
-    with conn.cursor() as cur:
-        cur.execute(
-            "SELECT user_id, name, additional_info FROM users WHERE user_id = %s",
-            (user_id,)
-        )
-        r = cur.fetchone()
-
-    if not r:
-        return None
-
-    u = User(user_id=r[0], name=r[1])
-    if r[2]:
-        # psycopg3 обычно даёт dict, но на всякий случай:
-        u.additional_info = r[2] if isinstance(r[2], dict) else json.loads(r[2])
-    return u
