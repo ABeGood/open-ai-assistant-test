@@ -11,6 +11,7 @@ from telegram.constants import ParseMode
 from telebot.apihelper import ApiTelegramException
 
 from orchestrator_for_tg import create_orchestrator
+from response_models import SpecialistResponse, CombinatorResponse
 import asyncio
 
 DEBUG = True
@@ -26,21 +27,21 @@ logging.basicConfig(
 )
 
 
-def format_telegram_message(response_data: dict) -> tuple[str, list[str]]:
+def format_telegram_message(response_data) -> tuple[str, list[str]]:
     """
     Format response data for Telegram API with markdown-compatible formatting.
     
     Args:
-        response_data (Dict[str, Any]): Dictionary containing response, sources, and images
+        response_data: SpecialistResponse or CombinatorResponse object
         
     Returns:
         Tuple[str, List[str]]: (formatted_markdown_text, images_list)
     """
     
     # Extract main response text
-    response_text = response_data.get('response', '')
-    sources = response_data.get('sources', [])
-    images = response_data.get('images', [])
+    response_text = response_data.response or ''
+    sources = response_data.sources or []
+    images = response_data.images or []
     
     # Clean and format the response text for Telegram markdown
     formatted_response = escape_telegram_markdown(response_text)
@@ -282,15 +283,15 @@ class TelegramBot:
                     session_id = f"tg-{telegram_user_id}"
                     user_message = msg.text
 
-                    orchestrator_response_dict = await self.orchestrator.process_request(session_id, user_message, telegram_user_id)
+                    orchestrator_response = await self.orchestrator.process_request(session_id, user_message, telegram_user_id)
 
                     if DEBUG:
                         debug_msg = "🔀 STEP 1.2 \nOrchestrator response\n\n"\
-                            f"🤖 *Выбранные специалисты:* \n{orchestrator_response_dict['specialists']}\n\n" \
-                            f"❓ *Причина:* \n{orchestrator_response_dict['reason']}"
+                            f"🤖 *Выбранные специалисты:* \n{orchestrator_response.specialists}\n\n" \
+                            f"❓ *Причина:* \n{orchestrator_response.reason}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    chosen_specialists = orchestrator_response_dict.get('specialists', [])
+                    chosen_specialists = orchestrator_response.specialists
 
                     if len(chosen_specialists) < 1:  # TODO: Handle this case
                         if DEBUG:
@@ -313,8 +314,8 @@ class TelegramBot:
                                                                                               specialists_names=chosen_specialists,
                                                                                               user_message=user_message)
                     
-                    successfull_spec_resps = specialists_responses.get('successful_responses', [])
-                    failed_spec_resps = specialists_responses.get('failed_responses', [])
+                    successfull_spec_resps = specialists_responses.successful_responses
+                    failed_spec_resps = specialists_responses.failed_responses
                     
                     if DEBUG:
                         debug_msg = "🤖 STEP 2.2 \nSpecialists responses\n\n"\

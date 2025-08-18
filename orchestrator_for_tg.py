@@ -6,8 +6,18 @@ import uuid
 import asyncio
 import logging
 from typing import Optional
-from validators import OrchestratorResponse
-from customer_support_orchestrator import CustomerSupportOrchestrator
+from validators import OrchestratorResponse as ValidatorOrchestratorResponse
+from response_models import (
+    OrchestratorResponse,
+    SpecialistResponse,
+    CombinatorResponse,
+    MultiSpecialistResponse,
+    ResponseStatus,
+    create_error_response,
+    create_success_response,
+    create_timeout_response
+)
+from prompt_static_analyzer import PromptStaticAnalyzer
 from config import assistant_configs, price_per_token_in, price_per_token_out
 from response_processing_utils import (
     process_image_markers, 
@@ -40,7 +50,7 @@ class TelegramMultiAssistantOrchestrator:
         self.shared_threads = {}
         self.context_store = {}
         self._initialize_assistants()
-        self.static_check = CustomerSupportOrchestrator()
+        self.static_checker = PromptStaticAnalyzer()
 
 
     def _initialize_assistants(self):
@@ -126,21 +136,21 @@ class TelegramMultiAssistantOrchestrator:
         return self.create_session(telegram_user_id)
 
 
-    def process_with_orchestrator(self, session_id: str, user_message: str) -> dict:
+    def process_with_orchestrator(self, session_id: str, user_message: str) -> OrchestratorResponse:
         """Use orchestrator assistant to determine routing"""
         if session_id not in self.shared_threads:
             logging.error(f"Error occurred: session with id {session_id} not found.")
-            return {"success": False,
-                    "error": "Session not found",
-                    "specialists": [],
-                    "reason": None,
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                OrchestratorResponse,
+                "Session not found",
+                user_message,
+                specialists=[],
+                reason=None
+            )
         
         # Get current context
         # context = self.get_shared_context(session_id)
-        user_message_metadata = self.static_check.route_query(user_message)
+        user_message_metadata = self.static_checker.route_query(user_message)
         
         # Create routing prompt
         routing_prompt = f"""
@@ -169,13 +179,12 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error creating routing message: {e}",
-                    "specialists": [],
-                    "reason": None,
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                OrchestratorResponse,
+                f"Error creating routing message: {e}",
+                user_message,
+                specialists=[]
+            )
         
         # Get routing decision
         try:
@@ -188,13 +197,12 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error creating routing run: {e}",
-                    "specialists": [],
-                    "reason": None,
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                OrchestratorResponse,
+                f"Error creating routing run: {e}",
+                user_message,
+                specialists=[]
+            )
         
         # Wait for completion
         timeout = 30
@@ -202,88 +210,84 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
         
         while run.status != "completed":
             if time.time() - start_time > timeout:
-                return {"success": False,
-                        "error": "Routing decision timed out",
-                        "specialists": [],
-                        "reason": None,
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+                return create_timeout_response(
+                    OrchestratorResponse,
+                    user_message,
+                    "Routing decision timed out",
+                    specialists=[]
+                )
             
             time.sleep(1)
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
                 logging.error(f"Error occurred: {e}", exc_info=True)
-                return {"success": False,
-                        "error": f"Error checking routing status: {e}",
-                        "specialists": [],
-                        "reason": None,
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+                return create_error_response(
+                    OrchestratorResponse,
+                    f"Error checking routing status: {e}",
+                    user_message,
+                    specialists=[]
+                )
         logging.info(f'ORCHESTRATOR RUN COMPLETED:\nInput tokens: {run.usage.prompt_tokens} ({run.usage.prompt_tokens*price_per_token_in}$)\nInput tokens: {run.usage.completion_tokens} ({run.usage.completion_tokens*price_per_token_out}$)')
         try:
             messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
             routing_decision_raw = messages.data[0].content[0].text.value
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error retrieving routing decision: {e}",
-                    "specialists": [],
-                    "reason": None,
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                OrchestratorResponse,
+                f"Error retrieving routing decision: {e}",
+                user_message,
+                specialists=[]
+            )
         
         # Parse decision - try to extract JSON from response
         try:
             # Look for JSON in the response
-            OrchestratorResponse.model_validate_json(routing_decision_raw)
+            ValidatorOrchestratorResponse.model_validate_json(routing_decision_raw)
             orchestrator_response_dict = json.loads(routing_decision_raw)
 
-            if len(orchestrator_response_dict['specialists']) > 0:   # TODO: Do we need this check if we have model validation???
-                assistants_names = orchestrator_response_dict.get('specialists', None)
+            if len(orchestrator_response_dict['specialists']) > 0:
+                # Log routing decision
+                if session_id in self.context_store:
+                    self.context_store[session_id]['routing_decisions'].append(orchestrator_response_dict)
+                
+                return create_success_response(
+                    OrchestratorResponse,
+                    user_message,
+                    specialists=orchestrator_response_dict.get('specialists', []),
+                    reason=orchestrator_response_dict.get('reason'),
+                    confidence=orchestrator_response_dict.get('confidence'),
+                    raw_response=routing_decision_raw,
+                    timestamp=time.time()
+                )
             else:
-                # TODO: Fallback mechanism
-                return {"success": False,
-                        "error": "Empty assistants list",
-                        "specialists": [],
-                        "reason": None,
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+                return create_error_response(
+                    OrchestratorResponse,
+                    "Empty assistants list",
+                    user_message,
+                    specialists=[]
+                )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {
-                "success": False,
-                "error": f"Error parsing orchestrator response: {e}",
-                "specialists": [],
-                "reason": None,
-                "user_query": user_message,
-                "raw_response": None
-                }
-        
-        # Log routing decision
-        if session_id in self.context_store:
-            self.context_store[session_id]['routing_decisions'].append(orchestrator_response_dict)
-        
-        return orchestrator_response_dict
+            return create_error_response(
+                OrchestratorResponse,
+                f"Error parsing orchestrator response: {e}",
+                user_message,
+                specialists=[]
+            )
     
-    def process_with_combinator(self, session_id: str, user_message: str, specialists_responses: list[dict]) -> dict:
+    def process_with_combinator(self, session_id: str, user_message: str, specialists_responses: list[SpecialistResponse]) -> CombinatorResponse:
         """Use combinator assistant to prepare the final answer"""
-        specialists_names = [v['specialist'] for v in specialists_responses]
+        specialists_names = [resp.specialist for resp in specialists_responses]
 
         if session_id not in self.shared_threads:
-            return {"success": False,
-                    "error": "Session not found",
-                    "specialists": specialists_names,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                CombinatorResponse,
+                "Session not found",
+                user_message,
+                specialists=specialists_names
+            )
         
         # Get current context
         # context = self.get_shared_context(session_id)
@@ -291,10 +295,10 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
         # Create combinator prompt
         specialist_responses = ""
         for i, item in enumerate(specialists_responses):
-            specialist_responses += f"SPECILAIST {i+1} DATA START\n"
-            specialist_responses += f"SPECIALIST NAME: {item['specialist']}\n"
-            specialist_responses += f"SPECIALIST RESPONSE: {item['response']}\n"
-            specialist_responses += f"SPECILAIST {i+1} DATA END\n\n"
+            specialist_responses += f"SPECIALIST {i+1} DATA START\n"
+            specialist_responses += f"SPECIALIST NAME: {item.specialist}\n"
+            specialist_responses += f"SPECIALIST RESPONSE: {item.response}\n"
+            specialist_responses += f"SPECIALIST {i+1} DATA END\n\n"
 
         combinator_prompt = f"""USER QUERY: 
 {user_message}
@@ -321,15 +325,12 @@ SPECIALISTS RESPONSES:
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error creating routing message: {e}",
-                    "specialists": specialists_names,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                CombinatorResponse,
+                f"Error creating routing message: {e}",
+                user_message,
+                specialists=specialists_names
+            )
         
         # Get final answer
         try:
@@ -342,15 +343,12 @@ SPECIALISTS RESPONSES:
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error creating routing run: {e}",
-                    "specialists": specialists_names,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                CombinatorResponse,
+                f"Error creating routing run: {e}",
+                user_message,
+                specialists=specialists_names
+            )
         
         # Wait for completion
         timeout = 30
@@ -358,30 +356,24 @@ SPECIALISTS RESPONSES:
         
         while run.status != "completed":
             if time.time() - start_time > timeout:
-                return {"success": False,
-                        "error": "Combinator call timed out",
-                        "specialists": specialists_names,
-                        "response": None,
-                        "sources": [],
-                        "images": [],
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+                return create_timeout_response(
+                    CombinatorResponse,
+                    user_message,
+                    "Combinator call timed out",
+                    specialists=specialists_names
+                )
             
             time.sleep(1)
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
                 logging.error(f"Error occurred: {e}", exc_info=True)
-                return {"success": False,
-                        "error": f"Error checking combinator status: {e}",
-                        "specialists": specialists_names,
-                        "response": None,
-                        "sources": [],
-                        "images": [],
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+                return create_error_response(
+                    CombinatorResponse,
+                    f"Error checking combinator status: {e}",
+                    user_message,
+                    specialists=specialists_names
+                )
         
         try:
             messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
@@ -390,26 +382,23 @@ SPECIALISTS RESPONSES:
             # Extract sources
             sources_list = []
             for spec_response in specialists_responses:
-                sources_list += spec_response.get('sources')
+                sources_list += spec_response.sources
                 sources_list = list(set(sources_list))
 
             # Extract images
             img_list = []
             for spec_response in specialists_responses:
-                img_list += spec_response.get('images')
+                img_list += spec_response.images
                 img_list = list(set(img_list))
 
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error retrieving combinator response: {e}",
-                    "specialists": specialists_names,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                CombinatorResponse,
+                f"Error retrieving combinator response: {e}",
+                user_message,
+                specialists=specialists_names
+            )
         
         # # Parse decision - try to extract JSON from response
         # try:
@@ -441,15 +430,17 @@ SPECIALISTS RESPONSES:
         # if session_id in self.context_store:
         #     self.context_store[session_id]['final_responses'].append(final_response)
         
-        return {"success": True,
-                "error": None,
-                "specialists": specialists_names,
-                "response": final_response,
-                "sources": sources_list,
-                "images": img_list,
-                "user_query": user_message,
-                "raw_response": final_response
-                }
+        return create_success_response(
+            CombinatorResponse,
+            user_message,
+            specialists=specialists_names,
+            response=final_response,
+            sources=sources_list,
+            images=img_list,
+            raw_response=final_response,
+            combined_from=specialists_responses,
+            timestamp=time.time()
+        )
     
     
     def route_to_assistant(self, 
@@ -458,11 +449,18 @@ SPECIALISTS RESPONSES:
                            user_message: str, 
                            include_context: bool = True, 
                            new_thread: bool = False
-                           ) -> dict:
+                           ) -> SpecialistResponse:
         
         """Route message to specific assistant with context"""
+        start_time = time.time()
+        
         if session_id not in self.shared_threads:
-            raise Exception(f"Session {session_id} not found")
+            return create_error_response(
+                SpecialistResponse,
+                f"Session {session_id} not found",
+                user_message,
+                specialist=assistant_name
+            )
         
         thread_id = self.shared_threads[session_id]
         assistant_id = self.assistants[assistant_name]['id']
@@ -482,59 +480,45 @@ SPECIALISTS RESPONSES:
             )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"success": False,
-                    "error": f"Error creating run: {e}",
-                    "specialist": assistant_name,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                SpecialistResponse,
+                f"Error creating run: {e}",
+                user_message,
+                specialist=assistant_name
+            )
         
         # Wait for completion with timeout
         timeout = 60  # 60 seconds timeout
-        start_time = time.time()
+        run_start_time = time.time()
         
         while run.status != "completed":
-            if time.time() - start_time > timeout:
-                return {"success": False,
-                        "error": "Assistant response timed out",
-                        "specialist": assistant_name,
-                        "response": None,
-                        "sources": [],
-                        "images": [],
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+            if time.time() - run_start_time > timeout:
+                return create_timeout_response(
+                    SpecialistResponse,
+                    user_message,
+                    "Assistant response timed out",
+                    specialist=assistant_name
+                )
             
             time.sleep(1)
             try:
                 run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
             except Exception as e:
                 logging.error(f"Error occurred: {e}", exc_info=True)
-                # Clean up temp thread on error
-                return {"success": False,
-                        "error": f"Error retrieving run status: {e}",
-                        "specialist": assistant_name,
-                        "response": None,
-                        "sources": [],
-                        "images": [],
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+                return create_error_response(
+                    SpecialistResponse,
+                    f"Error retrieving run status: {e}",
+                    user_message,
+                    specialist=assistant_name
+                )
             
             if run.status == "failed":
-                # Clean up temp thread on error
-                return {"success": False,
-                        "error": f"Assistant run failed: {run.last_error}",
-                        "specialist": assistant_name,
-                        "response": None,
-                        "sources": [],
-                        "images": [],
-                        "user_query": user_message,
-                        "raw_response": None
-                        }
+                return create_error_response(
+                    SpecialistResponse,
+                    f"Assistant run failed: {run.last_error}",
+                    user_message,
+                    specialist=assistant_name
+                )
         
         # Get response
         try:
@@ -581,29 +565,28 @@ SPECIALISTS RESPONSES:
                 img_files_list = list(set(img_files_list))
 
             response_clean = delete_sources_from_text(text_wo_markers)
+            processing_time = time.time() - start_time
 
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            # Clean up temp thread on error
-            return {"success": False,
-                    "error": f"Error processing response: {e}",
-                    "specialist": assistant_name,
-                    "response": None,
-                    "sources": [],
-                    "images": [],
-                    "user_query": user_message,
-                    "raw_response": None
-                    }
+            return create_error_response(
+                SpecialistResponse,
+                f"Error processing response: {e}",
+                user_message,
+                specialist=assistant_name
+            )
         
-        response = {"success": True,
-                    "error": None,
-                    "specialist": assistant_name,
-                    "response": response_clean,
-                    "sources": sources_files_list,
-                    "images": img_files_list,
-                    "user_query": user_message,
-                    "raw_response": messages.data[0].content[0].text.value
-                    }
+        response = create_success_response(
+            SpecialistResponse,
+            user_message,
+            specialist=assistant_name,
+            response=response_clean,
+            sources=sources_files_list,
+            images=img_files_list,
+            raw_response=messages.data[0].content[0].text.value,
+            processing_time=processing_time,
+            timestamp=time.time()
+        )
         
         # Update context
         if session_id in self.context_store:
@@ -612,7 +595,7 @@ SPECIALISTS RESPONSES:
                 'timestamp': time.time(),
                 'assistant': assistant_name,
                 'role': 'assistant',
-                'content': response,
+                'content': response.dict(),
                 'message_type': 'response'
             })
         return response
@@ -622,7 +605,7 @@ SPECIALISTS RESPONSES:
                                        assistant_name: str, 
                                        user_message: str, 
                                        include_context: bool = True, 
-                                       new_thread: bool = True) -> dict:
+                                       new_thread: bool = True) -> SpecialistResponse:
         """Async version of route_to_assistant"""
         # Convert your existing route_to_assistant to async
         # This depends on your OpenAI client implementation
@@ -637,7 +620,7 @@ SPECIALISTS RESPONSES:
             new_thread 
         )
     
-    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> dict:
+    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> OrchestratorResponse:
         """Complete request processing with routing and context"""
         
         # Ensure session exists
@@ -647,7 +630,7 @@ SPECIALISTS RESPONSES:
         # Determine which assistant to use
         return self.process_with_orchestrator(session_id, user_message)
     
-    def call_specialists_sequentially(self, session_id:str, specialists_names: list[str], user_message:str) -> dict:
+    def call_specialists_sequentially(self, session_id: str, specialists_names: list[str], user_message: str) -> MultiSpecialistResponse:
         specialist_responses = []
         for specialist in specialists_names:
             response = self.route_to_assistant(
@@ -656,24 +639,36 @@ SPECIALISTS RESPONSES:
                 user_message=user_message,
                 include_context=False,
                 new_thread=False
-                )
+            )
             specialist_responses.append(response)
             
         # Process responses
         successful_responses = []
         failed_responses = []
 
-        # TODO: Check how do we detect successfull messages
-        for i, response in enumerate(specialist_responses):
-            if isinstance(response, Exception):
-                failed_responses.append(response)
-            else:
+        for response in specialist_responses:
+            if response.success:
                 successful_responses.append(response)
+            else:
+                failed_responses.append(response)
 
-        return {"successful_responses": successful_responses, "failed_responses": failed_responses}
+        success_rate = len(successful_responses) / len(specialist_responses) if specialist_responses else 0.0
+        overall_success = len(successful_responses) > 0
+
+        return MultiSpecialistResponse(
+            success=overall_success,
+            status=ResponseStatus.SUCCESS if overall_success else ResponseStatus.ERROR,
+            error=None if overall_success else "All specialist calls failed",
+            user_query=user_message,
+            successful_responses=successful_responses,
+            failed_responses=failed_responses,
+            total_specialists=len(specialists_names),
+            success_rate=success_rate,
+            timestamp=time.time()
+        )
 
 
-    async def call_specialists_parallel(self, session_id: str, specialists_names: list[str], user_message:str) -> dict:
+    async def call_specialists_parallel(self, session_id: str, specialists_names: list[str], user_message: str) -> MultiSpecialistResponse:
         # Create async tasks for all specialists
         async def call_single_assistant(specialist_name: str):
             """Async wrapper for single assistant call"""
@@ -694,19 +689,50 @@ SPECIALISTS RESPONSES:
             successful_responses = []
             failed_responses = []
 
-            # TODO: Check how do we detect successfull messages
-            for i, response in enumerate(specialist_responses):
+            for response in specialist_responses:
                 if isinstance(response, Exception):
-                    failed_responses.append(response)
-                else:
+                    # Convert exception to failed SpecialistResponse
+                    failed_response = create_error_response(
+                        SpecialistResponse,
+                        str(response),
+                        user_message,
+                        specialist="unknown"
+                    )
+                    failed_responses.append(failed_response)
+                elif response.success:
                     successful_responses.append(response)
+                else:
+                    failed_responses.append(response)
 
-            return {"successful_responses": successful_responses, "failed_responses": failed_responses}
+            success_rate = len(successful_responses) / len(specialist_responses) if specialist_responses else 0.0
+            overall_success = len(successful_responses) > 0
+
+            return MultiSpecialistResponse(
+                success=overall_success,
+                status=ResponseStatus.SUCCESS if overall_success else ResponseStatus.ERROR,
+                error=None if overall_success else "All specialist calls failed",
+                user_query=user_message,
+                successful_responses=successful_responses,
+                failed_responses=failed_responses,
+                total_specialists=len(specialists_names),
+                success_rate=success_rate,
+                timestamp=time.time()
+            )
 
 
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
-            return {"successful_responses": [], "failed_responses": []}
+            return MultiSpecialistResponse(
+                success=False,
+                status=ResponseStatus.ERROR,
+                error=f"Parallel execution failed: {e}",
+                user_query=user_message,
+                successful_responses=[],
+                failed_responses=[],
+                total_specialists=len(specialists_names),
+                success_rate=0.0,
+                timestamp=time.time()
+            )
 
 # Convenience functions for easy integration
 def create_orchestrator(api_key: str = None) -> TelegramMultiAssistantOrchestrator:

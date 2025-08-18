@@ -251,7 +251,7 @@ class QueryRouter:
         else:
             return 0.3
 
-class CustomerSupportOrchestrator:
+class PromptStaticAnalyzer:
     def __init__(self):
         self.router = QueryRouter()
         self.orchestrator_prompt = """
@@ -427,7 +427,7 @@ class CustomerSupportOrchestrator:
 
 # Usage example
 if __name__ == "__main__":
-    orchestrator = CustomerSupportOrchestrator()
+    orchestrator = PromptStaticAnalyzer()
     
     # Test the complete flow
     test_queries = [
