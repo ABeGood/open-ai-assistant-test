@@ -9,6 +9,7 @@ from telebot.async_telebot import AsyncTeleBot
 from telebot.types import ReactionTypeEmoji
 from telegram.constants import ParseMode
 from telebot.apihelper import ApiTelegramException
+from classes import User, Message
 
 from orchestrator_for_tg import create_orchestrator
 from response_models import SpecialistResponse, CombinatorResponse
@@ -18,6 +19,7 @@ DEBUG = True
 
 load_dotenv()
 telegram_token = os.environ.get("TELEGRAM_TOKEN_OLD")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 logging.basicConfig(
     level=logging.DEBUG, 
@@ -261,6 +263,29 @@ class TelegramBot:
             func=lambda msg: msg.text is not None and '/' not in msg.text,
         )
         async def handle_message(msg):
+    
+            telegram_user_id = msg.from_user.id
+            session_id = f"tg-{telegram_user_id}"
+            user_message = msg.text
+
+            tg_chat_id = msg.chat.id
+            user_name = getattr(msg.from_user, "full_name", None) or getattr(msg.from_user, "username", None) or "Unknown"
+
+            # создадим (если нет) и инициализируем объект User
+            user = User.ensure(user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
+
+            # подгрузим последние n сообщений (для локального кеша в User)
+            user.get_last_n_msgs_from_db(n=200)
+
+            # сохраним текущее входящее от пользователя сообщение в БД + добавим в кеш
+            user_msg = Message(
+                author="user",
+                content=user_message,
+                message_id=getattr(msg, "message_id", None),
+                chat_id=tg_chat_id,
+            )
+            user.persist_append_messages([user_msg])
+
             if msg.text == "Hi":
                 await self.bot.send_message(msg.chat.id, "Hello!", parse_mode=ParseMode.MARKDOWN)
             else:
@@ -359,24 +384,61 @@ class TelegramBot:
 
                     if len(images) < 1:
                         # No images - just send text message
-                        await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+                        sent = await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+                        # === DB: persist assistant reply ===
+                        try:
+                            reply = Message(
+                                author="assistant",
+                                content=tg_message,
+                                message_id=getattr(sent, "message_id", None),
+                                chat_id=tg_chat_id,
+                            )
+                            user.persist_append_messages([reply])
+                        except Exception as e:
+                            self.logger.error(f"Failed to save assistant message: {e}")
+                        # === /DB block ===
                     else:
                         if len(images) == 1:
                             # Send single image
                             with open(images[0], 'rb') as photo:
                                 if caption_too_long:
                                     # Send image without caption, then text separately
-                                    await self.bot.send_photo(msg.chat.id, photo)
-                                    await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+                                    sent_photo = await self.bot.send_photo(msg.chat.id, photo)
+                                    sent_text = await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+
+                                    try:
+                                        reply = Message(
+                                            author="assistant",
+                                            content=tg_message,
+                                            message_id=getattr(sent_text, "message_id", None),
+                                            chat_id=tg_chat_id,
+                                        )
+                                        user.persist_append_messages([reply])
+                                    except Exception as e:
+                                        self.logger.error(f"Failed to save assistant message: {e}")
                                 else:
                                     # Send image with caption
-                                    await self.bot.send_photo(msg.chat.id, photo, caption=tg_message, parse_mode=ParseMode.MARKDOWN)
+                                    sent_photo = await self.bot.send_photo(msg.chat.id, photo, caption=tg_message, parse_mode=ParseMode.MARKDOWN)
+
+                                    try:
+                                        reply = Message(
+                                            author="assistant",
+                                            content=tg_message,
+                                            message_id=getattr(sent_photo, "message_id", None),
+                                            chat_id=tg_chat_id,
+                                        )
+                                        user.persist_append_messages([reply])
+                                    except Exception as e:
+                                        self.logger.error(f"Failed to save assistant message: {e}")
+
                         else:
                             # Send multiple images - split into chunks if needed
                             from telebot.types import InputMediaPhoto
                             
                             # Split images into chunks of MEDIA_GROUP_LIMIT
                             image_chunks = [images[i:i + MEDIA_GROUP_LIMIT] for i in range(0, len(images), MEDIA_GROUP_LIMIT)]
+
+                            first_group_first_msg_id = None
                             
                             for chunk_index, image_chunk in enumerate(image_chunks):
                                 opened_files = []
@@ -398,15 +460,33 @@ class TelegramBot:
                                             parse_mode=ParseMode.MARKDOWN if caption else None
                                         ))
                                     
-                                    await self.bot.send_media_group(msg.chat.id, media_group)
-                                    
+                                    group_messages = await self.bot.send_media_group(msg.chat.id, media_group)
+
+                                    # запомним id первой записи первой группы (если подпись помещается)
+                                    if chunk_index == 0 and not caption_too_long and group_messages:
+                                        first_group_first_msg_id = getattr(group_messages[0], "message_id", None)
                                 finally:
                                     for photo in opened_files:
                                         photo.close()
                             
                             # If caption was too long, send it as separate message after all media groups
+                            assistant_msg_id_to_save = None
                             if caption_too_long:
-                                await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+                                sent_caption = await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
+                                assistant_msg_id_to_save = getattr(sent_caption, "message_id", None)
+                            else:
+                                assistant_msg_id_to_save = first_group_first_msg_id
+                                   
+                            try:
+                                reply = Message(
+                                    author="assistant",
+                                    content=tg_message,
+                                    message_id=assistant_msg_id_to_save,
+                                    chat_id=tg_chat_id,
+                                )
+                                user.persist_append_messages([reply])
+                            except Exception as e:
+                                self.logger.error(f"Failed to save assistant message: {e}")
 
                 except Exception as e:
                     # await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}', parse_mode=ParseMode.MARKDOWN)
