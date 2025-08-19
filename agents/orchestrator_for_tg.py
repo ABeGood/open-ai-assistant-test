@@ -6,8 +6,8 @@ import uuid
 import asyncio
 import logging
 from typing import Optional
-from validators import OrchestratorResponse as ValidatorOrchestratorResponse
-from response_models import (
+from classes.validators import OrchestratorResponse as ValidatorOrchestratorResponse
+from classes.agents_response_models import (
     OrchestratorResponse,
     SpecialistResponse,
     CombinatorResponse,
@@ -17,8 +17,8 @@ from response_models import (
     create_success_response,
     create_timeout_response
 )
-from prompt_static_analyzer import PromptStaticAnalyzer
-from config import assistant_configs, price_per_token_in, price_per_token_out
+from agents.prompt_static_analyzer import PromptStaticAnalyzer
+from agents.config import assistant_configs, price_per_token_in, price_per_token_out
 from response_processing_utils import (
     process_image_markers, 
     delete_sources_from_text, 

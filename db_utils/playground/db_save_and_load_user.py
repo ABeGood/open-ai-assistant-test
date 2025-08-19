@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import psycopg
 
-from classes import User, Message
+from classes.classes import User, Message
 from ..db_manager import save_user, load_user
 
 def main():

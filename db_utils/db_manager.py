@@ -113,7 +113,7 @@ def load_user(user_id: str):
     """
     Возвращает User из таблицы users (без загрузки истории).
     """
-    from classes import User
+    from classes.classes import User
     with psycopg.connect(DATABASE_URL) as conn:
         with conn.cursor() as cur:
             cur.execute(
@@ -135,7 +135,7 @@ def ensure_user(user_id: str, name: str, cache_maxlen: int = 200):
     """
     Ensures user exists in DB; returns User object.
     """
-    from classes import User
+    from classes.classes import User
     from collections import deque
     
     # Ensure users table exists
@@ -169,7 +169,7 @@ def get_last_n_msgs_from_db_for_user(user, n: int) -> None:
     """
     Подтягивает последние n сообщений из таблицы messages (по id DESC), складывает в кеш chronologically.
     """
-    from classes import Message
+    from classes.classes import Message
     from collections import deque
     
     if n <= 0:

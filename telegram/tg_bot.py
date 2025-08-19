@@ -9,10 +9,10 @@ from telebot.async_telebot import AsyncTeleBot
 from telebot.types import ReactionTypeEmoji
 from telegram.constants import ParseMode
 from telebot.apihelper import ApiTelegramException
-from classes import User, Message
+from classes.classes import User, Message
 
 from orchestrator_for_tg import create_orchestrator
-from response_models import SpecialistResponse, CombinatorResponse
+from classes.agents_response_models import SpecialistResponse, CombinatorResponse
 import asyncio
 
 DEBUG = True

@@ -1,4 +1,4 @@
-import config
+import agents.config as config
 from langchain.prompts import ChatPromptTemplate
 from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnableBranch, RunnablePassthrough

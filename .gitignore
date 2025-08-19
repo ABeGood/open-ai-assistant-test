@@ -5,3 +5,4 @@ files_ENG/
 files_clean/
 *.rar
 __pycache__/
+*.log
