@@ -24,7 +24,7 @@ def main():
         user.persist_append_messages(conn, [incoming, reply])
 
         # обновим кеш последними n сообщениями
-        user.refresh_last_n_from_db(conn, n=10)
+        user.get_last_n_msgs_from_db(conn, n=10)
 
         # проверим users.upsert
         user.set_additional_info("language", "ru")

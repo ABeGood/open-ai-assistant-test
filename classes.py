@@ -19,7 +19,7 @@ class Message:
 
     # --- getters / setters ---
     def get_author(self) -> str: return self.author
-    def set_author(self, author: str) -> None: self.author = author
+    # def set_author(self, author: str) -> None: self.author = author
 
     def get_content(self) -> str: return self.content
     def set_content(self, content: str) -> None: self.content = content
@@ -28,10 +28,10 @@ class Message:
     def set_reaction(self, reaction: Any) -> None: self.reaction = reaction
 
     def get_message_id(self) -> Optional[int]: return self.message_id
-    def set_message_id(self, message_id: Optional[int]) -> None: self.message_id = message_id
+    # def set_message_id(self, message_id: Optional[int]) -> None: self.message_id = message_id
 
     def get_chat_id(self) -> Optional[int]: return self.chat_id
-    def set_chat_id(self, chat_id: Optional[int]) -> None: self.chat_id = chat_id
+    # def set_chat_id(self, chat_id: Optional[int]) -> None: self.chat_id = chat_id
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -62,10 +62,10 @@ class User:
 
     # --- getters / setters ---
     def get_user_id(self) -> str: return self.user_id
-    def set_user_id(self, user_id: str) -> None: self.user_id = user_id
+    # def set_user_id(self, user_id: str) -> None: self.user_id = user_id
 
     def get_name(self) -> str: return self.name
-    def set_name(self, name: str) -> None: self.name = name
+    # def set_name(self, name: str) -> None: self.name = name
 
     def get_chat_history(self) -> List[Message]: return list(self.chat_history)
     def set_chat_history(self, history: List[Message]) -> None:
@@ -76,10 +76,7 @@ class User:
         self.additional_info[key] = value
 
     # --- cache operations ---
-    def add_message(self, author: str, content: str, reaction: Optional[Any] = None,
-                    message_id: Optional[int] = None, chat_id: Optional[int] = None) -> Message:
-        msg = Message(author=author, content=content, reaction=reaction,
-                      message_id=message_id, chat_id=chat_id)
+    def add_message(self, msg:Message) -> Message:
         self.chat_history.append(msg)
         return msg
 
@@ -91,31 +88,34 @@ class User:
     def get_last_n_messages_JSON(self, n: int) -> List[Dict[str, Any]]:
         return [m.to_dict() for m in self.get_last_n_messages(n)]
 
-    def ensure(self, conn, user_id: str, name: str, cache_maxlen: int = 200) -> "User":
+    @staticmethod
+    def ensure(user_id: str, name: str, cache_maxlen: int = 200) -> "User":
         """
         Ensures user exists in DB; returns User object.
         """
         from db_utils.db_manager import ensure_user
-        return ensure_user(conn, user_id, name, cache_maxlen)
+        return ensure_user(user_id, name, cache_maxlen)
 
-    def save(self, conn) -> None:
+    def save(self) -> None:
         """
         Saves this user to database.
         """
         from db_utils.db_manager import save_user
-        save_user(conn, self)
+        save_user(self)
 
-    def refresh_last_n_from_db(self, conn, n: int) -> None:
+    def get_last_n_msgs_from_db(self, n: int) -> None:
         """
         Loads last n messages from messages table (by id DESC), puts them in cache chronologically.
         """
-        from db_utils.db_manager import refresh_user_last_n_from_db
-        refresh_user_last_n_from_db(conn, self, n)
+        from db_utils.db_manager import get_last_n_msgs_from_db_for_user
+        get_last_n_msgs_from_db_for_user(self, n)
 
-    def persist_append_messages(self, conn, messages: List[Message]) -> None:
+    def persist_append_messages(self, messages: List[Message]) -> None:
         """
         Writes messages to messages table and adds them to cache.
         """
-        from db_utils.db_manager import persist_append_messages
-        persist_append_messages(conn, self, messages)
+        from db_utils.db_manager import append_messages
+        append_messages(self, messages)
+        for msg in messages:
+            self.chat_history.append(msg)
 

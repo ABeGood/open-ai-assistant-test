@@ -13,7 +13,6 @@ from classes import User, Message
 
 from orchestrator_for_tg import create_orchestrator
 import asyncio
-import psycopg
 
 DEBUG = True
 
@@ -268,26 +267,23 @@ class TelegramBot:
             session_id = f"tg-{telegram_user_id}"
             user_message = msg.text
 
-            # === DB: ensure user + pull last N + persist incoming ===
             tg_chat_id = msg.chat.id
             user_name = getattr(msg.from_user, "full_name", None) or getattr(msg.from_user, "username", None) or "Unknown"
 
-            with psycopg.connect(DATABASE_URL) as conn:
-                # создадим (если нет) и инициализируем объект User
-                user = User(user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
+            # создадим (если нет) и инициализируем объект User
+            user = User.ensure(user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
 
-                # подгрузим последние n сообщений (для локального кеша в User)
-                user.refresh_last_n_from_db(conn, n=200)
+            # подгрузим последние n сообщений (для локального кеша в User)
+            user.get_last_n_msgs_from_db(n=200)
 
-                # сохраним текущее входящее от пользователя сообщение в БД + добавим в кеш
-                incoming = Message(
-                    author="user",
-                    content=user_message,
-                    message_id=getattr(msg, "message_id", None),
-                    chat_id=tg_chat_id,
-                )
-                user.persist_append_messages(conn, [incoming])
-            # === /DB block ===
+            # сохраним текущее входящее от пользователя сообщение в БД + добавим в кеш
+            user_msg = Message(
+                author="user",
+                content=user_message,
+                message_id=getattr(msg, "message_id", None),
+                chat_id=tg_chat_id,
+            )
+            user.persist_append_messages([user_msg])
 
             if msg.text == "Hi":
                 await self.bot.send_message(msg.chat.id, "Hello!", parse_mode=ParseMode.MARKDOWN)
@@ -390,15 +386,13 @@ class TelegramBot:
                         sent = await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
                         # === DB: persist assistant reply ===
                         try:
-                            with psycopg.connect(DATABASE_URL) as conn:
-                                user = User.ensure(conn, user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
-                                reply = Message(
-                                    author="assistant",
-                                    content=tg_message,
-                                    message_id=getattr(sent, "message_id", None),
-                                    chat_id=tg_chat_id,
-                                )
-                                user.persist_append_messages(conn, [reply])
+                            reply = Message(
+                                author="assistant",
+                                content=tg_message,
+                                message_id=getattr(sent, "message_id", None),
+                                chat_id=tg_chat_id,
+                            )
+                            user.persist_append_messages([reply])
                         except Exception as e:
                             self.logger.error(f"Failed to save assistant message: {e}")
                         # === /DB block ===
@@ -411,38 +405,30 @@ class TelegramBot:
                                     sent_photo = await self.bot.send_photo(msg.chat.id, photo)
                                     sent_text = await self.bot.send_message(msg.chat.id, tg_message, parse_mode=ParseMode.MARKDOWN)
 
-                                    # === DB: persist assistant reply (по текстовому сообщению) ===
                                     try:
-                                        with psycopg.connect(DATABASE_URL) as conn:
-                                            user = User.ensure(conn, user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
-                                            reply = Message(
-                                                author="assistant",
-                                                content=tg_message,
-                                                message_id=getattr(sent_text, "message_id", None),
-                                                chat_id=tg_chat_id,
-                                            )
-                                            user.persist_append_messages(conn, [reply])
+                                        reply = Message(
+                                            author="assistant",
+                                            content=tg_message,
+                                            message_id=getattr(sent_text, "message_id", None),
+                                            chat_id=tg_chat_id,
+                                        )
+                                        user.persist_append_messages([reply])
                                     except Exception as e:
                                         self.logger.error(f"Failed to save assistant message: {e}")
-                                    # === /DB block ===
                                 else:
                                     # Send image with caption
                                     sent_photo = await self.bot.send_photo(msg.chat.id, photo, caption=tg_message, parse_mode=ParseMode.MARKDOWN)
 
-                                    # === DB: persist assistant reply (по сообщению с фото и подписью) ===
                                     try:
-                                        with psycopg.connect(DATABASE_URL) as conn:
-                                            user = User.ensure(conn, user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
-                                            reply = Message(
-                                                author="assistant",
-                                                content=tg_message,
-                                                message_id=getattr(sent_photo, "message_id", None),
-                                                chat_id=tg_chat_id,
-                                            )
-                                            user.persist_append_messages(conn, [reply])
+                                        reply = Message(
+                                            author="assistant",
+                                            content=tg_message,
+                                            message_id=getattr(sent_photo, "message_id", None),
+                                            chat_id=tg_chat_id,
+                                        )
+                                        user.persist_append_messages([reply])
                                     except Exception as e:
                                         self.logger.error(f"Failed to save assistant message: {e}")
-                                    # === /DB block ===
 
                         else:
                             # Send multiple images - split into chunks if needed
@@ -490,20 +476,16 @@ class TelegramBot:
                             else:
                                 assistant_msg_id_to_save = first_group_first_msg_id
                                    
-                            # === DB: persist assistant reply ===
                             try:
-                                with psycopg.connect(DATABASE_URL) as conn:
-                                    user = User.ensure(conn, user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
-                                    reply = Message(
-                                        author="assistant",
-                                        content=tg_message,
-                                        message_id=assistant_msg_id_to_save,
-                                        chat_id=tg_chat_id,
-                                    )
-                                    user.persist_append_messages(conn, [reply])
+                                reply = Message(
+                                    author="assistant",
+                                    content=tg_message,
+                                    message_id=assistant_msg_id_to_save,
+                                    chat_id=tg_chat_id,
+                                )
+                                user.persist_append_messages([reply])
                             except Exception as e:
                                 self.logger.error(f"Failed to save assistant message: {e}")
-                            # === /DB block ===
 
                 except Exception as e:
                     # await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}', parse_mode=ParseMode.MARKDOWN)
