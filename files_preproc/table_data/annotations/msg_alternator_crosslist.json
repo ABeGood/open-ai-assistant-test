@@ -1,0 +1,24 @@
+{
+    "table_name": "msg_alternator__crosslist",
+    "description": "Table containing crosslist for AS-PL alternator numbers and OEM numbers",
+    "columns": [
+        {
+            "name": "as_no",
+            "type": "string",
+            "description": "This column represents the AS-PL Article of the alternator.",
+            "unit": ""
+        },
+        {
+            "name": "ref_name",
+            "type": "string",
+            "description": "This column represents the name of manufacturer",
+            "unit": ""
+        },
+        {
+            "name": "ref_no",
+            "type": "string",
+            "description": "This columns represents the original number of alternator",
+            "unit": ""
+        }
+    ]
+}

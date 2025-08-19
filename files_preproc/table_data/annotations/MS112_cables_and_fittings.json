@@ -1,0 +1,42 @@
+{
+    "table_name": "MS112 Cables and Fittings",
+    "description": "Table containing data about electrical A/C compressors, which can be tested by test bench MS112",
+    "columns": [
+        {
+            "name": "MSG SKU",
+            "type": "string",
+            "description": "This column represents the MSG Article of the compressor.",
+            "unit": ""
+        },
+		{
+            "name": "OEM",
+            "type": "string",
+            "description": "This column represents the list of corresponding OEM numbers of original manufacturer",
+            "unit": ""
+        },
+        {
+            "name": "Part number",
+            "type": "string",
+            "description": "This column represents the list of part numbers for this compressor",
+            "unit": ""
+        },
+        {
+            "name": "Car",
+            "type": "string",
+            "description": "This columns represents the list of compatible vehicles for this compressor",
+            "unit": ""
+        },
+        {
+            "name": "Cables and fittings",
+            "type": "string",
+            "description": "This column represents the list of compatible cables (high-voltage cable with suffix H and data cable with suffix D), fittings (suffix HP for high-pressure fitting and LP for low-pressure fitting) and special repair tools",
+            "unit": ""
+        },
+        {
+            "name": "Protocol",
+            "type": "string",
+            "description": "This columns represents the type of protocol for this compressor",
+            "unit": ""
+        }
+    ]
+}

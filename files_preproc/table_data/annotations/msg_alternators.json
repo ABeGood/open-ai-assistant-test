@@ -1,0 +1,42 @@
+{
+    "table_name": "msg__alternatory",
+    "description": "Table containing data about alternators in MS005, MS005A, MS008, MS002A database",
+    "columns": [
+        {
+            "name": "as_index",
+            "type": "string",
+            "description": "This column represents the AS-PL Article of the alternator.",
+            "unit": ""
+        },
+		{
+            "name": "napiecie",
+            "type": "int",
+            "description": "This column represents the nominal voltage of alternator. Usually it should be 12 Volts or 24 Volts. For some units it can be 48 Volts",
+            "unit": "V"
+        },
+        {
+            "name": "natezenie",
+            "type": "int",
+            "description": "This column represents the nominal output current of alternator.",
+            "unit": "A"
+        },
+        {
+            "name": "regulator",
+            "type": "string",
+            "description": "This column represents the AS-PL number of compatible voltage regulator for this alternator",
+            "unit": ""
+        },
+        {
+            "name": "plug",
+            "type": "string",
+            "description": "This columns represents the compatible plug type. Corresponding picture which describe how to connect alternator with this plug has same name (JPG format)",
+            "unit": ""
+        },
+        {
+            "name": "od1",
+            "type": "float",
+            "description": "This column represents the pulley diameter of alternator",
+            "unit": "mm"
+        }
+    ]
+}

@@ -1,0 +1,127 @@
+{
+    "table_name": "MS561 Programs",
+    "description": "Table containing data about steering units in MS561Pro software",
+    "columns": [
+        {
+            "name": "Unit name",
+            "type": "string",
+            "description": "This column represents the MSG Article of the steering unit",
+            "unit": ""
+        },
+		{
+            "name": "Protocol",
+            "type": "string",
+            "description": "This column represents the communication protocol of this steering unit",
+            "unit": ""
+        },
+        {
+            "name": "Comment",
+            "type": "string",
+            "description": "This column represents the status of development of steering unit. Done means it is finished. All other - it is still in development",
+            "unit": ""
+        },
+        {
+            "name": "TOP Rating",
+            "type": "string",
+            "description": "This column represents if this steeng unit is top popular or not. TOP10 means that it is in TOP 10 popular units.",
+            "unit": ""
+        },
+        {
+            "name": "Read ID",
+            "type": "string",
+            "description": "This column represents the possibility of reading identification data of the unit similar like diagnostic scanner does",
+            "unit": ""
+        },
+		
+        {
+            "name": "Read DTC",
+            "type": "string",
+            "description": "This column represents the possibility of reading the DTCs (Diagnostic trouble codes) of the unit similar like diagnostic scanner does",
+            "unit": ""
+        },
+        {
+            "name": "Live data",
+            "type": "string",
+            "description": "This column represents the possibility of reading the 'Measured values' ('Live data') of the unit similar like diagnostic scanner does",
+            "unit": ""
+        },
+        {
+            "name": "Parametrization",
+            "type": "string",
+            "description": "This column represents the possibility to make Parametrization (Dataset uploading) to the steering unit",
+            "unit": ""
+        },
+        {
+            "name": "Programm.",
+            "type": "string",
+            "description": "This column represents the possibility of programming (flashing) this steering units and amount of firmwares, attached to this program in MS561Pro software",
+            "unit": ""
+        },
+        {
+            "name": "Special func.",
+            "type": "string",
+            "description": "This column represents the list of some special functions which are available in MS561Pro software for this steering unit",
+            "unit": ""
+        },
+        {
+            "name": "Cable",
+            "type": "string",
+            "description": "This column represents the compatible special cable for connecting this steering unit",
+            "unit": ""
+        },
+        {
+            "name": "Read ID",
+            "type": "string",
+            "description": "This column represents the ",
+            "unit": ""
+        },
+        {
+            "name": "Univ. FR program",
+            "type": "string",
+            "description": "This column represents the name of program for universal Flexray cable MS-39000. Can be used only for units with Flexray protocol",
+            "unit": ""
+        },        
+		{
+            "name": "Univ. FR adapt.",
+            "type": "string",
+            "description": "This column represents the name of adapters for connecting this steering unit to universal Flexray cable MS-39000. Can be used only for units with Flexray protocol",
+            "unit": ""
+        },        
+		{
+            "name": "Univ. cab",
+            "type": "string",
+            "description": "This column represents the possibility to connect ths steering unit using universal cable MS-35671. Can not be used only for units with Flexray protocol",
+            "unit": ""
+        },        
+		{
+            "name": "OEM",
+            "type": "string",
+            "description": "This column represents the list of OEM (Original Equipment Manufacturers) numbers for this steering unit",
+            "unit": ""
+        },        
+		{
+            "name": "Group of vehicles",
+            "type": "string",
+            "description": "This column represents the automobile concern which makes the vehicle with this steering unit",
+            "unit": ""
+        },        
+		{
+            "name": "Vehicles",
+            "type": "string",
+            "description": "This column represents the list of vehicles which use this steering unit",
+            "unit": ""
+        },        
+		{
+            "name": "Photo",
+            "type": "string",
+            "description": "This column represents if there is a photo of this steering unit in MS561Pro software or not",
+            "unit": ""
+        },		
+        {
+            "name": "Connection diagram",
+            "type": "string",
+            "description": "This column represents if there is a connection diagram for this steering unit in MS561Pro software or not",
+            "unit": ""
+        }
+    ]
+}
