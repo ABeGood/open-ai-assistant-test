@@ -12,10 +12,10 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Orchester",
+            "name": "main",
             "type": "debugpy",
             "request": "launch",
-            "program": "tg_bot.py",
+            "program": "main.py",
             "console": "integratedTerminal"
         }
     ]

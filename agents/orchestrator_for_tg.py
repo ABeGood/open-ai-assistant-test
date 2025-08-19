@@ -18,13 +18,20 @@ from classes.agents_response_models import (
     create_timeout_response
 )
 from agents.prompt_static_analyzer import PromptStaticAnalyzer
-from agents.config import assistant_configs, price_per_token_in, price_per_token_out
-from response_processing_utils import (
+from agents.agents_config import assistant_configs, price_per_token_in, price_per_token_out
+from agents.agent_response_processing_utils import (
     process_image_markers, 
     delete_sources_from_text, 
-    assistant_files_mapping, 
     extract_marker_parts,
     find_file_by_name
+)
+from agents.path_utils import (
+    resolve_image_path, 
+    resolve_all_images_in_text, 
+    find_specialist_files,
+    get_specialist_base_path,
+    get_pdf_mapping_file_path,
+    get_doc_mapping_file_path
 )
 
 logging.basicConfig(
@@ -537,32 +544,40 @@ SPECIALISTS RESPONSES:
             img_files_list = []
 
             if len(sources_list) > 0:
-                files_path = assistant_files_mapping.get(assistant_name)
                 try:
-                    source_mapping_filepath = files_path + 'pdf_mapping.json'
+                    source_mapping_filepath = get_pdf_mapping_file_path(assistant_name)
                     with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
                         pdf_mapping = json.load(file)
                     for source in sources_list:
                         source_filename = source.filename
                         name_without_ext = os.path.splitext(source_filename)[0]
-                        source_file_path = pdf_mapping[name_without_ext]
-                        sources_files_list.append(source_file_path)
+                        source_file_path = pdf_mapping.get(name_without_ext)
+                        if source_file_path:
+                            sources_files_list.append(source_file_path)
+                        else:
+                            logging.warning(f'Source mapping not found for: {name_without_ext}')
                     sources_files_list = list(set(sources_files_list))
                 except Exception as e:
                     logging.warning(f'Failed find source in pdf_mapping.json. {e}',exc_info=True)
 
             if len(img_markers_list) > 0:
-                files_path = assistant_files_mapping.get(assistant_name)
-                img_mapping_filepath = files_path + 'doc_mapping.json'
-                with open(img_mapping_filepath, 'r', encoding='utf-8') as file:
-                    img_mapping = json.load(file)
-                for img in img_markers_list:
-                    img_info = extract_marker_parts(marker = img)
-                    if img_info:
-                        img_dir = img_mapping[img_info['img_file_key']]
-                        file = find_file_by_name(files_path+img_dir, img_info['img_file_key']+'_'+img_info['img_name'])  # TODO Kostyl
-                        img_files_list.append(file[0].replace('\\', '/'))
-                img_files_list = list(set(img_files_list))
+                try:
+                    img_mapping_filepath = get_doc_mapping_file_path(assistant_name)
+                    with open(img_mapping_filepath, 'r', encoding='utf-8') as file:
+                        img_mapping = json.load(file)
+                    for img in img_markers_list:
+                        img_info = extract_marker_parts(marker = img)
+                        if img_info:
+                            img_dir = img_mapping.get(img_info['img_file_key'])
+                            if img_dir:
+                                file = find_file_by_name(os.path.join(files_path, img_dir), img_info['img_file_key']+'_'+img_info['img_name'])
+                                if file:
+                                    img_files_list.append(file[0].replace('\\', '/'))
+                            else:
+                                logging.warning(f'Image mapping not found for: {img_info["img_file_key"]}')
+                    img_files_list = list(set(img_files_list))
+                except Exception as e:
+                    logging.warning(f'Failed to process image mappings. {e}', exc_info=True)
 
             response_clean = delete_sources_from_text(text_wo_markers)
             processing_time = time.time() - start_time

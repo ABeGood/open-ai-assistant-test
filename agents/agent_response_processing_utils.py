@@ -3,13 +3,6 @@ import re
 import glob
 import json
 
-assistant_files_mapping = {
-    'equipment': 'files_preproc/equipment/',
-    'cables': 'files_preproc/cables/',
-    'tools': 'files_preproc/tools/',
-    'commonInfo': 'files_preproc/common_info/'
-}
-
 def process_image_markers(text: str) -> tuple[str, list[str]]:
     """
     Extracts image markers from text and replaces them with sequential figure references.
