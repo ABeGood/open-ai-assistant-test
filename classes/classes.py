@@ -1,5 +1,10 @@
 from collections import deque
 from typing import Any, Dict, List, Optional
+from enum import Enum
+
+class Reaction(Enum):
+    LIKE = 1
+    DISLIKE = -1
 
 
 class Message:
@@ -7,7 +12,7 @@ class Message:
         self,
         author: str,
         content: str,
-        reaction: Optional[Any] = None,  # заглушка под будущую логику реакций
+        reaction: Optional[Reaction] = None,  # заглушка под будущую логику реакций
         message_id: Optional[int] = None,
         chat_id: Optional[int] = None,
     ):
