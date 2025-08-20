@@ -1,26 +1,42 @@
-import agents.agents_config as agents_config
-from langchain.prompts import ChatPromptTemplate
-from langchain.prompts import PromptTemplate
-from langchain.schema.runnable import RunnableBranch, RunnablePassthrough
 from typing import Literal
-from langchain.output_parsers.openai_functions import PydanticAttrOutputFunctionsParser, JsonOutputFunctionsParser
-from langchain.pydantic_v1 import BaseModel, Field
-# from langchain.utils.openai_functions import convert_pydantic_to_openai_function
-from langchain_core.utils.function_calling import convert_to_openai_function
-from operator import itemgetter
-from openai import OpenAI, AzureOpenAI
-from langchain_community.chat_models import ChatOpenAI
-from langchain_community.chat_models import AzureChatOpenAI
-
+from pydantic import BaseModel, Field
+from openai import OpenAI
+import os
+import json
+import pandas as pd
 import time
 from enum import Enum
-
 from .prompts import *
-from .coder_llms import *
-
+from dotenv import load_dotenv
+import logging
 import sys
 sys.path.append("../..")  # to import config from base folder
 
+# Color constants for terminal output
+BLUE = "\033[94m"
+YELLOW = "\033[93m"
+RED = "\033[91m"
+RESET = "\033[0m"
+
+
+# *USE THIS* Start
+logger = logging.getLogger(__name__)
+load_dotenv()
+api_key = os.environ.get("OPENAI_TOKEN")
+client = OpenAI(api_key=api_key)
+
+def call_llm(last_question: str, user_message: str):
+    """Simple function to determine if assistant switch is needed."""
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{
+            "role": "user", 
+            "content": f"Last question: {last_question}\nNew message: {user_message}\nSay Hello!"
+        }],
+        max_tokens=100
+    )
+    return response.choices[0].message.content
+# *USE THIS* End
 
 class TopicClassifier(BaseModel):
     """Classify if the user asked for a vizualization, e.g. plot or graph, or asked for some general numerical result, e.g. finding correlation or maximum value."""
@@ -45,8 +61,7 @@ class LLM:
 
     def __init__(
         self,
-        model="gpt-3.5-turbo-1106",
-        use_assistants_api=False,
+        model="gpt-4o-mini",
         head_number=2,
         prompt_strategy="simple",
         functions_description: str = None
@@ -59,23 +74,14 @@ class LLM:
         functions_description: str = None
             Description of the 'pre-cooked' functions which agent might decide to use in its code.
         """
-        self.model = model
+        self.model_name = model
+        self.client = client  # Use the client from the "USE THIS" block
         self.head_number = head_number
         self.local_coder_model = None
+        self.conversation_history = []  # Store conversation history
 
         self.prompts = Prompts(str_strategy=prompt_strategy,
                                head_number=head_number, functions_description=functions_description)
-        if use_assistants_api:
-            self._call_openai_llm = self._get_response_from_assistant
-            self.my_assistant = self.model.beta.assistants.create(
-                name="Data Assistant",
-                instructions="""You are a data analyst who can analyse and interpret data files such as CSV and XLSX and can draw conclusions from the data. """ +
-                """If user asks for a plot or for any other sort of visualization, just return a png file with what he asked for.""",  # must state to return a file
-                tools=[{"type": "code_interpreter"}],
-            )
-            self.thread = self.model.beta.threads.create()
-        else:
-            self._call_openai_llm = self._get_response_from_base_gpt
 
     def generate_column_descriptions(self, table_name: str, columns: list) -> str:
         """
@@ -103,16 +109,13 @@ class LLM:
                 f"Description and unit for the column '{column['name']}':"
             )
 
-            combined_message = [HumanMessage(content=combined_prompt)]
-            combined_response = self.model.invoke(combined_message)
+            combined_response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[{"role": "user", "content": combined_prompt}],
+                max_tokens=1000
+            )
 
-            # Check if combined response is a list and extract the content accordingly
-            if isinstance(combined_response, list) and len(combined_response) > 0:
-                combined_result = combined_response[0]['content']
-            elif hasattr(combined_response, 'content'):
-                combined_result = combined_response.content
-            else:
-                raise ValueError("Unexpected response format")
+            combined_result = combined_response.choices[0].message.content
 
             # Extract description and unit from the combined result
             try:
@@ -149,65 +152,49 @@ class LLM:
 
     def tag_query_type(self, user_query: str):
         """
-        Select a prompt between the one saving the plot and the one calculating some math.
+        Classify if the user asked for a visualization (plot) or general analysis.
         """
-        tagging_functions = [convert_to_openai_function(Tagging)]
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", "Think carefully, and then tag the text as instructed"),
-            ("user", "{input}")
-        ])
-        model_with_functions = self.model.bind(
-            functions=tagging_functions,
-            function_call={"name": "Tagging"}
-        )
-        tagging_chain = prompt | model_with_functions | JsonOutputFunctionsParser()
+        prompt = f"""Classify the following user query as either 'plot' or 'general':
 
-        # If halts => could be a problem with parser
-        query_topic = tagging_chain.invoke({"input": user_query})["topic"]
+- 'plot': if the user is asking for any kind of visualization, graph, chart, or plot
+- 'general': if the user is asking for numerical analysis, calculations, or general data insights
 
-        print(f"{BLUE}SELECTED A PROMPT:{RESET} {YELLOW}{query_topic}{RESET}")
+User query: "{user_query}"
 
+Respond with only one word: either 'plot' or 'general'"""
+
+        response = self._call_openai_llm(prompt, role=Role.PLANNER)
+        
+        if response and 'plot' in response.lower():
+            query_topic = 'plot'
+        else:
+            query_topic = 'general'
+            
+        print(f"SELECTED QUERY TYPE: {query_topic}")
         return query_topic
 
-    # Halts on chain.invoke() sometimes
     def get_prompt_from_router(self, user_query, df, save_plot_name=None):
         """
         Select a prompt between the one saving the plot and the one calculating some math.
         """
-        print(f"{BLUE}SELECTING A PROMPT:{RESET}")
-        temlate_for_plot_planner = self.prompts.generate_steps_for_plot_show_prompt(
-            df, user_query)
-        if save_plot_name is not None:
-            temlate_for_plot_planner = self.prompts.generate_steps_for_plot_save_prompt(
-                df, user_query, save_plot_name)
-        temlate_for_math_planner = self.prompts.generate_steps_no_plot_prompt(
-            df, user_query)
-
-        prompt_branch = RunnableBranch(
-            (lambda x: x["topic"] == "plot", PromptTemplate.from_template(
-                temlate_for_plot_planner)),
-            (lambda x: x["topic"] == "general",
-             PromptTemplate.from_template(temlate_for_math_planner)),
-            # default branch (must be included)
-            PromptTemplate.from_template(temlate_for_math_planner)
-        )
-
-        classifier_function = convert_to_openai_function(TopicClassifier)
-        llm = self.model.bind(
-            functions=[classifier_function], function_call={
-                "name": "TopicClassifier"}
-        )
-        parser = PydanticAttrOutputFunctionsParser(
-            pydantic_schema=TopicClassifier, attr_name="topic"
-        )
-        classifier_chain = llm | parser
-
-        chain = (RunnablePassthrough.assign(topic=itemgetter("input") | classifier_chain)
-                 | prompt_branch
-                 )
-        # second_chain = prompt_branch
-        result_prompt = chain.invoke({"input": user_query})
-        return result_prompt.text
+        print("SELECTING A PROMPT")
+        
+        # Get query type
+        query_topic = self.tag_query_type(user_query)
+        
+        # Select appropriate prompt template based on query type
+        if query_topic == "plot":
+            if save_plot_name is not None:
+                template = self.prompts.generate_steps_for_plot_save_prompt(
+                    df, user_query, save_plot_name)
+            else:
+                template = self.prompts.generate_steps_for_plot_show_prompt(
+                    df, user_query)
+        else:
+            template = self.prompts.generate_steps_no_plot_prompt(
+                df, user_query)
+            
+        return template
 
     def _get_response_from_base_gpt(self, prompt_in: str, role: Role = Role.PLANNER):
         print(f"{BLUE}STARTING LANGCHAIN.LLM \
@@ -376,89 +363,16 @@ class LLM:
             df, user_query, code_to_be_fixed, error_message, initial_coder_prompt)
         return self._call_openai_llm(prompt, Role.DEBUGGER), prompt
 
-    def pure_openai_assistant_answer(self, df_filename, user_query, possible_plotname=None):
-        def wait_on_run(run_local, thread_local):
-            while run_local.status == "queued" or run_local.status == "in_progress":
-                run_local = self.client.beta.threads.runs.retrieve(
-                    thread_id=thread_local.id,
-                    run_id=run_local.id,
-                )
-                time.sleep(0.5)
-            return run_local
-
-        def pretty_print(messages_local):
-            ret_val = ""
-            for m in messages_local:
-                # ret_val += f"{m.role}: {m.content[0].text.value}\n"
-
-                # and has attribute text
-                if len(m.content) != 0 and hasattr(m.content[0], "text"):
-                    ret_val += f"{m.content[0].text.value}\n"
-            return ret_val
-
-        def get_response(thread):
-            return self.client.beta.threads.messages.list(thread_id=thread.id)
-
-        def get_file_ids_from_thread(thread):
-            file_ids_local = [
-                file_id
-                for m in get_response(thread)
-                for file_id in m.file_ids
-            ]
-            return file_ids_local
-
-        def write_file_to_temp_dir(file_id, output_path):
-            file_data = self.client.files.content(file_id)
-            file_data_bytes = file_data.read()
-            with open(output_path, "wb") as f:
-                f.write(file_data_bytes)
-
-        file = self.client.files.create(
-            file=open(
-                df_filename,
-                "rb",
-            ),
-            purpose="assistants",
-        )
-
-        self.my_assistant = self.client.beta.assistants.update(
-            self.my_assistant.id,
-            tools=[{"type": "code_interpreter"}],
-            file_ids=[file.id],
-        )
-
-        message = self.client.beta.threads.messages.create(
-            thread_id=self.thread.id,
-            role="user",
-            content=user_query
-        )
-
-        run = self.client.beta.threads.runs.create(
-            thread_id=self.thread.id,
-            assistant_id=self.my_assistant.id,
-        )
-
-        wait_on_run(run, self.thread)
-
-        messages = self.client.beta.threads.messages.list(
-            thread_id=self.thread.id,
-            order="asc",
-            after=message.id
-        )
-
-        # print(run.file_ids) # still only dataframe file id
-
-        file_ids = get_file_ids_from_thread(self.thread)
-        print(f"{BLUE}RETURNED FILE IDS{RESET}: {file_ids}")
-        if len(file_ids) == 0:
-            return pretty_print(messages)
-        some_file_id = file_ids[0]
-        try:
-            write_file_to_temp_dir(some_file_id, possible_plotname)
-        except Exception as e:
-            print(f"{RED}ERROR WRITING FILE{RESET}: {e}")
-            return pretty_print(messages)
-        return pretty_print(messages) + " Plot saved to " + possible_plotname
+    def clear_conversation_history(self):
+        """Clear the conversation history to start fresh."""
+        self.conversation_history = []
+        print("Conversation history cleared")
+        
+    def set_system_message(self, system_message: str):
+        """Set a system message for the conversation context."""
+        # Clear existing history and add system message
+        self.conversation_history = [{"role": "system", "content": system_message}]
+        print(f"System message set: {system_message[:50]}...")
     
     def generate_title(self, prompt: str) -> str:
         try:
