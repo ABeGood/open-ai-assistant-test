@@ -17,6 +17,13 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "table agent",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "agents/table_processor/tests/table_agent_test.py",
+            "console": "integratedTerminal"
         }
     ]
 }

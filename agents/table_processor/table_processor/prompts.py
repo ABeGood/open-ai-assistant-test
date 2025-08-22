@@ -7,7 +7,6 @@ from .prompts_dir.simple_coder_only import PromptsSimpleCoderOnly
 from .prompts_dir.simple import PromptsSimple
 from .prompts_dir.function_generation import PromptsForFunctionGeneration
 from .prompts_dir.debug_prompts import DebugPrompts
-from .prompts_dir.functional_prompts import PromptsForSpecificFunctionality
 from .prompts_dir.hybrid_prompts import HybridPromptsForFunctionAndTextGeneration
 
 
@@ -41,8 +40,6 @@ class Prompts:
             self.strategy = HybridPromptsForFunctionAndTextGeneration()
         else:
             raise Exception(f"{RED}Unknown prompt strategy!{RESET}")
-
-        self.merge_query_and_history_prompt = PromptsForSpecificFunctionality.merge_query_and_history
 
         if functions_description is not None:
             self.functions_description_for_plannig = f"""\
@@ -83,7 +80,7 @@ The descriptions of these functions go as follows:
             return ''
 
     def generate_steps_no_plot_prompt(self, df: pd.DataFrame, user_query: str, data_annotation: dict | None):
-        return self.strategy.format_generate_steps_no_plot_prompt(self.head_number, df, user_query, self.column_annotations(data_annotation), self.functions_description_for_plannig)
+        return self.strategy.format_generate_steps_no_plot_prompt(head_number=self.head_number, df=df, user_query=user_query, column_description=self.column_annotations(data_annotation))
 
     def generate_replan(self, df: pd.DataFrame, user_query: str, plan: str, data_annotation: dict | None):
         return self.strategy.format_reformulate_plan_prompt(self.head_number, df, user_query, self.column_annotations(data_annotation), plan, self.functions_description_for_plannig)

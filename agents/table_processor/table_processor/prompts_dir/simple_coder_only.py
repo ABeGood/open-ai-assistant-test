@@ -82,13 +82,12 @@ Example of the output format with backticks:
     def format_generate_steps_for_plot_show_prompt(self, *args, **kwargs):
         raise Exception("This prompt strategy does not support generating steps.")
 
-    def format_generate_code_prompt(self, head_number, df, user_query, plan, column_description, functions_description):
+    def format_generate_code_prompt(self, head_number, df, user_query, plan, column_description):
         return self.generate_code.format(
             input=user_query, 
             df_head=df.head(head_number), 
             plan=plan, head_number=head_number, 
             column_description=column_description, 
-            functions_description=functions_description
         )
 
     def format_generate_code_for_plot_save_prompt(self, head_number, df, user_query, plan, column_description, functions_description, save_plot_name=""):

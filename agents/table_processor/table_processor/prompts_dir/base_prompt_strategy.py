@@ -216,33 +216,6 @@ Your answer:"""
                 raise Exception(
                     "This prompt strategy does not support generating steps., you should directly call a prompt-specific format method."
                 )
-        elif prompt_name == 'generate_steps_for_plot_save':
-            if hasattr(self, 'generate_steps_for_plot_save'):
-                return self.format_generate_steps_for_plot_save_prompt(
-                    head_number=kwargs['head_number'],
-                    df=df,
-                    user_query=user_query,
-                    save_plot_name=kwargs['save_plot_name'],
-                    column_description=column_description,
-                    functions_description=functions_description
-                )
-            else:
-                raise Exception(
-                    "This prompt strategy does not support generating steps., you should directly call a prompt-specific format method."
-                )
-        elif prompt_name == 'generate_steps_for_plot_show':
-            if hasattr(self, 'generate_steps_for_plot_show'):
-                return self.format_generate_steps_for_plot_show_prompt(
-                    head_number=kwargs['head_number'],
-                    df=df,
-                    user_query=user_query,
-                    column_description=column_description,
-                    functions_description=functions_description
-                )
-            else:
-                raise Exception(
-                    "This prompt strategy does not support generating steps., you should directly call a prompt-specific format method."
-                )
         elif prompt_name == 'generate_code':
             prompt = self.generate_code if kwargs['use_gpt4o'] is False else self.generate_code_gpt4_
             return prompt.format(
@@ -251,18 +224,6 @@ Your answer:"""
                 plan=plan,
                 head_number=kwargs['head_number'],
                 column_description=column_description,
-                functions_description=functions_description
-            )
-        elif prompt_name == 'generate_code_for_plot_save':
-            assert kwargs['save_plot_name'], "The save_plot_name parameter must be provided for this prompt strategy."
-
-            return self.generate_code_for_plot_save.format(
-                input=user_query,
-                df_head=df.head(kwargs['head_number']),
-                plan=plan,
-                head_number=kwargs['head_number'],
-                column_description=column_description,
-                save_plot_name=kwargs['save_plot_name'],
                 functions_description=functions_description
             )
 
@@ -279,22 +240,6 @@ Your answer:"""
                 data=data,
                 df_examples=", ".join([f"df_{i+1}" for i in range(len(df))])
             )
-        
-        elif prompt_name == 'generate_code_multiple_dfs_plot':
-            data = "\n"
-            for i in range(len(df)):
-                data += f"DataFrame df_{i+1}:\n{df[i].head(kwargs['head_number'])}\n\
-                {column_description[i]}\n"
-
-            return self.generate_code_multiple_dfs_plot.format(
-                input=user_query,
-                plan=plan,
-                functions_description=functions_description,
-                data=data,
-                save_plot_name=kwargs['save_plot_name'],
-                df_examples=", ".join([f"df_{i+1}" for i in range(len(df))])
-            )
-            
 
         elif prompt_name == 'generate_whatever':
             return self.generate_whatever.format(

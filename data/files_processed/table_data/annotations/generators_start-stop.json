@@ -1,11 +1,11 @@
 {
-    "table_name": "Генераторы START-STOP",
+    "table_name": "generators_start-stop",
     "description": "Table containing data about Alternators with Start/Stop function (starters/alternators, or BSG, belt starter-generator) which can be tested ny MS005A test bench",
     "columns": [
         {
             "name": "Make",
             "type": "string",
-            "description": "This column represents the make of the compatible vehiche for this alternator",
+            "description": "The Make column contains multiple makes in a single string (e.g., 'VW AUDI PORSCHE'). When filtering, do not compare with equality. Instead, use string matching methods such as .str.contains() (case-insensitive) to check if the target make is present in the string.",
             "unit": ""
         },
 		{

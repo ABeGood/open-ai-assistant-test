@@ -27,7 +27,7 @@ for index, row in dataset_df.iterrows():
 
     agent = TableAgent(folder_path + row["table_name"],
                      max_debug_times=max_debug_times,
-                     gpt_model=llm_model,
+                     client=llm_model,
                      head_number=head_number
                      )
 

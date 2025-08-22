@@ -3,26 +3,17 @@ import json
 from typing import Callable
 from random import getrandbits
 import pandas as pd
-from pathlib import Path
-import matplotlib
-# AG: patch for 'RuntimeError: main thread is not in main loop';
-# In Matplotlib, the Agg backend is a non-interactive backend that renders figures to PNG files.
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import random
 from typing import List, Tuple, Optional
 from .llms import LLM
 from .code_manipulation import Code
 from .logger import *
-import threading
 from .preprocessing import *
-from functools import partial
-from time import time
 from .AgentDataFrameManager import AgentDataFrameManager, AddDataMode
 from copy import copy
 from .data_classes import CodeSnippet
 import atexit
 import shutil
+from openai import OpenAI
 
 
 def cleanup(folder_path):
@@ -38,7 +29,7 @@ def cleanup(folder_path):
 class TableAgent:
     def __init__(
         self,
-        gpt_model: Callable,
+        client: OpenAI,
         table_file_path: str | list[str] | None = None,
         max_debug_times: int = 2,
         coder_model: str = 'gpt',
@@ -46,7 +37,6 @@ class TableAgent:
         head_number: int = 2,
         prompt_strategy: str = 'simple',
         prompt_name: str = 'generate_whatever',
-        # [remove_spaces_in_column_names],
         preprocessing_steps: list[Callable[[pd.DataFrame], pd.DataFrame]] = [],
         functions_description: str = None,
         functions_list: list[Callable] = None,
@@ -54,7 +44,6 @@ class TableAgent:
         data_specs_dir_path: str | None = None,
         tagging_strategy="openai",
         query_type=None,
-        is_query_ok_llm=None,
         allow_same_process_execution: bool = False,
         tmp_file_path=None,
         column_description_paths=None,
@@ -118,7 +107,7 @@ class TableAgent:
             generated code is being ran in the same process (faster) or separate process (safer)
         """
 
-        self.gpt_model = gpt_model
+        self.llm_client = client
         self.coder_model = coder_model
         self.adapter_path = adapter_path
         self.max_debug_times = max_debug_times
@@ -146,8 +135,7 @@ class TableAgent:
                     "coder_only_simple"), "Both use_assistants_api and coder_only_simple cannot be True at the same time."
 
         self.llm_calls = LLM(
-            use_assistants_api=self.use_assistants_api,
-            model=self.gpt_model,
+            llm_client=self.llm_client,
             head_number=self.head_number,
             prompt_strategy=prompt_strategy,
             functions_description=functions_description
@@ -175,17 +163,6 @@ class TableAgent:
         self.prompt_strategy = self.llm_calls.prompts.strategy
         if self.tmp_file_path:
             self.prompt_strategy.tmp_file_path = self.tmp_file_path
-
-        if is_query_ok_llm:
-            self.is_query_ok_llm = LLM(
-                use_assistants_api=self.use_assistants_api,
-                model=is_query_ok_llm,
-                head_number=self.head_number,
-                prompt_strategy='simple',
-                functions_description=functions_description
-            )
-        else:
-            self.is_query_ok_llm = None
 
         # So that df.head(1) did not truncate the printed table
         pd.set_option('display.max_columns', None)
@@ -283,27 +260,6 @@ class TableAgent:
         self._tagged_query_type = None
         self._prompt_user_for_planner = None
 
-    def _test_if_query_is_ok(self, query: str, llm=None):
-        '''
-        Expects GPT4o
-        '''
-        if llm is None:
-            llm = self.llm_calls
-
-        is_query_ok = llm.is_query_clear(
-            query, self.df, data_annotation=self.data_specs)
-        if "Yes" in is_query_ok:
-            return True, is_query_ok.replace("Yes", "").replace("No", "").replace(", | clarifying_query:", "Note: I did not fully understand the question.").strip()
-
-        if len(is_query_ok.split("_")) < 3 and 'do you mean' in is_query_ok.lower():
-            return True, is_query_ok.replace("Yes", "").replace("No", "").replace(", | clarifying_query:", "Note: I did not fully understand the question.").strip()
-
-        return False, is_query_ok.replace("Yes", "").replace("No", "").replace(", | clarifying_query:", "Note: I did not fully understand the question.").strip()
-
-    def _test_query_disambiguation(self, query: str):
-        is_query_ok = self.llm_calls.query_disambiguation(
-            query, self.df, data_annotation=self.data_specs)
-        return is_query_ok, ""
     
     def get_query_sufix_with_og_df_names(self) -> str:
         """
@@ -326,7 +282,6 @@ class TableAgent:
     def answer_query(
         self,
         query: str,
-        show_plot=False,
         save_plot_dir="temp/",
         do_query_rewrite=False,
         check_plan=False,
@@ -334,7 +289,7 @@ class TableAgent:
         check_query_ok=False,
         tested_type=None,
         save_df=False
-    ) -> Tuple[str, List[CodeSnippet]] | Tuple[str, List[CodeSnippet], str, str]:
+    ) -> Tuple[str, List[CodeSnippet]]:
         """
         for history format, see transform_history function in GUI/main.py
 
@@ -349,13 +304,6 @@ class TableAgent:
         # Add names of the tables of dataframe variables to the query
         query += self.get_query_sufix_with_og_df_names()
 
-        possible_plotname = None
-        if not show_plot:  # No need to plt.show()
-            # this name is only passed as argument to prompt_template. In the generated code, the filename
-            # will be replaced by this string: <code_segment_is>_SEG_plot_<agent_hash>.png
-            possible_plotname = self.prompt_strategy.create_possible_plot_name(
-                self.agent_hash)
-
         if history:
             query = self.llm_calls.merge_query_and_history(query, history)
 
@@ -365,28 +313,11 @@ class TableAgent:
 
         # We always want the answer to be in the df variable, as the same
         # code can be used for saving the dataframe
-        if True:
-            query = self.llm_calls.modify_query_for_save_df(query)
+        # query = self.llm_calls.modify_query_for_save_df(query)
 
-        if check_query_ok and self.is_query_ok_llm:
-
-            def run_test_if_query_is_ok(query, ret):
-                answer, comment = self._test_if_query_is_ok(
-                    query, llm=self.is_query_ok_llm)
-                ret['answer'] = answer
-                ret['comment'] = comment
-
-            ret = {}
-            thread = threading.Thread(
-                target=run_test_if_query_is_ok, args=(query, ret))
-            thread.start()
-        else:
-            thread, ret = None, None
-
-        self._tagged_query_type = self.llm_calls.tag_query_type(query)
         if self._plan is None and self.prompt_strategy.has_planner:  # Not skipping the reasoning part
             self._plan, self._prompt_user_for_planner = self.llm_calls.plan_steps_with_gpt(
-                query, self.df, save_plot_name=possible_plotname, query_type=self._tagged_query_type, data_annotation=self.data_specs)
+                query, self.df, data_annotation=self.data_specs)
             if check_plan:
                 self._plan = self.llm_calls.generate_replan(
                     query, self.df, self._plan, data_annotation=self.data_specs)
@@ -395,11 +326,10 @@ class TableAgent:
             query,
             self.df,
             self._plan,
-            show_plot=show_plot,
+            show_plot=False,
             tagged_query_type=self._tagged_query_type,
             llm=self.coder_model,
             adapter_path=self.adapter_path,
-            save_plot_name=possible_plotname,  # for the "coder_only" prompt strategies
             data_annotation=self.data_specs,
             prompt_name=self.prompt_name
         )
@@ -409,7 +339,7 @@ class TableAgent:
 
         # 'local' removes the definition of a new df if there is one
         code_to_execute = Code.extract_code(
-            generated_answer, provider=self.provider, show_plot=show_plot, prompt_strategy=self.prompt_strategy)
+            generated_answer, provider=self.provider, show_plot=False, prompt_strategy=self.prompt_strategy)
 
         result_list = self.prompt_strategy.run_code_segments(
             copy(code_to_execute),
@@ -439,10 +369,6 @@ class TableAgent:
                 ret_value = result_list[0]['plot_filenames']
 
         self._reset_skip_reasoning_part()
-
-        if check_query_ok and thread:
-            thread.join()
-            return ret_value, result_list, ret['answer'], ret['comment']
 
         return ret_value, result_list
     
