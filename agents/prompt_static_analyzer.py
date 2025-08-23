@@ -106,7 +106,7 @@ class ProductCodeDetector:
             'unknown': []
         }
         
-        # Create regex patterns for different code formats
+        # Create regex patterns for different code formats (case insensitive)
         patterns = [
             r'MS\d{3}[A-Z]*(?:\s+COM)?',  # MS### or MS###A format, with optional " COM"
             r'MS\d{4,5}-[A-Z]{3}',  # MS####-XXX or MS#####-XXX format (tools)
@@ -116,26 +116,27 @@ class ProductCodeDetector:
         ]
         
         for pattern in patterns:
-            matches = re.findall(pattern, query_upper)
+            matches = re.findall(pattern, query_upper, re.IGNORECASE)
             for match in matches:
                 # Clean up the match (remove spaces, normalize)
                 clean_match = match.replace(' ', '')
                 
-                # Check against equipment codes first
-                if clean_match in self.equipment_codes:
-                    detected['equipment'].append(clean_match)
-                elif clean_match in self.tool_codes:
-                    detected['tools'].append(clean_match)
+                # Check against equipment codes first (case insensitive)
+                clean_match_upper = clean_match.upper()
+                if clean_match_upper in self.equipment_codes:
+                    detected['equipment'].append(clean_match_upper)
+                elif clean_match_upper in self.tool_codes:
+                    detected['tools'].append(clean_match_upper)
                 else:
                     # Check if it matches the pattern but with space (like "MS002 COM")
-                    if ' COM' in match:
-                        base_code = match.replace(' COM', 'COM')
+                    if ' COM' in match.upper():
+                        base_code = match.upper().replace(' COM', 'COM')
                         if base_code in self.equipment_codes:
                             detected['equipment'].append(base_code)
                         else:
-                            detected['unknown'].append(clean_match)
+                            detected['unknown'].append(clean_match_upper)
                     else:
-                        detected['unknown'].append(clean_match)
+                        detected['unknown'].append(clean_match_upper)
         
         return detected
     
@@ -165,7 +166,7 @@ class ProductCodeDetector:
         
         oem_numbers = []
         for pattern in oem_patterns:
-            matches = re.findall(pattern, query)
+            matches = re.findall(pattern, query, re.IGNORECASE)
             oem_numbers.extend(matches)
         
         return oem_numbers
