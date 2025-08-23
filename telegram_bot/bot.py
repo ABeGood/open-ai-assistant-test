@@ -159,6 +159,11 @@ class TelegramBot:
                                 self.table_agent.agent_dataframe_manager.add_data(table_file_path)
                                 resp, code = self.table_agent.answer_query(user_message)
                                 table_response_results[table] = {'response': resp, 'code': code[0].final_code_segment}
+                                interpreter_result = self.table_agent.interpret_result(
+                                    user_query=user_message,
+                                    code=table_response_results[table]['code'],
+                                    output=table_response_results[table]['response']
+                                    )
                                 self.table_agent.agent_dataframe_manager.remove_all_data()
                     
                     specialists_responses = self.orchestrator_agent.call_specialists_sequentially(session_id=session_id, 

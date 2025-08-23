@@ -1,7 +1,5 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from .enums import SpecialistType, TableName
-
-
 
 
 class OrchestratorResponse(BaseModel):
@@ -42,3 +40,42 @@ class OrchestratorResponse(BaseModel):
         # Uncomment if you want to enforce this rule:
         # if SpecialistType.TABLES in self.specialists and not self.tables_to_query:
         #     raise ValueError("At least one table must be specified when 'tables' specialist is selected")
+
+class InterpreterResponse(BaseModel):
+    """Pydantic model for result interpreter response validation"""
+    
+    interpretation: str = Field(
+        ..., 
+        description="Clear, natural language explanation of what the results show, with cleaned and processed data"
+    )
+    
+    rerun_needed: bool = Field(
+        ...,
+        description="True if major issues require code rerun (empty results, wrong columns, major logic errors), False if results can be interpreted"
+    )
+    
+    fixes: str = Field(
+        ...,
+        description="Specific instructions for fixing code issues when rerun_needed=True, empty string when rerun_needed=False"
+    )
+    
+    class Config:
+        extra = 'forbid'  # Equivalent to additionalProperties: false
+    
+    def model_post_init(self, __context) -> None:
+        """Custom validation to ensure fixes logic is correct"""
+        # If rerun is not needed, fixes should be empty
+        if not self.rerun_needed and self.fixes.strip():
+            raise ValueError("fixes must be empty when rerun_needed is False")
+        
+        # If rerun is needed, fixes should not be empty
+        if self.rerun_needed and not self.fixes.strip():
+            raise ValueError("fixes must contain instructions when rerun_needed is True")
+    
+    @field_validator('interpretation')
+    @classmethod
+    def interpretation_not_empty(cls, v: str) -> str:
+        """Ensure interpretation is not empty"""
+        if not v.strip():
+            raise ValueError("interpretation cannot be empty")
+        return v
