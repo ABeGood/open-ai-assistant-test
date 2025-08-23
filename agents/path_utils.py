@@ -186,3 +186,26 @@ def get_mapping_file_path_safe(specialist: str, filename: str) -> str:
     """
     from config import get_mapping_file_path
     return str(get_mapping_file_path(specialist, filename))
+
+
+def get_table_annotations_path() -> str:
+    """
+    Get the path to table data annotations directory.
+    
+    Returns:
+        str: Full path to data/files_processed/table_data/annotations directory
+    """
+    return str(Path(__file__).parent.parent / "data" / "files_processed" / "table_data" / "annotations")
+
+
+def get_table_data_path(table_name:str="") -> str:
+    """
+    Get the path to table data tables directory.
+    
+    Returns:
+        str: Full path to data/files_processed/table_data/tables directory
+    """
+    if table_name:
+        return str(Path(__file__).parent.parent / "data" / "files_processed" / "table_data" / "tables"/f"{table_name}.csv")
+    else:
+        return str(Path(__file__).parent.parent / "data" / "files_processed" / "table_data" / "tables")

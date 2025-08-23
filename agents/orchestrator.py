@@ -27,12 +27,8 @@ from agents.agent_response_processing_utils import (
     find_file_by_name
 )
 from agents.path_utils import (
-    resolve_image_path, 
-    resolve_all_images_in_text, 
-    find_specialist_files,
-    get_specialist_base_path,
     get_pdf_mapping_file_path,
-    get_doc_mapping_file_path
+    get_doc_mapping_file_path,
 )
 
 logging.basicConfig(
@@ -153,7 +149,8 @@ class OrchestratorAgent:
                 "Session not found",
                 user_message,
                 specialists=[],
-                reason=None
+                reason=None,
+                tables_to_query = [],
             )
         
         # Get current context
@@ -192,7 +189,8 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                 OrchestratorResponse,
                 f"Error creating routing message: {e}",
                 user_message,
-                specialists=[]
+                specialists=[],
+                tables_to_query = [],
             )
         
         # Get routing decision
@@ -210,7 +208,8 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                 OrchestratorResponse,
                 f"Error creating routing run: {e}",
                 user_message,
-                specialists=[]
+                specialists=[],
+                tables_to_query = [],
             )
         
         # Wait for completion
@@ -223,7 +222,8 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                     OrchestratorResponse,
                     user_message,
                     "Routing decision timed out",
-                    specialists=[]
+                    specialists=[],
+                    tables_to_query = [],
                 )
             
             time.sleep(1)
@@ -235,7 +235,8 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                     OrchestratorResponse,
                     f"Error checking routing status: {e}",
                     user_message,
-                    specialists=[]
+                    specialists=[],
+                    tables_to_query = [],
                 )
         logging.info(f'ORCHESTRATOR RUN COMPLETED:\nInput tokens: {run.usage.prompt_tokens} ({run.usage.prompt_tokens*price_per_token_in}$)\nInput tokens: {run.usage.completion_tokens} ({run.usage.completion_tokens*price_per_token_out}$)')
         try:
@@ -247,7 +248,8 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                 OrchestratorResponse,
                 f"Error retrieving routing decision: {e}",
                 user_message,
-                specialists=[]
+                specialists=[],
+                tables_to_query = [],
             )
         
         # Parse decision - try to extract JSON from response
@@ -264,6 +266,7 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                 return create_success_response(
                     OrchestratorResponse,
                     user_message,
+                    tables_to_query = orchestrator_response_dict.get('tables_to_query', []),
                     specialists=orchestrator_response_dict.get('specialists', []),
                     reason=orchestrator_response_dict.get('reason'),
                     confidence=orchestrator_response_dict.get('confidence'),
@@ -275,7 +278,8 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                     OrchestratorResponse,
                     "Empty assistants list",
                     user_message,
-                    specialists=[]
+                    specialists=[],
+                    tables_to_query = [],
                 )
         except Exception as e:
             logging.error(f"Error occurred: {e}", exc_info=True)
@@ -283,7 +287,8 @@ USER REQUEST METADATA FROM STATIC ANALYSIS:
                 OrchestratorResponse,
                 f"Error parsing orchestrator response: {e}",
                 user_message,
-                specialists=[]
+                specialists=[],
+                tables_to_query = [],
             )
     
     def process_with_combinator(self, session_id: str, user_message: str, specialists_responses: list[SpecialistResponse]) -> CombinatorResponse:
@@ -408,36 +413,6 @@ SPECIALISTS RESPONSES:
                 user_message,
                 specialists=specialists_names
             )
-        
-        # # Parse decision - try to extract JSON from response
-        # try:
-        #     # Look for JSON in the response
-        #     OrchestratorResponse.model_validate_json(routing_decision_raw)
-        #     orchestrator_response_dict = json.loads(routing_decision_raw)
-
-        #     if len(orchestrator_response_dict['specialists']) > 0:   # TODO: Do we need this check if we have model validation???
-        #         assistants_names = orchestrator_response_dict.get('specialists', None)
-        #     else:
-        #         # TODO: Fallback mechanism
-        #         return {"success": False,
-        #                 "error": "Empty assistants list",
-        #                 "specialists": [],
-        #                 "reasoning": None,
-        #                 "user_query": user_message,
-        #                 "raw_response": None
-        #                 }
-        # except Exception as e:
-        #     return {"success": False,
-        #             "error": f"Error parsing orchestrator response: {e}",
-        #             "specialists": [],
-        #             "reasoning": None,
-        #             "user_query": user_message,
-        #             "raw_response": None
-        #             }
-        
-        # Log routing decision
-        # if session_id in self.context_store:
-        #     self.context_store[session_id]['final_responses'].append(final_response)
         
         return create_success_response(
             CombinatorResponse,

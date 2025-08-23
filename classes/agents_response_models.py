@@ -25,6 +25,7 @@ class BaseResponse(BaseModel):
 class OrchestratorResponse(BaseResponse):
     """Response from orchestrator routing decision"""
     specialists: List[str] = Field(default_factory=list)
+    tables_to_query: List[str] = Field(default_factory=list)
     reason: Optional[str] = None
     confidence: Optional[float] = None
     raw_response: Optional[str] = None

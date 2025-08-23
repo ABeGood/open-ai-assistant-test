@@ -16,9 +16,22 @@ from telebot.apihelper import ApiTelegramException
 from telebot.types import InputMediaPhoto
 
 from classes.classes import User, Message, Reaction
+from classes.enums import SpecialistType
 from classes.agents_response_models import SpecialistResponse, CombinatorResponse
 from .formatters import format_telegram_message
 from agents.orchestrator import OrchestratorAgent
+from agents.table_processor import TableAgent
+from openai import OpenAI
+from agents.path_utils import (
+    resolve_image_path, 
+    resolve_all_images_in_text, 
+    find_specialist_files,
+    get_specialist_base_path,
+    get_pdf_mapping_file_path,
+    get_doc_mapping_file_path,
+    get_table_data_path,
+    get_table_annotations_path
+)
 
 DEBUG = True
 
@@ -36,7 +49,7 @@ logging.basicConfig(
 class TelegramBot:
     """Telegram bot for handling customer support queries."""
 
-    def __init__(self, bot_token: str, orchestrator:OrchestratorAgent) -> None:
+    def __init__(self, bot_token: str, orchestrator:OrchestratorAgent, llm_client:OpenAI) -> None:
         """
         Initialize the Telegram bot.
         
@@ -46,7 +59,12 @@ class TelegramBot:
         """
         self.bot = AsyncTeleBot(token=bot_token)
         self.admin_messages = {}
-        self.orchestrator:OrchestratorAgent = orchestrator
+        self.orchestrator_agent:OrchestratorAgent = orchestrator
+        self.table_agent:TableAgent = TableAgent(client=llm_client,
+            prompt_strategy='hybrid_code_text',
+            data_specs_dir_path=get_table_annotations_path(),
+            generated_code_exec_timeout=60
+        )
         self.logger = logging.getLogger(__name__)
         
         self.register_handlers()
@@ -84,7 +102,7 @@ class TelegramBot:
 
             # сохраним текущее входящее от пользователя сообщение в БД + добавим в кеш
             user_msg = Message(
-                author="user",
+                author=telegram_user_id,
                 content=user_message,
                 message_id=getattr(msg, "message_id", None),
                 chat_id=tg_chat_id,
@@ -108,12 +126,12 @@ class TelegramBot:
                             f"Определяем каких ботов-специалистов использовать для этого запроса..."
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    orchestrator_response = await self.orchestrator.process_request(session_id, user_message, telegram_user_id)
+                    orchestrator_response = await self.orchestrator_agent.process_request(session_id, user_message, telegram_user_id)
 
                     if DEBUG:
                         debug_msg = "🔀 STEP 1.2 \nOrchestrator response\n\n"\
-                            f"🤖 *Выбранные специалисты:* \n{orchestrator_response.specialists}\n\n" \
-                            f"❓ *Причина:* \n{orchestrator_response.reason}"
+                            f"🤖 Выбранные специалисты: \n{', '.join(orchestrator_response.specialists)}\n\n" \
+                            f"❓ Причина: \n{orchestrator_response.reason}".replace("_", "\\_")
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
                     chosen_specialists = orchestrator_response.specialists
@@ -130,8 +148,20 @@ class TelegramBot:
                             f"➡️ Отправляем параллельные запросы ботам-специалистам:\n\n" \
                             f"{chosen_specialists}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+
+                    # Call table processor if needed
+                    if SpecialistType.TABLES in chosen_specialists:
+                        if orchestrator_response.tables_to_query:
+                            table_response_results = {}
+                            for table in orchestrator_response.tables_to_query:
+                                table_file_path = get_table_data_path(table_name=table)
+                                self.table_agent.agent_dataframe_manager.add_data(table_file_path)
+                                resp, code = self.table_agent.answer_query(user_message)
+                                table_response_results[table]['response'] = resp
+                                table_response_results[table]['code'] = code
+                                self.table_agent.agent_dataframe_manager.remove_all_data()
                     
-                    specialists_responses = self.orchestrator.call_specialists_sequentially(session_id=session_id, 
+                    specialists_responses = self.orchestrator_agent.call_specialists_sequentially(session_id=session_id, 
                                                                                           specialists_names=chosen_specialists,
                                                                                           user_message=user_message)
                     
@@ -159,7 +189,7 @@ class TelegramBot:
                                 "➡️ Направляем их в бот-комбинатор для составления финального ответа."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
                             
-                            final_answer_dict = self.orchestrator.process_with_combinator(session_id, user_message, successfull_spec_resps)
+                            final_answer_dict = self.orchestrator_agent.process_with_combinator(session_id, user_message, successfull_spec_resps)
 
                             if DEBUG:
                                 debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\
@@ -176,12 +206,6 @@ class TelegramBot:
 
                 except Exception as e:
                     await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}')
-
-                    if DEBUG:
-                        try:
-                            await self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{tg_message}')
-                        except Exception:
-                            pass
 
     async def _send_response_with_images(self, chat_id: int, message: str, images: list, user: User, tg_chat_id: int):
         """Send response message with optional images."""
@@ -261,7 +285,7 @@ class TelegramBot:
         """Persist assistant message to database."""
         try:
             reply = Message(
-                author="assistant",
+                author=f"bot_to_{user.get_user_id()}",
                 content=content,
                 message_id=message_id,
                 chat_id=chat_id,

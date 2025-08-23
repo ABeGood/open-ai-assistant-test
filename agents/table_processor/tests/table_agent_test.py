@@ -38,11 +38,12 @@ if __name__ == '__main__':
     table_agent = TableAgent(
         client=client,
         prompt_strategy='hybrid_code_text',
-        table_file_path=table_file_path,
         data_specs_dir_path=data_specs_path,
         tmp_file_path=tmp_path,
         generated_code_exec_timeout=60
     )
+
+    table_agent.agent_dataframe_manager.add_data(table_file_path)
 
     # resp, code = table_agent.answer_query('OEM number for Audi A6 2018 with 3.0 TFSI motor')
     # resp, code = table_agent.answer_query('Which cable do I need for generator with oem 04L903018?')
