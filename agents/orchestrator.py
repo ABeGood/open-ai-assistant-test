@@ -30,6 +30,7 @@ from agents.path_utils import (
     get_pdf_mapping_file_path,
     get_doc_mapping_file_path,
 )
+from classes.enums import SpecialistType
 
 logging.basicConfig(
     level=logging.INFO, 
@@ -623,6 +624,8 @@ SPECIALISTS RESPONSES:
         return self.process_with_orchestrator(session_id, user_message)
     
     def call_specialists_sequentially(self, session_id: str, specialists_names: list[str], user_message: str) -> MultiSpecialistResponse:
+        if SpecialistType.TABLES in specialists_names:
+            specialists_names.remove(SpecialistType.TABLES)
         specialist_responses = []
         for specialist in specialists_names:
             response = self.route_to_assistant(

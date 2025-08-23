@@ -35,34 +35,43 @@ Examples: "How to run automated test script?", "Can I customize testing sequence
 **TABLES ASSISTANT (tables)**
 Expertise: Technical specifications tables for equipment units, cross-reference data, compatibility matrices, and component databases.
 List of available tables:
-1. "generators_start-stop": Table containing data about alternators with Start/Stop function (starters/alternators, or BSG, belt starter-generator) which can be tested with MS005A test bench.
-2. "MS112_cables_and_fittings": Table containing data about electrical A/C compressors, which can be tested by test bench MS112.
-3. "MS561_programs": Table containing data about steering units in MS561 Pro software.
+1. "alternators_start-stop": Table containing data about alternators with Start/Stop function (starters/alternators, or BSG, belt starter-generator) which can be tested with MS005A test bench. CONTAINS car makes, models, and OEM numbers.
+2. "MS112_cables_and_fittings": Table containing data about electrical A/C compressors, which can be tested by test bench MS112. CONTAINS car makes, models, and OEM numbers.
+3. "MS561_programs": Table containing data about steering units in MS561 Pro software. CONTAINS vehicle information and OEM numbers.
 4. "msg_alternator_crosslist": Table containing crosslist for AS-PL alternator numbers, names of the alternator's manufacturers and OEM numbers of the alternators. DOES NOT CONTAIN CAR MAKES OR MODELS.
-5. "msg_alternators": Table containing data about alternators in MS005, MS005A, MS008, MS002A database (AS-PL Article, nominal Voltage and Current, AS-PL number of compatible voltage regulator, compatible plug type, diameter of the compatible pulley).  DOES NOT CONTAIN CAR MAKES OR MODELS.
+5. "msg_alternators": Table containing data about alternators in MS005, MS005A, MS008, MS002A database (AS-PL Article, nominal Voltage and Current, AS-PL number of compatible voltage regulator, compatible plug type, diameter of the compatible pulley). DOES NOT CONTAIN CAR MAKES OR MODELS.
+
 Route when: User query requests specific tabular data, cross-references, compatibility lookups, technical specifications from databases, or asks to "show", "list", "find in table", "lookup", "cross-reference" information that exists in the above tables.
+
 **TABLE SELECTION LOGIC** (for tables_to_query field):
 When "tables" specialist is selected, populate tables_to_query with specific table names based on query content:
-Select "generators_start-stop" when query mentions:
-- Start/Stop functionality, BSG, belt starter-generator, start-stop alternators, car make or model, compatimility with MS005A test bench
-Select "MS112 Cables and Fittings" when query mentions:
-- MS112 equipment, A/C compressors, electrical compressors, MS112 cables
-Select "MS561 Programs" when query mentions:
-- MS561, steering units, steering systems, MS561 Pro software
-Select "msg_alternator_crosslist" when query mentions:
-- AS-PL numbers, OEM cross-reference, alternator cross-reference, part number lookup, MSG to OEM conversion
-Select "msg_alternators" when query mentions:
-- MS005/MS005A/MS008/MS002A compatibility, alternator specifications, MSG articles, AS-PL articles, voltage/current specs
+
+**PRIORITY 1 - Queries mentioning car makes, models, or vehicle compatibility (ALWAYS CHECK FIRST):**
+- Select "alternators_start-stop" when query mentions: car make/model/year AND (alternators, generators, Start/Stop functionality, BSG, belt starter-generator, start-stop alternators, MS005A test bench, OEM numbers)
+- Select "MS112_cables_and_fittings" when query mentions: car make/model/year AND (MS112 equipment, A/C compressors, electrical compressors, MS112 cables)
+- Select "MS561_programs" when query mentions: car make/model/year AND (MS561, steering units, steering systems, MS561 Pro software)
+
+**PRIORITY 2 - AS-PL to OEM cross-reference queries (ONLY when NO car make/model mentioned):**
+- Select "msg_alternator_crosslist" when query mentions: AS-PL numbers, OEM cross-reference, alternator cross-reference, part number lookup, MSG to OEM conversion, manufacturer names BUT NO car make/model/year
+
+**PRIORITY 3 - Technical specifications queries (ONLY when NO car make/model mentioned):**
+- Select "msg_alternators" when query mentions: MS005/MS005A/MS008/MS002A compatibility, alternator specifications, MSG articles, AS-PL articles, voltage/current specs, regulator compatibility, plug types, pulley diameter BUT NO car make/model/year
+
 **Multiple tables can be selected** if query spans multiple areas.
 **Empty array** if "tables" specialist is NOT selected.
-Examples with table selection:
-- "Show me OEM numbers for Audi A6 alternators" → ["msg_alternators"]
-- "Cross-reference AS-PL number to OEM" → ["msg_alternator_crosslist"]
-- "What alternators fit 2018 Audi A6 3.0 TFSI?" → ["msg_alternators"]
-- "Display compatibility table for MS112 compressors" → ["MS112 Cables and Fittings"]
-- "Show all generators with Start/Stop function" → ["generators_start-stop"]
-- "Find MSG article and OEM for SA48-001" → ["msg_alternators", "msg_alternator_crosslist"]
-- "Lookup steering units in MS561 database" → ["MS561 Programs"]
+
+**Examples with table selection:**
+- "Show me OEM numbers for Audi A6 alternators" → ["alternators_start-stop"] (car make/model + OEM = Priority 1)
+- "ОЕМ номер альтернатора от Ауди Q3 2020 года" → ["alternators_start-stop"] (car make/model/year + OEM = Priority 1)
+- "Cross-reference AS-PL number SA48-001 to OEM" → ["msg_alternator_crosslist"] (AS-PL cross-reference, no car info = Priority 2)
+- "What alternators fit 2018 Audi A6 3.0 TFSI?" → ["alternators_start-stop"] (car make/model/year = Priority 1)
+- "Display compatibility table for MS112 compressors" → ["MS112_cables_and_fittings"] (MS112 equipment, no specific car = Priority 3)
+- "Show all generators with Start/Stop function" → ["alternators_start-stop"] (Start/Stop specific, no car = general query)
+- "Find voltage and current specs for MSG article SA48-001" → ["msg_alternators"] (technical specs only, no car = Priority 3)
+- "Lookup steering units for BMW 2015" → ["MS561_programs"] (car make/year + steering = Priority 1)
+- "Show AS-PL number and manufacturer for OEM 123456789" → ["msg_alternator_crosslist"] (pure cross-reference, no car = Priority 2)
+- "Find alternator with 120A current and 12V voltage" → ["msg_alternators"] (technical specs only, no car = Priority 3)
+- "What is OEM number for alternator part AS123?" → ["msg_alternator_crosslist"] (AS-PL to OEM, no car = Priority 2)
 
 **COURSES ASSISTANT (courses)**
 Expertise: Training materials, educational content, learning modules, certification programs, skill development, tutorials, training schedules, course prerequisites.

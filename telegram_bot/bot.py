@@ -151,14 +151,14 @@ class TelegramBot:
 
                     # Call table processor if needed
                     if SpecialistType.TABLES in chosen_specialists:
+                        chosen_specialists.remove(SpecialistType.TABLES)
                         if orchestrator_response.tables_to_query:
                             table_response_results = {}
                             for table in orchestrator_response.tables_to_query:
                                 table_file_path = get_table_data_path(table_name=table)
                                 self.table_agent.agent_dataframe_manager.add_data(table_file_path)
                                 resp, code = self.table_agent.answer_query(user_message)
-                                table_response_results[table]['response'] = resp
-                                table_response_results[table]['code'] = code
+                                table_response_results[table] = {'response': resp, 'code': code[0].final_code_segment}
                                 self.table_agent.agent_dataframe_manager.remove_all_data()
                     
                     specialists_responses = self.orchestrator_agent.call_specialists_sequentially(session_id=session_id, 
