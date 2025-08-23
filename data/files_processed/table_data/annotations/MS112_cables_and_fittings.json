@@ -3,39 +3,62 @@
     "description": "Table containing data about electrical A/C compressors, which can be tested by test bench MS112",
     "columns": [
         {
+            "name": "Make",
+            "type": "string",
+            "description": "The Make column contains multiple makes in a single string (e.g., 'VW AUDI PORSCHE'). IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": ""
+        },
+        {
             "name": "MSG SKU",
             "type": "string",
-            "description": "This column represents the MSG Article of the compressor.",
+            "description": "This column represents the MSG Article of the compressor. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
 		{
             "name": "OEM",
             "type": "string",
-            "description": "This column represents the list of corresponding OEM numbers of original manufacturer",
+            "description": "This column contains the list of OEM (Original Equipment Manufacturers) numbers of original manufacturer. OEM numbers space-separated if multiple numbers exist for the same unit. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "Part number",
             "type": "string",
-            "description": "This column represents the list of part numbers for this compressor",
+            "description": "This column represents the list of part numbers for this compressor. The part numbers are separated by space or new line if multiple numbers exist for the same unit. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "Car",
             "type": "string",
-            "description": "This columns represents the list of compatible vehicles for this compressor",
-            "unit": ""
+            "description": "This column represents the list of compatible vehicles for this compressor. Each vehicle follows the format: 'BRAND MODEL (OPTIONAL_CODE) YEAR1, YEAR2, YEAR3, ...' where codes in parentheses are optional vehicle codes and years are comma-separated individual years when the vehicle was produced. Multiple vehicles may be listed in a single cell. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find vehicles available in 2018: df['Car'].str.contains('2018', na=False)",
+                "To find Lexus models (case-insensitive): df['Car'].str.contains('lexus', case=False, na=False)",
+                "To find RX450 models (case-insensitive): df['Car'].str.contains('rx450', case=False, na=False)",
+                "To find Tesla models (case-insensitive): df['Car'].str.contains('tesla', case=False, na=False)",
+                "To find Hybrid vehicles (case-insensitive): df['Car'].str.contains('hybrid', case=False, na=False)",
+                "To find Lexus RX450 from 2017: df['Car'].str.contains('lexus', case=False, na=False) & df['Car'].str.contains('rx450', case=False, na=False) & df['Car'].str.contains('2017', na=False)"
+            ]
         },
         {
             "name": "Cables and fittings",
             "type": "string",
-            "description": "This column represents the list of compatible cables (high-voltage cable with suffix H and data cable with suffix D), fittings (suffix HP for high-pressure fitting and LP for low-pressure fitting) and special repair tools",
-            "unit": ""
+            "description": "This column represents the list of compatible cables (high-voltage cable with suffix H and data cable with suffix D), fittings (suffix HP for high-pressure fitting and LP for low-pressure fitting) and special repair tools. Each item follows formats like 'MS-31001 (1H)', 'MS41001-HP', 'MS41006-LP', or 'MS40006' for tools. Multiple items may be listed in a single cell, often separated by newlines. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find high-voltage cables (suffix H): df['Cables and fittings'].str.contains('H)', na=False)",
+                "To find data cables (suffix D): df['Cables and fittings'].str.contains('D)', na=False)",
+                "To find high-pressure fittings (suffix HP): df['Cables and fittings'].str.contains('HP', na=False)",
+                "To find low-pressure fittings (suffix LP): df['Cables and fittings'].str.contains('LP', na=False)",
+                "To find specific cable MS-31001: df['Cables and fittings'].str.contains('MS-31001', case=False, na=False)",
+                "To find tools section: df['Cables and fittings'].str.contains('tools', case=False, na=False)",
+                "To find MS41001 fittings: df['Cables and fittings'].str.contains('MS41001', case=False, na=False)"
+            ]
         },
         {
             "name": "Protocol",
             "type": "string",
-            "description": "This columns represents the type of protocol for this compressor",
+            "description": "This columns represents the type of communication protocol for this compressor. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         }
     ]

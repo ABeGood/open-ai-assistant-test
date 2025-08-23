@@ -5,13 +5,13 @@
         {
             "name": "Unit name",
             "type": "string",
-            "description": "This column represents the MSG Article of the steering unit",
+            "description": "This column represents the MSG Article of the steering unit. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
 		{
             "name": "Protocol",
             "type": "string",
-            "description": "This column represents the communication protocol of this steering unit",
+            "description": "This column represents the communication protocol of this steering unit. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
@@ -60,32 +60,55 @@
         {
             "name": "Special func.",
             "type": "string",
-            "description": "This column represents the list of some special functions which are available in MS561Pro software for this steering unit",
-            "unit": ""
+            "description": "This column contains comma-separated lists of special functions available in MS561Pro software for this steering unit. Functions may include technical abbreviations, special characters (/, <->, etc.), and mixed case formatting. Functions are separated by commas, so search for partial matches within the text. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find units with DFlash functions: df['Special func.'].str.contains('dflash', case=False, na=False)",
+                "To find coding functions: df['Special func.'].str.contains('coding', case=False, na=False)",
+                "To find motor control functions: df['Special func.'].str.contains('motor', case=False, na=False)",
+                "To find VIN programming: df['Special func.'].str.contains('vin', case=False, na=False)",
+                "Case-sensitive search for specific abbreviation: df['Special func.'].str.contains('R/W', na=False)",
+                "Multiple function search: df['Special func.'].str.contains('coding', case=False, na=False) & df['Special func.'].str.contains('sensor', case=False, na=False)"
+            ]
         },
         {
             "name": "Cable",
             "type": "string",
-            "description": "This column represents the compatible special cable for connecting this steering unit",
-            "unit": ""
-        },
-        {
-            "name": "Read ID",
-            "type": "string",
-            "description": "This column represents the ",
-            "unit": ""
+            "description": "This column contains the compatible special cable model for connecting this steering unit. Cable identifiers follow the format 'MS-XXXXX (YYY)' where MS-XXXXX is the cable model number and (YYY) contains additional specifications or connector types. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find specific cable model: df['Cable'].str.contains('ms-35047', case=False, na=False)",
+                "To find cable series: df['Cable'].str.contains('ms-350', case=False, na=False)",
+                "To find by specification: df['Cable'].str.contains('106c', case=False, na=False)",
+                "To find by connector type: df['Cable'].str.contains('16p', case=False, na=False)",
+                "Partial model search: df['Cable'].str.contains('35037', case=False, na=False)",
+                "Multiple criteria: df['Cable'].str.contains('ms-37', case=False, na=False) & df['Cable'].str.contains('16p', case=False, na=False)"
+            ]
         },
         {
             "name": "Univ. FR program",
             "type": "string",
-            "description": "This column represents the name of program for universal Flexray cable MS-39000. Can be used only for units with Flexray protocol",
-            "unit": ""
+            "description": "This column contains the program name for the universal Flexray cable MS-39000. Can be used only for units with Flexray protocol. Program identifiers follow the format 'FRXXX' where FR is the prefix and XXX is a zero-padded number (e.g., FR001, FR005). IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find specific FR program: df['Univ. FR program'].str.contains('fr001', case=False, na=False)",
+                "To find all FR programs: df['Univ. FR program'].str.contains('fr', case=False, na=False)",
+                "To find FR programs by number: df['Univ. FR program'].str.contains('005', case=False, na=False)",
+                "To check for non-null FR programs: df['Univ. FR program'].str.contains('fr\\d+', case=False, na=False, regex=True)",
+                "To find units with any FR program: df['Univ. FR program'].notna() & df['Univ. FR program'].str.len() > 0"
+            ]
         },        
 		{
             "name": "Univ. FR adapt.",
             "type": "string",
-            "description": "This column represents the name of adapters for connecting this steering unit to universal Flexray cable MS-39000. Can be used only for units with Flexray protocol",
-            "unit": ""
+            "description": "This column contains the name of adapters for connecting this steering unit to universal Flexray cable MS-39000. Can be used only for units with Flexray protocol. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find specific adapter: df['Univ. FR adapt.'].str.contains('adapter_name', case=False, na=False)",
+                "To find all units with adapters: df['Univ. FR adapt.'].str.contains('.+', case=False, na=False, regex=True)",
+                "To find units without adapters: df['Univ. FR adapt.'].isna() | (df['Univ. FR adapt.'] == '')",
+                "Partial adapter search: df['Univ. FR adapt.'].str.contains('partial_name', case=False, na=False)"
+            ]
         },        
 		{
             "name": "Univ. cab",
@@ -96,31 +119,51 @@
 		{
             "name": "OEM",
             "type": "string",
-            "description": "This column represents the list of OEM (Original Equipment Manufacturers) numbers for this steering unit",
-            "unit": ""
+            "description": "This column contains the list of OEM (Original Equipment Manufacturers) numbers for this steering unit. OEM numbers space-separated if multiple numbers exist for the same unit. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find specific OEM number: df['OEM'].str.contains('oem_number', case=False, na=False)",
+                "To find partial OEM match: df['OEM'].str.contains('partial_number', case=False, na=False)",
+                "To find units with any OEM numbers: df['OEM'].str.contains('.+', case=False, na=False, regex=True)",
+                "To find units without OEM numbers: df['OEM'].isna() | (df['OEM'] == '')",
+                "Multiple OEM search: df['OEM'].str.contains('number1', case=False, na=False) | df['OEM'].str.contains('number2', case=False, na=False)"
+            ]
         },        
 		{
             "name": "Group of vehicles",
             "type": "string",
-            "description": "This column represents the automobile concern which makes the vehicle with this steering unit",
-            "unit": ""
+            "description": "This column contains the automobile concern/manufacturer group which makes the vehicle with this steering unit (e.g., Volkswagen Group, BMW Group, Mercedes-Benz Group). IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find specific group: df['Group of vehicles'].str.contains('vag', case=False, na=False)",
+                "To find partial group name: df['Group of vehicles'].str.contains('bmw', case=False, na=False)",
+                "To find multiple groups: df['Group of vehicles'].str.contains('volkswagen|audi', case=False, na=False, regex=True)",
+                "To find units with group data: df['Group of vehicles'].str.contains('.+', case=False, na=False, regex=True)",
+                "To find units without group data: df['Group of vehicles'].isna() | (df['Group of vehicles'] == '')"
+            ]
         },        
 		{
             "name": "Vehicles",
             "type": "string",
-            "description": "This column represents the list of vehicles which use this steering unit",
-            "unit": ""
-        },        
+            "description": "This column contains comma-separated lists of vehicles that use this steering unit. Each vehicle follows the format: 'BRAND MODEL (CODE) [YEAR1, YEAR2, YEAR3, ...]' where the years in brackets are individual years when the vehicle was produced. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find vehicles available in 2014: df['Vehicles'].str.contains('2014', na=False)",
+                "To find Audi models (case-insensitive): df['Vehicles'].str.contains('audi', case=False, na=False)",
+                "To find A5 models (case-insensitive): df['Vehicles'].str.contains('a5', case=False, na=False)",
+                "To find Audi A5 from 2014: df['Vehicles'].str.contains('audi', case=False, na=False) & df['Vehicles'].str.contains('a5', case=False, na=False) & df['Vehicles'].str.contains('2014', na=False)"
+            ]
+        },   
 		{
             "name": "Photo",
             "type": "string",
-            "description": "This column represents if there is a photo of this steering unit in MS561Pro software or not",
+            "description": "This column contains the filename of the image for this steering unit in MS561Pro software.",
             "unit": ""
         },		
         {
             "name": "Connection diagram",
             "type": "string",
-            "description": "This column represents if there is a connection diagram for this steering unit in MS561Pro software or not",
+            "description": "This column contains the filename of the connection diagram for this steering unit in MS561Pro software.",
             "unit": ""
         }
     ]

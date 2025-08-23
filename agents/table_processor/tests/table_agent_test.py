@@ -13,7 +13,7 @@ api_key = os.environ.get("OPENAI_TOKEN")
 if __name__ == '__main__':
     # import os
     project_root = os.path.join(os.path.dirname(__file__), '..', '..', '..')
-    table_file_path = os.path.join(project_root, 'data', 'files_processed', 'table_data', 'tables', 'generators_start-stop.csv')
+    table_file_path = os.path.join(project_root, 'data', 'files_processed', 'table_data', 'tables', 'msg_alternators.csv')
     data_specs_path = os.path.join(project_root, 'data', 'files_processed', 'table_data', 'annotations')
     tmp_path = os.path.join(project_root, 'data', 'files_processed', 'table_data', 'temp')
 
@@ -46,7 +46,9 @@ if __name__ == '__main__':
 
     # resp, code = table_agent.answer_query('OEM number for Audi A6 2018 with 3.0 TFSI motor')
     # resp, code = table_agent.answer_query('Which cable do I need for generator with oem 04L903018?')
-    resp, code = table_agent.answer_query('Which protocol do generator from audi A3 use?')
     # resp, code = table_agent.answer_query('Which protocol do generator from audi A3 use?')
+    # resp, code = table_agent.answer_query('Which protocol do generator from audi A3 use?')
+    # resp, code = table_agent.answer_query('Can I get live data for Audi Q5 2014')
+    resp, code = table_agent.answer_query('which alternators work with 48V?')
 
     print(resp)

@@ -11,19 +11,7 @@ from .preprocessing import *
 from .AgentDataFrameManager import AgentDataFrameManager, AddDataMode
 from copy import copy
 from .data_classes import CodeSnippet
-import atexit
-import shutil
 from openai import OpenAI
-
-
-def cleanup(folder_path):
-    # Check if the folder exists before attempting to remove it
-    if os.path.exists(folder_path):
-        try:
-            shutil.rmtree(folder_path)  # Clean up directory and all its contents
-            print(f"Cleaned up folder: {folder_path}")
-        except Exception as e:
-            print(f"Error while cleaning up: {e}")
 
 
 class TableAgent:
@@ -155,7 +143,6 @@ class TableAgent:
             self.functions_list,
             self.tmp_file_path,
         )
-        atexit.register(cleanup, self._code._df_saving_dir_path)
 
         # So the `self._code` gets notified when the `self.agent_dataframe_manager` changes its stored dataframes
         self.agent_dataframe_manager.attach(self._code, 'df_change')
@@ -260,25 +247,6 @@ class TableAgent:
         self._tagged_query_type = None
         self._prompt_user_for_planner = None
 
-    
-    def get_query_sufix_with_og_df_names(self) -> str:
-        """
-        Returns sufix for the query which ties df_<i> (or df) with the original 
-        source filenames of their.
-        """
-        loaded_source_filenames: list[str] | str = self.agent_dataframe_manager.get_dataframes_source_filenames()
-
-        if type(loaded_source_filenames) is list:
-            df_vars = [f'df_{i + 1}' for i in range(len(loaded_source_filenames))]
-            df_og_names = loaded_source_filenames
-        else:
-            df_vars = ['df']
-            df_og_names = [loaded_source_filenames]
-
-        return '\nNote that: ' + ', '.join([
-            f'original (source file) name for dataframe {df_var} is {df_og_name}' for (df_var, df_og_name) in zip(df_vars, df_og_names)
-        ]) + '.'
-
     def answer_query(
         self,
         query: str,
@@ -298,11 +266,6 @@ class TableAgent:
             - Generated code,
             - Number of error corrections etc.
         """
-        if len(self.functions_list) != 0:
-            query += ' When you need help with any step, use predefined function you are provided.'
-
-        # Add names of the tables of dataframe variables to the query
-        query += self.get_query_sufix_with_og_df_names()
 
         if history:
             query = self.llm_calls.merge_query_and_history(query, history)
@@ -371,41 +334,6 @@ class TableAgent:
         self._reset_skip_reasoning_part()
 
         return ret_value, result_list
-    
-    def generate_conversation_title(self, prompts: List[str], df_name: str = None, column_names: List[str] = None) -> str:   
-        # Combine the first three user messages into a single prompt for name generation
-        prompts_collected = " ".join([f"Prompt {i+1}: {msg}" for i, msg in enumerate(prompts)])
-        
-        if df_name and column_names:
-            df_info = f"\nDataframe: {df_name}\nColumns: {', '.join(column_names)}"
-        else:
-            df_info = ""
-
-        # Create the final query for the LLM, including dataframe and columns
-        prompt_for_name_generation = f"""
-        Based on these prompts: {prompts_collected}{df_info}, generate a brief and high-level title for the conversation.
-        The title should summarize the theme without specific details or code.
-        You can use words like 'Analyzing', 'Exploring', or 'Understanding' for variety, but avoid using 'Analyzing' every time.
-        Avoid including the phrases 'Prompt' or 'Based on' in the title.
-        """
-
-        try:
-            title = self.llm_calls.generate_title(prompt_for_name_generation)
-
-            # Clean and format the title
-            cleaned_title = self.clean_conversation_name(title)
-            return cleaned_title
-
-        except Exception as e:
-            print(f"Error while generating conversation title: {e}")
-            return "General Data Exploration"
-        
-    def clean_conversation_name(self, name: str) -> str:
-        # Strip unwanted symbols like **, #, and spaces
-        name = name.replace('*', '').replace('#', '').strip()
-
-        # Capitalize the first letter of the cleaned name
-        return name.capitalize()
 
     def fix_code(self, code_to_execute, traceback, query, coder_prompt, n_dfs=1):
         regenerated_code, debug_prompt = self.llm_calls.fix_generated_code(

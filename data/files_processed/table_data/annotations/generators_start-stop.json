@@ -5,37 +5,44 @@
         {
             "name": "Make",
             "type": "string",
-            "description": "The Make column contains multiple makes in a single string (e.g., 'VW AUDI PORSCHE'). When filtering, do not compare with equality. Instead, use string matching methods such as .str.contains() (case-insensitive) to check if the target make is present in the string.",
+            "description": "The Make column contains multiple makes in a single string (e.g., 'VW AUDI PORSCHE', 'AUDI\\nSEAT\\nSKODA'). IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
 		{
             "name": "OEM Number",
             "type": "string",
-            "description": "This column represents the list of corresponding OEM numbers of original manufacturer",
+            "description": "This column represents the list of corresponding OEM numbers of original manufacturer. The column contains multiple OEM numbers in a single string separated by newlines (e.g., '4N0903028N\\n4N1903028B\\n4N1903028X'). IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "MSG Article",
             "type": "string",
-            "description": "This column represents the MSG Article of the alternator",
+            "description": "This column represents the MSG Article of the alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "Model",
             "type": "string",
-            "description": "This column represents the model of the compatible vehiche for this alternator",
-            "unit": ""
+            "description": "This column represents the model of the compatible vehicle for this alternator. Each entry follows the format: 'BRAND MODEL YEAR1, YEAR2, YEAR3, ...' where years are comma-separated individual years when the vehicle model was produced (e.g., 'Audi A6 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025'). IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
+            "unit": "",
+            "search_examples": [
+                "To find models available in 2020: df['Model'].str.contains('2020', na=False)",
+                "To find Audi models (case-insensitive): df['Model'].str.contains('audi', case=False, na=False)",
+                "To find A6 models (case-insensitive): df['Model'].str.contains('a6', case=False, na=False)",
+                "To find VW Golf models (case-insensitive): df['Model'].str.contains('vw', case=False, na=False) & df['Model'].str.contains('golf', case=False, na=False)",
+                "To find Audi A6 from 2023: df['Model'].str.contains('audi', case=False, na=False) & df['Model'].str.contains('a6', case=False, na=False) & df['Model'].str.contains('2023', na=False)"
+            ]
         },
         {
             "name": "Motor",
             "type": "string",
-            "description": "This column represents the motor type of the compatible vehiche model for this alternator",
+            "description": "This column represents the motor type of the compatible vehiche model for this alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "Manufacturer",
             "type": "string",
-            "description": "This column represents the manufacturer name for this alternator",
+            "description": "This column represents the manufacturer name for this alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
@@ -53,7 +60,7 @@
         {
             "name": "Cable for MS005A",
             "type": "string",
-            "description": "This column represents the compatible cable for this alternator",
+            "description": "This column represents the compatible cable for this alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
@@ -71,7 +78,7 @@
         {
             "name": "Protocol",
             "type": "string",
-            "description": "This columns represents the type of protocol for this alternator",
+            "description": "This columns represents the communication protocol for this alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         }
     ]

@@ -5,7 +5,7 @@
         {
             "name": "as_index",
             "type": "string",
-            "description": "This column represents the AS-PL Article of the alternator.",
+            "description": "This column represents the AS-PL Article of the alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
 		{
@@ -23,19 +23,19 @@
         {
             "name": "regulator",
             "type": "string",
-            "description": "This column represents the AS-PL number of compatible voltage regulator for this alternator",
+            "description": "This column represents the AS-PL number of compatible voltage regulator for this alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "plug",
             "type": "string",
-            "description": "This columns represents the compatible plug type. Corresponding picture which describe how to connect alternator with this plug has same name (JPG format)",
+            "description": "This columns represents the compatible plug type. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "od1",
             "type": "float",
-            "description": "This column represents the pulley diameter of alternator",
+            "description": "This column represents the pulley diameter for the alternator",
             "unit": "mm"
         }
     ]

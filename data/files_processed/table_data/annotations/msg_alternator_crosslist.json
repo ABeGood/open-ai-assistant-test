@@ -5,13 +5,13 @@
         {
             "name": "as_no",
             "type": "string",
-            "description": "This column represents the AS-PL Article of the alternator.",
+            "description": "This column represents the AS-PL Article of the alternator. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
             "name": "ref_name",
             "type": "string",
-            "description": "This column represents the name of manufacturer",
+            "description": "This column represents the name of the alternator's manufacturer. IMPORTANT NOTE: Search operations MUST be performed using pandas string search functions (.str.contains(), .str.match(), etc.) and be case insensitive. When filtering, do not compare with equality - instead use string matching methods to check if the target value is present in the string.",
             "unit": ""
         },
         {
