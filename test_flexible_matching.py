@@ -8,7 +8,7 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'agents'))
 
-from agents.prompt_static_analyzer import ProductCodeDetector, QueryRouter, PromptStaticAnalyzer
+from agents.prompt_static_analyzer.prompt_static_analyzer import ProductCodeDetector, QueryRouter, PromptStaticAnalyzer
 
 def test_product_code_variations():
     """Test different variations of product code formatting"""

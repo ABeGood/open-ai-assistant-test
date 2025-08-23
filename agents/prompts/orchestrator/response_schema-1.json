@@ -1,0 +1,42 @@
+{
+    "name": "specialist_routing_response",
+    "strict": true,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "user_query": {
+                "type": "string",
+                "description": "The original user question or query"
+            },
+            "specialists": {
+                "type": "array",
+                "description": "List of specialist types assigned to handle the query",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "equipment",
+                        "diagnostics",
+                        "compatibility",
+                        "tools",
+                        "cables",
+                        "support",
+                        "scripts",
+                        "tables",
+                        "courses"
+                    ]
+                },
+                "minItems": 1
+            },
+            "reason": {
+                "type": "string",
+                "description": "Explanation of why these specific specialists were chosen for the query"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "user_query",
+            "specialists",
+            "reason"
+        ]
+    }
+}

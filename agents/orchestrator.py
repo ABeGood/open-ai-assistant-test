@@ -17,7 +17,8 @@ from classes.agents_response_models import (
     create_success_response,
     create_timeout_response
 )
-from agents.prompt_static_analyzer import PromptStaticAnalyzer
+from agents.prompt_static_analyzer.prompt_static_analyzer import PromptStaticAnalyzer
+from agents.prompt_static_analyzer.formatters import format_analyzer_output_for_orchestrator
 from agents.agents_config import assistant_configs, price_per_token_in, price_per_token_out
 from agents.agent_response_processing_utils import (
     process_image_markers, 
@@ -48,7 +49,7 @@ console.setFormatter(formatter)
 logging.getLogger('').addHandler(console)
 
 
-class TelegramMultiAssistantOrchestrator:
+class OrchestratorAgent:
     """Multi-assistant orchestrator optimized for Telegram bot integration"""
     
     def __init__(self, api_key: str):
@@ -158,6 +159,7 @@ class TelegramMultiAssistantOrchestrator:
         # Get current context
         # context = self.get_shared_context(session_id)
         user_message_metadata = self.static_checker.route_query(user_message)
+        formatted_user_msg_metadata = format_analyzer_output_for_orchestrator(user_message_metadata)
         
         # Create routing prompt
         routing_prompt = f"""
@@ -165,7 +167,7 @@ USER REQUEST:
 {user_message}
 
 USER REQUEST METADATA FROM STATIC ANALYSIS:
-{user_message_metadata}
+{formatted_user_msg_metadata}
 """
         
         # Route to orchestrator for decision
@@ -750,7 +752,7 @@ SPECIALISTS RESPONSES:
             )
 
 # Convenience functions for easy integration
-def create_orchestrator(api_key: str = None) -> TelegramMultiAssistantOrchestrator:
+def create_orchestrator(api_key: str = None) -> OrchestratorAgent:
     """Create and return configured orchestrator"""
     if api_key is None:
         api_key = os.environ.get("OPENAI_TOKEN")
@@ -758,4 +760,4 @@ def create_orchestrator(api_key: str = None) -> TelegramMultiAssistantOrchestrat
     if not api_key:
         raise ValueError("OpenAI API key not provided and OPENAI_TOKEN environment variable not set")
     
-    return TelegramMultiAssistantOrchestrator(api_key)
+    return OrchestratorAgent(api_key)

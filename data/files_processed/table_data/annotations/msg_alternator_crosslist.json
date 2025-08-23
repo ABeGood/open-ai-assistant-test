@@ -1,5 +1,5 @@
 {
-    "table_name": "msg_alternator__crosslist",
+    "table_name": "msg_alternator_crosslist",
     "description": "Table containing crosslist for AS-PL alternator numbers and OEM numbers",
     "columns": [
         {

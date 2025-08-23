@@ -18,6 +18,7 @@ from telebot.types import InputMediaPhoto
 from classes.classes import User, Message, Reaction
 from classes.agents_response_models import SpecialistResponse, CombinatorResponse
 from .formatters import format_telegram_message
+from agents.orchestrator import OrchestratorAgent
 
 DEBUG = True
 
@@ -35,7 +36,7 @@ logging.basicConfig(
 class TelegramBot:
     """Telegram bot for handling customer support queries."""
 
-    def __init__(self, bot_token: str, orchestrator) -> None:
+    def __init__(self, bot_token: str, orchestrator:OrchestratorAgent) -> None:
         """
         Initialize the Telegram bot.
         
@@ -45,7 +46,7 @@ class TelegramBot:
         """
         self.bot = AsyncTeleBot(token=bot_token)
         self.admin_messages = {}
-        self.orchestrator = orchestrator
+        self.orchestrator:OrchestratorAgent = orchestrator
         self.logger = logging.getLogger(__name__)
         
         self.register_handlers()
@@ -98,7 +99,7 @@ class TelegramBot:
                     await self.bot.set_message_reaction(
                         msg.chat.id,
                         msg.message_id,
-                        [ReactionTypeEmoji('👍')],
+                        [ReactionTypeEmoji('👌')],
                         is_big=False
                     )
 

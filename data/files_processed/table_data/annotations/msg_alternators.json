@@ -1,5 +1,5 @@
 {
-    "table_name": "msg__alternatory",
+    "table_name": "msg_alternators",
     "description": "Table containing data about alternators in MS005, MS005A, MS008, MS002A database",
     "columns": [
         {

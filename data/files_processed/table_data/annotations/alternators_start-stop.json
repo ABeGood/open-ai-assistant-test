@@ -1,6 +1,6 @@
 {
-    "table_name": "generators_start-stop",
-    "description": "Table containing data about Alternators with Start/Stop function (starters/alternators, or BSG, belt starter-generator) which can be tested ny MS005A test bench",
+    "table_name": "alternators_start-stop",
+    "description": "Table containing data about alternators with Start/Stop function (starters/alternators, or BSG, belt starter-generator) which can be tested ny MS005A test bench",
     "columns": [
         {
             "name": "Make",

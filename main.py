@@ -6,7 +6,7 @@ Configures and starts the Telegram bot with orchestrator integration.
 import os
 from dotenv import load_dotenv
 
-from agents.orchestrator_for_tg import create_orchestrator
+from agents.orchestrator import create_orchestrator
 from telegram_bot.bot import TelegramBot
 
 

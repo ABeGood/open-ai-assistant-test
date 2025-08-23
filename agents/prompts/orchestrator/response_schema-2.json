@@ -1,0 +1,57 @@
+{
+    "name": "specialist_routing_response",
+    "strict": true,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "user_query": {
+                "type": "string",
+                "description": "The original user question or query"
+            },
+            "specialists": {
+                "type": "array",
+                "description": "List of specialist types assigned to handle the query",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "equipment",
+                        "diagnostics",
+                        "compatibility",
+                        "tools",
+                        "cables",
+                        "support",
+                        "scripts",
+                        "tables",
+                        "courses"
+                    ]
+                },
+                "minItems": 1
+            },
+            "tables_to_query": {
+                "type": "array",
+                "description": "List of specific tables to query. Only populated when 'tables' specialist is selected, otherwise empty array.",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "generators_start-stop",
+                        "MS112 Cables and Fittings",
+                        "MS561 Programs",
+                        "msg_alternator_crosslist",
+                        "msg_alternators"
+                    ]
+                }
+            },
+            "reason": {
+                "type": "string",
+                "description": "Explanation of why these specific specialists were chosen for the query"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "user_query",
+            "specialists",
+            "tables_to_query",
+            "reason"
+        ]
+    }
+}
