@@ -97,6 +97,19 @@ class ProductCodeDetector:
             # }
         }
     
+    def _normalize_product_code(self, code: str) -> str:
+        """Normalize product code to standard format for comparison"""
+        # Convert to uppercase and remove all spaces and hyphens
+        normalized = code.upper().replace(' ', '').replace('-', '')
+        
+        # Handle tool codes: ensure hyphen format for tools with suffixes
+        # MS50039HPS -> MS50039-HPS
+        if re.match(r'MS\d{4,5}[A-Z]{3}$', normalized):
+            # Insert hyphen before the last 3 letters for tool codes
+            normalized = normalized[:-3] + '-' + normalized[-3:]
+        
+        return normalized
+    
     def detect_product_codes(self, query: str) -> Dict[str, List[str]]:
         """Detect product codes in query and categorize them"""
         query_upper = query.upper()
@@ -106,37 +119,44 @@ class ProductCodeDetector:
             'unknown': []
         }
         
-        # Create regex patterns for different code formats (case insensitive)
+        # Create flexible regex patterns for different code formats (case insensitive)
         patterns = [
-            r'MS\d{3}[A-Z]*(?:\s+COM)?',  # MS### or MS###A format, with optional " COM"
-            r'MS\d{4,5}-[A-Z]{3}',  # MS####-XXX or MS#####-XXX format (tools)
-            r'MS\d{4}[A-Z]*-[A-Z]{3}',  # MS####A-XXX format (tools with letter suffix)
-            r'KIT\d{3}[A-Z]*',  # KIT### format
-            r'LOKI'  # Special case
+            # MS equipment codes: MS ### or MS###, with optional A/COM suffix
+            r'MS\s*\d{3}[A-Z]*(?:\s*COM)?',
+            # Tool codes: MS #### - XXX or MS####XXX (with optional spaces/hyphens)
+            r'MS\s*\d{4,5}[A-Z]*[\s\-]*[A-Z]{3}',
+            # KIT codes: KIT ### or KIT###
+            r'KIT\s*\d{3}[A-Z]*',
+            # Special case
+            r'LOKI'
         ]
         
         for pattern in patterns:
             matches = re.findall(pattern, query_upper, re.IGNORECASE)
             for match in matches:
-                # Clean up the match (remove spaces, normalize)
-                clean_match = match.replace(' ', '')
+                # Normalize the match to standard format
+                normalized_match = self._normalize_product_code(match)
                 
-                # Check against equipment codes first (case insensitive)
-                clean_match_upper = clean_match.upper()
-                if clean_match_upper in self.equipment_codes:
-                    detected['equipment'].append(clean_match_upper)
-                elif clean_match_upper in self.tool_codes:
-                    detected['tools'].append(clean_match_upper)
+                # Check against equipment codes first
+                if normalized_match in self.equipment_codes:
+                    if normalized_match not in detected['equipment']:
+                        detected['equipment'].append(normalized_match)
+                elif normalized_match in self.tool_codes:
+                    if normalized_match not in detected['tools']:
+                        detected['tools'].append(normalized_match)
                 else:
-                    # Check if it matches the pattern but with space (like "MS002 COM")
-                    if ' COM' in match.upper():
-                        base_code = match.upper().replace(' COM', 'COM')
+                    # Check if it could be a COM variant that we missed
+                    if 'COM' in normalized_match:
+                        base_code = normalized_match.replace('COM', ' COM')
                         if base_code in self.equipment_codes:
-                            detected['equipment'].append(base_code)
+                            if base_code not in detected['equipment']:
+                                detected['equipment'].append(base_code)
                         else:
-                            detected['unknown'].append(clean_match_upper)
+                            if normalized_match not in detected['unknown']:
+                                detected['unknown'].append(normalized_match)
                     else:
-                        detected['unknown'].append(clean_match_upper)
+                        if normalized_match not in detected['unknown']:
+                            detected['unknown'].append(normalized_match)
         
         return detected
     
@@ -437,7 +457,12 @@ if __name__ == "__main__":
         "Генератор от Jeep Wrangler 5190161AK можно проверить на MS005A?",
         "Який кабель для стенда MS112 для компресора Mercedes мені потрібен?",
         "У меня не работает оборудование MS800, что мне нужно сделать?",
-        "чем отличается MS800 от MS800A? можно предоставить в виде таблицы?"
+        "чем отличается MS800 от MS800A? можно предоставить в виде таблицы?",
+        # Test flexible formatting
+        "Can I use MS 021 for testing?",
+        "What about ms004com equipment?",
+        "MS50039 HPS tool availability?",
+        "ms50039hps vs MS50039-HPS comparison?"
     ]
     
     for query in test_queries:
