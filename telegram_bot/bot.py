@@ -20,7 +20,7 @@ from classes.classes import User, Message, Reaction
 from classes.enums import SpecialistType
 from classes.agents_response_models import SpecialistResponse, CombinatorResponse
 from .formatters import format_telegram_message
-from agents.orchestrator import OrchestratorAgent
+from agents.orchestrator.orchestrator_agent import OrchestratorAgent
 from agents.table_processor import TableAgent
 from openai import OpenAI
 from agents.path_utils import (
@@ -52,7 +52,7 @@ logging.basicConfig(
 class TelegramBot:
     """Telegram bot for handling customer support queries."""
 
-    def __init__(self, bot_token: str, orchestrator:OrchestratorAgent, llm_client:OpenAI) -> None:
+    def __init__(self, bot_token: str, llm_client:OpenAI) -> None:
         """
         Initialize the Telegram bot.
         
@@ -62,7 +62,7 @@ class TelegramBot:
         """
         self.bot = AsyncTeleBot(token=bot_token)
         self.admin_messages = {}
-        self.orchestrator_agent:OrchestratorAgent = orchestrator
+        self.orchestrator_agent:OrchestratorAgent = OrchestratorAgent(llm_client=llm_client)
         self.table_agent:TableAgent = TableAgent(client=llm_client,
             prompt_strategy='hybrid_code_text',
             data_specs_dir_path=get_table_annotations_path(),
@@ -144,7 +144,8 @@ class TelegramBot:
                             f"Определяем каких ботов-специалистов использовать для этого запроса..."
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    orchestrator_response = await self.orchestrator_agent.process_request(session_id, user_message, telegram_user_id)
+                    last_messages = user.get_chat_history(last_n=10)
+                    orchestrator_response = self.orchestrator_agent.route_query_chat_completion(user_message, last_messages)
 
                     if DEBUG:
                         debug_msg = "🔀 STEP 1.2 \nOrchestrator response\n\n"\

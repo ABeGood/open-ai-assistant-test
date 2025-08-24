@@ -3,7 +3,7 @@ from openai import OpenAI
 from openai.types.chat import ChatCompletionMessageParam
 
 from classes.classes import Message
-from classes.validators import SpecialistRoutingResponse
+from classes.validators import SpecialistRoutingResponse, flatten_schema
 from agents.orchestrator.prompts.prompts import ORCHESTRATOR_PROMPT
 
 
@@ -42,10 +42,14 @@ class OrchestratorAgent:
         )
         
         # Get JSON schema from Pydantic model
+        raw_schema = SpecialistRoutingResponse.model_json_schema()
+        clean_schema = flatten_schema(raw_schema)
+
+        # Ensure required includes all properties
         schema = {
             "name": "specialist_routing_response",
             "strict": True,
-            "schema": SpecialistRoutingResponse.model_json_schema()
+            "schema": clean_schema
         }
         
         # Call OpenAI with structured output

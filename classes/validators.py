@@ -17,7 +17,7 @@ class SpecialistRoutingResponse(BaseModel):
     )
     
     tables_to_query: list[TableName] = Field(
-        default_factory=list,
+        ...,
         description="List of specific tables to query. Only populated when 'tables' specialist is selected, otherwise empty array."
     )
     
@@ -118,3 +118,29 @@ class InterpreterResponse(BaseModel):
         if not v.strip():
             raise ValueError("interpretation cannot be empty")
         return v
+    
+def flatten_schema(schema_dict):
+    """Remove $defs and inline enum values directly"""
+    if '$defs' not in schema_dict:
+        return schema_dict
+    
+    # Extract the definitions
+    defs = schema_dict['$defs']
+    
+    # Create a copy without $defs
+    flattened = {k: v for k, v in schema_dict.items() if k != '$defs'}
+    
+    # Replace $ref with actual enum values
+    def replace_refs(obj):
+        if isinstance(obj, dict):
+            if '$ref' in obj and obj['$ref'].startswith('#/$defs/'):
+                ref_name = obj['$ref'].split('/')[-1]
+                if ref_name in defs:
+                    return defs[ref_name]
+                return obj
+            return {k: replace_refs(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [replace_refs(item) for item in obj]
+        return obj
+    
+    return replace_refs(flattened)
