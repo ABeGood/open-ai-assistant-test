@@ -5,7 +5,30 @@ from enum import Enum
 class Reaction(Enum):
     LIKE = 1
     DISLIKE = -1
+    UNKNOWN = 0
 
+    @classmethod
+    def from_any(cls, raw: Any) -> Optional["Reaction"]:
+        """
+        Unified parser: accepts None, an Enum name ('LIKE'), or a number (1/-1/0).
+        Returns None (if raw is None) or a specific Reaction.
+        Unknown values → Reaction.UNKNOWN.
+        """
+        if raw is None:
+            return None
+        if isinstance(raw, Reaction):
+            return raw
+        if isinstance(raw, str):
+            # try by name ('LIKE'/'DISLIKE'/'UNKNOWN')
+            try:
+                return cls[raw]
+            except KeyError:
+                return cls.UNKNOWN
+        # try as number
+        try:
+            return cls(int(raw))
+        except Exception:
+            return cls.UNKNOWN
 
 class Message:
     def __init__(
@@ -18,7 +41,7 @@ class Message:
     ):
         self.author: str = author
         self.content: str = content
-        self.reaction: Optional[Any] = reaction
+        self.reaction: Optional[Reaction] = reaction
         self.message_id: Optional[int] = message_id
         self.chat_id: Optional[int] = chat_id
 
@@ -29,8 +52,8 @@ class Message:
     def get_content(self) -> str: return self.content
     def set_content(self, content: str) -> None: self.content = content
 
-    def get_reaction(self) -> Optional[Any]: return self.reaction
-    def set_reaction(self, reaction: Any) -> None: self.reaction = reaction
+    def get_reaction(self) -> Optional[Reaction]: return self.reaction
+    def set_reaction(self, reaction: Optional[Reaction]) -> None: self.reaction = reaction
 
     def get_message_id(self) -> Optional[int]: return self.message_id
     # def set_message_id(self, message_id: Optional[int]) -> None: self.message_id = message_id
@@ -42,7 +65,7 @@ class Message:
         return {
             "author": self.author,
             "content": self.content,
-            "reaction": self.reaction,
+            "reaction": self.reaction.name if self.reaction is not None else None,
             "message_id": self.message_id,
             "chat_id": self.chat_id,
         }
@@ -52,7 +75,7 @@ class Message:
         return cls(
             author=d["author"],
             content=d["content"],
-            reaction=d.get("reaction"),
+            reaction=Reaction.from_any(d.get("reaction")),
             message_id=d.get("message_id"),
             chat_id=d.get("chat_id"),
         )

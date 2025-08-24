@@ -3,6 +3,7 @@ import psycopg
 from psycopg import sql
 from dotenv import load_dotenv
 import os
+from classes.classes import Reaction
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
 
@@ -223,3 +224,73 @@ def append_messages(user, messages: list) -> None:
                 ]
             )
             conn.commit()
+
+
+def update_message_reaction(user_id: str, message_id: int, reaction: Reaction) -> None:
+    """
+    Updates reaction for a specific message in the database.
+    
+    Args:
+        user_id: User ID who set the reaction
+        message_id: Telegram message ID
+        reaction: Reaction to set (can be None to remove reaction)
+    """
+    ensure_table_exists("messages")
+    
+    with psycopg.connect(DATABASE_URL) as conn:
+        with conn.cursor() as cur:
+            if reaction is None:
+                # Remove reaction
+                cur.execute(
+                    """
+                    UPDATE messages 
+                    SET reaction = NULL
+                    WHERE user_id = %s AND message_id = %s
+                    """,
+                    (user_id, message_id)
+                )
+            else:
+                # Set reaction
+                cur.execute(
+                    """
+                    UPDATE messages 
+                    SET reaction = %s
+                    WHERE user_id = %s AND message_id = %s
+                    """,
+                    (json.dumps({"type": reaction.name, "value": reaction.value}), user_id, message_id)
+                )
+            conn.commit()
+
+
+def get_message_reaction(user_id: str, message_id: int) -> Reaction:
+    """
+    Gets current reaction for a specific message.
+    
+    Args:
+        user_id: User ID
+        message_id: Telegram message ID
+        
+    Returns:
+        Current reaction or None if no reaction set
+    """
+    ensure_table_exists("messages")
+    
+    with psycopg.connect(DATABASE_URL) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT reaction FROM messages 
+                WHERE user_id = %s AND message_id = %s
+                """,
+                (user_id, message_id)
+            )
+            result = cur.fetchone()
+            
+            if not result or not result[0]:
+                return None
+                
+            reaction_data = result[0]
+            if isinstance(reaction_data, dict):
+                return Reaction.from_any(reaction_data.get("type"))
+            else:
+                return Reaction.from_any(reaction_data)
