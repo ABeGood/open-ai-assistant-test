@@ -445,6 +445,31 @@ class SpecialistAgent:
     def call_specialists_sequentially(self, session_id: str, specialists_names: list[str], user_message: str) -> MultiSpecialistResponse:
         if SpecialistType.TABLES in specialists_names:
             specialists_names.remove(SpecialistType.TABLES)
+            
+        # Ensure session exists
+        if session_id not in self.shared_threads:
+            # Create session if it doesn't exist
+            thread = self.client.beta.threads.create()
+            self.shared_threads[session_id] = thread.id
+            self.context_store[session_id] = {
+                'conversation_history': [],
+                'shared_context': {},
+                'last_assistant': None,
+                'routing_decisions': [],
+                'telegram_user_id': session_id.replace('tg-', '') if session_id.startswith('tg-') else None,
+                'created_at': time.time()
+            }
+        
+        # Add user message to thread
+        try:
+            self.client.beta.threads.messages.create(
+                thread_id=self.shared_threads[session_id],
+                role="user",
+                content=user_message
+            )
+        except Exception as e:
+            logging.warning(f"Failed to add message to thread: {e}")
+        
         specialist_responses = []
         for specialist in specialists_names:
             response = self.route_to_assistant(

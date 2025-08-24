@@ -158,10 +158,12 @@ class User:
     @staticmethod
     def ensure(user_id: str, name: str, cache_maxlen: int = 200) -> "User":
         """
-        Ensures user exists in DB; returns User object.
+        Ensures user exists in DB; returns User object with chat history loaded.
         """
-        from db_utils.db_manager import ensure_user
-        return ensure_user(user_id, name, cache_maxlen)
+        from db_utils.db_manager import ensure_user, load_user
+        ensure_user(user_id, name, cache_maxlen)
+        user = load_user(user_id)
+        return user if user else User(user_id=user_id, name=name, cache_maxlen=cache_maxlen)
 
     def save(self) -> None:
         """

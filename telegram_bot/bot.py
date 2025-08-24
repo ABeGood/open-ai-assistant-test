@@ -99,15 +99,13 @@ class TelegramBot:
     
             telegram_user_id = msg.from_user.id
             user_message = msg.text
+            session_id = f"tg-{telegram_user_id}"
 
             tg_chat_id = msg.chat.id
             user_name = getattr(msg.from_user, "full_name", None) or getattr(msg.from_user, "username", None) or "Unknown"
 
-            # создадим (если нет) и инициализируем объект User
+            # создадим (если нет) и инициализируем объект User с историей
             user = User.ensure(user_id=str(telegram_user_id), name=user_name, cache_maxlen=200)
-
-            # подгрузим последние n сообщений (для локального кеша в User)
-            user.get_last_n_msgs_from_db(n=200)
 
             # сохраним текущее входящее от пользователя сообщение в БД + добавим в кеш
             user_msg = Message(
