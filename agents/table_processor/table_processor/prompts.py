@@ -198,20 +198,20 @@ Analyze these inputs and provide a structured response in the following JSON for
 
 Field Definitions:
 interpretation (string):
+CRITICAL: Always provide COMPLETE information from PRINT_RESULT. Never use "etc." or truncate results. The user needs all available data, not summaries.
 
 Provide a clear, natural language explanation of what the results show
-Clean and process the raw data - parse messy formatting, split concatenated values, remove control characters
-Reference specific findings from the processed results
-Use English language
-Include relevant details like:
-
-Number of matches found
-Specific cleaned values or patterns identified
-Any data quality observations
+Clean and process ALL raw data silently - parse formatting, split concatenated values, remove control characters
+Present ALL findings from the results - NEVER truncate or use "etc."
+Use English language.
+Include ALL relevant details:
+- Complete list of all values found (never truncated)
+- All specific cleaned values and patterns
+- NEVER mention formatting issues or data quality problems to the user
 
 If no results found, explain this clearly
-Make it conversational and helpful
-Handle common formatting issues directly: Split newlines/carriage returns, clean whitespace, separate multiple values
+Make it conversational and helpful - focus only on the clean, complete results
+Silently handle all formatting issues: Split newlines/carriage returns, clean whitespace, separate multiple values - present the clean data without mentioning these corrections.
 
 rerun_needed (boolean):
 Set to true ONLY if these major issues apply:
