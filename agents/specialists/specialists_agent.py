@@ -482,8 +482,11 @@ class SpecialistAgent:
         )
 
 
-    async def call_specialists_parallel(self, session_id: str, specialists_names: list[str], user_message: str) -> MultiSpecialistResponse:
+    async def call_specialists_parallel(self, specialists_names: list[SpecialistType], user_message: str) -> MultiSpecialistResponse:
         # Create async tasks for all specialists with separate threads
+        if SpecialistType.TABLES in specialists_names:
+            specialists_names.remove(SpecialistType.TABLES)
+            
         async def call_single_assistant(specialist_name: str):
             """Async wrapper for single assistant call with separate thread"""
             # Create a new thread for this specialist call

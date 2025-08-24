@@ -22,6 +22,7 @@ from classes.agents_response_models import SpecialistResponse, CombinatorRespons
 from .formatters import format_telegram_message
 from agents.orchestrator.orchestrator_agent import OrchestratorAgent
 from agents.combinator.combinator_agent import CombinatorAgent
+from agents.specialists.specialists_agent import SpecialistAgent
 from agents.table_processor import TableAgent
 from openai import OpenAI
 from agents.path_utils import (
@@ -40,7 +41,9 @@ from db_utils.db_manager import get_message_reaction, update_message_reaction
 DEBUG = True
 
 load_dotenv()
-DATABASE_URL = os.getenv("DATABASE_URL")
+OPENAI_KEY = os.getenv("OPENAI_TOKEN")
+if not OPENAI_KEY:
+    raise ValueError("OPENAI_TOKEN environment variable is required")
 
 logging.basicConfig(
     level=logging.DEBUG, 
@@ -65,6 +68,7 @@ class TelegramBot:
         self.admin_messages = {}
         self.orchestrator_agent:OrchestratorAgent = OrchestratorAgent(llm_client=llm_client)
         self.combinator_agent:CombinatorAgent = CombinatorAgent(llm_client=llm_client)
+        self.specialists_agent:SpecialistAgent = SpecialistAgent(api_key=OPENAI_KEY)
         self.table_agent:TableAgent = TableAgent(client=llm_client,
             prompt_strategy='hybrid_code_text',
             data_specs_dir_path=get_table_annotations_path(),
@@ -94,7 +98,6 @@ class TelegramBot:
         async def handle_message(msg):
     
             telegram_user_id = msg.from_user.id
-            session_id = f"tg-{telegram_user_id}"
             user_message = msg.text
 
             tg_chat_id = msg.chat.id
@@ -121,7 +124,7 @@ class TelegramBot:
                 message_id = getattr(sent, "message_id", None)
                 
                 test_msg = Message(
-                    author="assistant",
+                    author=f"bot_to_{tg_chat_id}-{msg.message_id}",
                     content="Hello!",
                     message_id=message_id,
                     chat_id=tg_chat_id,
@@ -186,9 +189,11 @@ class TelegramBot:
                                     )
                                 self.table_agent.agent_dataframe_manager.remove_all_data()
                     
-                    specialists_responses = self.orchestrator_agent.call_specialists_sequentially(session_id=session_id, 
-                                                                                          specialists_names=chosen_specialists.copy(),
-                                                                                          user_message=user_message)
+                    specialists_responses = await self.specialists_agent.call_specialists_parallel(
+                        specialists_names=chosen_specialists.copy(),
+                        user_message=user_message
+                        )
+                    
                     # Add table agent results to specialists_responses KOSTYL
                     if 'table_agent_interpreter_result' in locals():
                         if table_agent_interpreter_result.success:
@@ -244,7 +249,7 @@ class TelegramBot:
                     if final_answer_dict:
                         tg_message, images = format_telegram_message(final_answer_dict)
 
-                    await self._send_response_with_images(msg.chat.id, tg_message, images, user, tg_chat_id)
+                    await self._send_response_with_images(msg.chat.id, tg_message, images, user, tg_chat_id, msg.message_id)
 
                 except Exception as e:
                     await self.bot.send_message(msg.chat.id, f'Что-то отвалилось :(\n\n{e}')
@@ -359,7 +364,7 @@ class TelegramBot:
                 if 'message_id' in locals():
                     self.frozen_reaction_messages.discard(message_id)
 
-    async def _send_response_with_images(self, chat_id: int, message: str, images: list, user: User, tg_chat_id: int):
+    async def _send_response_with_images(self, chat_id: int, message: str, images: list, user: User, tg_chat_id: int, user_message_id: int):
         """Send response message with optional images."""
         CAPTION_LIMIT = 1024
         MEDIA_GROUP_LIMIT = 10
@@ -371,7 +376,7 @@ class TelegramBot:
                 keyboard = create_reaction_keyboard(0)  # Will be updated after sending
                 sent = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
                 message_id = getattr(sent, "message_id", None)
-                self._persist_message(user, message, message_id, tg_chat_id)
+                self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                 # Update keyboard with correct message_id
                 if message_id:
                     updated_keyboard = create_reaction_keyboard(message_id)
@@ -404,14 +409,14 @@ class TelegramBot:
                         keyboard = create_reaction_keyboard(0)  # Will be updated after sending
                         sent = await self.bot.send_message(chat_id, chunk, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
                         message_id = getattr(sent, "message_id", None)
-                        self._persist_message(user, message, message_id, tg_chat_id)
+                        self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                         # Update keyboard with correct message_id
                         if message_id:
                             updated_keyboard = create_reaction_keyboard(message_id)
                             await self.bot.edit_message_reply_markup(chat_id, message_id, reply_markup=updated_keyboard)
                     else:
                         sent = await self.bot.send_message(chat_id, chunk, parse_mode=ParseMode.MARKDOWN)
-                        self._persist_message(user, message, getattr(sent, "message_id", None), tg_chat_id)
+                        self._persist_message(user, message, getattr(sent, "message_id", None), user_message_id, tg_chat_id)
         
         elif len(images) == 1:
             caption_too_long = len(message) > CAPTION_LIMIT
@@ -423,7 +428,7 @@ class TelegramBot:
                     keyboard = create_reaction_keyboard(0)  # Will be updated after sending
                     sent_text = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
                     message_id = getattr(sent_text, "message_id", None)
-                    self._persist_message(user, message, message_id, tg_chat_id)
+                    self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                     
                     # Update keyboard with correct message_id
                     if message_id:
@@ -434,7 +439,7 @@ class TelegramBot:
                     keyboard = create_reaction_keyboard(0)  # Will be updated after sending
                     sent_photo = await self.bot.send_photo(chat_id, photo, caption=message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
                     message_id = getattr(sent_photo, "message_id", None)
-                    self._persist_message(user, message, message_id, tg_chat_id)
+                    self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                     
                     # Update keyboard with correct message_id
                     if message_id:
@@ -442,9 +447,9 @@ class TelegramBot:
                         await self.bot.edit_message_reply_markup(chat_id, message_id, reply_markup=updated_keyboard)
         else:
             # Send multiple images
-            await self._send_media_group(chat_id, images, message, caption_too_long, user, tg_chat_id)
+            await self._send_media_group(chat_id, images, message, caption_too_long, user, tg_chat_id, user_message_id)
 
-    async def _send_media_group(self, chat_id: int, images: list, message: str, caption_too_long: bool, user: User, tg_chat_id: int):
+    async def _send_media_group(self, chat_id: int, images: list, message: str, caption_too_long: bool, user: User, tg_chat_id: int, user_message_id: int):
         """Send multiple images as media groups."""
         MEDIA_GROUP_LIMIT = 10
         
@@ -498,15 +503,21 @@ class TelegramBot:
                 keyboard = create_reaction_keyboard(assistant_msg_id_to_save)
                 await self.bot.edit_message_reply_markup(chat_id, assistant_msg_id_to_save, reply_markup=keyboard)
                
-        self._persist_message(user, message, assistant_msg_id_to_save, tg_chat_id)
+        self._persist_message(
+            user=user, 
+            content=message, 
+            bot_message_id=assistant_msg_id_to_save, 
+            user_message_id=user_message_id,
+            chat_id=tg_chat_id
+            )
 
-    def _persist_message(self, user: User, content: str, message_id: int, chat_id: int):
+    def _persist_message(self, user: User, content: str, bot_message_id:int, user_message_id: int, chat_id: int):
         """Persist assistant message to database."""
         try:
             reply = Message(
-                author=f"bot_to_{user.get_user_id()}",
+                author=f"bot_to_{chat_id}-{user_message_id}",
                 content=content,
-                message_id=message_id,
+                message_id=bot_message_id,
                 chat_id=chat_id,
             )
             user.persist_append_messages([reply])

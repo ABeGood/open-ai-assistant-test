@@ -1,21 +1,10 @@
 assistant_configs = {
-    "orchestrator": {
-        "id": "asst_aU6DIODwxNlFRxrY3WipBPjz",
-        "purpose": "Route requests and coordinate other assistants",
-        "truncation_strategy": {
-            "type": "last_messages",
-            "last_n_messages": 20
-        },
-        "max_prompt_tokens": None,
-        "max_completion_tokens": None
-    },
-
     "equipment": {
         "id": "asst_1dQLsAz9p6T2cQyGtnjSeXnv",
         "purpose": "Equipment expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 20
+            "last_n_messages": 1
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -26,18 +15,7 @@ assistant_configs = {
         "purpose": "Diagnostics expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 20
-        },
-        "max_prompt_tokens": None,
-        "max_completion_tokens": None
-    },
-
-    "compatibility": {
-        "id": "asst_nmFEiTZ2mE7XlUVlUv5PXAzu",
-        "purpose": "Compatibility expert",
-        "truncation_strategy": {
-            "type": "last_messages",
-            "last_n_messages": 20
+            "last_n_messages": 1
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -45,10 +23,10 @@ assistant_configs = {
 
     "tools": {
         "id": "asst_jtOdIxiHK1UsVkXaCxM8y0PS",
-        "purpose": "Tools expert",
+        "purpose": "Hand tools expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 20
+            "last_n_messages": 1
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -59,7 +37,7 @@ assistant_configs = {
         "purpose": "Cables for equipment connection expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 20
+            "last_n_messages": 1
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -70,18 +48,18 @@ assistant_configs = {
         "purpose": "Expert with common information knowledge",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 20
+            "last_n_messages": 1
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
     },
 
-    "combinator": {
-        "id": "asst_FM5jrNCeRHxy3MpMueV1RkED",
-        "purpose": "Combine experts responses into a final response for user",
+    "scripts": {
+        "id": "asst_494Ciy6OSsnrbIU99G0pcW76",
+        "purpose": "Expert in creating scripts for MS005-MS005A",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 20
+            "last_n_messages": 1
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None

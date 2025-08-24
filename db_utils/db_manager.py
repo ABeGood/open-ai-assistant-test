@@ -323,9 +323,9 @@ def update_message_reaction(user_id: str, message_id: int, reaction: Reaction|No
                     """
                     UPDATE messages 
                     SET reaction = NULL
-                    WHERE author = %s AND message_id = %s
+                    WHERE author LIKE %s AND message_id = %s
                     """,
-                    (f"bot_to_{message_id}", message_id)
+                    (f"bot_to_%", message_id)
                 )
             else:
                 # Set reaction - update bot message with this message_id
@@ -333,9 +333,9 @@ def update_message_reaction(user_id: str, message_id: int, reaction: Reaction|No
                     """
                     UPDATE messages 
                     SET reaction = %s
-                    WHERE author = %s AND message_id = %s
+                    WHERE author LIKE %s AND message_id = %s
                     """,
-                    (reaction.value, f"bot_to_{message_id}", message_id)
+                    (reaction.value, f"bot_to_%", message_id)
                 )
             conn.commit()
 
@@ -358,9 +358,9 @@ def get_message_reaction(user_id: str, message_id: int) -> Reaction:
             cur.execute(
                 """
                 SELECT reaction FROM messages 
-                WHERE author = %s AND message_id = %s
+                WHERE author LIKE %s AND message_id = %s
                 """,
-                (f"bot_to_{message_id}", message_id)
+                (f"bot_to_%", message_id)
             )
             result = cur.fetchone()
             
