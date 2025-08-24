@@ -21,6 +21,7 @@ from classes.enums import SpecialistType
 from classes.agents_response_models import SpecialistResponse, CombinatorResponse
 from .formatters import format_telegram_message
 from agents.orchestrator.orchestrator_agent import OrchestratorAgent
+from agents.combinator.combinator_agent import CombinatorAgent
 from agents.table_processor import TableAgent
 from openai import OpenAI
 from agents.path_utils import (
@@ -63,6 +64,7 @@ class TelegramBot:
         self.bot = AsyncTeleBot(token=bot_token)
         self.admin_messages = {}
         self.orchestrator_agent:OrchestratorAgent = OrchestratorAgent(llm_client=llm_client)
+        self.combinator_agent:CombinatorAgent = CombinatorAgent(llm_client=llm_client)
         self.table_agent:TableAgent = TableAgent(client=llm_client,
             prompt_strategy='hybrid_code_text',
             data_specs_dir_path=get_table_annotations_path(),
@@ -223,7 +225,7 @@ class TelegramBot:
                                 "➡️ Направляем их в бот-комбинатор для составления финального ответа."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
                             
-                        final_answer_dict = self.orchestrator_agent.process_with_combinator(session_id, user_message, successfull_spec_resps)
+                        final_answer_dict = self.combinator_agent.process_with_combinator_chat(user_message, successfull_spec_resps)
 
                         if DEBUG:
                             debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\

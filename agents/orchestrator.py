@@ -6,20 +6,15 @@ import uuid
 import asyncio
 import logging
 from typing import Optional
-from classes.validators import OrchestratorResponse as ValidatorOrchestratorResponse
 from classes.agents_response_models import (
-    OrchestratorResponse,
     SpecialistResponse,
-    CombinatorResponse,
     MultiSpecialistResponse,
     ResponseStatus,
     create_error_response,
     create_success_response,
     create_timeout_response
 )
-from agents.prompt_static_analyzer.prompt_static_analyzer import PromptStaticAnalyzer
-from agents.prompt_static_analyzer.formatters import format_analyzer_output_for_orchestrator
-from agents.agents_config import assistant_configs, price_per_token_in, price_per_token_out
+from agents.agents_config import assistant_configs
 from agents.agent_response_processing_utils import (
     process_image_markers, 
     delete_sources_from_text, 
@@ -46,8 +41,8 @@ console.setFormatter(formatter)
 logging.getLogger('').addHandler(console)
 
 
-class OrchestratorAgent:
-    """Multi-assistant orchestrator optimized for Telegram bot integration"""
+class SpecialistAgent:
+    """Agent for handling specialist assistant calls"""
     
     def __init__(self, api_key: str):
         self.client = OpenAI(api_key=api_key)
@@ -55,8 +50,6 @@ class OrchestratorAgent:
         self.shared_threads = {}
         self.context_store = {}
         self._initialize_assistants()
-        self.static_checker = PromptStaticAnalyzer()
-
 
     def _initialize_assistants(self):
         """Initialize all registered assistants"""
@@ -73,7 +66,6 @@ class OrchestratorAgent:
                 }
             except Exception as e:
                 print(f"Warning: Could not register assistant {name}: {e}")
-
 
     def create_session(self, telegram_user_id: Optional[int] = None) -> tuple[str, str]:
         """
@@ -140,294 +132,6 @@ class OrchestratorAgent:
         
         return self.create_session(telegram_user_id)
 
-
-    def process_with_orchestrator(self, session_id: str, user_message: str) -> OrchestratorResponse:
-        """Use orchestrator assistant to determine routing"""
-        if session_id not in self.shared_threads:
-            logging.error(f"Error occurred: session with id {session_id} not found.")
-            return create_error_response(
-                OrchestratorResponse,
-                "Session not found",
-                user_message,
-                specialists=[],
-                reason=None,
-                tables_to_query = [],
-            )
-        
-        # Get current context
-        # context = self.get_shared_context(session_id)
-        user_message_metadata = self.static_checker.route_query(user_message)
-        formatted_user_msg_metadata = format_analyzer_output_for_orchestrator(user_message_metadata)
-        
-        # Create routing prompt
-        routing_prompt = f"""
-USER REQUEST: 
-{user_message}
-
-USER REQUEST METADATA FROM STATIC ANALYSIS:
-{formatted_user_msg_metadata}
-"""
-        
-        # Route to orchestrator for decision
-        thread_id = self.shared_threads[session_id]
-        orchestrator_id = self.assistants['orchestrator']['id']
-        truncation_strategy_type = self.assistants['orchestrator']['truncation_strategy']['type']
-        truncation_strategy_last_n = self.assistants['orchestrator']['truncation_strategy']['last_n_messages']
-        max_prompt_tokens = self.assistants['orchestrator']['max_prompt_tokens']
-        max_completion_tokens = self.assistants['orchestrator']['max_completion_tokens']
-        
-        # Add routing message
-        try:
-            self.client.beta.threads.messages.create(
-                thread_id=thread_id,
-                role="user",
-                content=routing_prompt,
-                metadata={"type": "routing_decision"}
-            )
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            return create_error_response(
-                OrchestratorResponse,
-                f"Error creating routing message: {e}",
-                user_message,
-                specialists=[],
-                tables_to_query = [],
-            )
-        
-        # Get routing decision
-        try:
-            run = self.client.beta.threads.runs.create(
-                thread_id=thread_id,
-                assistant_id=orchestrator_id,
-                truncation_strategy={"type": truncation_strategy_type, "last_messages": truncation_strategy_last_n},
-                max_prompt_tokens=max_prompt_tokens,
-                max_completion_tokens=max_completion_tokens
-            )
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            return create_error_response(
-                OrchestratorResponse,
-                f"Error creating routing run: {e}",
-                user_message,
-                specialists=[],
-                tables_to_query = [],
-            )
-        
-        # Wait for completion
-        timeout = 30
-        start_time = time.time()
-        
-        while run.status != "completed":
-            if time.time() - start_time > timeout:
-                return create_timeout_response(
-                    OrchestratorResponse,
-                    user_message,
-                    "Routing decision timed out",
-                    specialists=[],
-                    tables_to_query = [],
-                )
-            
-            time.sleep(1)
-            try:
-                run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
-            except Exception as e:
-                logging.error(f"Error occurred: {e}", exc_info=True)
-                return create_error_response(
-                    OrchestratorResponse,
-                    f"Error checking routing status: {e}",
-                    user_message,
-                    specialists=[],
-                    tables_to_query = [],
-                )
-        logging.info(f'ORCHESTRATOR RUN COMPLETED:\nInput tokens: {run.usage.prompt_tokens} ({run.usage.prompt_tokens*price_per_token_in}$)\nInput tokens: {run.usage.completion_tokens} ({run.usage.completion_tokens*price_per_token_out}$)')
-        try:
-            messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
-            routing_decision_raw = messages.data[0].content[0].text.value
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            return create_error_response(
-                OrchestratorResponse,
-                f"Error retrieving routing decision: {e}",
-                user_message,
-                specialists=[],
-                tables_to_query = [],
-            )
-        
-        # Parse decision - try to extract JSON from response
-        try:
-            # Look for JSON in the response
-            ValidatorOrchestratorResponse.model_validate_json(routing_decision_raw)
-            orchestrator_response_dict = json.loads(routing_decision_raw)
-
-            if len(orchestrator_response_dict['specialists']) > 0:
-                # Log routing decision
-                if session_id in self.context_store:
-                    self.context_store[session_id]['routing_decisions'].append(orchestrator_response_dict)
-                
-                return create_success_response(
-                    OrchestratorResponse,
-                    user_message,
-                    tables_to_query = orchestrator_response_dict.get('tables_to_query', []),
-                    specialists=orchestrator_response_dict.get('specialists', []),
-                    reason=orchestrator_response_dict.get('reason'),
-                    confidence=orchestrator_response_dict.get('confidence'),
-                    raw_response=routing_decision_raw,
-                    timestamp=time.time()
-                )
-            else:
-                return create_error_response(
-                    OrchestratorResponse,
-                    "Empty assistants list",
-                    user_message,
-                    specialists=[],
-                    tables_to_query = [],
-                )
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            return create_error_response(
-                OrchestratorResponse,
-                f"Error parsing orchestrator response: {e}",
-                user_message,
-                specialists=[],
-                tables_to_query = [],
-            )
-    
-    def process_with_combinator(self, session_id: str, user_message: str, specialists_responses: list[SpecialistResponse]) -> CombinatorResponse:
-        """Use combinator assistant to prepare the final answer"""
-        specialists_names = [resp.specialist for resp in specialists_responses]
-
-        if session_id not in self.shared_threads:
-            return create_error_response(
-                CombinatorResponse,
-                "Session not found",
-                user_message,
-                specialists=specialists_names
-            )
-        
-        # Get current context
-        # context = self.get_shared_context(session_id)
-        
-        # Create combinator prompt
-        specialist_responses = ""
-        for i, item in enumerate(specialists_responses):
-            specialist_responses += f"SPECIALIST {i+1} DATA START\n"
-            specialist_responses += f"SPECIALIST NAME: {item.specialist}\n"
-            specialist_responses += f"SPECIALIST RESPONSE: {item.response}\n"
-            specialist_responses += f"SPECIALIST {i+1} DATA END\n\n"
-
-        combinator_prompt = f"""USER QUERY: 
-{user_message}
-
-SPECIALISTS RESPONSES:
-{specialist_responses}
-"""
-        
-        # Route to combinator for decision
-        thread_id = self.shared_threads[session_id]
-        combinator_id = self.assistants['combinator']['id']
-        truncation_strategy_type = self.assistants['combinator']['truncation_strategy']['type']
-        truncation_strategy_last_n = self.assistants['combinator']['truncation_strategy']['last_n_messages']
-        max_prompt_tokens = self.assistants['combinator']['max_prompt_tokens']
-        max_completion_tokens = self.assistants['combinator']['max_completion_tokens']
-        
-        # Add routing message
-        try:
-            self.client.beta.threads.messages.create(
-                thread_id=thread_id,
-                role="assistant",
-                content=combinator_prompt,
-                metadata={"type": "combinator_call"}
-            )
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            return create_error_response(
-                CombinatorResponse,
-                f"Error creating routing message: {e}",
-                user_message,
-                specialists=specialists_names
-            )
-        
-        # Get final answer
-        try:
-            run = self.client.beta.threads.runs.create(
-                thread_id=thread_id,
-                assistant_id=combinator_id,
-                truncation_strategy={"type": truncation_strategy_type, "last_messages": truncation_strategy_last_n},
-                max_prompt_tokens=max_prompt_tokens,
-                max_completion_tokens=max_completion_tokens
-            )
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            return create_error_response(
-                CombinatorResponse,
-                f"Error creating routing run: {e}",
-                user_message,
-                specialists=specialists_names
-            )
-        
-        # Wait for completion
-        timeout = 30
-        start_time = time.time()
-        
-        while run.status != "completed":
-            if time.time() - start_time > timeout:
-                return create_timeout_response(
-                    CombinatorResponse,
-                    user_message,
-                    "Combinator call timed out",
-                    specialists=specialists_names
-                )
-            
-            time.sleep(1)
-            try:
-                run = self.client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
-            except Exception as e:
-                logging.error(f"Error occurred: {e}", exc_info=True)
-                return create_error_response(
-                    CombinatorResponse,
-                    f"Error checking combinator status: {e}",
-                    user_message,
-                    specialists=specialists_names
-                )
-        
-        try:
-            messages = self.client.beta.threads.messages.list(thread_id=thread_id, limit=1)
-            final_response = messages.data[0].content[0].text.value
-
-            # Extract sources
-            sources_list = []
-            for spec_response in specialists_responses:
-                sources_list += spec_response.sources
-                sources_list = list(set(sources_list))
-
-            # Extract images
-            img_list = []
-            for spec_response in specialists_responses:
-                img_list += spec_response.images
-                img_list = list(set(img_list))
-
-        except Exception as e:
-            logging.error(f"Error occurred: {e}", exc_info=True)
-            return create_error_response(
-                CombinatorResponse,
-                f"Error retrieving combinator response: {e}",
-                user_message,
-                specialists=specialists_names
-            )
-        
-        return create_success_response(
-            CombinatorResponse,
-            user_message,
-            specialists=specialists_names,
-            response=final_response,
-            sources=sources_list,
-            images=img_list,
-            raw_response=final_response,
-            combined_from=specialists_responses,
-            timestamp=time.time()
-        )
-    
-    
     def route_to_assistant(self, 
                            session_id: str, 
                            assistant_name: str, 
@@ -613,16 +317,6 @@ SPECIALISTS RESPONSES:
             new_thread 
         )
     
-    async def process_request(self, session_id: str, user_message: str, telegram_user_id: Optional[int] = None) -> OrchestratorResponse:
-        """Complete request processing with routing and context"""
-        
-        # Ensure session exists
-        if session_id not in self.context_store:
-            session_id, session_msg = self.get_or_create_session(telegram_user_id)
-        
-        # Determine which assistant to use
-        return self.process_with_orchestrator(session_id, user_message)
-    
     def call_specialists_sequentially(self, session_id: str, specialists_names: list[str], user_message: str) -> MultiSpecialistResponse:
         if SpecialistType.TABLES in specialists_names:
             specialists_names.remove(SpecialistType.TABLES)
@@ -730,12 +424,12 @@ SPECIALISTS RESPONSES:
             )
 
 # Convenience functions for easy integration
-def create_orchestrator(api_key: str = None) -> OrchestratorAgent:
-    """Create and return configured orchestrator"""
+def create_specialist_agent(api_key: str = None) -> SpecialistAgent:
+    """Create and return configured specialist agent"""
     if api_key is None:
         api_key = os.environ.get("OPENAI_TOKEN")
     
     if not api_key:
         raise ValueError("OpenAI API key not provided and OPENAI_TOKEN environment variable not set")
     
-    return OrchestratorAgent(api_key)
+    return SpecialistAgent(api_key)
