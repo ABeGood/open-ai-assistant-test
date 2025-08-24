@@ -6,6 +6,7 @@ import os
 import logging
 import asyncio
 from time import sleep
+from typing import Set
 
 from dotenv import load_dotenv
 from telebot import custom_filters
@@ -18,6 +19,8 @@ from telebot.types import InputMediaPhoto
 from classes.classes import User, Message, Reaction
 from classes.agents_response_models import SpecialistResponse, CombinatorResponse
 from .formatters import format_telegram_message
+from .chat_utils import create_reaction_keyboard, create_locked_reaction_keyboard, parse_reaction_callback, get_reaction_emoji
+from db_utils.db_manager import get_message_reaction, update_message_reaction
 
 DEBUG = True
 
@@ -47,6 +50,7 @@ class TelegramBot:
         self.admin_messages = {}
         self.orchestrator = orchestrator
         self.logger = logging.getLogger(__name__)
+        self.frozen_reaction_messages: Set[int] = set() # Track frozen reaction messages to prevent spam
         
         self.register_handlers()
 
@@ -91,7 +95,21 @@ class TelegramBot:
             user.persist_append_messages([user_msg])
 
             if msg.text == "Hi":
-                await self.bot.send_message(msg.chat.id, "Hello!", parse_mode=ParseMode.MARKDOWN)
+                keyboard = create_reaction_keyboard(0)  # Will be updated after sending
+                sent = await self.bot.send_message(msg.chat.id, "Hello!", parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                message_id = getattr(sent, "message_id", None)
+                
+                test_msg = Message(
+                    author="assistant",
+                    content="Hello!",
+                    message_id=message_id,
+                    chat_id=tg_chat_id,
+                )
+                user.persist_append_messages([test_msg])
+                
+                if message_id: # Update keyboard with correct message_id
+                    updated_keyboard = create_reaction_keyboard(message_id)
+                    await self.bot.edit_message_reply_markup(msg.chat.id, message_id, reply_markup=updated_keyboard)
             else:
 
                 try:
@@ -181,6 +199,110 @@ class TelegramBot:
                             await self.bot.send_message(msg.chat.id, f'DEBUG MODE IS ACTIVE\n\nPlain text:\n{tg_message}')
                         except Exception:
                             pass
+        
+        @self.bot.callback_query_handler(func=lambda callback: callback.data.startswith(("like:", "dislike:", "locked:")))
+        async def handle_reaction_callback(reaction_callback):
+            try:
+                # Parse callback data
+                reaction_type, message_id = parse_reaction_callback(reaction_callback.data)
+                user_id = str(reaction_callback.from_user.id)
+                
+                # Check if message is frozen (being processed)
+                if message_id in self.frozen_reaction_messages:
+                    await self.bot.answer_callback_query(
+                        reaction_callback.id, 
+                        "Please wait. The previous request is being processed."
+                    )
+                    return
+                
+                # Handle locked callback (user clicked on disabled buttons)
+                if reaction_type == "locked":
+                    await self.bot.answer_callback_query(
+                        reaction_callback.id, 
+                        "Buttons are locked. Please wait."
+                    )
+                    return
+                
+                # Freeze the message to prevent spam
+                self.frozen_reaction_messages.add(message_id)
+                
+                try:
+                    # Lock the keyboard immediately
+                    locked_keyboard = create_locked_reaction_keyboard(message_id)
+                    await self.bot.edit_message_reply_markup(
+                        reaction_callback.message.chat.id,
+                        message_id,
+                        reply_markup=locked_keyboard
+                    )
+                    
+                    # Get current reaction for this message
+                    current_reaction = get_message_reaction(user_id, message_id)
+                    
+                    # Determine new reaction
+                    new_reaction = None
+                    if reaction_type == "like":
+                        new_reaction = Reaction.LIKE if current_reaction != Reaction.LIKE else None
+                    elif reaction_type == "dislike":
+                        new_reaction = Reaction.DISLIKE if current_reaction != Reaction.DISLIKE else None
+                    
+                    # Update reaction in database
+                    update_message_reaction(user_id, message_id, new_reaction)
+                    
+                    # Update bot's reaction on the message
+                    if new_reaction is None:
+                        # Remove reaction
+                        await self.bot.set_message_reaction(
+                            reaction_callback.message.chat.id,
+                            message_id,
+                            []
+                        )
+                    else:
+                        # Set reaction
+                        emoji = get_reaction_emoji(new_reaction)
+                        if emoji:
+                            await self.bot.set_message_reaction(
+                                reaction_callback.message.chat.id,
+                                message_id,
+                                [ReactionTypeEmoji(emoji)],
+                                is_big=False
+                            )
+                    
+                    # Restore normal keyboard after successful operation
+                    normal_keyboard = create_reaction_keyboard(message_id)
+                    await self.bot.edit_message_reply_markup(
+                        reaction_callback.message.chat.id,
+                        message_id,
+                        reply_markup=normal_keyboard
+                    )
+                    
+                    # Answer callback query to remove loading state
+                    await self.bot.answer_callback_query(reaction_callback.id)
+                    
+                except Exception as e:
+                    self.logger.error(f"Error processing reaction: {e}")
+                    
+                    # Show error message to user
+                    await self.bot.answer_callback_query(
+                        reaction_callback.id, 
+                        f"Error while processing reaction: {str(e)}"
+                    )
+                    
+                    # Keep keyboard locked on error (as requested)
+                    # Don't restore normal keyboard, leave it locked
+                    
+                finally:
+                    # Always unfreeze the message
+                    self.frozen_reaction_messages.discard(message_id)
+                
+            except Exception as e:
+                self.logger.error(f"Error handling reaction callback: {e}")
+                await self.bot.answer_callback_query(
+                    reaction_callback.id, 
+                    "Error while processing request"
+                )
+                # Ensure message is unfrozen even on error
+                if 'message_id' in locals():
+                    self.frozen_reaction_messages.discard(message_id)
 
     async def _send_response_with_images(self, chat_id: int, message: str, images: list, user: User, tg_chat_id: int):
         """Send response message with optional images."""
@@ -191,8 +313,15 @@ class TelegramBot:
 
         if len(images) < 1:
             # No images - just send text message
-            sent = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN)
-            self._persist_message(user, message, getattr(sent, "message_id", None), tg_chat_id)
+            keyboard = create_reaction_keyboard(0)  # Will be updated after sending
+            sent = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+            message_id = getattr(sent, "message_id", None)
+            self._persist_message(user, message, message_id, tg_chat_id)
+            
+            # Update keyboard with correct message_id
+            if message_id:
+                updated_keyboard = create_reaction_keyboard(message_id)
+                await self.bot.edit_message_reply_markup(chat_id, message_id, reply_markup=updated_keyboard)
         
         elif len(images) == 1:
             # Send single image
@@ -200,12 +329,26 @@ class TelegramBot:
                 if caption_too_long:
                     # Send image without caption, then text separately
                     await self.bot.send_photo(chat_id, photo)
-                    sent_text = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN)
-                    self._persist_message(user, message, getattr(sent_text, "message_id", None), tg_chat_id)
+                    keyboard = create_reaction_keyboard(0)  # Will be updated after sending
+                    sent_text = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                    message_id = getattr(sent_text, "message_id", None)
+                    self._persist_message(user, message, message_id, tg_chat_id)
+                    
+                    # Update keyboard with correct message_id
+                    if message_id:
+                        updated_keyboard = create_reaction_keyboard(message_id)
+                        await self.bot.edit_message_reply_markup(chat_id, message_id, reply_markup=updated_keyboard)
                 else:
                     # Send image with caption
-                    sent_photo = await self.bot.send_photo(chat_id, photo, caption=message, parse_mode=ParseMode.MARKDOWN)
-                    self._persist_message(user, message, getattr(sent_photo, "message_id", None), tg_chat_id)
+                    keyboard = create_reaction_keyboard(0)  # Will be updated after sending
+                    sent_photo = await self.bot.send_photo(chat_id, photo, caption=message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                    message_id = getattr(sent_photo, "message_id", None)
+                    self._persist_message(user, message, message_id, tg_chat_id)
+                    
+                    # Update keyboard with correct message_id
+                    if message_id:
+                        updated_keyboard = create_reaction_keyboard(message_id)
+                        await self.bot.edit_message_reply_markup(chat_id, message_id, reply_markup=updated_keyboard)
         else:
             # Send multiple images
             await self._send_media_group(chat_id, images, message, caption_too_long, user, tg_chat_id)
@@ -249,10 +392,20 @@ class TelegramBot:
         # If caption was too long, send it as separate message after all media groups
         assistant_msg_id_to_save = None
         if caption_too_long:
-            sent_caption = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN)
+            keyboard = create_reaction_keyboard(0)  # Will be updated after sending
+            sent_caption = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
             assistant_msg_id_to_save = getattr(sent_caption, "message_id", None)
+            
+            # Update keyboard with correct message_id
+            if assistant_msg_id_to_save:
+                updated_keyboard = create_reaction_keyboard(assistant_msg_id_to_save)
+                await self.bot.edit_message_reply_markup(chat_id, assistant_msg_id_to_save, reply_markup=updated_keyboard)
         else:
             assistant_msg_id_to_save = first_group_first_msg_id
+            # Add keyboard to the first message of the media group
+            if assistant_msg_id_to_save:
+                keyboard = create_reaction_keyboard(assistant_msg_id_to_save)
+                await self.bot.edit_message_reply_markup(chat_id, assistant_msg_id_to_save, reply_markup=keyboard)
                
         self._persist_message(user, message, assistant_msg_id_to_save, tg_chat_id)
 
