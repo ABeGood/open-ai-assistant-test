@@ -1,0 +1,51 @@
+MS521 MECHANISM FOR DIAGNOSTICS OF POWER STEERING RACKS UNDER LOAD @D_26_IMG_000_PHOTO_ms521-mechanism_general-view
+
+DIAGNOSTICS MANUAL
+
+5.2. Preparing the mechanism for operation
+The mechanism is delivered packaged. Remove the mechanism from its packaging materials. After unpacking, ensure that the mechanism is intact and has no damage. If any damage is found, contact the manufacturer or sales representative.
+The mechanism is installed and secured on the MS502M bench table in place of the MS522 pneumatic clamps.
+
+6. OPERATION OF THE MECHANISM DURING STEERING RACK DIAGNOSTICS
+The procedure for working with the load mechanism during the diagnostics of a steering rack is as follows:
+1. Mount the step adapters or rod limiters from the MS00110 set onto the ends of the rack rod.
+@D_26_IMG_002_PHOTO_step-adapters-installation_step1
+
+2. Install the rack onto the mechanism.
+@D_26_IMG_003_PHOTO_rack-installation_step2
+@D_26_IMG_004_PHOTO_rack-positioning_step2
+
+2.1. After installation, the adapter lock on the left support must be secured.
+@D_26_IMG_005_PHOTO_adapter-lock-securing_step2-1
+
+3. Rotate handle 4 in Fig. 1 @D_26_IMG_001_DIAGRAM_mechanism-main-elements_fig1 to press the movable stop against the rack body.
+@D_26_IMG_006_PHOTO_handle-rotation_step3
+WARNING! Be cautious to avoid injuring your fingers.
+
+4. Connect the compressed air source to the fitting (see position 8 in Fig. 1 @D_26_IMG_001_DIAGRAM_mechanism-main-elements_fig1).
+@D_26_IMG_007_PHOTO_compressed-air-connection_step4
+
+5. Use pressure regulator 7 in Fig. 1 @D_26_IMG_001_DIAGRAM_mechanism-main-elements_fig1 to set the desired resistance to the movement of the rack rod. The relationship between resistance force and pressure is provided in Table 1.
+
+Table 1. Ratios of air pressure and generated load
+Air pressure, bar	Generated load, N
+1	247
+2	494
+3	742
+4	989
+5	1236
+6	1484
+7	1731
+8	1978
+9	2226
+10	2473
+
+6. Connect the high and low-pressure hoses of the test bench to the rack and perform diagnostics as described in the MS502M test bench User Manual.
+
+6.1. During the steering rack diagnostics, use switch 5 in Fig. 1 @D_26_IMG_001_DIAGRAM_mechanism-main-elements_fig1 to create resistance to the movement of the rack rod in the corresponding direction.
+
+@D_26_IMG_008_PHOTO_direction-switch-operation_step6-1
+
+6.2. The criteria for evaluating the condition of the steering rack are provided in the MS502M test bench User Manual.
+
+7. Upon completion of the diagnostics, disconnect the compressed air source from the mechanism and remove the rack.

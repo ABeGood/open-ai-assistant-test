@@ -1,0 +1,47 @@
+MS021 TESTER FOR DIAGNOSTICS OF DIODE BRIDGES OF ALTERNATORS
+
+DIAGNOSTICS MANUAL
+
+5.2. Rectifier testing
+Diagnostics of a rectifier should be performed as follows:
+1. Turn the tester on. Connect the clamp to the rectifier housing. The following message will appear on the screen: "CONNECT PROBE TO DIODE".
+2. Touch the contact spot of the tested diode with a probe. The following information will be displayed:
+"Vf" – diode voltage drop (in volts);
+"Vr" - stabilizing voltage (in volts). If there are stabilitrons (avalanche diodes) in the rectifier structure, the "AVALANCHE" message will appear.
+WARNING! Different contaminants and dirt on the tested contacts may lead to measurement errors.
+Figure 4. Taking measurements: @D_3_IMG_004_PHOTO_taking-measurements-incorrect_fig4A @D_3_IMG_005_PHOTO_taking-measurements-correct_fig4B
+А) – incorrect; B) – correct
+
+2.1. If the diode is faultless, the screen will display "Vf" and "Vr" values. The screen color will be green. @D_3_IMG_007_DIAGRAM_screen-display-green_measurement 
+
+2.2. If the "Vf" value is higher than normal, the screen color will be yellow.@D_3_IMG_008_DIAGRAM_screen-display-yellow_measurement 
+
+The operability of the rectifier should be decided on the basis of the "Vf" readings and type (model) of the diode (stabilitron). The "Vf" absolute value is not always a key parameter when checking the rectifier. It is important to pay attention to the spread between the "Vf" values of different diodes of the same rectifier. For example, for a rectifier that can carry 50 A, "Vf" = 0.850 V is quite typical. The rectifier can be considered faultless If the spread between "Vf" values of the diodes doesn't exceed ± 0.020 V. For the 120A rectifier, "Vf" = 0.850V is already a critical value. The diode with such a "Vf" value shall be considered faulty.
+2.3. If the diode is faulty, the screen color will be red.@D_3_IMG_009_DIAGRAM_screen-display-red_measurement
+
+2.4 In case of a short or open circuit failure, the screen color will be red and either the "SHORT CIRCUIT' or 'DIODE BREAKDOWN' message will be displayed correspondingly. @D_3_IMG_010_DIAGRAM_screen-display-short-circuit-error @D_3_IMG_011_DIAGRAM_screen-display-diode-breakdown-error
+
+5.3. Tester setup
+The device assesses the diode performance on the basis of the forward voltage drop value ("Vf") and is specially calibrated to make it usable for any operator who doesn't have sufficient knowledge of the diode parameters and characteristics. Threshold values can be changed at the user's option.
+Figure 5. Color threshold setting menu. @D_3_IMG_012_DIAGRAM_color-threshold-setting-menu_fig5 @D_3_IMG_013_DIAGRAM_threshold-values-adjustment_fig5
+
+Enter the "Settings" menu as follows:
+1) Turn the device off.
+2) Press and hold down the encoder button ("3" – Fig.1 @D_3_IMG_001_PHOTO_MS021-tester-general-view_fig1).
+3) Turn the device on. A setup mode will be activated.
+4) Threshold values for either a faultless diode (green color of the screen) or a faulty one (red color of the screen) can be changed in this mode.
+5) The selected threshold value can be changed by turning the encoder button clockwise or counterclockwise.
+6) To save the selected settings, press and hold down the encoder button until the device enters the operating mode and the "CONNECT PROBE TO DIODE" message appears on the screen.
+7) Turn the tester off to exit the setup menu. The settings won't be saved.
+
+
+7. TROUBLESHOOTING GUIDE
+The below chart contains the description of potential malfunctions and troubleshooting methods:
+Failure symptom	Potential cause	Troubleshooting tips
+1. Tester doesn't turn on.	The power connector came off.	Check whether the connection is securely maintained.
+	The fuse burnt out.	Replace the fuse.
+2. "PROBE PROBLEM" message appears when the tester is on.	The diagnostic cable is faulty (damaged).	Replace the diagnostic cable.
+3. "DIODE BREAKDOWN" message appears when the probes are open.	Loose connection on the diagnostic cable connector.	Recover the contact.
+		Replace the diagnostic cable.
+4. The tested parameters are displayed incorrectly.	Loose connection on the diagnostic cable connector.	Recover the contact.
+	Software error.	Contact technical support.

@@ -1,0 +1,186 @@
+MS005 MS005A TEST BENCH FOR DIAGNOSTICS OF ALTERNATORS AND STARTERS 
+
+Manual for creating scripts for automatic testing of alternators
+
+Automatic testing of alternators on the bench is carried out using scripts. You can use existing
+"Default script" or create your own "User script".
+
+To make the program use custom scripts, you need to write them, name them accordingly (for
+example, if the alternator type is Lamp 12 volts, then the script file name should be LAMP12.txt),
+and insert them into the scripts folder. The folder is located at C:\UserFiles\Scripts, and you can
+also navigate to the scripts folder by clicking the corresponding button in the "Automatic test"
+tab of the bench settings menu. In this folder, there are two subfolders, Advanced and Quick,
+containing templates for scripts. Ready-made scripts should be inserted into these folders.
+Next, in the automatic alternator test settings menu, you need to set the appropriate "User script"
+checkbox opposite the alternator type for which the user script is written.
+ATTENTION! If scripts are accidentally deleted, new template files will be created when the
+software is launched.
+
+1. Writing a script
+Script writing is done using a special scripting language, which includes:
+• 26 functions;
+• 4 data types;
+• 1 loop;
+• 1 conditional operator.
+For a better underbenching of how the scripting language works, after studying the manual, it is
+recommended to analyze the provided scripts in the folder C:\UserFiles\Scripts.
+1.1. Data types
+As in many programming languages, this language has its own data type system used for creating
+variables. Data types define the internal representation of data, the range of values an object can
+take, and even the permissible operations that can be applied to an object.
+In this language, there are the following basic data types:
+• #iVariable: stores an integer from 0 to 4294967295, representing a UInt32.
+• #fVariable stores a floating-point number from -3.4·1038 tо 3.4·1038.
+• #sVariable: stores a textual value.
+Declaring variables is done as follows: # + type + name. For example, when declaring
+#fMaximumTemperature=15.2, we declare a floating-point number named MaximumTemperature,
+which equals 15 integers and 2 tenths. Similar to the integer type but without a fractional part.
+Another example: #sOutputText="Starting operation". Here, we declare a string value named
+OutputText and assign the value "Starting operation" as text.
+With numeric types, you can also perform benchard mathematical operations (addition,
+subtraction, multiplication, division). For example:
+#fNormalCurrent=10
+#fCurrent=13.7
+#fCurrent=#fCurrent - #fNormalCurrent
+Here, we declared two numeric variables and assigned the difference of one of them to the
+other.
+There are also several built-in variables (constants) in the language;
+#iAlternatorCurrent – current of the selected alternator;
+#iAlternatorVoltage – current of the selected alternator;
+#bMotorDirection – motor direction for rotation;
+#sTesterName – the name of the test bench;
+#sAlternatorNumber – the article number of the selected alternator from the database;
+#sAtlernatorType – the type of the alternator;
+#sCurrentTime – current time;
+#sCurrentDate - current date;
+#fPulleyDiameter – the diameter of the selected alternator's pulley;
+#sDiagnosedBy – the name of the company conducting the test (set in the settings);
+#sContacts – contacts (set in the settings);
+#sIsSense – information on whether the "S" terminal is used: 0 – off, 1 - on;
+#sIsIgnition – information on whether the "15" terminal is used: 0 – off, 1 - on;
+#sInputPinType – the type of the "FR" terminal.
+1.2. Conditional statement
+The if-else conditional construct directs the program's flow down one of the possible paths
+depending on a condition. It checks the truth of the condition and, if true, executes a block of
+instructions. In its simplest form, the if construct has the following abbreviated form:
+
+If(condition)
+Else
+End If
+
+Let's consider an example of using this operator:
+
+If(#sIsSense="True")
+  #sIsSense="False"
+End If
+
+Here, we check if the value of the variable #sIsSense equals the text "True". If it does, the
+variable is assigned a new value "False".
+Another example:
+
+If(#sTesterName="MS005")
+  #iMaxLoad=300
+Else
+  #iMaxLoad=150
+End If
+
+In this case, we check if the value of the variable #sTesterName equals the text "MS005". If it does,
+the variable #iMaxLoad is assigned a new value of 300. If not, it is assigned a new value of 150.
+This operator must always be followed by the closing command End If.
+
+1.3. Loop
+Loops are control structures that allow a certain action to be performed multiple times depending
+on specific conditions. In the scripting language, there is one loop with the following structure:
+
+While(Condition)
+   Exit
+End While
+
+This loop immediately checks a certain condition, and if the condition is true, the loop's code is
+executed. Here is an example of using the loop:
+
+While(#iSetRPM<3000)
+  SetMotorSpeed(#iSetRPM)
+  If(GetBPlusU>#fLampMinimalVoltage)
+  Exit
+  End If
+  #iSetRPM=#iSetRPM+100
+End While
+
+In this case, the loop runs as long as the value of the variable #iSetRPM is less than 3000. Two
+functions, SetMotorSpeed (which is discussed in the relevant section), are used to set the value
+of the variable #iSetRPM obtained from the bench. Then, a conditional statement is used to
+compare the value obtained by the function GetBPlusU with the variable #fLampMinimalVoltage.
+И если #fLampMinimalVoltage is less, the loop is exited using the Exit.
+It is essential to always include the End While command at the end of the loop.
+
+1.4. Wait operator
+This operator can be useful when you need to check a condition over a certain period of time. It
+has the following structure:
+
+  Wait(condition, time_in_milliseconds)
+
+It checks the condition every 100 milliseconds. If the condition is true, it continues down the
+script. If not, after the specified time, it continues regardless of whether the condition was met or
+not. After that, it is advisable to perform an additional check of this condition. If the check fails,
+the test should be terminated. Here is an example of usage:
+
+Wait(GetBPlusU>#fLampMinimalVoltage,16000)
+If(GetBPlusIAC>#fLampMaxACCurrent)
+  End
+End If
+
+In this case, we check if the value obtained by the function GetBPlusU is greater than the value
+of the variable #fLampMinimalVoltage. The wait time is 16 seconds. After that, we check if the
+value obtained by the GetBPlusIAC The wait time is 16 seconds. After that, we check if the value
+obtained by the #fLampMaxACCurrent, , and if it is, we stop the test.
+
+1.5. Functions
+Functions are essential for setting or retrieving specific values from the test bench or performing certain actions. There are a total of 26 functions available. Depending on the function, they may take 0 or 1 argument. Let's go through them:
+
+Print() – used to display specific text in the console. For example, if you write
+Print("Alternator Test Started") the text Alternator Test Started will be displayed in the console.
+Delay() – introduces a delay in execution for the specified time in milliseconds. It accepts one argument, which should be a number between 0 and 65535. For instance, the function
+Delay(10000) will pause the script execution for 10 seconds.
+GetMotorSpeed() – returns the motor speed from the test bench as a floating-point number ranging from 0 to 3000.
+GetMotorVoltage() – returns the motor voltage in volts from the test bench as a floating-point number ranging from 0 to 1000.
+GetMotorCurrent() – returns the motor current in amperes from the test bench as a floatingpoint number ranging from 0 to 20.
+SetMotorAccel() - sets the motor's acceleration in seconds.
+SetType(number) - configures the type of the output signal as a floating-point number between 1 and 11.
+SetVoltage() - sets the output voltage in volts for the controlled alternator as a floating-point number between 10.6 and 16.
+SetLoad() – sets the load in amperes. It accepts one argument as a number ranging from 0 to 300.
+GetBPlusU() – returns BPlusU from the test bench as a floating-point number ranging from 0 to 65535.
+GetBPlusIDC() – returns BPlusIDC from the test bench as a floating-point number ranging from 0 to 1000.
+GetBPlusIAC() – returns BPlusIAC from the test bench as a floating-point number ranging from 0 to 255.
+SetK15() – returns BPlusIAC from the test bench as a floating-point number ranging from 0 to 255.
+GetK15U() – returns the voltage on K15 from the test bench as a floating-point number ranging from 0 to 60 volts.
+GetK15I() – returns the current on K15 from the test bench as a floating-point number ranging from 0 to 2 amperes.
+SetSence() – enables or disables Sense. It takes an argument of 0 (to disable) or 1 (to enable).
+GetLinID() – returns the Lin ID of the alternator from the test bench as a number.
+GetLinExc() – returns the Lin FR of the alternator from the test bench as a percentage number from 0 to 100.
+GetLinErr() – returns the error of the Lin alternator from the test bench as a number.
+GetLinSpeed() – returns the speed of the Lin alternator from the test bench as a number.
+GetLinType() – returns the type of the Lin alternator from the test bench as a number ranging from 0 to 13.
+SetFRPullup() – turns FRPullup on or off. It takes an argument of 0 (to turn off) or 1 (to turn on).
+GetFRDuty() – returns the FR Duty of the alternator from the test bench as a floating-point number from 0 to 100.
+GetCOMExc() – many alternators send a signal back to the vehicle indicating its load. Typically, this is read as GetFRDuty, but for COM alternators where everything is transmitted digitally through a single wire, it is read as GetCOMExc.
+GetFRFreq() – returns the FR Freq of the alternator from the test bench as a floating-point number in Hz with a range from 0 to 10000.
+GetTimeStamp – returns the time from the start of script execution. This is needed to calculate delays from the moment the script started to the point when the alternator produced a result.
+GetLampI() – returns the LampI of the alternator from the test bench as a floating-point number in milliamperes with a range from 0 to 500.
+GetTemperature() – returns the temperature of the alternator from the test bench as a floatingpoint number in degrees Celsius with a range from 0 to 200.
+
+1.6. Limitations
+To ensure the proper functioning of scripts, there are several limitations. For a better underbenching of these limitations, you can visit the "Manual Test" section and review the data requirements.
+Number of Revolutions: When setting the number of revolutions, it's important to underbench that the test bench can rotate from 0 to 3000 revolutions per minute. Setting a value outside this range may lead to unstable test bench performance.
+Current and Voltage: When configuring these parameters, it's essential to consider the alternator type and its specifications. For instance, if you set a load of 300 for a alternator with a maximum current of 100A, it can have extremely negative consequences.
+K15 and Sense: These parameters are automatically enabled when entering the testing mode and disabled when exiting. This should be taken into account to avoid writing unnecessary code. It won't affect the process but may slow down execution.
+2. Report generation
+Generating a custom report is similar to creating a custom script. To make the program use custom reports, you need to write them, name them accordingly (for example, if it's a 12-volt lamp alternator, the name should be LAMP12.xlsx), and insert them into
+the reports folder. The folder is located at C:\UserFiles\Reports.
+In turn, it contains two subfolders, Advanced and Quick. These folders contain templates for scripts. Accordingly, Advanced is for reports for advanced scripts, and Quick is for reports for quick scripts. Ready-made reports should be inserted into these folders.
+After conducting the test, a report will be automatically generated based on the created template.
+IMPORTANT: The program works in such a way that when a specific script is selected, the corresponding report is also selected. For example, if we choose an advanced script for a 12-volt lamp alternator (the path to it will be C:\UserFiles\Scripts\Advanced\LAMP12.txt), the corresponding report located at C:\UserFiles\Reports\Advanced\LAMP12.xlsx will be used.
+2.1. Creating your own report
+A report template is created in Excel. You create a table where you record the values of variables generated during the automatic test or constants. For example, if you want to display the constants #sCurrentTime и #sCurrentDate you should make a table.
+When generating the report, these placeholders will be automatically replaced with the values generated during the test.
+This way, you can include any variables created during the test in your report

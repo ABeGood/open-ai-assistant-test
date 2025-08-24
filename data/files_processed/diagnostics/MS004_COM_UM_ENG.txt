@@ -1,0 +1,243 @@
+MS004 COM TEST BENCH FOR DIAGNOSTICS OF ALTERNATORS, STARTERS AND VOLTAGE REGULATORS @D_24_IMG_000_PHOTO_ms004-com-test-bench_general-view
+
+DIAGNOSTICS MANUAL
+
+6. DIAGNOSTICS
+6.1. Installing and connecting the alternator
+1. Referring to the alternator OEM, that is commonly indicated on the body or rear cover, find on the Internet the information on the alternator connector terminals.
+Figure 12 @D_24_IMG_018_PHOTO_mitsubishi-md375853-alternator_fig12 @D_24_IMG_019_PHOTO_mitsubishi-md375853-connector-terminal-references_fig12 illustrates the example of connection layout of Mitsubishi MD375853 alternator.
+Figure 12. Mitsubishi MD375853 alternator and connector terminal references @D_24_IMG_018_PHOTO_mitsubishi-md375853-alternator_fig12 @D_24_IMG_019_PHOTO_mitsubishi-md375853-connector-terminal-references_fig12
+
+Referring to the connector terminals on the figure 12 @D_24_IMG_018_PHOTO_mitsubishi-md375853-alternator_fig12 @D_24_IMG_019_PHOTO_mitsubishi-md375853-connector-terminal-references_fig12, first, identify the alternator type (see Appendix 1 to find the connector terminal references for each alternator type). Now, the terminal G refers to C alternator type. Next, referring to Appendix 1, check what bench outputs should be connected with the alternator (connection layout - Table 1).
+
+Table 1 - Connection of Mitsubishi MD375853 alternator to the bench
+Terminal	Bench diagnostic output
+G	GC
+S	B+
+L	D+
+F	FR
+
+Figure 13 @D_24_IMG_020_PHOTO_toyota-2706020230-alternator_fig13 @D_24_IMG_021_PHOTO_toyota-2706020230-connector-terminal-references_fig13 illustrates the example of connection layout of Toyota 2706020230 alternator.
+Figure 13. Toyota 2706020230 alternator and connector terminal references @D_24_IMG_020_PHOTO_toyota-2706020230-alternator_fig13 @D_24_IMG_021_PHOTO_toyota-2706020230-connector-terminal-references_fig13
+
+Referring to the connector terminals on the figure 13 @D_24_IMG_020_PHOTO_toyota-2706020230-alternator_fig13 @D_24_IMG_021_PHOTO_toyota-2706020230-connector-terminal-references_fig13, first, identify the alternator type (see Appendix 1). Now, the terminal L refers to Lamp alternator type. Next, referring to Appendix 1, check what bench outputs should be connected with the alternator (connection layout - Table 2).
+
+Table 2 -- Toyota 2706020230 alternator connection
+Terminal	Bench diagnostic output
+S	B+
+IG	B+
+L	D+
+DFM (M)	FR
+
+2. Mount the unit on the working spot. The pulley shall be parallel to the used belt.
+3. Fix the unit on the working spot, as follows:
+WARNING! To activate the chain and belt tightening buttons it is necessary to enter the alternator test mode after switching on the stand and then exit it.
+3.1. Press Chain release to loosen the chain to the required length.
+3.2. Fix the chain to the shoulder in the working spot and press Tighten chain. The tightening will stop automatically.
+4. Put the belt on the alternator pulley.
+4.1. Press Belt release to add the required length of the belt. Put the belt on the alternator pulley and press Tighten belt.
+4.2. Tighten the belt until the tension is close to the one in a car. The tension is estimated subjectively. Press Tighten belt one more time to stop the belt tightening.
+5. Screw the adapter on the positive terminal of the alternator.
+6. Connect the power cable B- to the unit body, then connect the power cable В+ to the adapter at the negative terminal of alternator.
+
+6.2. Alternator testing
+1. Press Alternator & starter tester, then press button 12V/24V to choose the required voltage referring to the specifications of the diagnosed alternator.
+WARNING! With the pressing of the button Alternator & starter tester you start the mode of diagnostics of Lamp alternator types.
+2. Connect the bench diagnostic outputs (ref. 3, fig. 3 @D_24_IMG_003_PHOTO_bench-control-panel_fig3) with the alternator connector terminals.
+3. Choose the relevant alternator type on the control panel.
+3.1. If the diagnosed alternator is of COM type, wait until the bench identifies ID and TYPE of alternator.
+3.2. If the alternator has a terminal: L, D+, I, IL, 61, the control lamp indicator shall light up.
+3.3. If the diagnosed alternator is of COM type, the notification on the mechanical failure MEC will appear near the indicator ERROR.
+4. Rotate the knob ROTATION SPEED to the left/right referring to the alternator rotation direction (commonly, alternators rotate clockwise - if you look from pulley side) and set the rotation speed within the limits of 100 - 150 rpm.
+WARNING! For the alternators with the freewheel clutches, be more cautious when choosing the rotation direction.
+4.1. Visually inspect if the alternator rotates properly (the alternator shall not vibrate). If there are the abnormal noises that may inform on the mechanical failure, stop the diagnostics.
+5. Check the rotation speed when the generation starts as follows:
+5.1. Set the voltage value 14.5V for 12V alternators and 29V for 24V alternators, rotating the knob REGULATION GC.
+5.2. With ROTATION SPEED knob, increase smoothly the speed until the alternator output voltage is equal to nominated voltage. Most of the operative alternators start generation from 700 - 850 drive revolutions. Some alternators of COM type start generation at the speed higher than 1200, besides, there are LRC alternators (Load Response Control) that have the temporary delay at the output voltage variation.
+5.3. For Lamp type alternators, the stabilizing voltage value shall be set within 14 - 14.8 V for 12V alternators, and within 28 - 29.8 V for 24V alternators.
+5.4. If the alternator is equipped with the control lamp indicator it shall go off.
+5.5. If the diagnosed alternator is of COM type, the mechanical error shall disappear.
+6. Check the alternator voltage regulator as follows:
+6.1. With the knob ROTATION SPEED, set the speed within 1500-2000 rpm.
+6.2. With the knob REGULATION GC, set smoothly the alternator output voltage within 13 - 15V. The measured voltage shall vary in proportion to the nominated one. For the Lamp type alternators without voltage control, this paragraph is skipped.
+7. Check the alternator operation under the load as follows:
+7.1. Set the speed within 2500-3000 rpm rotating the knob ROTATION SPEED.
+7.2. Rotate the knob ELECTRICAL LOAD to smoothly increase the alternator load. To effectively check the alternator condition, the current load rate of 50 - 70 A is enough. At the same time, the output voltage value shall remain constant while the alternating current value (I, AC) in the circuit B+ shall not exceed 10% of the nominated load value (e.g., at the load of 50A, the value I, AC shall not exceed 5A).
+8. Once the alternator diagnostics is finished, shed the alternator load and stop the drive briefly pressing ELECTRICAL LOAD and ROTATION SPEED. Then press the button Alternator & starter tester and dismount the alternator from the bench.
+
+6.3. Diagnostics of alternator that doesn't have the integral voltage regulator
+The diagnostics of the alternators that don't have the integral voltage regulator is carried out the same way as the diagnostics of the Lamp type alternators (see p. 5.3) - with several differences:
+1) The following alternator terminal references: DF, F, FLD, 67 shall be connected to GC bench terminal (fig. 3 @D_24_IMG_003_PHOTO_bench-control-panel_fig3).
+2) Choose the diagnostic mode F/67.
+WARNING! The function F/67 allows to check 12V alternators and B-circuit alternator types only, meaning the alternators that have one of the voltage regulator brushes connected to B-, and the control of the exciting coil is carried out by the brush connected to B+.
+
+6.4. Diagnostics of voltage regulator
+Referring to OEM of voltage regulator, find the information about the terminal references on the Internet. In addition, you can refer to the Appendix 3 where the most common voltage regulator connections are specified. Referring to the voltage regulator connector terminals and the Appendix 1, identify its type.
+WARNING! The diagnostics mode shall conform with the diagnosed voltage regulator type.
+
+6.4.1. Lamp voltage regulator diagnostics
+1. Connect voltage regulator with the bench diagnostic outputs, except B+ output.
+2. Turn on the mode of the diagnostics of voltage regulators pressing the button Voltage regulator tester. To test the lamp regulators, you shall not choose any mode because the control lamp D+ works at any mode.
+3. Choose the nominated voltage of the diagnosed voltage regulator pressing the button either 12V or 24V.
+4. Connect the bench diagnostic output B+ with the corresponding voltage regulator terminal. Now, the stabilization voltage rate shall be within 14 - 14.8 V for 12V voltage regulators, within 28 -29.8 V for 24V voltage regulators, and it shall conform with the specifications.
+5. Disconnect the cable ST from the voltage regulator. The control lamp indicator (ref. 5, fig. 3 @D_24_IMG_003_PHOTO_bench-control-panel_fig3) shall light up. Connect ST cable back - the control lamp indicator shall go off.
+6. Failure to comply with the one of the paragraphs 4 - 5 indicates the voltage regulator defects.
+7. Press Voltage regulator tester button to exit the diagnostics mode. Disconnect the cables from voltage regulator.
+
+6.4.2. P-D, C, SIG, RLO voltage regulator diagnostics
+1. Connect voltage regulator with the bench diagnostic outputs, except B+ output.
+2. Turn on the mode of the diagnostics of voltage regulators pressing Voltage regulator tester button.
+3. Choose the nominated voltage of the diagnosed voltage regulator pressing 12V button.
+4. Connect the bench diagnostic output B+ with the corresponding voltage regulator terminal. Here, the stabilization voltage rate shall become equal to the nominated rate with the possible deviation -0.2V.
+5. Change the nominated stabilization voltage from 13.2 up to 15V with REGULATION GC knob. The measured stabilization voltage rate shall change in proportion to the nominated one.
+6. For the voltage regulators of P-D types, disconnect ST cable from voltage regulator. P value shall be equal to 0. Connect ST cable back - P value shall become the previous.
+7. Failure to comply with the one of the paragraphs 4 - 6 indicates the voltage regulator defects.
+8. Press Voltage regulator tester button to exit the diagnostics mode. Disconnect the cables from voltage regulator.
+
+6.4.3. COM voltage regulator diagnostics
+1. Connect voltage regulator with the bench diagnostic outputs, except B+ output.
+2. Turn on the mode of the diagnostics of voltage regulator s pressing the button Voltage regulator tester.
+3. Choose the nominated voltage of the diagnosed voltage regulator pressing 12V button.
+4. Connect the bench diagnostic output B+ with the corresponding voltage regulator terminal.
+4.1. Wait until the bench reads the voltage regulator data, and proceed the diagnostics.
+4.2. The stabilization voltage rate shall reach the nominated value with the possible deviation -0.2V. There shall not be any values in ERROR sector.
+5. Change the nominated stabilization voltage from 13.2 up to 15V with REGULATION GC knob. The measured stabilization voltage rate shall change in proportion to the nominated one.
+6. Disconnect ST cable from voltage regulator. ME shall appear in ERROR sector. Connect ST cable back - ME shall disappear.
+7. Disconnect one FLD cable from voltage regulator. EL shall appear in ERROR sector. Connect FLD cable back - EL shall disappear.
+8. Failure to comply with the one of the paragraphs 4.1 - 7 indicates the voltage regulator defects.
+9. Press Voltage regulator tester button to exit the diagnostics mode. Disconnect the cables from voltage regulator.
+
+4.5. Starter diagnostics
+1. Mount the starter on the working spot.
+2. Fix the unit on the working spot.
+3. Screw the adapter on the positive terminal of the starter.
+4. Connect the power cable B- with the unit body, and bench control connector 50 - with the control output of the starter solenoid. The terminal of the power cable B+ shall be positioned so there was no contact with the bench - to avoid short circuit.
+5. Press Alternator & starter tester to turn on starter diagnostics mode, press button 12V/24V to choose the required voltage referring to the specifications of the diagnosed unit.
+6. Press START. The gear of starter freewheel clutch shall move fully forward. Release START - to reset. Repeat the procedure several times.
+7. Connect the power cable B+ with the adapter at the starter positive terminal.
+8. Press and hold START. The starter motor shall start running. The current consumption value AMP, DC shall conform with the nameplate data of starter as well as the alternating current value AMP, AC in the circuit B+ shall not exceed 10% of the current consumption value AMP, DC.
+9. Once the starter diagnostics is finished, release START button, then press Alternator & starter tester button. Now the starter can be dismounted from the bench.
+10. Failure to comply with the one of the paragraphs 6 and 8 indicates the starter defects.
+
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Problem	Causes	Solutions
+1. The bench doesn't start.	There is no the required voltage in the circuit - 230V	Restore the supply
+1. The bench doesn't start.	The button EMERGENCY STOP is on	Turn off the button EMERGENCY STOP
+1. The bench doesn't start.	The triple-pole bench incoming switch is off	Turn on the triple-pole switch
+2. At the test start, the bench beeps with a guard signal of a short circuit (peep)	The short circuit of the battery outputs (+) to the body	Separate the outputs (insulate)
+3. The bench runs but the electric motor doesn't start	The variable speed drive software error	Contact technical support
+3. The bench runs but the electric motor doesn't start	The contacts on the terminal block of the electric motor are loosened	Tighten the contacts on the terminal block of the electric motor
+3. The bench runs but the electric motor doesn't start	The control patch cord of the variable speed drive got loose	Connect the patch cord properly
+4. The incoming switch turns off at the maximum bench load	The type of the incoming switch is not correct	Replace the incoming switch
+4. The incoming switch turns off at the maximum bench load	The incoming switch terminals are loosened	Tighten the terminals
+5. When the bench runs the abnormal noises are heard	The belt tightening bearings failed	Replace the bearings
+5. When the bench runs the abnormal noises are heard	The electric motor bearings failed	Replace the bearings. (Electric motor)
+5. When the bench runs the abnormal noises are heard	The contactor (motor starter) failed	Replace the contactor (motor starter)
+6. When the bench runs the belt slips.	The wear of the belt	Replace the belt
+7. The current consumption is displayed wrong	There's no proper contact at the current sensor connection terminal	Recover the contact
+7. The current consumption is displayed wrong	The current sensor failed	Contact technical support
+7. The current consumption is displayed wrong	The measuring board has burnt	Contact technical support
+8. The triple-pole switch is activated when the bench is turned on.	The bench wiring is damaged	Contact technical support
+9. When the diagnostics modes start, the electromagnetic switches don't turn on	The ATX connector of the bench control unit disconnected	Fix the connector in the control unit
+9. When the diagnostics modes start, the electromagnetic switches don't turn on	The wiring is damaged	Contact technical support
+10. During the alternator test the contact clips heat up much	The contact area is small	Use a positive terminal adapter of the alternator
+11. During the belt (chain) tightening there are abnormal noises or irregularity of operation	The belt tightening motor is worn out	Replace the motor
+11. During the belt (chain) tightening there are abnormal noises or irregularity of operation	The belt tightening sprocket is worn out	Contact technical support
+11. During the belt (chain) tightening there are abnormal noises or irregularity of operation	The belt tightening screw is worn out	Contact technical support
+11. During the belt (chain) tightening there are abnormal noises or irregularity of operation	There's no lubricant on the sliding surfaces	Grease the sliding surfaces
+11. During the belt (chain) tightening there are abnormal noises or irregularity of operation	The working parts are very dirty	Clean the working parts
+12. When pressing the tightening control button nothing happens	The tightening control module failed	Contact technical support
+12. When pressing the tightening control button nothing happens	The control board failed	Contact technical support
+12. When pressing the tightening control button nothing happens	D-SUB connector of the motor supply is disconnected	Fix D-SUB connector
+12. When pressing the tightening control button nothing happens	There's no contact at the supply connectors of the tightening electric motors	Recover contact of the electric motor supply
+
+
+APPENDIX 1
+Connection of terminals to alternators
+Indicial notation	Functional purpose	Alternator type	Output terminal
+B+	Battery (+)		B+
+30	Battery (+)		B+
+A	(Ignition) Input for switch starting		B+
+IG	(Ignition) Input for switch starting		B+
+15	(Ignition) Input for switch starting		B+
+AS	Alternator Sense Terminal for measuring battery voltage		B+
+BVS	Battery Voltage Sense Alternator Sense Terminal for measuring battery voltage		B+
+S	Sense Alternator Sense Terminal for measuring battery voltage		B+
+B-	Battery (-)		B-
+31	Battery (-)		B-
+E	Earth, battery (-)		B-
+D+	Used for connection to an indicator lamp that transfers initial driving voltage and indicates alternator operability	Lamp	D+
+I	Indicator	Lamp	D+
+IL	Illumination	Lamp	D+
+L	(Lamp) Output for alternator operability indicator lamp	Lamp	D+
+61	(Lamp) Output for alternator operability indicator lamp	Lamp	D+
+FR	(Field Report) Output for alternator load control by an engine control unit		FR
+DFM	Digital Field Monitor		FR
+M	Monitor		FR
+LI	(Load Indicator) Same as FR, but with universal signal		FR
+D	(Drive) Input of voltage regulator control with terminal P-D of Mitsubishi (Mazda) and Hitachi (KiaSephia1997-2000) alternators	P/D	GC
+
+Indicial notation	Functional purpose	Alternator type	Output terminal
+SIG	(Signal) Input of code voltage installation	SIG	GC
+D	(Digital) Input of code voltage installation on Ford, same as SIG	SIG	GC
+RC	(Regulator control), same as SIG	SIG	GC
+L(RVC)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+L(PWM)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+C	(Communication) Voltage regulator input to control engine ECU. Korean cars.	C	GC
+C (G)	Voltage regulator input to control engine ECU. Japanese cars.	С	GC
+RLO	(Regulated Load Output) Input to control stabilizing voltage in the range of 11.8-15V (TOYOTA)	RLO	GC
+COM	(Communication) General term for physical interface for alternator control and diagnostics. Protocols of use: BSD (Bit Serial Device), BSS (Bit Synchronized Signal, or LIN (Local Interconnect Network)	COM	GC
+LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+DF	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.	LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+F	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.	LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+FLD	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.	LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+67	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.	LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+P	Output of one of alternator stator windings. Used for measuring alternator driving voltage	Output of one of alternator stator windings. Used for measuring alternator driving voltage	ST
+S	Output of one of alternator stator windings. Used for measuring alternator driving voltage	Output of one of alternator stator windings. Used for measuring alternator driving voltage	ST
+STA	Output of one of alternator stator windings. Used for measuring alternator driving voltage	Output of one of alternator stator windings. Used for measuring alternator driving voltage	ST
+Stator	Output of one of alternator stator windings. Used for measuring alternator driving voltage	Output of one of alternator stator windings. Used for measuring alternator driving voltage	ST
+
+Indicial notation	Functional purpose	Alternator type	Output terminal
+W	(Wave) Output of one of alternator stator windings for connection of a tachometer in diesel engine cars		
+N	(Null) Output of average stator winding point. Usually used to control operability indicator lamp of the alternator with mechanical voltage regulator			
+D	(Dummy) Blank, no connection, mostly in Japanese cars			
+N/C	(No connect) No connection			
+LRC (Options of voltage regulators)	(Load Response Control) Function of voltage regulator response delay on load increase on an alternator. Delay duration ranges from 2.5 to 15 seconds. On increasing the load (lights, cooler fan on), a voltage regulator adds driving voltage smoothly ensuring stability of engine drive rotation. Remarkably seen under idle running.		
+
+APPENDIX 2
+
+BOSCH
+@D_24_IMG_022_DIAGRAM_bosch-alternator-connections_appendix2
+
+DENSO
+@D_24_IMG_023_DIAGRAM_denso-alternator-connections_appendix2
+
+FORD/LUCAS
+@D_24_IMG_024_DIAGRAM_ford-lucas-alternator-connections_appendix2
+
+HITACHI
+@D_24_IMG_025_DIAGRAM_hitachi-alternator-connections_appendix2
+
+MAGNETTI MARELLI
+@D_24_IMG_026_DIAGRAM_magnetti-marelli-alternator-connections_appendix2
+
+MITSUBISHI
+@D_24_IMG_027_DIAGRAM_mitsubishi-alternator-connections_appendix2
+
+DELCO REMNY
+@D_24_IMG_028_DIAGRAM_delco-remny-alternator-connections_appendix2
+
+VALEO
+@D_24_IMG_029_DIAGRAM_valeo-alternator-connections_appendix2
+
+APPENDIX 3
+@D_24_IMG_030_DIAGRAM_bosch-voltage-regulator-connections-page1_appendix3
+@D_24_IMG_031_DIAGRAM_bosch-voltage-regulator-connections-page2_appendix3
+@D_24_IMG_032_DIAGRAM_delco-remy-voltage-regulator-connections-page3_appendix3
+@D_24_IMG_033_DIAGRAM_denso-voltage-regulator-connections-page4_appendix3
+@D_24_IMG_034_DIAGRAM_hitachi-voltage-regulator-connections-page5_appendix3
+@D_24_IMG_035_DIAGRAM_hitachi-and-magneti-mareli-voltage-regulator-connections-page6_appendix3
+@D_24_IMG_036_DIAGRAM_mitsubishi-voltage-regulator-connections-page7_appendix3
+@D_24_IMG_037_DIAGRAM_mitsubishi-voltage-regulator-connections-page8_appendix3

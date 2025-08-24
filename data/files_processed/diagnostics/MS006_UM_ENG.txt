@@ -1,0 +1,294 @@
+MS006 TEST BENCH FOR DIAGNOSTICS OF ALTERNATORS @D_21_IMG_000_PHOTO_test-bench-MS006_general-view
+
+DIAGNOSTICS MANUAL
+
+6. ALTERNATOR TESTING
+
+6.1. Installation and de-installation of the alternator
+- Install the alternator on the worksite.
+
+Figure 13. Installation of the alternator on the test bench @D_21_IMG_022_PHOTO_alternator-installation_fig13 @D_21_IMG_023_PHOTO_alternator-installation_fig13
+WARNING! The pulley must be in line with the belt.
+Figure 14. Correct position of the alternator drive belt @D_21_IMG_024_DIAGRAM_correct-belt-position_fig14
+
+- Pass the chain under the operation platform and insert it into the clamp. Rotate the locking screw clockwise to fix the alternator.
+Figure 15. Fixation of the alternator @D_21_IMG_025_PHOTO_alternator-fixation_fig15 @D_21_IMG_026_PHOTO_alternator-fixation_fig15
+
+- Put the belt on the alternator pulley. Tighten the belt until the tension approximately matches the tension of the belt in the car.
+Figure 16. Installation of the belt to the alternator pulley @D_21_IMG_027_PHOTO_belt-installation_fig16 @D_21_IMG_028_PHOTO_belt-installation_fig16
+
+- Check manually the tightness of the belt (based on personal experience).
+Figure 17. Belt tightness check @D_21_IMG_029_PHOTO_belt-tightness-check_fig17
+
+- Connect the black power cable «B-» to the unit housing.
+- Connect the red cable «B+» to the corresponding output of the alternator.
+Figure 18. Connection of power cables to the alternator @D_21_IMG_030_PHOTO_power-cable-connection_fig18 @D_21_IMG_031_PHOTO_power-cable-connection_fig18
+
+- Connect the outputs of the alternator voltage regulator to the appropriate outputs of the test bench (Fig.2 @D_21_IMG_002_PHOTO_control-panel_fig2, n.5).
+
+The dismantling of alternator is made in the reverse sequence.
+
+WARNING! The dismantling of alternator can be made only when the drive has completely stopped, and the diagnostics mode is terminated.
+
+6.2. The connection of the bench diagnostic outputs to alternator
+Assessment of the alternator operability requires a proper connection of the diagnostic outputs of the test bench.
+Alternator OEM which is commonly placed on the unit body or on the rear cover helps to find the information on the alternator connector terminal identifications in the integral bench database (fig. 19 @D_21_IMG_032_DIAGRAM_database-search-menu_fig19) or in the Internet.
+Figure 19. Database Search Menu and search results @D_21_IMG_032_DIAGRAM_database-search-menu_fig19
+
+To search the information on alternator in the bench database, do as follows:
+1. In the main menu (fig. 4 @D_21_IMG_004_DIAGRAM_test-bench-main-menu_fig4) press SELECT ALTERNATOR BY NUMBER.
+2. Enter alternator OEM in the displayed window and press SEARCH.
+3. If the bench database finds the required alternator, its type, main technical characteristics, photo and connection terminal identifications (to enable the display of the connection terminal identifications press red arrow in the part of the photo). Use the present information and the information from the Appendix 1 for the proper connection of the bench diagnostic outputs to the alternator connector.
+
+Below the example of the Bosch 0986049191 alternator connection is illustrated (fig. 20 @D_21_IMG_033_PHOTO_bosch-alternator_fig20 @D_21_IMG_034_DIAGRAM_connector-terminals_fig20).
+Figure 20. Alternator Bosch 0986049191 and connector terminal references @D_21_IMG_033_PHOTO_bosch-alternator_fig20 @D_21_IMG_034_DIAGRAM_connector-terminals_fig20
+
+First, determine the alternator type referring to the connector terminals on the fig. 20 @D_21_IMG_034_DIAGRAM_connector-terminals_fig20 (see the table with the crossing references of connector terminals and alternator types in the Appendix 1)
+In this case, the terminal L refers to the alternator type lamp. Then we refer to the Appendix 1 to check which outputs the alternator should be connected to. The connection chart is in the table 1 below.
+
+Table 1 - Connection of alternator Bosch 0986049191 to the test bench
+Alternator connector terminal	Bench diagnostic output	Cable colour code
+L	L/D+	black
+S	GC	yellow
+
+Below the example of the Toyota 2706020230 alternator connection is illustrated (fig. 21 @D_21_IMG_035_PHOTO_toyota-alternator_fig21 @D_21_IMG_036_DIAGRAM_connector-terminals_fig21).
+Figure 21. Alternator Toyota 2706020230 and connector terminal references @D_21_IMG_035_PHOTO_toyota-alternator_fig21 @D_21_IMG_036_DIAGRAM_connector-terminals_fig21
+
+First, determine the alternator type referring to the connector terminals (fig. 21 @D_21_IMG_036_DIAGRAM_connector-terminals_fig21) referring to the Appendix 1. In this case, the terminal L refers to the alternator type lamp.
+Then we refer to the Appendix 1 to check which outputs the alternator should be connected to. The connection chart is in the table 2 below.
+
+Table 2 - Connection of alternator Toyota 2706020230
+Alternator connector terminal	Bench diagnostic output	Cable colour code
+S	GC	yellow
+IG	B+	red
+L	L/D+	black
+DFM (M)	FR	green
+
+Below the example of the Nissan 23100EN000 alternator connection is illustrated (fig. 22 @D_21_IMG_037_PHOTO_nissan-alternator_fig22 @D_21_IMG_038_DIAGRAM_connector-terminals_fig22).
+Figure 22. Alternator Nissan 23100EN000 and connector terminal references @D_21_IMG_037_PHOTO_nissan-alternator_fig22 @D_21_IMG_038_DIAGRAM_connector-terminals_fig22
+
+First, determine the alternator type referring to the connector terminals (fig. 22 @D_21_IMG_038_DIAGRAM_connector-terminals_fig22) referring to the Appendix 1. In this case, the terminal C and a Japanese car application refers to C JAPAN alternator type. Then we refer to the Appendix 1 to check which outputs the alternator should be connected to. The connection chart is in the table 3 below.
+
+Table 3 - Connection of alternator Nissan 23100EN000
+Alternator connector terminal	Bench diagnostic output	Cable colour code
+L	L/D+	black
+S	no connection	
+С	GC	yellow
+
+Below the example of the LUCAS 24157 alternator is illustrated (fig. 23 @D_21_IMG_039_PHOTO_lucas-alternator_fig23 @D_21_IMG_040_DIAGRAM_connector-terminals_fig23).
+Figure 23. Alternator LUCAS 24157 and connector terminal references @D_21_IMG_039_PHOTO_lucas-alternator_fig23 @D_21_IMG_040_DIAGRAM_connector-terminals_fig23
+
+First, determine the alternator type referring to the connector terminals (fig. 23 @D_21_IMG_040_DIAGRAM_connector-terminals_fig23) referring to the Appendix 1. In this case, the terminal D+ refers to the alternator type lamp.
+Then we refer to the Appendix 1 to check which outputs the alternator should be connected to. The connection chart is in the table 4 below.
+
+Table 4 - Connection of alternator LUCAS 24157
+Alternator connector terminal	Bench diagnostic output	Cable colour code
+D+	L/D+	black
+B+	B+	red
+B+	B+	red
+
+There's a feature of the alternator LUCAS 24157 connection: although there's only one output B+ on the bench, two outputs B+ have to be connected to the alternator connector. In this case, to connect the missing output, use the spare connection wire (e.g. green) and couple it with the one of the red connection wires inserting to the special plug socket (fig. 24 @D_21_IMG_041_PHOTO_LUCAS-wire-connection_fig24).
+Figure 24. Connection of two wires to the test bench output @D_21_IMG_041_PHOTO_LUCAS-wire-connection_fig24
+
+Below the example of Valeo IST60C017 alternator is illustrated (fig. 25 @D_21_IMG_042_PHOTO_valeo-alternator_fig25 @D_21_IMG_043_DIAGRAM_connector-terminals_fig25).
+Figure 25. Alternator Valeo IST60C017 and connector terminal references @D_21_IMG_042_PHOTO_valeo-alternator_fig25 @D_21_IMG_043_DIAGRAM_connector-terminals_fig25
+
+First, determine the alternator type referring to the Appendix 1. In this case, the terminal Stop Motor Mode refers to the I-STARS alternator type.
+Then we refer to the Appendix 1 to check which outputs the alternator should be connected to. The connection chart is in the table 5 below.
+
+Table 5 - Connection of alternator Valeo IST60C017
+Alternator connector terminal	Bench diagnostic output	Cable colour code
++ bat	B+	red
+stop motor mode	no connection	
+D	no connection	
+LIN	GC	yellow
+- bat (The "- bat" terminal should be connected to the alternator housing using a self-made wire.)	connection with the alternator body	
+
+
+ATTENTION! Diagnostics for I-STARS generators is only possible in generator mode; starter mode is unavailable.
+
+6.3. Alternator testing in manual mode
+1. To start diagnostics, it is necessary to select the type of the alternator. Go to the "SELECT ALTERNATOR BY TYPE" menu displayed on the start screen.
+2. In the appeared window, select the nominal voltage of the tested alternator (12V or 24V) by single clicking on the corresponding icon.
+3. If it is necessary to test the alternator with the rotation speed that equals the one in the car, use «-» and «+» buttons to set the diameter of the pulley that is identical to the diameter of the pulley in the car. To confirm the chosen setting, press USE button.
+ATTENTION! If the alternator speed is different, it doesn't affect the quality of testing.
+
+4. Press "Test" to start the diagnostic procedure.
+WARNING! Previously to entering the diagnostic mode by pressing button "Test", connect the outputs of the alternator voltage regulator to the corresponding terminals of the Test Bench.
+
+5. Before starting the test bench drive, it is necessary to:
+  5.1 If the alternator under diagnosis is of the COM or I-STARS type - wait for the test bench to determine the alternator's ID and TYPE.
+  5.2 For Lamp-type alternators, the operating mode of the indicator lamp must be set to either 50 mA or 500 mA, depending on the alternator's design.
+  5.3 For alternators equipped with a voltage regulator terminal labeled "A," "IG," "R," or "15," the "K15" button must be activated, and it should light up green.
+
+6. Assess the alternator voltage regulator based on the following criteria:
+  6.1 If the alternator under diagnosis is of the COM or I-STARS type, the test bench should identify the alternator's ID, COM speed, and TYPE, and the Errors indicator should display a message regarding a mechanical malfunction labeled "MEC."
+  6.2 If the alternator includes an indicator lamp, the indicator lamp should light up.
+
+7. Turn the "ROTATION SPEED" button to the left or right, depending on the direction of the alternator rotation to set the rotation speed within 100-150 rpm. Commonly, alternators rotate clockwise - if you look from pulley side.
+WARNING! If the alternator has a freewheel clutch, carefully select the direction of rotation.
+
+  7.1. Visually evaluate the rotation: there should be no vibration of the alternator. Testing procedure must be stopped in case there is a noise, which is a symptom of a mechanical fault.
+
+8. Check what rotation rate the generation starts at as follows:
+  8.1. Turn the knob ROTATION SPEED to smoothly increase the rotation until the output voltage gets the rated one. Most fault-free alternators starts generating from 700-850 rpm. Some alternators of type COM starts generating at more than 1200 rpm. There are the alternators with LRC (Load Response Control) function and with the delay at the output voltage adjustment.
+  8.2. For the Lamp alternator types the voltage regulation rate should be set within 14 - 14.8 V for 12V alternators, within 28 - 29.8 V for 24V alternators.
+  8.3. For the C JAPAN alternator type the voltage regulation rate should be set within 14 - 14.5 V.
+  8.4. If the alternator equipped with the control lamp indicator, it should go off.
+  8.5. If the diagnosed alternator is of COM or I-STARS type, the mechanical error should disappear.
+
+9. Check the voltage regulation operation as follows:
+  9.1. Turn the knob ROTATION SPEED to set the rotation within 1500 - 2000 rpm.
+  9.2. For the Lamp alternators that have the pin S (AS, BVS) in the connector, you should check if the mentioned pin operates well. Connect the pin S with the bench test lead and press 'Test S pin' - the output voltage should increase. Press 'Test S pin' one more time - the output voltage should get back to the previous value.
+  9.3. Turn the knob REGULATION GC smoothly to change the alternator output voltage within 13 - 15 V. The adjusted voltage (highlighted by green) should change respectively. For the "Lamp (L/FR)" alternator types without voltage control, p. 9.3 is skipped.
+  9.4. For the C JAPAN and I-ELOOP alternator types, change the set stabilization voltage to OFF mode. The measured stabilization voltage value should be set within 12 - 12.7 V. Then change the set stabilization voltage to "ON mode. The measured stabilization voltage value should be within 14 - 14.5 V.
+
+10. Check the alternator operation under the load as follows:
+  10.1. Turn the knob ROTATION SPEED to set the rotation value within 2500 - 3000.
+  10.2. Turn the knob REGULATION GC or press once to set the generation voltage 13.8V. For C-JAPAN and I-ELOOP alternator types switch ON mode.
+  10.3. Turn the knob ELECTRICAL LOAD smoothly increase the load to alternator up to maximum. At this time, the output voltage value should be stable, and the alternating current value in the circuit B+, I, AC should not exceed 10% from the set load value (e.g., at the load 50A the value of I, AC should not exceed 5А). At the same time, the current oscillogram (highlighted by red) should not show the high peak points. The values should range within equal values.
+
+11. To stop the diagnostics, throw off the load from alternator and stop the drive shortly pressing the knobs ELECTRICAL LOAD and ROTATION SPEED. Now you can dismount the alternator from the bench.
+
+12. If any of 6 - 10.3 steps cannot be completed as described, it means that alternator is out of order.
+
+WARNING! When the alternator voltage exceeds a permissible value, the protection system stops the engine. An overvoltage message is displayed on the screen.
+Figure 26. Message displayed when the protection system is activated @D_21_IMG_044_DIAGRAM_protection-system-message_fig26
+
+6.4. Alternator testing in automatic mode
+
+WARNING! Not available for I-STARS and I-ELOOP alternator types.
+
+1. Follow paragraphs 1 to 6 of section 6.3.
+2. Set the direction of rotation in auto test mode menu: "CW" - clockwise; "CCW" - counter-clockwise. Click on the corresponding icon to change the rotation side of the drive.
+3. Press the "AUTO" button. The test bench will start to diagnose the alternator in automatic mode. The current status of the diagnostic process along with the tested parameters will be displayed.
+4. Upon finishing testing in automatic mode, the message "AUTO TEST COMPLETE" will be displayed.
+Figure 27. Message displayed when the auto test complete @D_21_IMG_045_DIAGRAM_auto-test-complete-message_fig27
+5. Press PRINT to see the result.
+6. The diagnostics result can be printed on Bluetooth printer by pressing PRINT one more time.
+7. The alternator is completely tested and it can be dismounted from the bench.
+
+7. TEST BENCH MAINTENANCE
+The test bench is designed for long-continued operation and does not have any specific maintenance requirements. However, a regular inspection of the equipment's technical condition is necessary to ensure its uptime.
+Points to check:
+- Engine operation for unusual sounds, vibrations, etc.
+- Environmental conditions: temperature, humidity, vibrations, etc.
+- Check if the power cables and "crocodile" clamps on the power cables are in good condition (visual inspection).
+
+7.1. Test bench firmware update
+The update procedure will require a 32 Gb USB flash drive formatted to FAT32 file system.
+
+The update procedure is as follows:
+- Download a new program version on servicems.eu under the product page MS006.
+- Copy file "MS006Update.bin" to the root folder on the USB flash disk.
+WARNING! There should be only one file on the USB flash disk - "MS006Update.bin".
+- Turn the test bench off.
+- Insert the USB flash disk into the USB port of the test bench.
+- Turn on the test bench. When started, the program will automatically detect the new version and launch the installation.
+- Wait until the installation is finished.
+WARNING! Do not interrupt the firmware update process. Turning the test bench off or removing the USB flash disk when the installation is in progress is prohibited.
+- After finishing the installation, the calibration window is downloaded. (Fig.28 @D_21_IMG_046_DIAGRAM_calibration-window_fig28). Keep tapping the touch pointer until the calibration is finished and the main menu is loaded.
+- Turn off the test bench, remove the USB flash disk, and wait for 10 seconds. Now turn on the test bench and use it as normal.
+The update procedure for the test bench databases is as below:
+- Download the new program version under the product page on servicems.eu.
+- Copy folder "MS006Base" to the root directory of the USB flash drive.
+WARNING! The USB flash drive should not contain more than one "MS006Base" folder.
+- Turn the test bench off.
+- Insert the USB flash drive in the USB port of the test bench.
+- Turn on the test bench. After the launch, the program will automatically find the new firmware
+Figure 28. Touch screen calibration window @D_21_IMG_046_DIAGRAM_calibration-window_fig28
+
+version and start the installation.
+- Wait until the installation is finished. It may take some time.
+WARNING! Not to interrupt the installation please, do not turn the test bench off or remove the USB flash drive.
+- When the installation is finished, the main menu will be loaded. Now the test bench is ready for operation.
+
+7.2. Touch screen calibration
+In case of the touch screen improper function, calibrate it as below:
+1. Turn the test bench off.
+2. Press and hold down the "ELECTRICAL LOAD" knob.
+3. Press "ON" to turn on the bench.
+4. Press and hold down the "ELECTRICAL LOAD" knob until the touch screen calibration window is loaded (Fig. 28).
+5. Keep tapping the touch pointer until the calibration is finished and the main menu loaded.
+6. Now the touch screen calibration is completed, and the test bench is ready for operation.
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Failure symptom	Potential cause	Troubleshooting tips
+The test bench does not start.	The EMERGENCY STOP button is on.	Turn off the emergency button.
+The test bench does not start.	The supply voltage is under 220V.	Restore the supply voltage.
+Short-circuit sound alert (bleep) is on when turning on the test bench.	Crocodile clips (+)/(-) closure to the test bench body.	Break the clips.
+Short-circuit sound alert (bleep) is on when turning on the test bench.	The electric wiring of the bench is damaged.	Contact technical support.
+The test bench is running, but the electric motor does not start.	Frequency converter failure.	Contact technical support.
+The test bench is running, but the electric motor does not start.The electric wiring of the bench is damaged.	Contact technical support.
+Unwanted sounds are heard during the test bench operation.	The tested unit is installed improperly (the drive belt is overtightened).	Re-install the tested unit.
+Unwanted sounds are heard during the test bench operation.	Wear out of motor bearings.	Contact technical support.
+The drive belt slips during the test bench operation. (whistling sound is heard).	The belt is undertightened.	Tighten the belt.
+The drive belt slips during the test bench operation. (whistling sound is heard).	The belt is worn out.	Replace the belt.
+Crocodile clips get overheated during testing.	The contact spot is too small.	Use positive terminal adapter.
+
+APPENDIX 1
+Connection of terminals to alternators
+
+Indicial notation	Functional purpose	Alternator type	Output terminal
+B+	Battery (+)		B+
+30	Battery (+)		B+
+A	(Ignition) Input for switch starting		B+
+IG	(Ignition) Input for switch starting		B+
+15	(Ignition) Input for switch starting		B+
+AS	Alternator Sense Terminal for measuring battery voltage		GC (For the Lamp alternator diagnostics only)
+BVS	Battery Voltage Sense Terminal for measuring battery voltage		GC (For the Lamp alternator diagnostics only)
+S	Sense Terminal for measuring battery voltage		GC (For the Lamp alternator diagnostics only)
+B-	Battery (-)		
+31	Battery (-)		
+E	Earth, battery (-)		
+D+	Used for connection to an indicator lamp that transfers initial driving voltage and indicates alternator operability	Lamp (L/FR)	L/D+
+I	Indicator	Lamp (L/FR)	L/D+
+IL	Illumination	Lamp (L/FR)	L/D+
+L	(Lamp) Output for alternator operability indicator lamp	Lamp (L/FR)	L/D+
+61	(Lamp) Output for alternator operability indicator lamp	Lamp (L/FR)	L/D+
+FR	(Field Report) Output for alternator load control by an engine control unit		FR
+DFM	Digital Field Monitor		FR
+M	Monitor		FR
+LI	(Load Indicator) Same as FR, but with universal signal		FR
+D	(Drive) Input of voltage regulator control with terminal P-D of Mitsubishi (Mazda) and Hitachi (KiaSephia1997-2000) alternators	P/D	GC
+
+Indicial notation	Functional purpose	Alternator type	Output terminal
+SIG	(Signal) Input of code voltage installation	SIG	GC
+D	(Digital) Input of code voltage installation on Ford, same as SIG	SIG	GC
+RC	(Regulator control), same as SIG	SIG	GC
+L(RVC)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+L(PWM)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+C	(Communication) Voltage regulator input to control engine ECU. Korean cars.	C KOREA	GC
+C (G)	Voltage regulator input to control engine ECU. Japanese cars.	C JAPAN	GC
+RLO	(Regulated Load Output) Input to control stabilizing voltage in the range of 11.8-15V (TOYOTA)	RLO	GC
+COM	(Communication) General term for physical interface for alternator control and diagnostics. Protocols of use: BSD (Bit Serial Device), BSS (Bit Synchronized Signal), or LIN (Local Interconnect Network)	COM	GC
+LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+Stop motor Mode	Alternator performance mode control in Valeo's Stop-Start Systems	I-StARS	
+K	I-ELOOP system alternator control terminal (Mazda)	I-ELOOP	FR
+DF	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		
+F	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		
+FLD	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		
+67	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		
+
+Indicial notation	Functional purpose	Alternator type	Output terminal
+P	Output of one of alternator stator windings. Used for measuring alternator driving voltage		FR
+S	Output of one of alternator stator windings. Used for measuring alternator driving voltage		FR
+STA	Output of one of alternator stator windings. Used for measuring alternator driving voltage		FR
+Stator	Output of one of alternator stator windings. Used for measuring alternator driving voltage		FR
+W	(Wave) Output of one of alternator stator windings for connection of a tachometer in diesel engine cars		
+N	(Null) Output of average stator winding point. Usually used to control operability indicator lamp of the alternator with mechanical voltage regulator		
+D	(Dummy) Blank, no connection, mostly in Japanese cars		
+N/C	(No connect) No connection		
+LRC (Options of voltage regulators)	(Load Response Control) Function of voltage regulator response delay on load increase on an alternator. Delay duration ranges from 2.5 to 15 seconds. On increasing the load (lights, cooler fan on), a voltage regulator adds driving voltage smoothly ensuring stability of engine drive rotation. Remarkably seen under idle running.		
+
+APPENDIX 2
+
+BOSCH @D_21_IMG_047_SCHEMATIC_bosch-terminals-pinout
+DENSO @D_21_IMG_048_SCHEMATIC_denso-terminals-pinout
+FORD/LUCAS @D_21_IMG_049_SCHEMATIC_ford-lucas-terminals-pinout
+HITACHI @D_21_IMG_050_SCHEMATIC_hitachi-terminals-pinout
+MAGNETTI MARELLI @D_21_IMG_051_SCHEMATIC_magnetti-marelli-terminals-pinout
+MITSUBISHI @D_21_IMG_052_SCHEMATIC_mitsubishi-terminals-pinout
+DELCO REMNY @D_21_IMG_053_SCHEMATIC_delco-remny-terminals-pinout
+VALEO @D_21_IMG_054_SCHEMATIC_valeo-terminals-pinout

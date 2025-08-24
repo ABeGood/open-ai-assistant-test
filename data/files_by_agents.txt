@@ -1,0 +1,36 @@
+Equipment:
+    *
+
+Diagnostics
+    - MS002_COM_UM_ENG      units + Troubleshooting
+    - MS002A_UM_ENG         units + Troubleshooting
+    - MS004_COM_UM_ENG      units + Troubleshooting
+    - MS005-MS005A_UM_ENG   uints + Troubleshooting
+    - MS006_UM_ENG          units + Troubleshooting
+    - MS008_UM_ENG          units + Troubleshooting
+    - MS012_COM_UM_ENG      units + Troubleshooting
+    - MS013_COM_UM_ENG      units + Troubleshooting
+    - MS014_UM_ENG          units + Troubleshooting
+    - MS015_UM_ENG          units + Troubleshooting
+    - MS015А_UM_ENG         units + Troubleshooting
+    - MS016_UM_ENG          units + Troubleshooting
+    - MS021_UM_ENG          units + Troubleshooting
+    - MS111_UM_ENG          units + Troubleshooting
+    - MS112_UM_ENG          units + Troubleshooting
+    - MS121_UM_ENG          units
+    - MS201_UM_ENG          units + Troubleshooting
+    - MS300_UM_ENG          units
+    - MS301_UM_ENG          units
+    - MS502M_UM_ENG         units
+    - MS503N_UM_ENG         units
+    - MS504_UM_ENG          units
+    - MS510_UM_ENG          units
+    - MS511_UM_ENG          units
+    - MS521_UM_ENG          units
+    - MS561_UM_eng          units + Troubleshooting
+    - MS800_MS800А_UM_ENG   units + Troubleshooting
+    - MS900_UM_ENG          Troubleshooting
+
+Scripts:
+    - MS005 ???
+    - MS005A ???

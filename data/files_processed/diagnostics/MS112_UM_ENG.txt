@@ -1,0 +1,129 @@
+MS112 TEST BENCH FOR DIAGNOSTICS OF ELECTRIC COMPRESSORS OF AUTOMOTIVE AIR CONDITIONERS @D_33_IMG_000_PHOTO_ms112-test-bench-general-view
+
+DIAGNOSTICS MANUAL
+
+6. DIAGNOSIS OF THE COMPRESSOR
+The diagnosis procedure consists of the following steps:
+1. In the test bench's database, find and select the model of the unit you want to diagnose. The test bench will indicate the numbers of the cables and connectors required for its diagnosis.
+2. Connect the connectors to the compressor and secure them (see Figure 12 @D_33_IMG_018_PHOTO_compressor-connector-installation_fig12).
+2.1. If an "EXPRESS TEST" is to be performed to check the compressor's electric motor, the connectors can be omitted.
+Figure 12 @D_33_IMG_018_PHOTO_compressor-connector-installation_fig12
+3. Secure the unit on the test bench (see Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13).
+4. Connect the high-voltage cable and the data cable to the compressor. Attach the "crocodile" clamp of the high-voltage cable to the compressor's body (see Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13).
+
+5. Connect the high-pressure and low-pressure hoses (see Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13).
+
+6. Start the "FULL TEST" or "EXPRESS TEST". After this, touching the metal parts of the test bench or the compressor is FORBIDDEN.
+6.1. If you started the "FULL TEST," the diagnostic process will run automatically. Upon completion, the screen will display the results of the measurements or the reasons for test interruption (see Table 3 and 4).
+6.2. If you started the "EXPRESS TEST," you should stop the process by pressing the "STOP" button.
+7. Upon completing the compressor diagnosis, you can remove it from the test bench.
+
+Figure 13 @D_33_IMG_019_PHOTO_compressor-test-setup_fig13
+
+Table 3. Messages after "FULL TEST" completion
+Message	Meaning	Recommendations
+PASS	Compressor has passed the test.	The compressor's performance meets the standard.
+HV short circuit	Short circuit in the high-voltage circuit of the air conditioner compressor's inverter.	Ensure the correct high-voltage cable is used.
+HV short circuit	Short circuit in the high-voltage circuit of the air conditioner compressor's inverter.	Some high-voltage cables have the same connector but different polarity.
+HV short circuit	Short circuit in the high-voltage circuit of the air conditioner compressor's inverter.	Replace the air conditioner compressor's inverter.
+LV short circuit	Short circuit in the low-voltage circuit of the air conditioner compressor.	Ensure the correct data cable is used.
+LV short circuit	Short circuit in the low-voltage circuit of the air conditioner compressor.	Replace the air conditioner compressor's inverter.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	Make sure the selected program matches the tested compressor.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	Some compressor models won't establish communication without high-voltage power. Ensure the correct cable type is used and properly connected.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	Check the data cable connection and rerun the test.
+Compressor is not responding	Test bench cannot establish communication with the air conditioner compressor's inverter.	The air conditioner compressor's inverter is faulty. Replace the inverter.
+Compressor is not starting	Connection with the compressor is established, but the compressor did not execute the rotor start command.	Indicates a faulty air conditioner compressor inverter or a jammed compressor rotor.
+Compressor is not starting	Connection with the compressor is established, but the compressor did not execute the rotor start command.	Ensure the high-voltage cable is connected, the correct program is selected from the database, and there is no "Voltage out of range" message.
+No nitrogen	LP pressure during the compressor blow-out stage is less than 1.5 Bar (22 psi).	Ensure the nitrogen source is connected to the test bench, valves are open, and the gas reducer pressure is set correctly.
+Hoses not connected	Occurs if, after opening the nitrogen supply valve, LP pressure is normal, but HP pressure did not increase.	Ensure the hoses are correctly connected to the compressor.
+Hoses not connected	Occurs if, after opening the nitrogen supply valve, LP pressure is normal, but HP pressure did not increase.	This message can also appear if gas is not passing through the compressor due to corrosion or mechanical blockage.
+Abnormal LP	LP sensor reading higher than HP pressure during the compressor blow-out stage.	HP and LP pressure sensor connectors are swapped. Contact technical support.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	The results of such a test won't be reliable; even a good compressor can't pass the test.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	Adjust the external nitrogen source pressure.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	Ensure that during the test, the nitrogen source output pressure remains within acceptable limits.
+Insufficient N2 pressure	LP pressure dropped below 2.5 Bar (29 psi) during the compressor performance measurement stage.	If the above steps don't help, contact technical support.
+The compressor is not building pressure	Compressor couldn't create pressure above 5 Bar (72 psi).	Indicates a mechanical malfunction of the compressor.
+The compressor is not building pressure	Compressor couldn't create pressure above 5 Bar (72 psi).	Lack or excess of lubricant in the compressor. See section 6.1.
+Poor compressor performance	Compressor couldn't generate the required pressure within the allocated time.	Indicates a mechanical malfunction of the compressor.
+Poor compressor performance	Compressor couldn't generate the required pressure within the allocated time.	Lack or excess of lubricant in the compressor. See section 6.1.
+
+Table 4. Diagnostic Data Obtained from the Compressor.
+Message	Meaning	Recommendations
+HVIL	High-voltage interlock loop (HVIL) jumper not closed.	Compressors 926002618R, 926008231R, 926005501R cannot be started with an open HVIL circuit. Check the HVIL circuit, close the HVIL contacts manually, or use the 18-H cable instead of the 3-H cable.
+Inverter fault	Inverter is faulty or lacks high-voltage inverter power.	Ensure the issue is not in the test bench's high-voltage cable.
+Inverter fault	Inverter is faulty or lacks high-voltage inverter power.	Replace the air conditioner compressor's inverter.
+Compressor rotor suddenly stops	Compressor rotor spontaneously stopped during the test.	Indicates a faulty air conditioner compressor inverter or mechanical part jamming.
+Compressor rotor suddenly stops	Compressor rotor spontaneously stopped during the test.	his message can also arise due to unstable communication or insufficient compressor power. Ensure cables are correctly connected.
+Voltage out of range	High-voltage power is outside the permissible range.	Indicates a fault in the high-voltage part of the air conditioner compressor's inverter.
+Voltage out of range	High-voltage power is outside the permissible range.	Ensure the high-voltage cable is correctly connected.
+Voltage out of range	High-voltage power is outside the permissible range.	Ensure the correct program is selected since the power voltage for hybrid and fully electric vehicle compressors is different.
+Overheat		Wait for 15 minutes and repeat the test
+
+6.1. Possible issues during compressor diagnosis and their solutions
+To obtain accurate results, it's important that the compressor has the correct amount of oil. Excess or insufficient oil can lead to erroneous test results. Before testing, it's recommended to pour 30 ml (cm3) of oil into the LP hose of the compressor. The oil type is indicated on the compressor's label.
+Because nitrogen doesn't mix with the compressor oil, the oil tends to accumulate in the cavity of the front cover of the compressor, behind the valve plate (Figure 14 @D_33_IMG_020_DIAGRAM_compressor-oil-accumulation_fig14). This is especially relevant for Denso compressors.
+
+Figure 14 @D_33_IMG_020_DIAGRAM_compressor-oil-accumulation_fig14
+
+The test might fail, and the test bench will display one of the messages: "The compressor is not building pressure" or "Poor compressor performance." If this happens, try one of the two actions described below and repeat the test.
+
+Option 1
+Conduct the compressor test in a vertical position as shown in Figure 15 @D_33_IMG_021_PHOTO_vertical-test-position_fig15.
+Figure 15 @D_33_IMG_021_PHOTO_vertical-test-position_fig15
+
+Option 2
+Dismount the compressor from the test bench.
+Unscrew the safety valve on the compressor and drain the oil into a clean container (Figure 16 @D_33_IMG_022_PHOTO_oil-draining-procedure_fig16-1 @D_33_IMG_023_PHOTO_oil-draining-procedure_fig16-2). Then screw the safety valve back into place.
+
+Figure 16 @D_33_IMG_022_PHOTO_oil-draining-procedure_fig16-1 @D_33_IMG_023_PHOTO_oil-draining-procedure_fig16-2
+
+Next, unscrew the fitting from the LP line and pour approximately 30 ml (cm3) of oil into it. The oil type is indicated on the compressor's label.
+Install and secure the fitting. Afterward, place the compressor back on the test bench and repeat the test.
+
+7. TEST BENCH MAINTENANCE
+The test bench is designed for long-term operation and has no special maintenance requirements. The need for maintenance will be indicated by an appropriate message. The maintenance procedure involves three stages (see section 7.1 for details):
+• Draining the separated compressor oil.
+• Replacing the combined 10" filter.
+• Replacing the filtering element in the Certools F701 filter (KN-701).
+
+In addition to periodic maintenance, it's necessary to regularly inspect its technical condition, namely:
+• Checking for any unusual sounds.
+• Inspecting the condition of cables and quick-connect fittings (visual inspection).
+
+7.1. Periodical service maintenance
+Regular maintenance of the test bench is carried out as follows:
+1. Disconnect the test bench from the electrical power supply.
+2. Unscrew all screws on the rear panel and remove it.
+3. Disconnect the sensor connector (see item 4 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17) located on the compressor oil collection container, item 2 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17.
+3.1. Unscrew the container bulb and drain the oil into a disposal container.
+3.2. Screw the container bulb back and reconnect the sensor connector.
+4. Unscrew the container bulb with the combined 10" filter (item 3 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17). Replace the filter and screw the bulb back.
+5. Using an adjustable wrench or socket, rotate the Certools F-701 filter cover (item 1 in Figure 17 @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17) counterclockwise to disconnect it from the filter bowl.
+5.1. Assess the condition of the sealing rings. Replace them if necessary.
+5.2. Replace the filtering element.
+5.3. Place the filter cover back and screw it clockwise.
+6. Reinstall the rear panel and secure it with screws.
+
+1 - Certools F-701 filter; 
+2 - oil separator; 
+3 - combined 10" filter; 
+4 - sensor connector for used oil level control.
+Figure 17. Location of test bench elements requiring maintenance: @D_33_IMG_024_PHOTO_maintenance-elements-location_fig17
+7.2. Pressure release from the test bench
+In the event of an abnormal situation (test bench malfunction) during compressor diagnosis, it is necessary to release the pressure from the test bench before performing repair work.
+To release the pressure, follow these steps:
+1. Remove the rear panel of the test bench.
+2. Connect the manifold hose to the service port (ensure the fitting has a depressor installed), see Figure 18 @D_33_IMG_025_PHOTO_pressure-release-procedure_fig18-1 @D_33_IMG_026_PHOTO_pressure-release-procedure_fig18-2.
+3. Slowly open the valve on the manifold and release excess pressure from the system.
+4. Disconnect the manifold from the service port and screw the rear panel of the test bench back into place.
+WARNING! If the manifold is not available, you can depress the valve using a screwdriver. In this case, wrap the service port with a rag to prevent oil splatter.
+
+Figure 18 @D_33_IMG_025_PHOTO_pressure-release-procedure_fig18-1 @D_33_IMG_026_PHOTO_pressure-release-procedure_fig18-2
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Problem	Causes	Solutions
+1. Test Bench doesn't start up.	No connection to external power supply	Check the electrical connection of the bench
+	Pressed button EMERGENCY STOP	Check the position of the "EMERGENCY STOP" button
+	Defective the bench power supply	Contact the sales representative
+2. The display does not respond to the touch of the operator.	Damaged sensory pane	Contact the sales representative

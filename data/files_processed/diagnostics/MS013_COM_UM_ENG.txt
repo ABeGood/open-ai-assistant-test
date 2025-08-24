@@ -1,0 +1,195 @@
+MS013 COM TESTER FOR DIAGNOSTICS OF ALTERNATOR'S VOLTAGE REGULATORS @D_18_IMG_000_PHOTO_MS013-COM-tester-for-alternator-voltage-regulators_cover
+
+DIAGNOSTICS MANUAL
+
+5.2. Voltage regulator testing
+The voltage regulators are tested using a nine-wire cable (Figure 3).
+WARNING! The diagnostic mode must correspond to the type of regulator being tested.
+WARNING! Some Bosch TM regulators require a high current for operation, which the tester cannot provide, making it impossible to test such regulators.
+
+5.2.1. Connecting the voltage regulator to the tester
+To assess the functionality of the voltage regulator, it is necessary to correctly connect the diagnostic cable to its terminals.
+Using the original regulator number, search for information on the internet regarding the terminal designations. Additionally, you can refer to the information in Appendix 3, which indicates the connections for the most common regulators.
+According to the identified terminal designation diagram, connect the diagnostic cable following the examples provided below.
+WARNING! When connecting the clips to the connector, it is important to exercise caution as there is a risk (probability) of damaging (rendering inoperable) the regulator. The clips must be connected with fully covered insulation (Figure 10 @D_18_IMG_010_PHOTO_cable-fully-covered-insulation_fig10 @D_18_IMG_011_PHOTO_connecting-terminals-voltage-regulator-connector_fig10). 
+Figure 10. Connecting terminals to the voltage regulator connector @D_18_IMG_010_PHOTO_cable-fully-covered-insulation_fig10 @D_18_IMG_011_PHOTO_connecting-terminals-voltage-regulator-connector_fig10
+
+Figure 11 provides an example of the connection diagram for the ARE1054 regulator. @D_18_IMG_012_DIAGRAM_voltage-regulator-ARE1054_fig11
+Figure 11. Voltage regulator ARE1054 @D_18_IMG_012_DIAGRAM_voltage-regulator-ARE1054_fig11
+
+Using the information in Figure 11 @D_18_IMG_012_DIAGRAM_voltage-regulator-ARE1054_fig11, we first determine the type of regulator based on the terminals in the connector and the information in Appendices 1 and 2. In this case, the terminals DFM and L(RVC) (also referred to as L(PWM)) identify this regulator as RVC.
+Next, referring to Appendix 1, we determine which diagnostic cable clamps need to be connected to the regulator. The connection diagram for the ARE1054 regulator to the tester is provided in Table 1 and Figure 12 @D_18_IMG_013_PHOTO_voltage-regulator-ARE1054-connected-to-tester_fig12.
+
+Table 1 - Connecting the ARE1054 regulator to the tester
+Voltage regulator terminal	Tester output terminal	Color marking of cable
+DFM	FR	white
+L(RVC)	GC	yellow
+Ps	ST1	blue
+B+	B+	red large
+DF	F1	green
+DF	F2	green
+B-	B-	large black
+Figure 12. Voltage regulator ARE1054 connected to the tester terminals @D_18_IMG_013_PHOTO_voltage-regulator-ARE1054-connected-to-tester_fig12
+
+Figure 13 shows an example of the connection diagram for the ARE6076 regulator. @D_18_IMG_014_DIAGRAM_voltage-regulator-ARE6076_fig13
+Figure 13. Voltage regulator ARE6076 @D_18_IMG_014_DIAGRAM_voltage-regulator-ARE6076_fig13
+
+Based on the terminals in the connector and the information in Appendices 1 and 2, we determine the type of regulator. In this case, the terminals IG, S, and FR(M) do not identify the type of regulator. The terminal L identifies this regulator as L/D+ (Lamp).
+Again, referring to Appendix 1, we determine which diagnostic cable clamps (connectors) need to be connected to the regulator. The connection diagram for the ARE6076 regulator to the tester is provided in Table 2 and Figure 14 @D_18_IMG_015_PHOTO_voltage-regulator-ARE6076-connected-to-tester_fig14.
+
+Table 2 - Connecting the ARE6076 regulator to the tester
+Voltage regulator terminal	Tester output terminal	Color marking of cable
+IG	IG	red small
+L	D+	black small
+S	S	–
+FR(M)	FR	white
+B+	B+	red large
+B+	F2	green
+F	F1	green
+Ps	ST1	blue
+GND	B-	large black
+Figure 14. Voltage regulator ARE6076 connected to the tester terminals @D_18_IMG_015_PHOTO_voltage-regulator-ARE6076-connected-to-tester_fig14
+When connecting the ARE6076 regulator, there is one particularity. Figure 14 @D_18_IMG_015_PHOTO_voltage-regulator-ARE6076-connected-to-tester_fig14 shows only one terminal F, to which we connect the green wire (F1). The second green wire (F2) needs to be connected to the B+ terminal. This is because one of the relay brushes is constantly connected to B+, and the excitation winding is controlled through the brush connected to the alternator's "minus" (A-circuit type).
+
+Figure 15 shows an example of the connection diagram for the ARE6149P regulator. @D_18_IMG_016_DIAGRAM_voltage-regulator-ARE6149P_fig15
+Figure 15. Voltage regulator ARE6149P @D_18_IMG_016_DIAGRAM_voltage-regulator-ARE6149P_fig15
+
+Based on the terminals in the connector and the information in Appendices 1 and 2, we determine the type of regulator. In this case, the presence of the LIN terminal identifies this regulator as COM.
+Again, referring to Appendix 1, we determine which diagnostic cable clamps (connectors) need to be connected to the regulator. The connection diagram for the ARE6149P regulator to the tester is provided in Table 3 and Figure 16 @D_18_IMG_017_DIAGRAM_voltage-regulator-ARE6149P-connected-to-tester_fig16.
+Table 3 - Connecting the ARE6149P regulator to the tester
+Voltage regulator terminal	Tester output terminal	Color marking of cable
+B+	B+	red large
+F	F1	green
+Ps	ST1	blue
+LIN	GC	yellow
+G	B-	large black
+G	F2	green
+
+When connecting the ARE6149P regulator, there is one particularity. Figure 15 shows only one terminal F, to which we connect the F1 wire. The second wire, F2, needs to be connected to the B- terminal. This is because this regulator belongs to the B-circuit type. For such regulators, one of the brushes is constantly connected to "B-" of the alternator, and the excitation winding is controlled through "B+". @D_18_IMG_017_DIAGRAM_voltage-regulator-ARE6149P-connected-to-tester_fig16
+Figure 16. Voltage regulator ARE6149P connected to the tester terminals @D_18_IMG_017_DIAGRAM_voltage-regulator-ARE6149P-connected-to-tester_fig16
+
+5.2.2. Diagnostics
+1. Connect the regulator to the tester using the procedures described in section 5.2.1.
+2. In the main menu, select the diagnostic mode that corresponds to the type of regulator.
+2.1. If the regulator being diagnosed has a COM connection terminal, wait for the tester to determine the ID and TYPE of the regulator.
+3. After entering the diagnostic mode, the stabilization voltage should settle at 13.8V with a possible deviation of ±0.2V.
+3.1. For L/D+ and C JAPAN regulators, the stabilization voltage should be within the range of 14 to 14.8V.
+4. Change the set stabilization voltage from 13.2V to 14.5V. The measured stabilization voltage should change proportionally to the set value.
+4.1. This step does not apply to L/D+ regulators.
+4.2. For C JAPAN regulators, use the "Up" and "Down" buttons to set the set stabilization voltage to the "OFF" mode. The measured stabilization voltage should settle within the range of 12 to 12.7V.
+5. Failure to meet any of the requirements in steps 2.1 to 4.2 indicates a fault in the regulator.
+6. Exit the diagnostic mode and disconnect the clamps from the regulator.
+
+5.3. Alternator testing
+Testing the alternator in a vehicle is done using a four-wire cable (Figure 2) following these steps:
+1. Use the alternator's original part number, typically located on the housing or rear cover, to search for information on the terminal designations in the alternator connector on the internet.
+2. Determine the alternator type based on the terminals in the connector using the information from Appendix 1.
+3. Connect the tester to the alternator according to the color coding described in step 4. The tester will be powered by the vehicle's battery (alternator), so it will turn on.
+4. In the tester menu, select the corresponding alternator type and press the "Select" button. The tester will enter the testing mode.
+4.1. If the alternator being diagnosed has a COM connection terminal, wait for the tester to determine the ID and TYPE of the alternator.
+5. Start the vehicle engine and turn off all loads. Wait for the engine to stabilize at idle speed.
+5.1. The stabilization voltage should settle at 13.8V with a possible deviation of ±0.2V.
+5.2. For C JAPAN alternators, the stabilization voltage should be within the range of 12.1 to 12.7V.
+6. Change the voltage value on the alternator using the "Up" and "Down" buttons within the range of 13.2 to 14.8V. The measured voltage should change proportionally with a possible deviation of ±0.2V.
+6.1. For C JAPAN alternator, use the "Up" or "Down" button to switch the alternator to the "ON" mode. The stabilization voltage should settle within the range of 14 to 14.4V.
+7. Set any voltage value on the alternator using the "Up" and "Down" buttons within the range of 13.2 to 14.8V. Increase the engine's crankshaft rotation speed to medium speed. The voltage value on the tester should remain unchanged (there may be slight fluctuations within ±0.2V, which is normal).
+8. Without reducing the engine's crankshaft rotation speed, increase the load on the alternator by turning on the headlights, seat heaters, windshield defroster, and other electrical consumers. The voltage value on the tester should remain constant (there may be a decrease in voltage by 0.3V).
+9. Turn off the engine.
+10. Disconnect the clamps from the tester.
+11. Failure to meet any of the requirements in steps 4.1, 5.1-8 indicates a fault in the alternator.
+
+5.4. "PWM" Mode (PWM Generator)
+In this mode:
+• Use the "⇧" and "⇩" buttons to select an option in the tester menu.
+• Enter the test mode by pressing the "⏎" button.
+• Connect the "GC" and "-" wires from the tester connectors to the controlled device.
+• To adjust the duty cycle, press on the display in the duty cycle setting area. The numbers will be highlighted in a different color. Use the "⇧" and "⇩" buttons to set the desired duty cycle value.
+• To adjust the frequency, press on the display in the frequency setting area. The numbers will be highlighted in a different color. Use the "⇧" and "⇩" buttons to set the desired frequency value.
+• Exit the test mode by pressing the "⏎" button. Disconnect the wires.
+
+5.5. Oscilloscope Mode
+In this mode, the connection to the analyzed signal source is made using a four-wire cable, using wires with black (negative) and white (FR) markings:
+• Use the "⇧" and "⇩" buttons to select an option in the tester menu.
+• Enter the test mode by pressing the "⏎" button.
+• Connect the "FR" and "-" wires from the tester connectors to the signal source.
+• The test results will be displayed on the tester's screen as an oscillogram.
+
+7. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Problem	Causes	Solutions
+You cannot switch on the tester, or the measured parameters are displayed wrong.	Bad connection between the diagnostic cable and the tester connector.	Check the connection density.
+You cannot switch on the tester, or the measured parameters are displayed wrong.	The diagnostic cable is damaged.	Check the integrity of the diagnostic cable. If required, replace the diagnostic cable.
+The diagnostics mode cannot start.	Contact the dealer.	Contact the dealer.
+
+APPENDIX 1
+Connection of terminals to alternators and regulators
+Indicial notation	Functional purpose	Alternator/ Voltage regulator type	Output terminal
+B+	Battery (+)		B+
+30	Battery (+)		B+
+A	(Ignition) Input for switch starting		B+
+IG	(Ignition) Input for switch starting		B+
+15	(Ignition) Input for switch starting		B+
+AS	Alternator Sense	Terminal for measuring battery voltage		B+
+BVS	Battery Voltage Sense	Terminal for measuring battery voltage		B+
+S	Sense	Terminal for measuring battery voltage		B+
+B-	Battery (-)		B-
+31	Battery (-)		B-
+E	Earth, battery (-)		B-
+D+	Used for connection to an indicator lamp that transfers initial driving voltage and indicates alternator operability	L/D+	D+
+I	Indicator	L/D+	D+
+IL	Illumination	L/D+	D+
+L	(Lamp) Output for alternator operability indicator lamp	L/D+	D+
+6	(Lamp) Output for alternator operability indicator lamp	L/D+	D+
+FR	(Field Report) Output for alternator load control by an engine control unit		FR
+DFM	Digital Field Monitor		FR
+M	Monitor		FR
+LI	(Load Indicator) Same as FR, but with universal signal		FR
+D	(Drive) Input of voltage regulator control with terminal P-D of Mitsubishi (Mazda) and Hitachi (KiaSephia1997-2000) alternators	P/D	GC
+
+Indicial notation	Functional purpose	Alternator/Voltage regulator type	Output terminal
+SIG	(Signal) Input of code voltage installation	SIG	GC
+D	(Digital) Input of code voltage installation on Ford, same as SIG	SIG	GC
+RC	(Regulator control), same as SIG	SIG	GC
+L(RVC)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+L(PWM)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+C	(Communication) Voltage regulator input to control engine ECU. Korean cars.	C KOREA	GC
+C (G)	Voltage regulator input to control engine ECU. Japanese cars.	C JAPAN	GC
+RLO	(Regulated Load Output) Input to control stabilizing voltage in the range of 11.8-15V (TOYOTA)	RLO	GC
+COM	(Communication) General term for physical interface for alternator control and diagnostics. Protocols of use: BSD (Bit Serial Device), BSS (Bit Synchronized Signal), or LIN (Local Interconnect Network)	COM	GC
+LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+DF	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+F	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+FLD	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+67	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+
+Indicial notation	Functional purpose	Alternator/Voltage regulator type	Output terminal
+P	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+S	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+STA	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+Stator	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+W	(Wave) Output of one of alternator stator windings for connection of a tachometer in diesel engine cars		
+N	(Null) Output of average stator winding point. Usually used to control operability indicator lamp of the alternator with mechanical voltage regulator		
+D	(Dummy) Blank, no connection, mostly in Japanese cars		
+N/C	(No connect) No connection		
+LRC (Options of voltage regulators)	(Load Response Control) Function of voltage regulator response delay on load increase on an alternator. Delay duration ranges from 2.5 to 15 seconds. On increasing the load (lights, cooler fan on), a voltage regulator adds driving voltage smoothly ensuring stability of engine drive rotation. Remarkably seen under idle running.		
+
+APPENDIX 2
+L/FR connection @D_18_IMG_018_DIAGRAM_L-FR-connection_appendix2
+SIG Connection @D_18_IMG_019_DIAGRAM_SIG-connection_appendix2
+RKO Connection @D_18_IMG_020_DIAGRAM_RKO-connection_appendix2
+RVC Connection @D_18_IMG_021_DIAGRAM_RVC-connection_appendix2
+C KOREA Connection @D_18_IMG_022_DIAGRAM_C-KOREA-connection_appendix2
+P/D Connection @D_18_IMG_023_DIAGRAM_P-D-connection_appendix2
+COM(LIN/BSS) Connection @D_18_IMG_024_DIAGRAM_COM-LIN-BSS-connection_appendix2
+C JAPAN Condition @D_18_IMG_025_DIAGRAM_C-JAPAN-connection_appendix2
+
+APPENDIX 3
+Bosch @D_18_IMG_026_DIAGRAM_Bosch-voltage-regulator-connections_appendix3
+Bosch @D_18_IMG_027_DIAGRAM_Bosch-voltage-regulator-connections_appendix3
+DELCO Remy @D_18_IMG_028_DIAGRAM_DELCO-Remy-voltage-regulator-connections_appendix3
+DENSO @D_18_IMG_029_DIAGRAM_DENSO-voltage-regulator-connections_appendix3
+Hitachi @D_18_IMG_030_DIAGRAM_Hitachi-voltage-regulator-connections_appendix3
+Hitachi + Magneti Marelli @D_18_IMG_031_DIAGRAM_Hitachi-Magneti-Marelli-voltage-regulator-connections_appendix3
+Mitsubishi @D_18_IMG_032_DIAGRAM_Mitsubishi-voltage-regulator-connections-1_appendix3
+Mitsubishi @D_18_IMG_033_DIAGRAM_Mitsubishi-voltage-regulator-connections-2_appendix3
+Mitsubishi @D_18_IMG_034_DIAGRAM_Mitsubishi-voltage-regulator-connections-3_appendix3

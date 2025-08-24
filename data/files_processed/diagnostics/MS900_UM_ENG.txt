@@ -1,0 +1,27 @@
+MS900 STAND FOR WASHING OF PARTICULATE FILTERS (DPF, FAP) @D_27_IMG_000_PHOTO_ms900-stand_general-view
+
+TROUBLESHOOTING MANUAL
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Failure symptom	Potential cause	Troubleshooting tips
+MS900A module	MS900A module	MS900A module
+1. Doesn't turn on	No power supply	Restore power
+1. Doesn't turn on	The stand is out of order	Contact the dealer
+2. Error «Low voltage (Lv)»	Low voltage in the power supply network	Restore power
+3. Error «Overheat blower 80°C»	Clogged air filter	Replace filter
+4. Error «Overload (oL)»	Clogged air filter	Replace filter
+
+MS900B module
+5. Doesn't turn on	No power supply	Restore power
+5. Doesn't turn on	The stand is out of order	Contact the dealer
+6. Three-way valve sticking	Cartridge clogged	Disassembling and washing the cartridge
+6. Three-way valve sticking	Cartridge destruction	Cartridge replacement
+7. Pumps do not pump water	Clogged impeller	Disassemble and clean the impeller
+7. Pumps do not pump water	Broken pump motor	Contact the dealer
+8. Doesn't fill the tank with water	Valve out of order	Contact the dealer
+9. Water does not heat up	The heating element burned out	Contact the dealer
+10. Water leak	The tightness of threaded connections is broken	Fix the leak
+11. Error «Low level»	Low water level in the tank	Add water to the tank
+12. Error «Need replace filter»	BB20 filters are dirty	Replace filter
+13. Error «Overcurrent pump wash»	Clogged pump impeller	Disassemble and clean the impeller

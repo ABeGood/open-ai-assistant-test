@@ -1,0 +1,106 @@
+MS800 MS800A TESTER FOR DIAGNOSTICS OF BATTERY HYBRID AND ELECTRIC VEHICLES @D_32_IMG_000_PHOTO_ms800-tester-general-view
+
+DIAGNOSTICS MANUAL
+
+6. BATTERY DIAGNOSTICS
+The diagnosis of a battery means determining the capacity of its modules. To determine the condition of the battery it is necessary to make a charge and discharge cycle of each of the modules. We recommend that a module is considered operational if it has retained more than 70% of its original capacity.
+6.1. Diagnostics of Ni-Mh modules
+Determining the capacity of Ni-Mh modules includes the following steps:
+1. Discharge modules to 0.9V per cell.
+2. Exposure 30-60 min. Do nothing with modules.
+3. Charging modules with obligatory activation of the trickle charging mode, for the maximum degree of charging.
+4. Exposure 30-60 min.
+5. Discharge of modules up to 0.9V per cell. The capacity of the modules is determined.
+WARNING! To prevent battery damage during the diagnosis process, it is recommended to:
+- Battery diagnostics must be in the assembled state, or the battery modules be properly compressed between themselves in any available way to prevent deformation.
+- Advisable to remove all contact tires from the battery.
+- Battery must be cooled by airflow in the diagnosis process.
+
+The procedure for diagnosing modules consists of 6 cells each illustrated below.
+The sequence of operations is as follows:
+1. Connect the diagnostic cables to the terminals observing polarity and attach a temperature sensor to each module of the appropriate channel.
+2. Select "DISCHARGE Ni-Mh" mode. Configure the discharge current 4 - 5 A, the minimum voltage 0.9V, and the maximum temperature of the module 55°C and press the button "Save". The tester will go to the control menu of the charging/discharging process. Make sure that all plugged-in battery modules are determined by the tester. Click "START" to start the discharge process.
+3. Do pause in the diagnostics for 30 minutes to 1 hour after the discharge.
+4. Next, charge the battery. Choose "CHARGE Ni-Mh". Adjust the charge current 4A at battery temperature 22 - 25°C, maximum voltage 1.47V, delta 1.5-2mV, and activate the charge mode.
+@D_32_IMG_019_PHOTO_charge-configuration
+5. After the end of the charge, pause the diagnosis for 30 minutes to 1 hour.
+6. After the battery is charged, measure its capacity. Choose "DISCHARGE Ni-Mh". Configure the discharge current 4 - 5 A, the minimum voltage 0.9V, and the maximum temperature of the module 45°C and activate the discharge mode. At the end of the discharge process, fix the capacity of each module.
+7. After determining the capacity of the modules of the battery, it must be charged, pausing for 30 minutes to 1 hour.
+WARNING! The battery must not disassemble to prevent deformation after the charge! The battery must be allowed to cool for several hours.
+If required, items 2 - 6 of the tester can be performed independently, for this configures the mode "TEST CYCLE Ni-Mh". An example of configured mode shows in Figure 14 @D_32_IMG_020_PHOTO_configured-cyclic-mode-menu_fig14.
+WARNING! Once the tester has started the cycle, the settings cannot be changed.
+If necessary, save the results of module diagnostics, connect the USB flash drive to the tester, enter the tester settings and click "Move the file to USB".
+At the end of the cycle, fix the measured cell capacity. The battery must then charge by taking a break of 30 minutes to 1 hour.
+Figure 14. Configured cyclic mode tester menu @D_32_IMG_20_PHOTO_configured-cyclic-mode-menu_fig14
+
+6.2. Recommendations for charging Ni-Mh batteries
+Typically, Ni-Mh modules charge with a charge current of 0.5 to 1C, where C is the cell capacity in Ah. Cell capacity ranges from 6 to 6.5A for almost all hybrid car batteries. We recommend charging modules with a current of 4 - 5A (maximum for tester MS800).
+There is a problem charging Ni-Mh modules in determining when the module will charge. It is because the Ni-Mh modules of hybrid cars consist of several sequentially connected cells. It is, therefore, impossible to control the voltage of each cell, but only voltage of the module. Consequently, there may be a situation when the cell voltages in the module are, for example, 1.35V, 1.35V, 1.35V, 1.35V, 1.35V, 1.35V, 1.5V. The total voltage of 8.25V is normal, provided that all cells inside have the same capacity, but 5 of them are undercharged and one, is already recharged. Thus, the tester has four parameters that indicate that the module is already fully charged and the charging process must stop:
+1. Maximum voltage.
+In the charge settings, set this voltage based on the voltage of one element, and the tester multiplies it by the specified number of cells.
+2. Parameter ΔU 1 Cell.
+During the charging process of the Ni-Mh cell, the voltage on it grows. When the charging process comes to an end, the temperature of the cell begins to rise. Voltage drop occurs on the cell, in this case, due to the increase in its temperature. This ΔU 1 Cell drop shows in red in Figure 15 @D_32_IMG_021_DIAGRAM_ni-mh-charge-graph_fig15.
+Figure 15. Charge graph of one Ni-Mh cell @D_32_IMG_021_DIAGRAM_ni-mh-charge-graph_fig15
+
+The tester constantly monitors the voltage and tracks drop. The value of ΔU 1 Cell set per cell, i.e., setting the value to -2mV the tester will stop the charge as soon as the voltage is reduced by 12mV (if in module 6 cells).
+Important note! For this parameter to work, initially the battery must be at room temperature. If the battery at the beginning of the charge is already heated, there will not be a noticeable drop, it is possible to reload and even fire. Therefore it is strongly recommended, to install temperature sensors on each charging module.
+3. Maximum temperature, Tmax.
+The critical temperature at the charge of Ni-Mh cells is approximately 50°C. Therefore recommend setting this temperature at 45°C so as not to harm the battery. It is important to consider thermal inertia - the sensor shows the temperature increase with delay, which depends on both the module, and the location and method of installation of the sensor.
+4. Capacity limit, A/h
+The limited capacity of the charge additionally protects against battery damage.
+
+TRICKLE CHARGE
+Ni-Mh elements are afraid of overcharging, because after the end of the charge, almost all energy turns into heat and causes overheating and failure of the element. There is a method of charging Ni-Mh batteries with a small current (1/20 C) - a so-called trickle charge. At this charge and at room temperature, the energy generated will not be enough to harm the elements. This allows the undercharged cells to be charged and charged safely recharged.
+The tester allows activating the trickle charge after the main charge cycle. The time and current of the trickle charge are set in the menu of charge mode settings.
+
+COMMON CHARGING ERRORS
+1. Bad connection of "crocodile clip" to the module.
+If connect the tester clamps to the module improperly, the clamp contact will not be stable. That leads to voltage surges that the tester takes for a voltage drop on the ΔU 1 Cell and stops the fast charge. Cell remains undercharged.
+Figure 16. Voltage change on the module with the not proper connection of clamps @D_32_IMG_022_DIAGRAM_improper-connection-voltage-change_fig16
+
+2. Incorrect settings.
+Charge/discharge settings should be monitored and rechecked very carefully. Incorrect settings will lead to undercharging of the module or to overcharging, as result - module failure or fire.
+
+6.3. Li-Ion cell diagnostics
+WARNING! Li-Ion modules' diagnostics of the battery should be only element by element.
+The lithium elements charge by CC/CV (DC / DC) up to a certain point, most often 4.2V.
+As an example, below is the diagnostic procedure of the Li-Ion module of the Nissan Leaf battery with an output-rated voltage of 7.6V and a passport capacity of 60Ah. This module has a 2S2P configuration, i.e. two elements are connected in parallel, and then two parallel connected elements are connected in series.
+Two channels must be connected, to diagnose the Li-Ion of the Nissan Leaf module, as shown in Figure 17 @D_32_IMG_023_DIAGRAM_nissan-leaf-module-connection_fig17.
+Figure 17. Nissan Leaf battery module connection to the tester @D_32_IMG_023_DIAGRAM_nissan-leaf-module-connection_fig17
+
+Next, charge the module. Select "CHARGE Li-Ion" mode. Configure the charge current 4A, the maximum voltage is 4.2V, and press the "Save" button. The tester will go to the control menu of the charging/discharging process. Make sure that all connected battery cells are identified by the tester. Click "START" to start the charging process.
+After the charge finish, measure capacity. Choose "DISCHARGE Li-Ion" mode. Configure the discharge current 4A, and the minimum voltage 3.0V, and activate the discharge mode. After the discharge process, fix the capacity of each module.
+If required, it is possible to make the tester independently determine the capacity of the module, it is necessary to configure the mode "TEST CYCLE Li-Ion". An example of configured mode shows in Figure 18 @D_32_IMG_024_PHOTO_li-ion-cyclic-mode-configured_fig18.
+
+Figure 18. Configured menu of the cyclic operation mode of the tester for diagnosing the Li-Ion module of the Nissan Leaf battery @D_32_IMG_024_PHOTO_li-ion-cyclic-mode-configured_fig18
+
+6.4. Viewing diagnostic results on a PC
+The tester stores all measured data in its memory after pressing the "START" button. To view the results, the TesterLogReader program is used, which can be downloaded from the website servicems.eu, located on the product card of MS800.
+The TesterLogReader program window (Fig. 19 @D_32_IMG_025_PHOTO_testerlogreader-program-window_fig19) contains:
+
+1 - Channel selection for displaying data in numerical form. The data is displayed in the "Data grid" tab (see item 6).
+2 - Channel selection for displaying data in graphical form. The data is displayed in the "Chart" tab (see item 6).
+3 - Measured module capacity in A·h.
+4 - Remaining module capacity in %.
+5 - Displays the reason for channel shutdown (temperature exceeded, min/max voltage, etc.).
+6 - Tabs:
+Data grid - Displays data in numerical form.;
+Chart - Displays data in graphical form;
+Settings - Program settings.
+
+Figure 19 @D_32_IMG_025_PHOTO_testerlogreader-program-window_fig19
+
+To view the diagnostic results on a PC, follow these steps:
+1. After the diagnostic or module balancing process is completed, connect a USB flash drive to the tester.
+2. Once the USB flash drive icon appears on the main screen, go to the tester settings and click the "Move file to USB" button. The tester will copy all previously saved results to the flash drive. Wait for the file copying to finish, then remove the flash drive.
+3. Connect the USB flash drive to the PC and launch the TesterLogReader program.
+4. From the program menu, select "File → Open" and open the newest file based on the date.
+5. When opening the file, the program will display a dialog box where you need to specify the module capacity in A·h.
+6. The program will load the data, and then you can analyze all channels together or each channel separately. If needed, the program allows you to save the results as a report in PDF format.
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Problem	Causes	Solutions
+1. The tester doesn't turn off.	There is no the required voltage in the circuit - 230V	Restore the supply
+2. The tester is on, at the same time, the charge/discharge doesn't start.	Software error	Contact the dealer
+3. When the tester runs the abnormal noises are heard.	Dust has accumulated on the cooling system fans, the intrusion of the foreign objects	Clean the inner space of the tester from the dust and the foreign objects.

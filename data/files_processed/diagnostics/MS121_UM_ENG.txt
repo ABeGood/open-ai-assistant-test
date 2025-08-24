@@ -1,0 +1,33 @@
+MS121 TESTER FOR DIAGNOSTICS OF ELECTROMAGNETIC VALVES AND CLUTCHES OF VEHICLE AIR
+@D_5_IMG_000_PHOTO_MS121-tester-for-electromagnetic-valves-clutches_general-view
+
+DIAGNOSTICS MANUAL
+
+6. DIAGNOSIS OF THE ELECTROMAGNETIC CLUTCH SEPARATELY FROM THE AIR CONDITIONER COMPRESSOR 
+Diagnosis is performed as follows:
+1. Connect the tester to a 12V DC power source, and the tester's diagnostic menu will appear on the screen.
+WARNING! Do not connect the yellow and green clamps to the battery, as this will damage the tester.
+2. Connect the green wires to the electromagnetic clutch. The polarity of the connection does not matter.
+3. Press the "Select" button on the tester – the measurement results will be displayed on the tester screen.
+3.1. The electromagnetic clutch can be considered functional based on the following indicators:
+•The "Current" value should be between 2 and 4A;
+•The "Voltage" value should approximately match the power source voltage;
+•The absence of "CB" or "SC" indicators on the display;
+•The electromagnetic clutch can magnetize iron objects.
+4. After the diagnostic process, disconnect the tester wires from the battery and the clutch.
+
+7. DIAGNOSIS OF THE ELECTROMAGNETIC CLUTCH AND ELECTROMAGNETIC VALVE ON THE CAR
+Diagnosis of the electromagnetic valve is performed as part of the air conditioner compressor without removing it from the car (see Fig. 6 @D_5_IMG_009_DIAGRAM_checking-electromagnetic-valve-clutch-on-car_fig6). The electromagnetic clutch can be checked in the same way. The diagnosis is performed as follows:
+1. Connect the refrigerant pressure gauge set (manifold) to the service ports of the system.
+2. Connect the yellow wires to the electromagnetic valve.
+3. Connect the black and red wires to the car battery, and the tester's diagnostic menu will appear on the screen.
+WARNING! If the valve or clutch connector has a single contact, use an external battery to power the tester. Connecting it to the car battery will result in an error.
+
+Figure 6. Diagram of checking the electromagnetic valve and clutch on the car @D_5_IMG_009_DIAGRAM_checking-electromagnetic-valve-clutch-on-car_fig6:
+1 – Compressor; 2 – Electromagnetic clutch connector; 3 – Electromagnetic valve connector; 4 – Service ports; 5 – Manifold gauge set.
+
+4. Press the "Select" button on the tester – the measurement results will be displayed on the tester screen.
+4.1. Check the "CB" or "SC" indicators to ensure there is no open circuit or short circuit in the valve. If one of them is on, the valve is faulty.
+7. If there is no open or short circuit in the valve, start the car engine.
+6. Use the "Up" and "Down" buttons to change the PWM signal duty cycle on the valve. With a functional valve, changing the degree of its opening (Duty, %) will change the pressure in the high-pressure (HP) and low-pressure (LP) lines. The absence of these changes indicates a faulty valve. 
+7. After the diagnostic process, stop the car engine and disconnect the tester wires from the battery and the compressor.

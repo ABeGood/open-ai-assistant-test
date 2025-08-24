@@ -1,0 +1,53 @@
+MS504 TEST BENCH FOR DIAGNOSTICS OF POWER STEERING PUMPS
+@D_9_IMG_000_PHOTO_MS504-test-bench-for-power-steering-pumps_cover
+
+DIAGNOSTICS MANUAL
+
+5.2. Preparing the bench for operation
+The bench is delivered packaged. Unpack the bench, remove the protective film from the display (if present). After unpacking, ensure that the bench is intact and free of any damage. If damage is found, contact the manufacturer or sales representative before turning on the bench.
+The MS504 bench is installed on the floor with a solid, level surface. The working area must be free from foreign objects. When installing the bench, provide a minimum clearance of 0.6 m from the rear of the bench for maintenance purposes.
+Before operating the bench:
+1) Fill with new ATF oil, see section 7.1.
+WARNING! To avoid malfunctions in the operation of the bench and diagnosed units, use only new ATF oil.
+2) Connect the 400V power supply, using the socket provided with the bench, which is marked L1 L2 L3 N PE, and ensure compliance when connecting the socket to the power supply network.
+3) Turn on the voltage relay automatic switch (located on the side, right side of the bench).
+
+6. POWER STEERING PUMP DIAGNOSTICS
+The sequence of operations for checking a single-circuit pump is as follows:
+1. Turn on the bench.
+2. Install the 3-jaw chuck drive pulley or pump shaft.
+3. Use the mounting system (see item 15 in Fig. 1) to secure the pump housing.
+4. Connect the high and low-pressure hoses to the bench and the pump (see Fig. 3 @D_9_IMG_003_DIAGRAM_power-steering-pump-connection-to-bench_fig3). 
+5. Close the cartridge guard.
+Figure 3. Connecting the power steering pump to the bench @D_9_IMG_003_DIAGRAM_power-steering-pump-connection-to-bench_fig3
+1- low pressure connection of I circuit; 2- high pressure connection of I circuit; 
+3 - pump inlet; 4 - pump outlet.
+
+6. Open the supply valve on the low-pressure hose of Circuit I and wait for the pump to fill with fluid.
+
+Figure 4. Pump connected and fixed @D_9_IMG_004_PHOTO_pump-connected-and-fixed_fig4
+
+7. Check pressure and flow readings at idle speed.
+7.1. Start the pump drive by turning the speed controller 16 (Fig. 1) to set the speed to 800 rpm. At this value, the pump should deliver nominal pressure and flow values according to the passport data of the unit being diagnosed.
+Pay attention to the direction of rotation of the drive; if necessary, change the direction of rotation. The pump will generate pressure only in the direction of rotation provided by its design.
+8. Check the pump's operation under load.
+8.1. Set the drive speed to 1500 rpm.
+8.2. Gradually turn the load valve 9 (Fig. 1) for a few seconds. Deviations in operation are assessed according to the criteria outlined in Table 1. 
+Note that the pump load time should not exceed 10 seconds. Exceeding this parameter may lead to fluid overheating and pump damage.
+9. Check the operation of the pump valve.
+9.1. With the drive speed at 1500 rpm, cyclically turn the load valve 9 (hold the valve closed for 2-3 seconds). After each loading cycle, the flow and pressure readings should be consistent (slight deviations are permissible).
+10. Turn off the pump drive by pressing the "STOP" button.
+11. Disconnect the pump from the bench and turn off the bench.
+When checking a dual-circuit pump, both circuits of the pump are connected by high and low-pressure hoses, and diagnostic operations are performed separately for each circuit.
+
+Table 1: Main indicators for diagnostics of the hydraulic power steering pump
+Creating a load (simulation of the rail in the end stop position)	Device readings	Hum	Leak	Malfunction
+	Fluid flow	Fluid pressure			
+No	Nominal, declared by the manufacturer	Minimal	No	No	No
+No	Less than the nominal value stated by the manufacturer	Minimal	No	No	Damage "scoring" of the sealing plate of the working part of the pump pump part
+No	Nominal, declared by the manufacturer	After each load creation, the indicator changes	Yes / No	No	Wear of the working pair (rotor with blades and working chamber). Bearing wear
+Yes	Minimal	Less than the nominal value stated by the manufacturer	No	No	Wear of the working pair (rotor with blades and working chamber). Damage "scoring" of the sealing plate of the working part of the pump
+Cyclically	After each load creation, the indicator changes	No	No	Loss of by-pass valve mobility, valve seat wear
+Yes / No	No	No	No	Loss of bypass valve movement valve
+Yes / No				Yes	Wear and tear on the glands, gaskets
+Yes / No			Yes	No	Wear of the working pair (rotor with blades and working chamber). Bearing wear. Air suction

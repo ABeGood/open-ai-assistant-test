@@ -1,0 +1,218 @@
+MS012 COM TESTER FOR DIAGNOSTICS OF ALTERNATOR'S VOLTAGE REGULATORS @D_19_IMG_000_PHOTO_MS012-COM-tester-for-alternator-voltage-regulators_cover
+
+DIAGNOSTICS MANUAL
+
+5.2. Voltage regulator connection
+A proper connection of the voltage regulator to the diagnostic terminals of the tester is necessary for evaluation of the regulator performance.
+WARNING! To avoid damage to the tester or its failure, extra care is to be taken when connecting the cable clips to the contacts inside the terminals. The cable clips must be completely insulated (Fig.14 @D_19_IMG_014_PHOTO_cable connection-clip-completely-insulated_fig14 @D_19_IMG_015_PHOTO_cable-clips-connection_fig14). 
+Figure 14 - Connection of the cable clips to the contacts inside the terminal @D_19_IMG_014_PHOTO_cable connection-clip-completely-insulated_fig14 @D_19_IMG_015_PHOTO_cable-clips-connection_fig14
+
+Search online the information on the terminals marking by the voltage regulator part number. You may also find information on connection of the most common voltage regulator types in Appendix 3 of the actual Operation Instruction.
+
+The diagram for connection of voltage regulator ARE1054 is shown as an example in Figure 15 @D_19_IMG_016_DIAGRAM_voltage-regulator-ARE1054_fig15.
+Figure 15. Voltage regulator ARE1054 @D_19_IMG_016_DIAGRAM_voltage-regulator-ARE1054_fig15
+
+Identify the voltage regulator type by its connection terminals shown in Figure15 and using the information set out in Appendices 1, 2. In the example given, these are terminals DFM and L(RVC) (can be marked as L(PWM)). Terminal DFM cannot be used for identification of the voltage regulator type, while we can identify it as RVC-type by terminal L(RVC).
+Then we refer to Appendix 1 to determine the tester terminals for connection of the voltage regulator (Fig.16 @D_19_IMG_017_DIAGRAM_voltage-regulator-ARE1054-connected-to-tester_fig16). Table 1 and Figure 16 show the diagram for connection of voltage regulator ARE1054.
+
+Table 1 – Connection of voltage regulator ARE1054 to the tester
+Voltage regulator terminal	Tester output terminal	Color marking of cable
+DFM	FR	yellow
+L(RVC)	GC	yellow
+Ps	ST1	blue
+B+	B+	red
+DF	F1	green
+DF	F2	green
+B-	B-	black
+Figure 16 – Voltage regulator ARE1054 connected to the tester output terminals @D_19_IMG_017_DIAGRAM_voltage-regulator-ARE1054-connected-to-tester_fig16
+
+Figure 17 shows a diagram of voltage regulator ARE6076 connection as an example. @D_19_IMG_018_DIAGRAM_voltage-regulator-ARE6076_fig17
+Figure 17 – Voltage regulator ARE6076 @D_19_IMG_018_DIAGRAM_voltage-regulator-ARE6076_fig17
+
+Voltage regulator type can be identified by its connection terminals and using the information set out in Appendices 1, 2. In this case, we cannot identify the voltage regulator type by terminals IG, S, and FR(M), while it can be identified as L/FR by terminal L.
+Then we refer to Appendix 1 to determine the tester terminals for connection of the voltage regulator. Table 2 and Figure 18 show the diagram for connection of the voltage regulator to the tester.
+
+Table 2 – Connection of voltage regulator ARE6076 to the tester @D_19_IMG_019_DIAGRAM_voltage-regulator-ARE6076-connection-to-tester_fig18
+Voltage regulator terminal	Tester output terminal	Color marking of output terminal
+IG	IG	red
+L	D+	black
+S	S	blue
+FR(M)	FR	yellow
+B+	B+	red
+B+	F2	green
+F	F1	green
+Ps	ST1	blue
+GND	B-	black
+Figure 18 – Diagram of voltage regulator ARE6076 connection to the tester @D_19_IMG_019_DIAGRAM_voltage-regulator-ARE6076-connection-to-tester_fig18
+
+Connection of voltage regulator ARE6076 has some specifics:
+Firstly, the voltage regulator must be connected to three output terminals B+ while the tester has only two. The problem can be solved by connecting a spare blue cable to one of the red cables supplied with a special socket connector which substitutes the missing terminal of the tester (Fig.19 @D_19_IMG_020_PHOTO_additional-cable-B+-connection_fig19). 
+Figure 19 – Connection of additional cable B+ @D_19_IMG_020_PHOTO_additional-cable-B+-connection_fig19
+
+Secondly, there are two cables - F1 and F2, both of which must be connected to the voltage regulator brushes or their respective terminals. Figure 17 shows only one terminal – F, to which cable F1 must be connected. The other green cable (F2) must be connected to terminal B+, since one of the brushes is permanently connected to B+ while the excitation winding is controlled through the brush connected to the alternator negative terminal (A-circuit type).
+
+Figure 20 shows the connection diagram of voltage regulator ARE6149P as an example. @D_19_IMG_021_DIAGRAM_voltage-regulator-ARE6149P_fig20
+Figure 20 – Voltage regulator ARE6149P @D_19_IMG_021_DIAGRAM_voltage-regulator-ARE6149P_fig20
+
+Voltage regulator type should be identified by its connection terminals and using the information set out in Appendices 1, 2. In this case, there is only one terminal – LIN, that identifies this voltage regulator as COM type.
+Then we refer to Appendix 1 to determine the tester terminals for connection of the voltage regulator. Table 3 and Figure 21 show the diagram for connection of the voltage regulator ARE6149P to the tester.
+
+Table 3 – Connection of voltage regulator ARE6149P to the tester @D_19_IMG_022_DIAGRAM_voltage-regulator-ARE6149P-connected-to-tester_fig21
+Voltage regulator terminal	Tester output terminal	Color marking of output terminal
+B+	B+	red
+F	F1	green
+Ps	ST1	blue
+LIN	GC	yellow
+G	B-	black
+G	F2	green
+Figure 21. Voltage regulator ARE6149P connected to the tester terminals @D_19_IMG_022_DIAGRAM_voltage-regulator-ARE6149P-connected-to-tester_fig21
+
+Connection of voltage regulator ARE6149P has a special aspect. Figure 20 @D_19_IMG_021_DIAGRAM_voltage-regulator-ARE6149P_fig20 shows only one terminal – F, for connection of cable F1. The other cable – F2 must be connected to terminal B-. Consequently, one of the brushes is permanently connected to B- of the alternator, while the excitation winding is controlled through terminal B+.
+
+5.3. Voltage regulator diagnostics
+Before launching the diagnostic procedure, set up the resistance of the stator winding in the main menu (Fig.4 @D_19_IMG_004_DIAGRAM_tester-main-menu_fig4) with adjustment knob EL LOAD. In case, the resistance value of the stator winding is known, set this (measured) value. If the resistance value is not known, set it as follows:
+• 5 Ohm for 12V;
+• 22 Ohm for 24V.
+
+The common diagnostic procedure for a majority of voltage regulators is as follows:
+1) Connect the voltage regulator to the tester output terminals.
+2) Set up the resistance of the stator winding.
+3) Select the nominal voltage of the tested voltage regulator.
+4) Select the type of the tested voltage regulator.
+5) Evaluate the control lamp behavior: red indication must be on when the speed is below 700 rpm, the indication must turn white (off) when the speed is above 800-1200 rpm.
+6) Evaluate the voltage regulator response to the load change set with adjustment knob EL LOAD.
+7) Evaluate the voltage regulator ability to adjust to the stabilizing voltage set with knob VOLTAGE.
+WARNING! The selected test mode (Fig. 6 @D_19_IMG_006_DIAGRAM_voltage-regulator-type-selection-12V_fig6 , 7 @D_19_IMG_007_DIAGRAM_voltage-regulator-type-selection-24V_fig7) must correspond to the voltage regulator type.
+
+5.3.1. Diagnostics of voltage regulators of L/FR type
+1. Connect the voltage regulator to the tester as described in article 3.2 of the actual Instruction.
+2. In the main menu (Fig.4 @D_19_IMG_004_DIAGRAM_tester-main-menu_fig4) select the nominal voltage of the tested voltage regulator: 12V or 24V.
+3. Rotate adjustment knob STATOR to set the stator speed "STATOR RPM" at 0 – red indication of the control lamp must be on. Then, set the stator speed at over 1000 rpm – the control lamp indication must turn white now. The displayed voltage value "VOLTAGE, V" must set in the range of 14V-14.8V for 12V regulators, 26,5 – 29V for 24V regulators and correspond to the voltage regulator characteristics.
+4. Rotate adjustment knob "EL LOAD" to change the value (%) from 10 to 100%. The value in box "CURRENT, A" must vary with it.
+5. If one of the terminals "FR, DFM, M, LI" is present in the controller, then check whether "DFM, Hz" and "DFM, %" are displayed.
+5.1 If "DFM, Hz" is displayed as "NA" and "DFM, %" as "HI", then press the "FR PULLUP" button. If nothing changes - it means that the feedback channel is defective. The tester also displays such values if the FR wire in the regulator is not connected to the corresponding connector of the regulator.
+6. Failure to perform as described in articles 3-4 of the Instruction signals the voltage regulator malfunction.
+7. Press BACK to exit the test mode. Disconnect the cable clips from the voltage regulator.
+
+5.3.2. Diagnostic of voltage regulators of RLO, RVC, C KOREA, SIG, and P-D types
+1. Connect the voltage regulator to the tester as described in article 3.2 of the actual Instruction.
+2. In the main menu (Fig.4 @D_19_IMG_004_DIAGRAM_tester-main-menu_fig4) select the nominal voltage of the tested voltage regulator: 12V.
+3. In the menu for selection of a voltage regulator by type (Fig.6 @D_19_IMG_006_DIAGRAM_voltage-regulator-type-selection-12V_fig6), select the voltage regulator terminal and press TEST. The tester will enter the test mode.
+4*. Rotate adjustment knob "STATOR" to set the stator speed "STATOR RPM" at 0 – red indication of the control lamp must be on. Then, set the stator speed at over 1000 rpm – the control lamp indication must turn white now.
+* The procedure does not apply to voltage regulators of SIG and P-D types.
+5. Rotate "EL LOAD" to set the value at 100%.
+6. Rotate adjustment knob "STATOR" to set the stator speed "STATOR RPM" in the range from 2000 to 6000 rpm. Change the pre-set voltage "SET V" in the range of 13.1-14.5V. The value in box "VOLTAGE, V" varies in proportion to it.
+7. Rotate adjustment knobs "EL LOAD" to change the value in the range from 10 to 100%. The value in box "CURRENT, A" varies in proportion with it.
+8. The measured DFM signal will be displayed in boxes "DFM, Hz" and "DFM, %".
+8.1 If "DFM, Hz" is displayed as "NA" and "DFM, %" as "HI", then press the "FR PULLUP" button. If nothing changes - it means that the feedback channel is defective. The tester also displays such values if the FR wire in the regulator is not connected to the corresponding connector of the regulator.
+9. Failure to perform as described in article 4* - 8 of the Instruction signals the voltage regulator malfunction.
+10. Press BACK to exit the test mode. Disconnect the cable clips from the voltage regulator.
+
+5.3.3. Diagnostics of voltage regulators of C JAPAN type
+1. Connect the voltage regulator to the tester as described in article 3.2 of the actual Instruction.
+2. In the main menu (Fig.4 @D_19_IMG_004_DIAGRAM_tester-main-menu_fig4) select the nominal voltage of the tested voltage regulator: 12V.
+3. In the menu for selection a voltage regulator by type (Fig.6 @D_19_IMG_006_DIAGRAM_voltage-regulator-type-selection-12V_fig6), select the voltage regulator terminal and press TEST. The tester will enter the test mode.
+4. Rotate adjustment knob "STATOR" to set the stator speed "STATOR RPM" at 0 – red indication of the control lamp must be on. Then set the stator speed at over 1000 rpm – the control lamp indication must turn white now. The displayed voltage value "VOLTAGE, V" must set in the range of 12V to 12,7V.
+5. Rotate adjustment knob EL LOAD to set the value at 100%.
+6. Press OFF, the value in box "VOLTAGE, V" must set in the range of 14-14,4V. Button ON will appear on the screen.
+7. Rotate adjustment knob EL LOAD to change the value in the range from 10 to 100%. The value in box "CURRENT, A" must vary in proportion with it.
+8. Measured values of DFM signal must be displayed in boxes "DFM, Hz" and "DFM, %".
+8.1 If "DFM, Hz" is displayed as "NA" and "DFM, %" as "HI", then press the "FR PULLUP" button. If nothing changes - it means that the feedback channel is defective. The tester also displays such values if the FR wire in the regulator is not connected to the corresponding connector of the regulator.
+9. Failure to perform as described in articles 4-8 of the actual Operation Instruction signals the voltage regulator malfunction.
+10. Press BACK to exit the test mode. Disconnect the cable clips from the voltage regulator.
+
+5.3.4. Diagnostics of 12/24V voltage regulators of COM type
+1. Connect the voltage regulator to the tester as described in article 3.2 of the actual Instruction.
+2. In the main menu (Fig.4 @D_19_IMG_004_DIAGRAM_tester-main-menu_fig4) select the nominal voltage of the tested voltage regulator: 12V or 24V.
+3. In the menu for selection of the voltage regulator by type (Fig.6 @D_19_IMG_006_DIAGRAM_voltage-regulator-type-selection-12V_fig6 , 7 @D_19_IMG_007_DIAGRAM_voltage-regulator-type-selection-24V_fig7) select the voltage regulator terminal and press TEST. The tester will enter the test mode.
+4. Wait for the tester to complete the data read-out. The diagnostic procedure can be continued when message "CONNECTED" appears in box "LIN STATUS".
+5. Rotate adjustment knob "EL LOAD" to set the load at 100%. Set stator speed "STATOR RPM" below 700 rpm with adjustment knob "STATOR". Value "MEC" in box "ERRORS" must turn red. When we increase the stator speed "STATOR RPM" up to more than 1200 rpm, this value "MEC" in box "ERRORS" must turn white. This will mean the system of voltage regulator self-diagnostics is fault-free.
+5.1 If symbol EL in box "ERRORS" turns red when we increase the stator speed "STATOR RPM" up to more 1200 rpm, it signals an electric fault of the voltage regulator.
+6. Turn adjustment knob "STATOR" until "STATOR RPM" value is set in the range of 2000 to 6000 rpm. Set the voltage value "SET V" in the range of 13.1-14.5V for 12V regulators, 26 – 29V for 24V by rotating adjustment knob "VOLTAGE". The value in box "VOLTAGE, V" must change in proportion to the pre-set one. If so, the channel for setting voltage is operable.
+7. Rotate adjustment knob "EL LOAD" to change the value in the range from 10 to 100%. If the value in box "EXCITATION" changes, it means that the voltage regulator responds to the load change.
+8. Failure to perform as described in articles 4-7 of the Instruction signals the voltage regulator malfunction.
+9. Press BACK to exit the test mode. Disconnect the clips from the voltage regulator.
+
+7. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Failure symptom	Potential cause	Troubleshooting tips
+Tester doesn't start.	Power supply failure.	Recover power supply.
+Tester doesn't start.	The power connector came loose.	Check the supply cable connection.
+Tester doesn't start.	Burnt safety fuse.	Replace the safety fuse (observe the speciﬁed rating).
+Sound of short circuit alert (bleep) when the tester is switched on.	There is either a connector short circuit to the tester body or a short circuit between the connectors.	Disconnect the connectors.
+The tested parameters are displayed incorrectly.	Loose connection.	Restore the connection.
+The tested parameters are displayed incorrectly.	Damaged diagnostic cable(s).	Replace the diagnostic cable(s).
+The tested parameters are displayed incorrectly.	Software error.	Contact technical support.
+
+APPENDIX 1
+Connection of terminals to voltage regulators
+Indicial notation	Functional purpose	Voltage regulator type	Output terminal
+B+	Battery (+)		B+
+30	Battery (+)		B+
+A	(Ignition) Input for switch starting		B+
+IG	(Ignition) Input for switch starting		B+
+15	(Ignition) Input for switch starting		B+
+AS	Alternator Sense		B+
+BVS	Battery Voltage Sense		B+
+S	(Sense) Input for comparing voltages at the test point		B+
+B-	Battery (-)		B-
+31	Battery (-)		B-
+E	Earth, battery (-)		B-
+D+	Used for connection to an indicator lamp that transfers initial driving voltage and indicates alternator operability	L/FR	D+
+I	Indicator	L/FR	D+
+IL	Illumination	L/FR	D+
+L	(Lamp) Output for alternator operability indicator lamp	L/FR	D+
+61	(Lamp) Output for alternator operability indicator lamp	L/FR	D+
+FR	(Field Report) Output for alternator load control by an engine control unit		FR
+DFM	Digital Field Monitor		FR
+M	Monitor		FR
+LI	(Load Indicator) Same as FR, but with universal signal		FR
+D	(Drive) Input of voltage regulator control with terminal P-D of Mitsubishi (Mazda) and Hitachi (KiaSephia1997-2000) alternators	P/D	GC
+
+Indicial notation	Functional purpose	Voltage regulator type	Output terminal
+SIG	(Signal) Input of code voltage installation	SIG	GC
+D	(Digital) Input of code voltage installation on Ford, same as SIG	SIG	GC
+RC	(Regulator control), same as SIG	SIG	GC
+L(RVC)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+L(PWM)	(Regulated Voltage Control) Similar to SIG but voltage change ranges from 11V to 15.5V. Control signal is sent to L terminal.	RVC	GC
+C	(Communication) Voltage regulator input to control engine ECU. Korean cars.	C KOREA	GC
+G	Voltage regulator input to control engine ECU. Japanese cars.	C JAPAN	GC
+RLO	(Regulated Load Output) Input to control stabilizing voltage in the range of 11.8-15V (TOYOTA)	RLO	GC
+COM	(Communication) General term for physical interface for alternator control and diagnostics. Protocols of use: BSD (Bit Serial Device), BSS (Bit Synchronized Signal), or LIN (Local Interconnect Network)	COM	GC
+LIN	Direct indication on interface of alternator control and diagnostics under LIN protocol (Local Interconnect Network)	COM	GC
+DF	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+F	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+FLD	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+67	An output of one of stator windings of an alternator. Through this output a voltage regulator detects the alternator excitation.		F1; F2
+P	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+S	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+STA	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+Stator	Output of one of alternator stator windings. Used for measuring alternator driving voltage		ST1; ST2
+
+Indicial notation	Functional purpose	Voltage regulator type	Output terminal
+W	(Wave) Output of one of alternator stator windings for connection of a tachometer in diesel engine cars		
+N	(Null) Output of average stator winding point. Usually used to control operability indicator lamp of the alternator with mechanical voltage regulator		
+D	(Dummy) Blank, no connection, mostly in Japanese cars		
+N/C	(No connect) No connection		
+LRC (Options of voltage regulators)	(Load Response Control) Function of voltage regulator response delay on load increase on an alternator. Delay duration ranges from 2.5 to 15 seconds. On increasing the load (lights, cooler fan on), a voltage regulator adds driving voltage smoothly ensuring stability of engine drive rotation. Remarkably seen under idle running.		
+
+APPENDIX 2
+@D_19_IMG_023_DIAGRAM_L-FR-voltage-regulator-connection_appendix2
+@D_19_IMG_024_DIAGRAM_SIG-voltage-regulator-connection_appendix2
+@D_19_IMG_025_DIAGRAM_RLO-voltage-regulator-connection_appendix2
+@D_19_IMG_026_DIAGRAM_RVC-voltage-regulator-connection_appendix2
+@D_19_IMG_027_DIAGRAM_C-KOREA-voltage-regulator-connection_appendix2
+@D_19_IMG_028_DIAGRAM_P-D-voltage-regulator-connection_appendix2
+@D_19_IMG_029_DIAGRAM_COM-LIN-BSS-voltage-regulator-connection_appendix2
+@D_19_IMG_030_DIAGRAM_C-JAPAN-voltage-regulator-connection_appendix2
+
+APPENDIX 3
+@D_19_IMG_031_DIAGRAM_Bosch-voltage-regulator-pinouts_appendix3
+@D_19_IMG_032_DIAGRAM_Bosch-voltage-regulator-pinouts_appendix3
+@D_19_IMG_033_DIAGRAM_Delco-Remy-voltage-regulator-pinouts_appendix3
+@D_19_IMG_034_DIAGRAM_Denso-voltage-regulator-pinouts_appendix3
+@D_19_IMG_035_DIAGRAM_Hitachi-voltage-regulator-pinouts_appendix3
+@D_19_IMG_036_DIAGRAM_Hitachi-Magneti-Marelli-voltage-regulator-pinouts_appendix3
+@D_19_IMG_037_DIAGRAM_Mitsubishi-voltage-regulator-pinouts-1_appendix3
+@D_19_IMG_038_DIAGRAM_Mitsubishi-voltage-regulator-pinouts-2_appendix3
+@D_19_IMG_039_DIAGRAM_Mitsubishi-voltage-regulator-pinouts-3_appendix3

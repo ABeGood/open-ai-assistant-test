@@ -1,0 +1,150 @@
+MS014 TESTER FOR DIAGNOSTICS OF STATOR WINDINGS AND DIODE BRIDGES OF ALTERNATORS @D_20_IMG_000_PHOTO_MS014-tester-for-stator-windings-diode-bridges_general-view
+
+DIAGNOSTICS MANUAL
+
+6. TESTING OF STATOR WINDINGS
+6.1. General Information
+Stator is a fixed element of electric unit, interacting with its moving part, the rotor. It consists of magnetically conductive core with coil windings fixed circle-wise (fig. 4 @D_20_IMG_004_DIAGRAM_alternator-stator-winding-structure_fig4). Rotating inside of the stator, the rotor generates alternating current in it. The frequency of generated alternating current equals the rotor frequency, multiplied by the number of poles (usually 6).
+Figure 4- Alternator stator winding @D_20_IMG_004_DIAGRAM_alternator-stator-winding-structure_fig4: 
+1 - winding terminals, phases: А, В, С; 2 - stator winding; 
+3 - magnetically conductive core.
+
+Three-phase stator winding consists of three separate windings, called phase windings or simply phases, wound in a certain order on the magnetic core. Current phases in the windings are displaced by one third of a period respectively one another, i. e. by 120 degrees (fig. 5 @D_20_IMG_005_DIAGRAM_stator-winding-phase-displacement_fig5).
+Figure 5 - Alternator stator winding phase displacement @D_20_IMG_005_DIAGRAM_stator-winding-phase-displacement_fig5
+
+Phase winding can be connected through "delta" (fig. 6 @D_20_IMG_006_DIAGRAM_winding-connection-types-delta-star_fig6, to the left) or "star" diagram (fig. 6 @D_20_IMG_006_DIAGRAM_winding-connection-types-delta-star_fig6, to the right).
+Figure 6 – Winding connection types @D_20_IMG_006_DIAGRAM_winding-connection-types-delta-star_fig6
+
+Several types of stator windings are presented below (fig. 7 – 10 @D_20_IMG_007_PHOTO_stator-windings-delta-connection_fig7 , @D_20_IMG_008_PHOTO_stator-windings-star-connection_fig8 , @D_20_IMG_009_PHOTO_stator-windings-star-center-point_fig9 , @D_20_IMG_010_PHOTO_stator-windings-jumpers-diode-bridge_fig10).
+Figure 7 – Stator, windings are connected through "delta" diagram @D_20_IMG_007_PHOTO_stator-windings-delta-connection_fig7
+Figure 8 – Stator, windings are connected through "star" diagram @D_20_IMG_008_PHOTO_stator-windings-star-connection_fig8
+Figure 9 – Stator, windings are connected through "star" diagram with center point @D_20_IMG_009_PHOTO_stator-windings-star-center-point_fig9
+Figure 10 – Stator, windings are connected through "star" or "delta" diagram with jumpers in alternator diode bridge @D_20_IMG_010_PHOTO_stator-windings-jumpers-diode-bridge_fig10
+
+6.2. Stator Windings Most Common Failures 
+Inter-turn fault (single-phase short circuit):
+a) alternator overload – alternator operation mode, when alternator current exceeds the limit, thus, stator windings overheat. Overheating causes damage of winding insulation, thus, inter-turn fault arises;
+b) short circuit due to mechanical damage of the stator;
+c) manufacturing defect of winding laying, or its unsatisfactory winding sometimes occurs;
+d) Incorrect use and storage of an alternator may cause moisture ingress into the unit, it may lead to inter-turn fault as well.
+Inter-phase fault (short circuit between phases):
+Inter-phase fault may be caused by the same reasons as inter-turn fault.
+Open fault of one or several windings:
+Mechanical damage and/or long corrosion process, caused by moisture, may be the reasons for the winding wire breakage.
+Phase to magnetic core fault:
+The reasons of phase to magnetic core fault are the same as in case of inter-turn fault.
+
+6.3. Stator Windings Testing Mode Operation
+Connect the tester to AC socket that corresponds to the characteristics of the device.
+Switch on the tester with on/off switch on the front panel. Then select stator windings testing mode on the touch display by pressing the button STATOR (fig. 11 @D_20_IMG_011_PHOTO_tester-main-menu-screen_fig11).
+Figure 11 – Main Menu @D_20_IMG_011_PHOTO_tester-main-menu-screen_fig11
+
+Stator testing mode menu appears on the display (fig. 12 @D_20_IMG_012_PHOTO_stator-testing-mode-menu_fig12).
+Figure 12 – Stator testing mode menu @D_20_IMG_012_PHOTO_stator-testing-mode-menu_fig12
+
+Connect stator winding terminals to 1, 2, 3, 4, 5, 6 connection ports. There is no need to observe polarity and order, the tester detects connected windings automatically.
+In case when the stator has 3 outputs (connection diagram: "star without center point" or "delta"), connect any 3 cables (loose cables must be left disconnected and strictly isolated from each other and/or the stator), press Scan. Then the tester detects the number of connected windings which will be displayed on the screen as Total Сonnections: (Fig. 13 @D_20_IMG_013_PHOTO_winding-connection-detection-screen_fig13) with the number of cables, connected to the windings.
+Figure 13 – Winding connection detection @D_20_IMG_013_PHOTO_winding-connection-detection-screen_fig13
+
+In case when wire breakage is absent, 3 connections will be displayed on the screen. Otherwise, stator winding has open circuit. Make sure that the "crocodile" type connector contact to windings terminals is safe and of low ohmic resistance (on detecting connection of windings, pulse current exceeds 20 A), otherwise, connection is not found.
+In case when the stator has 6 outputs (connection diagram: "star" or "delta", commutating in alternator diode bridge), connect 6 cables and press Scan. The tester detects the number of connected windings which will be displayed on the screen as Total Connections: (fig. 14 @D_20_IMG_014_PHOTO_phase-connection-detection-separate-phases_fig14) with the number of cables, connected to the windings.
+Figure 14 – Detection of phase connection in stator winding with separate phases @D_20_IMG_014_PHOTO_phase-connection-detection-separate-phases_fig14
+
+If phase windings are closed in regard to each other (which is one of the reasons of failure) in the process of detecting windings connection in Scan mode, the number of connections exceeds 6, the notification Too many connections (fig. 15 @D_20_IMG_015_PHOTO_too-many-connections-error-screen_fig15) appears on the display.
+Figure 15 – Detection of phase connection with exceeded number of commutations @D_20_IMG_015_PHOTO_too-many-connections-error-screen_fig15
+
+When 3 windings are found, press Test button. The tester measures windings. The measured values (fig. 16 @D_20_IMG_016_PHOTO_tested-stator-winding-results_fig16) are displayed on the screen, where:
+• Pins: numbers of terminals to which the measured winding is connected;
+• Q, units: winging inductance (displayed in nominal units);
+• Diff., units: percentage difference between the measured values of winding inductance. The stator is considered to be faultless if the difference between the measured values does not exceed 10 percent (%);
+• Isol., kOhm: insulation resistance. The value is indicated in kiloohm. The notification norm appears on the display when the winding is faultless. The notification short appears on the display in case of short circuit.
+Figure 16 – Tested stator winding @D_20_IMG_016_PHOTO_tested-stator-winding-results_fig16
+CONCLUSION: Faultless stator winding. 1% difference between the phases which corresponds to the acceptable limits (10%). Satisfactory insulation winding.
+ WARNING! After the results of measuring are displayed on the screen, to determine the insulation state, it is necessary to touch stator magnetic core with the probe for several seconds in the place free from varnish.
+
+When the tester detects short circuit of winding to stator magnetic core, the repeating signal sounds, the notification short (fig. 17 @D_20_IMG_017_PHOTO_stator-winding-short-circuit-results_fig17) appears in Isol. column in front of the corresponding connection.
+Figure 17 – Tested stator winding @D_20_IMG_017_PHOTO_stator-winding-short-circuit-results_fig17
+
+CONCLUSION: Stator winding failure. 1% difference between the phases which corresponds to the acceptable limits (10%). Winding insulation is broken, 5-6 phase short circuited to the magnetic core body.
+When the tester detects the decrease of winding insulation resistance to stator magnetic core (lower than 12 kOhm), resistance value in kiloohm is displayed in Isol. column in front of the corresponding connection.
+On testing stator winding through "star" diagram, connecting the center point to the tester outputs (4 tester cables must be connected), connection topology can be the same as in the fig. 18 @D_20_IMG_017_PHOTO_stator-winding-short-circuit-results_fig17 
+Figure 18 – Detection of phase commutation in stator winding "star" with connected center point of phases @D_20_IMG_018_PHOTO_star-winding-center-point-connection_fig18.
+
+Such connection is not a fault, disconnect center point for convenience in estimation of measured values.
+Further sequence of actions is the same as when testing the windings through "star" diagram without center point. When measuring, the risk of losing contact with winding is possible. The notification break (Fig. 19 @D_20_IMG_019_PHOTO_winding-contact-break-error_fig19) is displayed in the corresponding lines.
+Figure 19 – Tested stator winding @D_20_IMG_019_PHOTO_winding-contact-break-error_fig19
+CONCLUSION: The contact with 2-5 and 5-6 windings is lost
+
+The difference between measured values of windings, exceeding 10%, is the confirmation of stator failure (fig. 20 @D_20_IMG_020_PHOTO_stator-winding-failure-over-10-percent_fig20).
+Figure 20 – Tested stator winding @D_20_IMG_020_PHOTO_stator-winding-failure-results_fig20
+CONCLUSION: Stator winding failure. The difference between phases exceeds 10%.
+
+7. TESTING OF DIODE BRIDGES
+
+7.1. General Information
+Diode rectifier block on three parallel half-bridges (on six semiconductor diodes) converts three phase alternating current of the stator into direct current (rather in unidirectional pulsating current) at the output of alternator unit (fig. 21 @D_20_IMG_021_DIAGRAM_rectifier-circuit-diagram_fig21).
+Figure 21 – Rectifier diagram @D_20_IMG_021_DIAGRAM_rectifier-circuit-diagram_fig21
+
+Figure 22 – Alternator diode bridge external view (BOSCH F00M133218) @D_20_IMG_022_PHOTO_alternator-diode-bridge-external-view_fig22:
+1 – alternator diodes; 2 – positive heat sink; 3 – negative heat sink.
+
+Diode bridges can be divided into 2 types by construction:
+I) diodes are pressed (sometimes soldered) into rectifier heat sink plates; II) diodes are soldered on heat sinks with ribbed surface;
+II) to avoid a short circuit of aluminum heat sinks, plates are fully or partially covered with a layer of insulating material.
+Stator winding terminals are welded/soldered or fixed with screw connection to specialized mounting faces of alternator diode bridge.
+
+7.2. Diode Bridges Most Common Failures
+The most common failures are:
+• Short circuit of one or several diodes.
+• Open circuit of one or several diodes, caused by mechanical damage, or prolonged exposure to corrosion.
+• Short circuit of positive and negative heat sinks, caused by foreign metal objects, formations or contamination of current-conducting bridges.
+
+7.3. Diode Bridges Testing Mode Operation
+The device tests unidirectional conduction of diode bridge elements, connected through measuring cables, to detect failures. The testing is conducted by set current pulse. Both sides current-con- ducting diode bridge element is indicated as SHORT CIRCUIT on the display, increased resistance (semiconductor degeneracy) or non-conducting element is indicated as OPEN CIRCUIT on the display. Besides, on finishing the measurement, the tester restores the diode bridge topology (В+, В- and connection terminals of stator windings), if it is possible. 
+Sometimes a diode bridge has a big amount of short-circuited elements and elements under open circuit, which gives no possibility to identify its topology. In such cases it is recommended to use the additional information (amount of short-circuited elements and elements under open circuit) on the display.
+
+Press DIODE BRIDGE to enter the testing mode of diode bridges (Fig. 10 @D_20_IMG_010_PHOTO_stator-windings-jumpers-diode-bridge_fig10). Diode bridges testing menu is displayed on the screen (Fig. 23 @D_20_IMG_023_PHOTO_diode-bridges-testing-menu_fig23).
+
+Figure 23 – Diode bridges testing menu @D_20_IMG_023_PHOTO_diode-bridges-testing-menu_fig23
+
+• «connection» –diode bridge topology display frame.
+• «FREE» – disconnected measuring cables option frame.
+• «OPEN CIRCUIT» – diode bridge elements under open circuit option frame.
+• «SHORT CIRCUIT» –diode bridge short-circuited elements option frame.
+• «Test» – button to start the measurement.
+• «Back» – button to stop the measurement and return to the main menu.
+
+Connect all the diode bridge leads to the tester through the required number of cables. There is no need to observe polarity and order, the tester detects connected windings automatically. Disconnected cables must be isolated from each other and diode bridge elements.
+
+Then press Test button. The device tests the connected diode bridge and displays the results on the screen.
+Faultless three-armed diode bridge testing is presented in the fig. 24 @D_20_IMG_024_PHOTO_tested-diode-bridge-faultless_fig24. Measuring cables 1, 2, 3, 5, 6 are connected, cable 4 is disconnected.
+Figure 24 – Tested diode bridge @D_20_IMG_024_PHOTO_tested-diode-bridge-faultless_fig24
+
+Faultless three-armed diode bridge testing is presented in the fig. 25 @D_20_IMG_025_PHOTO_tested-diode-bridge-faultless-reordered-cables_fig25. The order of connected measuring cables was changed in comparison with the previous figure.
+Figure 25 – Tested diode bridge @D_20_IMG_025_PHOTO_tested-diode-bridge-faultless-reordered-cables_fig25
+
+Testing of a diode bridge in failure (bus open circuit В+) is presented in the Fig. 26 @D_20_IMG_026_PHOTO_diode-bridge-failure-open-circuit-b-plus_fig26. The number of elements under open circuit is displayed in OPEN CIRCUIT.
+Figure 26 – Diode bridge in failure – open circuit @D_20_IMG_026_PHOTO_diode-bridge-failure-open-circuit-b-plus_fig26
+
+Testing of a diode bridge in failure (bus open circuit В-) is presented in the fig. 27 @D_20_IMG_027_PHOTO_diode-bridge-failure-open-circuit-b-minus_fig27.
+Figure 27 – Diode bridge in failure – open circuit @D_20_IMG_027_PHOTO_diode-bridge-failure-open-circuit-b-minus_fig27
+
+Testing of a diode bridge in failure (one element bus open circuit) is presented in the fig. 28 @D_20_IMG_028_PHOTO_diode-bridge-failure-single-element-open_fig28. Measuring cables, connected to the element under open circuit, are displayed in OPEN CIRCUIT.
+Figure 28 – Diode bridge in failure – open circuit @D_20_IMG_028_PHOTO_diode-bridge-failure-single-element-open_fig28
+
+Testing of a diode bridge in failure (short circuit) is presented in the fig. 29 @D_20_IMG_029_PHOTO_diode-bridge-failure-short-circuit_fig29. Measuring cables, connected to short-circuited element, are displayed in OPEN CIRCUIT.
+Figure 29 – Diode bridge in failure – short circuit @D_20_IMG_029_PHOTO_diode-bridge-failure-short-circuit_fig29
+ WARNING! If a diode bridge has more than 6 leads (such diode bridge has purposely electrically connected leads, serving for commutation of stator windings into set diagram), closed leads must be detected, only one of them must be used for connection of measuring cables (only one lead out of a pair of closed leads).
+
+ WARNING! To determine the insulation condition, it is necessary to «dip stick» touch the magnetic conductor of the stator in a place cleaned of varnish for a few seconds after displaying the measurement results on the screen.
+
+9. TROUBLESHOOTING GUIDE
+The below chart contains the description of potential malfunctions and troubleshooting methods:
+Failure symptom	Failure symptom	Troubleshooting tips
+Tester doesn't start.	Power supply failure.	Recover power supply.
+Tester doesn't start.	The power connector came loose.	Check the supply cable connection.
+Tester doesn't start.	Burnt safety fuse.	Replace the safety fuse (observe the speciﬁed rating).
+Sound of short circuit alert (bleep) when the tester is switched on.	There is either a connector short circuit to the tester body or a short circuit between the connectors.	Disconnect the connectors.
+The tested parameters are displayed incorrectly.	Loose connection.	Restore the connection.
+The tested parameters are displayed incorrectly.	Damaged diagnostic cable(s).	Replace the diagnostic cable(s).
+The tested parameters are displayed incorrectly.	Software error.	Contact technical support.

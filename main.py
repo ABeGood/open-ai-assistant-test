@@ -26,7 +26,7 @@ def main():
     # Create orchestrator
     orchestrator = create_orchestrator()
 
-    open_ai_client = OpenAI(api_key=open_ai_token, timeout=30, max_retries=3)
+    open_ai_client = OpenAI(api_key=open_ai_token, timeout=120, max_retries=3)
     
     # Initialize and start bot
     bot = TelegramBot(bot_token=telegram_token, orchestrator=orchestrator, llm_client=open_ai_client)
