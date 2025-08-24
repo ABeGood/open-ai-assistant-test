@@ -22,7 +22,15 @@ Your answer:"""
         pass
 
     def append_to_code(self, extracted_code, n_dfs=None):
-        return extracted_code
+        pandas_options = """
+# Set pandas display options to show all rows and columns
+import pandas as pd
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
+"""
+        return pandas_options + extracted_code
 
     def formulate_result(self, code_segments_obj, full_answer):
         # assumes just one code snipet and hence only one result by default
@@ -121,6 +129,16 @@ Your answer:"""
             code_to_execute = self.rename_plots(code_to_execute, plot_names)
         else:
             plot_names = []
+
+        pandas_options = """
+# Set pandas display options to show all rows and columns
+import pandas as pd
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
+"""
+        code_to_execute = code_to_execute.replace('import pandas as pd', pandas_options)
 
         print("code execution:")
         print(code_to_execute)
@@ -256,7 +274,15 @@ Your answer:"""
 class FunctionBasePromptStrategy(BasePromptStrategy):
 
     def append_to_code(self, extracted_code, n_dfs=None):
+        pandas_options = """
+# Set pandas display options to show all rows and columns
+import pandas as pd
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
+"""
         if n_dfs is None or n_dfs <= 1:
-            return extracted_code + "\n\n" + "result = solve(df)\nprint(result)"
+            return pandas_options + extracted_code + "\n\n" + "result = solve(df)\nprint(result)"
         else:
-            return extracted_code + "\n\n" + f"result = solve({', '.join([f'df_{i+1}' for i in range(n_dfs)])})\nprint(result)"
+            return pandas_options + extracted_code + "\n\n" + f"result = solve({', '.join([f'df_{i+1}' for i in range(n_dfs)])})\nprint(result)"

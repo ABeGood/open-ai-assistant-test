@@ -14,6 +14,7 @@ from .data_classes import CodeSnippet
 from openai import OpenAI
 from .prompts import RESULT_INTERPRETER_PROMPT
 from classes.validators import InterpreterResponse
+from pydantic import ValidationError
 from classes.agents_response_models import SpecialistResponse, create_success_response, create_error_response
 
 class TableAgent:
@@ -287,7 +288,7 @@ class TableAgent:
                 self._plan = self.llm_calls.generate_replan(
                     query, self.df, self._plan, data_annotation=self.data_specs)
 
-        generated_answer, coder_prompt = self.llm_calls.generate_code(
+        generated_code, coder_prompt = self.llm_calls.generate_code(
             query,
             self.df,
             self._plan,
@@ -299,12 +300,12 @@ class TableAgent:
             prompt_name=self.prompt_name
         )
 
-        print(f"Generated code: {generated_answer}")
+        print(f"Generated code: {generated_code}")
         print(self._tagged_query_type)
 
         # 'local' removes the definition of a new df if there is one
         code_to_execute = Code.extract_code(
-            generated_answer, provider=self.provider, show_plot=False, prompt_strategy=self.prompt_strategy)
+            generated_code, provider=self.provider, show_plot=False, prompt_strategy=self.prompt_strategy)
 
         result_list = self.prompt_strategy.run_code_segments(
             copy(code_to_execute),
@@ -325,7 +326,7 @@ class TableAgent:
         )
 
         res = self.prompt_strategy.formulate_result(
-            result_list, generated_answer)
+            result_list, generated_code)
         ret_value = res
         if res == "":
             if self._tagged_query_type == "general":
@@ -356,8 +357,13 @@ class TableAgent:
                 TABLE_ANNOTATION=self.data_specs
                 )
             result_raw = self.llm_calls.call_llm(prompt=prompt)[0]
-            InterpreterResponse.model_validate_json(result_raw)
-            interpreter_response_dict = json.loads(result_raw)
+            try:
+                InterpreterResponse.model_validate_json(result_raw)
+                interpreter_response_dict = json.loads(result_raw)
+            except ValidationError as ve:
+                raise ValueError(f"LLM response validation failed: {ve}")
+            except json.JSONDecodeError as je:
+                raise ValueError(f"Invalid JSON in LLM response: {je}")
             
             return create_success_response(
                 SpecialistResponse,

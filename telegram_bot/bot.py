@@ -151,7 +151,6 @@ class TelegramBot:
 
                     # Call table processor if needed
                     if SpecialistType.TABLES in chosen_specialists:
-                        chosen_specialists.remove(SpecialistType.TABLES)
                         if orchestrator_response.tables_to_query:
                             table_response_results = {}
                             for table in orchestrator_response.tables_to_query:
@@ -192,31 +191,37 @@ class TelegramBot:
                             f"Неуспешные: {len(failed_spec_resps)}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    if len(successfull_spec_resps) < 2:
+                    if len(successfull_spec_resps) == 1:
                         if DEBUG:
                             debug_msg = "📄 STEP 3 \nFormatting final response\n\n"\
                                 f"Был получен один успешный ответ, оформляем его в финальное сообщение..."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
-                            final_answer_dict = successfull_spec_resps[0]
-                    else:
+                        final_answer_dict = successfull_spec_resps[0]
+                    elif len(successfull_spec_resps) >1:
                         if DEBUG:
                             debug_msg = "🔗 STEP 3.1 \nCombinator call\n\n"\
                                 f"Было получено несколько успешных ответов.\n\n"\
                                 "➡️ Направляем их в бот-комбинатор для составления финального ответа."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
                             
-                            final_answer_dict = self.orchestrator_agent.process_with_combinator(session_id, user_message, successfull_spec_resps)
+                        final_answer_dict = self.orchestrator_agent.process_with_combinator(session_id, user_message, successfull_spec_resps)
 
-                            if DEBUG:
-                                debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\
-                                    "⬅️ Получили ответ от комбинатора."
-                                await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                        if DEBUG:
+                            debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\
+                                "⬅️ Получили ответ от комбинатора."
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                                debug_msg = "📄 STEP 4 \nFormatting final response\n\n"\
-                                f"Оформляем ответ комбинатора в финальное сообщение..."
-                                await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            debug_msg = "📄 STEP 4 \nFormatting final response\n\n"\
+                            f"Оформляем ответ комбинатора в финальное сообщение..."
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                    else:
+                        if DEBUG:
+                            debug_msg = "⚠️ Что-то пошло не так:\n\n"\
+                                "Не было получено ни одного ответа."
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    tg_message, images = format_telegram_message(final_answer_dict)
+                    if final_answer_dict:
+                        tg_message, images = format_telegram_message(final_answer_dict)
 
                     await self._send_response_with_images(msg.chat.id, tg_message, images, user, tg_chat_id)
 
