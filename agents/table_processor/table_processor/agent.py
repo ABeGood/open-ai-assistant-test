@@ -14,6 +14,7 @@ from .data_classes import CodeSnippet
 from openai import OpenAI
 from .prompts import RESULT_INTERPRETER_PROMPT
 from classes.validators import InterpreterResponse
+from classes.agents_response_models import SpecialistResponse, create_success_response, create_error_response
 
 class TableAgent:
     def __init__(
@@ -345,15 +346,37 @@ class TableAgent:
             code_to_execute, self.prompt_strategy, n_dfs=n_dfs)
         return code_to_execute, debug_prompt
     
-    def interpret_result(self, user_query:str, code:str, output:str, table_annotation:str=""):
-        prompt = RESULT_INTERPRETER_PROMPT.format(
-            USER_QUERY=user_query,
-            GENERATED_CODE = code,
-            PRINT_RESULT = output,
-            TABLE_ANNOTATION=self.data_specs
+    def interpret_result(self, user_query:str, code:str, output:str, table_annotation:str="") -> SpecialistResponse:
+        import time
+        try:
+            prompt = RESULT_INTERPRETER_PROMPT.format(
+                USER_QUERY=user_query,
+                GENERATED_CODE = code,
+                PRINT_RESULT = output,
+                TABLE_ANNOTATION=self.data_specs
+                )
+            result_raw = self.llm_calls.call_llm(prompt=prompt)[0]
+            InterpreterResponse.model_validate_json(result_raw)
+            interpreter_response_dict = json.loads(result_raw)
+            
+            return create_success_response(
+                SpecialistResponse,
+                user_query,
+                specialist="table_agent",
+                response=interpreter_response_dict.get('interpretation', ''),
+                sources=[],
+                images=[],
+                raw_response=result_raw,
+                processing_time=0.0,
+                timestamp=time.time(),
+                rerun_needed=interpreter_response_dict.get('rerun_needed', False),
+                fixes=interpreter_response_dict.get('fixes', '')
             )
-        result_raw = self.llm_calls.call_llm(prompt=prompt)[0]
-        InterpreterResponse.model_validate_json(result_raw)
-        interpreter_response_dict = json.loads(result_raw)
-        return interpreter_response_dict
+        except Exception as e:
+            return create_error_response(
+                SpecialistResponse,
+                f"Error interpreting result: {e}",
+                user_query,
+                specialist="table_agent"
+            )
 

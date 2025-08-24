@@ -159,7 +159,7 @@ class TelegramBot:
                                 self.table_agent.agent_dataframe_manager.add_data(table_file_path)
                                 resp, code = self.table_agent.answer_query(user_message)
                                 table_response_results[table] = {'response': resp, 'code': code[0].final_code_segment}
-                                interpreter_result = self.table_agent.interpret_result(
+                                table_agent_interpreter_result = self.table_agent.interpret_result(
                                     user_query=user_message,
                                     code=table_response_results[table]['code'],
                                     output=table_response_results[table]['response']
@@ -169,7 +169,18 @@ class TelegramBot:
                     specialists_responses = self.orchestrator_agent.call_specialists_sequentially(session_id=session_id, 
                                                                                           specialists_names=chosen_specialists,
                                                                                           user_message=user_message)
-                    
+                    # Add table agent results to specialists_responses KOSTYL
+                    if 'table_agent_interpreter_result' in locals():
+                        if table_agent_interpreter_result.success:
+                            specialists_responses.successful_responses.append(table_agent_interpreter_result)
+                        else:
+                            specialists_responses.failed_responses.append(table_agent_interpreter_result)
+                    # Update totals and success rate
+                    specialists_responses.total_specialists += 1
+                    total_successful = len(specialists_responses.successful_responses)
+                    specialists_responses.success_rate = total_successful /specialists_responses.total_specialists
+                    specialists_responses.success = total_successful > 0
+
                     successfull_spec_resps = specialists_responses.successful_responses
                     failed_spec_resps = specialists_responses.failed_responses
                     

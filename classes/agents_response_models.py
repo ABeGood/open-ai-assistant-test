@@ -39,6 +39,8 @@ class SpecialistResponse(BaseResponse):
     images: List[str] = Field(default_factory=list)
     raw_response: Optional[str] = None
     processing_time: Optional[float] = None
+    rerun_needed: Optional[bool] = None
+    fixes: Optional[str] = None
 
 
 class CombinatorResponse(BaseResponse):
