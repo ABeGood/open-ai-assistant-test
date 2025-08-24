@@ -166,7 +166,7 @@ class TelegramBot:
                                 self.table_agent.agent_dataframe_manager.remove_all_data()
                     
                     specialists_responses = self.orchestrator_agent.call_specialists_sequentially(session_id=session_id, 
-                                                                                          specialists_names=chosen_specialists,
+                                                                                          specialists_names=chosen_specialists.copy(),
                                                                                           user_message=user_message)
                     # Add table agent results to specialists_responses KOSTYL
                     if 'table_agent_interpreter_result' in locals():
@@ -232,15 +232,43 @@ class TelegramBot:
         """Send response message with optional images."""
         CAPTION_LIMIT = 1024
         MEDIA_GROUP_LIMIT = 10
-        
-        caption_too_long = len(message) > CAPTION_LIMIT
+        MESSAGE_LIMIT = 4096
 
         if len(images) < 1:
             # No images - just send text message
-            sent = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN)
-            self._persist_message(user, message, getattr(sent, "message_id", None), tg_chat_id)
+            if len(message) <= MESSAGE_LIMIT:
+                sent = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN)
+                self._persist_message(user, message, getattr(sent, "message_id", None), tg_chat_id)
+            else:
+                # Split message into chunks by newlines
+                chunks = []
+                current_chunk = ""
+                lines = message.split('\n')
+                
+                for line in lines:
+                    # If adding this line would exceed limit, save current chunk
+                    if len(current_chunk) + len(line) + 1 > MESSAGE_LIMIT:
+                        if current_chunk:
+                            chunks.append(current_chunk)
+                            current_chunk = line
+                        else:
+                            # Single line too long, force split
+                            chunks.append(line[:MESSAGE_LIMIT])
+                            current_chunk = line[MESSAGE_LIMIT:]
+                    else:
+                        current_chunk += ('\n' if current_chunk else '') + line
+                
+                # Add remaining chunk
+                if current_chunk:
+                    chunks.append(current_chunk)
+                
+                for i, chunk in enumerate(chunks):
+                    sent = await self.bot.send_message(chat_id, chunk, parse_mode=ParseMode.MARKDOWN)
+                    if i == 0:  # Only persist the first message
+                        self._persist_message(user, message, getattr(sent, "message_id", None), tg_chat_id)
         
         elif len(images) == 1:
+            caption_too_long = len(message) > CAPTION_LIMIT
             # Send single image
             with open(images[0], 'rb') as photo:
                 if caption_too_long:
