@@ -1,0 +1,54 @@
+1. Course Title
+Diagnostics and Repair of Automotive Air Conditioner Compressors
+
+2. Brief Description (Subtitle)
+Practical course on compressor repair and automotive air conditioner maintenance using modern equipment and technologies.
+
+3. Full Course Description
+This course is designed for automotive service specialists who want to learn to work with automotive climate systems at a high level.
+The course is designed for 4 days, during which the principles of diagnostics, maintenance and repair of automotive climate systems are covered. Great attention is paid to compressor diagnostics, both belt-driven for internal combustion engine vehicles, and electric ones used in electric and hybrid vehicles.
+The course includes theoretical part, as well as practical sessions using modern equipment: charging stations, flushing and evacuation, as well as diagnostic test benches from MSG Equipment. Participants will be able to disassemble and assemble compressors, perform testing on specialized equipment.
+Issues of typical fault diagnostics, proper climate system maintenance and repair kit selection are discussed. Upon completion of the course, specialists will be ready for independent work with automotive air conditioners of any complexity level.
+
+4. What You Will Learn (Goals and Skills)
+• Principles of automotive climate control system operation.
+• Various types of compressors and their design.
+• Fault diagnostics and methods of troubleshooting.
+• Use of specialized equipment for compressor repair.
+• System tightness restoration.
+• Skills in flushing, evacuation and air conditioning system charging.
+• Practical skills working with various types of compressors and typical faults.
+
+5. Student Requirements
+• Basic knowledge of automotive technology.
+
+6. Who the Course is For
+• Specialists in automotive air conditioner repair and maintenance.
+• Service station employees working with air conditioning systems.
+• Masters specializing in automotive electrical equipment and climate control system repair.
+• Anyone who wants to obtain qualification in compressor repair and improve their professional training level.
+
+7. Course Content (Structure by Sections)
+Day 1
+• Basics of climate control system design.
+• Refrigerants and oils.
+• Fault diagnostic methods.
+• Practical disassembly and compressor repair.
+Day 2
+• Tightness restoration.
+• Practical repair of various types of compressors.
+Day 3
+• Climate control system maintenance.
+• System flushing, tightness checking.
+• Refrigerant charging.
+• Working with diagnostic equipment (MS111, MS112, MS101P).
+Day 4
+• Answering participant questions.
+• Additional equipment presentation.
+• Technical support and business launch recommendations in this field.
+
+8. Additional Materials:
+• Course theory presentations
+• Educational videos on the course topic
+• Links to useful resources
+• Course recording (if the course is conducted online)

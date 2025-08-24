@@ -4,6 +4,8 @@ import os
 from pathlib import Path
 import json
 from unidecode import unidecode
+from PIL import Image
+import io
 
 def extract_and_map_images(document_path, output_image_dir, doc_prefix=""):
     document = Document(document_path)
@@ -17,13 +19,48 @@ def extract_and_map_images(document_path, output_image_dir, doc_prefix=""):
         if "image" in document.part.rels[rel].reltype:
             image_part = document.part.rels[rel].target_part
             image_bytes = image_part.blob
-            image_extension = image_part.content_type.split('/')[-1]
+            content_type = image_part.content_type
+            image_extension = content_type.split('/')[-1]
             
-            new_filename = f"{doc_prefix}_IMG_{image_count:03d}.{image_extension}"
-            output_path = os.path.join(output_image_dir, new_filename)
+            print(f"Processing image {rel}: content_type='{content_type}', extension='{image_extension}'")
             
-            with open(output_path, "wb") as f:
-                f.write(image_bytes)
+            # Convert WMF files (various formats) to JPEG
+            # Check for WMF/EMF formats in multiple ways
+            is_wmf = (
+                'wmf' in image_extension.lower() or 
+                'emf' in image_extension.lower() or
+                'wmf' in content_type.lower() or
+                'emf' in content_type.lower()
+            )
+            
+            if is_wmf:
+                try:
+                    # Load image from bytes
+                    image = Image.open(io.BytesIO(image_bytes))
+                    # Convert to RGB if necessary (WMF might be in other modes)
+                    if image.mode != 'RGB':
+                        image = image.convert('RGB')
+                    
+                    new_filename = f"{doc_prefix}_IMG_{image_count:03d}.jpeg"
+                    output_path = os.path.join(output_image_dir, new_filename)
+                    
+                    # Save as JPEG
+                    image.save(output_path, 'JPEG', quality=95)
+                    print(f"Successfully converted WMF/EMF image {rel} to JPEG: {new_filename}")
+                except Exception as e:
+                    # If conversion fails, save original file
+                    print(f"Warning: Could not convert WMF/EMF image {rel} (content_type: {content_type}) to JPEG: {e}. Saving as original format.")
+                    new_filename = f"{doc_prefix}_IMG_{image_count:03d}.{image_extension}"
+                    output_path = os.path.join(output_image_dir, new_filename)
+                    with open(output_path, "wb") as f:
+                        f.write(image_bytes)
+            else:
+                new_filename = f"{doc_prefix}_IMG_{image_count:03d}.{image_extension}"
+                output_path = os.path.join(output_image_dir, new_filename)
+                
+                with open(output_path, "wb") as f:
+                    f.write(image_bytes)
+                print(f"Saved image {rel} as original format: {new_filename}")
             
             image_map[rel] = new_filename # Store the rId -> new_filename mapping
             image_count += 1
@@ -151,4 +188,4 @@ def process_docx_file(file_path:str, doc_index:int):
 
 if __name__ == "__main__":
     # process_docx_files()
-    process_docx_file(file_path='files_clean/equipment/MS112_um_eng.docx', doc_index=33)
+    process_docx_file(file_path='data/files_clean/equipment/MS111_UM_ENG.docx', doc_index=34)

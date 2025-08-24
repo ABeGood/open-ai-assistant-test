@@ -1,0 +1,52 @@
+1. Course Title
+Diagnostics and Repair of Electric Power Steering (EPS)
+
+2. Brief Description (Subtitle)
+Practical course that will provide understanding of electric power steering operation, teach fault identification, use of measuring instruments and conducting EPS diagnostics and repair.
+
+3. Full Course Description
+The "Diagnostics and Repair of Electric Power Steering" course is developed for specialists who want to obtain comprehensive knowledge and practical skills in EPS diagnostics and repair.
+This course is designed for 4 days. The training covers theoretical aspects of steering system operation, types of power steering systems (Hydraulic, Electro-hydraulic, Electro-mechanical), as well as their operating principles. Special attention is paid to electronic components, their testing and interaction with diagnostic equipment.
+The practical part of the course is conducted using real unit diagnostics examples: EPS pumps and racks, control units and sensors using modern diagnostic equipment - the MS561 PRO tester. Participants will learn to identify and eliminate both mechanical and electronic faults.
+The course also covers working with software for coding, adaptation and calibration of control units, which is an important part of modern EPS repair.
+
+4. What You Will Learn (Goals and Skills)
+• Understanding of electric power steering operation principles and their components.
+• Electronics basics in steering systems (sensors, motors, controllers).
+• Diagnostics and testing of electronic and mechanical EPS elements.
+• Skills working with measuring instruments (multimeter, oscilloscope, etc.).
+• Finding and eliminating typical faults of various power steering systems.
+• Working with MS561 PRO tester and scanners for programming and software updates.
+• Practical skills in EPS pump and rack repair, including disassembly and assembly procedures.
+
+5. Student Requirements
+• Basic understanding of automotive system operation.
+• Preferably have experience working with electrical equipment and diagnostic tools.
+
+6. Who the Course is For
+• Specialists in steering rack, pump and control unit repair and diagnostics.
+• Electrical equipment repair masters.
+• Service station specialists working with electric and hybrid vehicles.
+• Anyone who wants to deepen their knowledge of EPS work and become an expert in this field.
+
+7. Course Content (Structure by Sections)
+Introduction
+• Company introduction.
+• General concepts and course structure.
+Electronics in Power Steering Systems
+• Basic electronics concepts.
+• Electronic components and their testing.
+HPS and EHPS
+• Operating principle and design of hydraulic power steering systems.
+• Common faults, diagnostics and repair.
+EPS
+• Operating principle of electro-mechanical power steering systems.
+• Design of steering racks and columns.
+• Diagnostics, repair and common faults.
+
+8. Additional Materials:
+• Access to knowledge base
+• Course theory presentations
+• Educational videos on the course topic
+• Links to useful resources
+• Course recording

@@ -1,0 +1,485 @@
+MS111
+TEST BENCH FOR DIAGNOSTICS OF VEHICLE AIR CONDITIONER COMPRESSORS
+
+@D_34_IMG_000_PHOTO_MS111-test-bench-main-view_cover
+
+INTRODUCTION
+Thank you for choosing products from TM MSG Equipment.
+This User Manual provides information about the purpose, components, technical specifications, and operating rules of the MS111 test bench.
+Before using the MS111 test bench, carefully review this User Manual. Failure to comply with the requirements of this manual gives the manufacturer the right to void the warranty.
+Due to ongoing improvements to the test bench's design, components, and software (software), changes might be made that are not reflected in this User Manual. The pre-installed software on the test bench can be updated, and its future support might be discontinued without prior notice.
+CAUTION! Study and strictly adhere to all safety requirements for the safe operation of the test bench, as described in section 5.1.
+
+1. PURPOSE 
+Test Bench is intended for diagnostics of piston, axial piston, rotor and scroll compressors of vehicle climate systems operating on refrigerants R134a and R123yf.
+The Test Bench performs the following operations:
+* diagnostics of AC compressors with V-belt or Poly-V belt drive that use a 12V/24V electromagnetic clutch and/or a 12V electromagnetic valve;
+* check of the electromagnetic clutch and control valve for open circuit, short circuit, and presence of a diode either in assembly with a compressor or separately from it;
+* post-maintenance run of compressors;
+* pre-sale testing of new compressors - analogs;
+* generation of a test report and its printout.
+WARNING! High qualification of the operator is a must when a compressor is tested in manual mode as improper operation may lead to the unit malfunction. In case you don't have enough knowledge or experience in these units testing, it is recommended to use an automatic mode. Any changes of default settings are unadvisable.
+
+2. TECHNICAL SPECIFICATIONS 
+Dimensions (L x W x H), mm	900x570x1280
+Weight, kg	183
+Power source	three-phase electrical network
+Supply voltage, V	400
+Drive power, kW	5.5
+Utilized refrigerant	R134a, R1234yf
+Refrigerant filtration	yes (1 um2)
+Amount of refrigerant in the system, g	R134a - 1100 R1234yf - 1050
+Test bench filling	stand-alone filling station
+Type of filling fittings	automotive HP and LP
+Utilized oil	PAG46yf
+Amount of oil in the system, g	200
+Control	on the touch screen display and mechanical controls
+Diagnostic mode	automatic / manual
+
+Compressor testing
+Rated voltage of the diagnosed units, V	12, 24
+Drive speed, rpm	from 0 to 3000
+Drive speed adjustment	smooth / gradual
+Drive type	V-belt drive/Poly V-belt drive
+Vacuum line of the unit	available
+Refrigerant pumping out of the unit	available
+Output parameters	HP, bar; LP, bar; Compr t, degS;  Evpr t, degS;  PWM %.
+
+Additional features
+Test results printout	available on an external printer (not supplied)
+Firmware update	available
+Diagnostics results storage	available
+Connection of external devices	2 x USB 2.0
+Internet connection	Ethernet, Wi-Fi (802.11 a/b/g/ac)
+
+3. DELIVERY SET 
+The delivery set includes:
+Item name	Number of pcs
+Test Bench MS111	1
+MS122 - Adapter for connecting compressors with 24V clutch	1
+Set of 2 hoses with quick release couplings	1
+MS0101 - polypropylene filter element	2
+MS0102 - filter element of electromagnetic valve	2
+Set of fittings to connect the compressor to the test bench (MS41001-HP, MS41002-HP, MS41003-HP, MS41006-LP, MS41009-LP, MS41012-LPHP, MS41013-LPHP, MS41019-LP)	1
+V-shaped compressor holder	1
+MS0103 - rubber ring gasket O-02289 for sealing of interlocking parts of filter case	4
+Set of cables for connection to the electromagnetic clutch and valve	1
+Test Bench door key	1
+Wi-Fi module	1
+Power outlet 400V	1
+User Manual (card with QR code)	1
+
+4. TEST BENCH DESCRIPTION
+The test bench consists of the following major components (Fig.1 @D_34_IMG_001_PHOTO_test-bench-major-components_fig1): test bench housing - 1; door for access to the power compartment - 2; mounting face - 3; control panel - 4; door for access to the service compartment - 5; swivel wheels with a brake - 6.
+Figure 1. Major components of the Test Bench @D_34_IMG_001_PHOTO_test-bench-major-components_fig1
+
+All diagnostic procedures with the tested unit are performed on the mounting face @D_34_IMG_002_PHOTO_test-bench-mounting-face_fig2. The mounting face contains:
+1 - Compressor drive belts: V-belt and Poly-V belt.
+2 - Compressor fixing chain.
+3 - Dust cover. The diagnostic procedure is suspended when the cover is opened.
+4 - Compressor temperature sensor.
+5 - Connecting fitting for low-pressure hose.
+6 - Connecting fitting for high-pressure hose.
+7 - Compressor control valve connection terminals. Adherence to polarity is not necessary.
+8 - Compressor electromagnetic clutch connection terminals. Adherence to polarity is not necessary.
+Figure 2. Mounting face of the Test Bench @D_34_IMG_002_PHOTO_test-bench-mounting-face_fig2
+
+Control panel (Fig.3 @D_34_IMG_003_PHOTO_test-bench-control-panel_fig3) includes the following elements:
+
+Figure 3 @D_34_IMG_003_PHOTO_test-bench-control-panel_fig3. Control panel of the Test Bench 
+1 - LP valve: low-pressure hose control.
+2 - Start button "OFF/ON": Test Bench power on/off. Button "OFF/ON" cannot be activated when button "EMERGENCY STOP" is pressed.
+3 - Touch screen: diagnostic data display and test bench control.
+4 - Button "EMERGENCY STOP": emergency shutdown.
+5 - HP valve: high-pressure hose control.
+@D_34_IMG_003_PHOTO_test-bench-control-panel_fig3
+
+The back panel of the test bench (Fig.4 @D_34_IMG_004_PHOTO_test-bench-back-panel_fig4) is equipped with a LAN port to connect the Test Bench to the Ethernet and two USB ports to connect the Wi-Fi adapter (included in the equipment set) and external printer.
+Figure 4. Back panel of the Test Bench @D_34_IMG_004_PHOTO_test-bench-back-panel_fig4
+
+The routine maintenance of the Test Bench is essential for trouble-free enduring operation of the equipment. A service compartment of the bench (Fig.5 @D_34_IMG_005_PHOTO_test-bench-service-compartment_fig5) includes:
+1 - Vacuum pump.
+2 - Condensate tank.
+3 - Electromagnetic valve filters.
+4 - Filter of the test bench hydraulic system.
+5 - LP and HP filling fittings.
+6 - Compressor for refrigerant pumping.
+Figure 5. Service compartment of the Test Bench @D_34_IMG_005_PHOTO_test-bench-service-compartment_fig5
+
+4.1. Test bench menu
+Diagnostic procedure is controlled mainly through the touch screen (n.3, Fig.3 @D_34_IMG_003_PHOTO_test-bench-control-panel_fig3). Program main menu (Fig.6 @D_34_IMG_006_PHOTO_bench-main-menu-screen_fig6) contains:
+
+Figure 6. Bench main menu @D_34_IMG_006_PHOTO_bench-main-menu-screen_fig6
+1 - Diagnostic mode selection buttons.
+2 - Warning messages indicating causes of procedure activation failure.
+3 - Current pressure indications: discharge side of the compressor - HP1, discharge side of the Test Bench - HP2, suction side of the compressor - LP.
+4 - Buttons to pump air and refrigerant from the compressor.
+5 - Display of electromagnetic valve and clutch test results.
+6 - Button to launch diagnostics of electromagnetic clutch or valve.
+7 - Adjustment of compressor fixing chain and drive belt tension: tension/release.
+@D_34_IMG_006_PHOTO_bench-main-menu-screen_fig6
+
+Program menu "Automatic diagnostics" (Fig.7 @D_34_IMG_007_PHOTO_automatic-test-menu-screen_fig7) contains:
+1 - <<Vacuum test>> - to check the tightness of the compressor and the Test Bench hose joints. Press the start button - 1 to launch the test (Fig.8 @D_34_IMG_008_PHOTO_tightness-test-window_fig8). Upon finishing, a message will appear in the information field (Fig.8 @D_34_IMG_008_PHOTO_tightness-test-window_fig8, n.3): "Ok" - positive test result, "Failed" - negative test result.
+2 - <<Clutch valve test>> to check the electrical characteristics of the compressor clutch coil and electromagnetic control valve. Press the start button - 1 to launch the test (Fig.9 @D_34_IMG_009_PHOTO_clutch-valve-test-window_fig9). If the electromagnetic clutch or valve haven't been activated or used, the message "Failed" will be displayed in the appropriate line.
+3 - <<Productivity test>> to check the compressor output. Press the start button - 1 to launch the test (Fig. 10 @D_34_IMG_010_PHOTO_productivity-test-window_fig10). The test result will be displayed in the information field - 3 (Fig. 10 @D_34_IMG_010_PHOTO_productivity-test-window_fig10) as follows: "Ok" - positive test result, "Failed" - negative test result.
+4 - <<Noise test>> to detect the abnormal noise coming from the compressor at different speeds. Press the button -1 to launch the test. During testing it is necessary to confirm or to dismiss the noise presence (Fig. 11 @D_34_IMG_011_PHOTO_noise-test-window_fig11, n. 2 or 3).
+5 - Buttons "Start" and "Stop" (Fig.7 @D_34_IMG_007_PHOTO_automatic-test-menu-screen_fig7) - to launch and stop respectively the test procedure run in automatic mode. Button "Start" launches tests 1-4 (Fig.7 @D_34_IMG_007_PHOTO_automatic-test-menu-screen_fig7) in automatic mode. To perform a proper diagnostics, follow the indications of the screen. Automatic test can be stopped by pressing button "Stop" at any moment of time.
+6, 7 - A display of measured parameters in the form of figures and graphs:
+HP - pressure in the high pressure line, Bar.
+LP - pressure in the low pressure line, Bar.
+Tepr - evaporator temperature, degS.
+Tcom - compressor temperature, degS.
+PWM - level of the PWM signal, transmitted to the electromagnetic valve, %.
+RPM - motor drive rotation speed (RPMs).
+8 - <<Results>> - button to enter the menu for test results review and save.
+Figure 7. Automatic test menu of the Test Bench @D_34_IMG_007_PHOTO_automatic-test-menu-screen_fig7
+
+
+Figure 8. Elements of the tightness test window: @D_34_IMG_008_PHOTO_tightness-test-window_fig8
+1 - start button; 
+2 - current cycle time clock; 
+3 - information field for test results.
+
+
+Figure 9. Elements of the clutch and/or valve test window: @D_34_IMG_009_PHOTO_clutch-valve-test-window_fig9
+1 - start button; 
+2 - information field for test results; 
+3 - current through the clutch coil or valve.
+
+
+Figure 10. Elements of the compressor output window: @D_34_IMG_010_PHOTO_compressor-output-window_fig10
+1 - start button; 
+2 - current cycle time clock; 
+3 - information field for test results.
+
+
+Figure 11. Elements of the noise test window: @D_34_IMG_011_PHOTO_noise-test-window_fig11
+1 - start button; 
+2 - button to confirm the abnormal noise;
+3 - button to dismiss the abnormal noise; 
+4 - information field for test results.
+
+
+Program menu <<Manual mode>> (Fig.12 @D_34_IMG_012_PHOTO_manual-test-menu-screen_fig12) contains:
+1 - <<NR fan>> contains a customizable parameter with a drop-down menu - the pressure value (Bar) in the high pressure line that the bench will maintain, by adjusting the speed of the fans.
+2 - <<LP fan>> setting the evaporator fan speed. By changing the LP fan speed, we change the heat load on the tested compressor. It simulates the evaporator blow in the car cabin.
+3 - <<RPM>> - selection of the compressor drive speed and direction of rotation. Includes the following buttons:
+* <<Left>>, <<Right>> - a button to select the rotation direction of the Test Bench drive;
+* <<Stop>> - a button to stop the compressor drive;
+* <<800>>, <<1500>>, <<3000>> - a button to set the drive speed (RPMs);
+* <<->> i <<+>> - a button to change the compressor drive speed: one press of the button changes the speed by one step. The indicator of the actual motor speed (RPMs) is located between the buttons.
+4 - <<Electromagnetic clutch and valve control>> (Fig.13 @D_34_IMG_013_PHOTO_clutch-valve-control-window_fig13) includes two buttons for switching on/off the electromagnetic valve and clutch respectively. When the clutch/valve is activated (by a single press of the button), the following information is displayed: the consumed current (n.3), diode presence/absence (n.4), status of the electromagnetic clutch/valve (n.5) where: 
+"OFF" - not connected;
+"CB" - circuit break;
+"SC" - short circuit;
+"ON" - connected, faultless.
+Buttons <<+>>/<<->> (n.6) control the PWM signal transmitted to the electromagnetic valve. Setting the PWM signal below 30 is not recommended. Productivity of compressors with electromagnetic valves directly depends on the PWM signal.
+"1.9" and "2.9" (n.8) are LP values (Bar) at which the electromagnetic clutch switches on/off.
+5 - <<Results>> - a button to enter the menu for save and review test results obtained in manual mode.
+Figure 12. Manual test menu of the Test Bench @D_34_IMG_012_PHOTO_manual-test-menu-screen_fig12
+
+Figure 13. Elements of the clutch and valve control window: @D_34_IMG_013_PHOTO_clutch-valve-control-window_fig13
+1 - button to switch the clutch on/off; 
+2 - button to switch the valve on/off; 
+3 - valve consumption current; 
+4 - diode presence/absence indicator; 
+5 - status of the valve; 
+6 - buttons to change the level of the PWM signal; 
+7 - status of the clutch (similar to n. 3, 4, 5); 
+8 - LP values for switching the clutch on/off.
+
+Settings menu consists of two tabs: "Main settings" and "Sensor settings".
+Menu "Main settings" (Fig.14 @D_34_IMG_014_PHOTO_main-settings-screen_fig14) includes the following:
+1 - Adjustment of the belt and chain tension.
+2 - Setting of the evaporator fan speeds in manual test mode. The speeds are set in "LP fan" menu (n.2, Fig.12 @D_34_IMG_012_PHOTO_manual-test-menu-screen_fig12) in percentage terms (from 0 to 100%).
+3 - Setting the voltage drop at the refrigerant filter at which message "Replace filter" will be displayed. The recommended values are within the range from 0.5 to 0.7. Setting values lower than the recommended ones will result in frequent replacement of the filters well before their service life is fully exhausted. Higher values will cause an increased load on the tested compressor and the Test Bench components.
+4 - Selection of the program interface language.
+5 - Selection of the logo for the test report. In case you need to change the logo, press on the field with the logo.
+6 - Prompt messages setting.
+7 - Selection of pressure units.
+Button "Open" allows the bench program to use the factory calibration values for pressure sensors.
+Figure 14 - Screen for main settings of the Test Bench @D_34_IMG_014_PHOTO_main-settings-screen_fig14
+
+
+Menu <<Sensor settings>> (Fig.15 @D_34_IMG_015_PHOTO_sensor-settings-screen_fig15) includes the following:
+1 - Sensors calibration. Any change of these settings is prohibited as it may cause the Test Bench breakdown. These settings are used by service specialists of the stand manufacturer during repair work.
+2 - Setting vacuum for refrigerant pumping after the compressor diagnostics has been completed. The recommended value is -0.6 Bar. The higher value will raise up the risk of the air ingress into the system and subsequent deterioration of the Test Bench performance. The lower value is permitted. It will cut the time necessary for the refrigerant evacuation albeit increase its loss.
+3 - Setting vacuum for air pumping before launching the compressor diagnostics. The recommended value is -0.9 Bar. The higher value is not recommended as the Test Bench may not reach it. The lower value is permitted. It will cut the time of vacuuming, but will increase the amount of air in the system and therefore the frequency of the Test Bench refilling.
+4 - Setting additional pumping time after the set vacuum has been achieved. Regardless of the pressure, the Test Bench will be pumping the unit during the pre-set time period to allow evacuation of the refrigerant separated from oil. We do not recommend to set additional pumping time more than 5 minutes - 90% of the refrigerant will be released from the oil within the first minute.
+5 - Setting the timer clock for emergency stop. The process will be stopped at the pre-set time regardless of the pre-set vacuum value.
+Figure 15. Sensors Setup window @D_34_IMG_015_PHOTO_sensor-settings-screen_fig15
+
+
+Upon finishing the diagnostics, press "Results" (n.8, Fig. 5 @D_34_IMG_005_PHOTO_test-bench-service-compartment_fig5 or n.5, Fig.12 D_34_IMG_012_PHOTO_manual-test-menu-screen_fig12) to review, save or print the test results. The form of the diagnostic report is individual for each test mode (Fig.16 @D_34_IMG_016_PHOTO_automatic-test-results-window_fig16, 17 @D_34_IMG_017_PHOTO_manual-test-results-window_fig17).
+Figure 16. Window for automatic test results @D_34_IMG_016_PHOTO_automatic-test-results-window_fig16
+Figure 17. Window for manual test results @D_34_IMG_017_PHOTO_manual-test-results-window_fig17
+
+To save the results, press "Save" in the window for test results (Fig.16 @D_34_IMG_016_PHOTO_automatic-test-results-window_fig16, 17 @D_34_IMG_017_PHOTO_manual-test-results-window_fig17). Fill in all the fields in the appeared window and press "Save". To delete the information in the fields, touch "Reset". To change the input language, press sequentially "Shift", "Alt", "Shift" on the touch keyboard.
+
+Figure 18. Window for test results saving @D_34_IMG_018_PHOTO_test-results-saving-window_fig18
+
+Press "Open" to review the previously saved test results (Fig. 16 @D_34_IMG_016_PHOTO_automatic-test-results-window_fig16, 17 @D_34_IMG_017_PHOTO_manual-test-results-window_fig17). The list of saved results will be displayed in the appeared window. In the first column there is an indication of the test mode "Auto" or "Manual".
+Select the required test result by pressing the appropriate line once. Then press "Open" to view the result. Press "Back" to return.
+
+Figure 19. Window for selection of saved test results @D_34_IMG_019_PHOTO_saved-test-results-selection-window_fig19
+
+WARNING! Test results obtained in automatic and manual modes can be viewed in their appropriate windows only. The window in Fig.16 @D_34_IMG_016_PHOTO_automatic-test-results-window_fig16 is for automatic mode test results, the window in Fig.17 @D_34_IMG_017_PHOTO_manual-test-results-window_fig17 - for test results obtained in manual mode.
+
+5. APPROPRIATE USE
+1. Use the test bench as intended only (read Section 1).
+WARNING! The Test Bench operates on refrigerants either R134a or R1234yf. It is strongly recommended not to use other refrigerants. Oil PAG46yf must be used for the systems on R1234yf and R134a.
+2. Turning off the bench should be done through the interface of the service program by pressing the "Turn off the bench" button.
+3. Use the button <<EMERGENCY STOP>> only if necessary to stop the diagnostic process in an emergency.
+4. The accuracy of the compressor test depends on the amount of refrigerant in the test bench.
+Observe standard filling rate.
+5. The refrigerant leak occurs every time after the replacement of a tested unit. Refrigerant deficiency in the system leads to inaccurate test results and may cause damage to the tested unit.
+Evacuate refrigerant from the system at the end of the working day and fill it in before you start.
+6. In case compressor sealing gaskets lost their airtightness, air can enter the system during refrigerant pumping. Air in the system may cause diagnostics inaccuracy and damage to the tested unit.
+Refill the system after the message "Too much air in the system" appears on the screen.
+7. Automatic test mode is intended for the initial assessment of compressor performance and cannot be used for detection of such latent faults as, for example, sporadic sticking of a control valve and some others.
+If any malfunction is detected during automatic testing, proceed with a manual test for accurate diagnostics of a unit.
+8. During compressor diagnostics, wear particles normally retained by the test bench filters, can penetrate the system. These filters require periodic replacement.   The test bench will signal the necessity for filter replacement.
+Do not test compressors with obvious symptoms of malfunction. For example, the oil in a compressor is black and has metal shavings in it.
+9. The use of inappropriate computer hardware or firmware will cause cancellation of the warranty (even if the computer facilities or programs were removed or deleted shortly after). Only the MSG Equipment original firmware can be used with this equipment.
+10. To prevent the damage and the failure of the bench, do not make any modifications in the bench in your discretion. Any modifications can be effected by the official manufacturer only. Should the bench have defects contact the manufacturer or a dealer.
+11. In case of failures in the operation of the bench, stop further operation and contact the manufacturer or sales representative.
+WARNING! The manufacturer is not responsible for any damage or injury to human health resulting from non-compliance with the requirements of this manual.
+
+5.1. Safety guidelines
+1. The Test Bench should only be used by the persons qualified to operate the test benches of certain types who received a special training in the equipment safety operation.
+2. Before the unit dismounting from the test bench, the refrigerant should be evacuated.
+3. Before starting any maintenance work on the bench, disconnect it from the electrical network.
+4. The workplace should be clean, well-lit and spacious.
+5. The use of the faulty or unearthed Test Bench is strictly prohibited.
+6. The compressor mounting and/or dismounting should be conducted carefully to prevent its fall.
+7. The unit with the running drive may not be left on the test bench unattended.
+8. It is strictly forbidden to open the door of the power compartment (n. 2, Fig.1 @D_34_IMG_001_PHOTO_test-bench-major-components_fig1) when the test bench is connected to 400V power supply.
+9. Avoid body contact with the refrigerant, it may lead to a frostbite (R134a boiling point is -26degS, R1234yf boiling point is -30degS).
+10. Do not inhale refrigerant vapors.
+11. It is strongly recommended to use protective gloves and glasses.
+12. Any refrigerant is a colorless and odorless gas which is heavier than air. Entering the atmosphere, it can cause asphyxiation or heart rhythm disorders. That is why, the Test Bench should be used in well-ventilated premises only. The available exhaust units in the room must be switched on.
+13. Refrigerant R-1234yf is a highly flammable gas. Take extra care when working with this refrigerant.
+14. Open flame sources are allowed nowhere near the test bench operating area. Smoking near the Test Bench is prohibited. A regular fire-extinguishing appliance is a must.
+15. If the protective caps of the filling fittings cannot be easily unscrewed, there is a risk of injury due to the valves poor tightness.
+16. Securely attach connectors to the compressor before connecting high and low-pressure hoses.
+17. The compressor under diagnosis must be securely fastened.
+
+5.2. Preparing the test bench for use 
+The bench is delivered packed. Release the bench from the packaging materials, remove the protective film from the display (if available). After unpacking, it is necessary to make sure that the bench is intact and does not have any damage. If damage is detected before the bench is activated, contact the manufacturer or the sales representative.
+The bench has to be placed on the level floor, with the pivot wheels fixed from rotating (min. two wheels) by the activating of the brake mechanism.
+The bench ensures the operation at the temperature from +18degC up to +38degC and relative air humidity from 10% up to 75%.
+Considering that the Test Bench components are exposed to heating during operation, the working room should be well-ventilated. To ensure a free circulation of air, it is necessary to provide the airspace of no less than 0.5m behind the back panel of the bench and 0.3m on either side of it. Don't block the air flow behind the test bench.
+Before operating the test bench, it is necessary to:
+1. Connect a 400V power supply. To do this, it is necessary to upgrade the electrical network and install a socket (included in the delivery set) near the test bench. The socket is marked with L1 L2 L3 N PE, and this marking must be strictly followed when connecting to the power network. Connecting the grounding wire is MANDATORY; otherwise, the manufacturer reserves the right to void the warranty.
+1.1. A 40 A circuit breaker must be installed in the test bench power circuit as a protective device. The use of a residual-current device (RCD) in the power circuit of the test bench is PROHIBITED due to design features.
+2. Refill the bench with refrigerant.
+
+5.2.1. Refilling of the test bench
+The test bench is delivered to a customer charged with refrigerant R134a for 10-15% and with a full charge of oil. To ensure the Test Bench performance, it is necessary to fill the hydraulic system up to the standard level. The required amount of the refrigerant is specified in the chart "Technical characteristics" (Item 2 of the Manual).
+WARNING! Refilling of the test bench directly from a container with the refrigerant is strictly prohibited as it can lead to emergency situations.
+WARNING! Use specialized equipment for evacuation and purification of the refrigerant R134a and system refilling. Observe the instructions set out in the corresponding User Manual.
+
+Refilling of the hydraulic system with the refrigerant should be performed as follows:
+1. Open the door of the service compartment (n.5, Fig.1 @D_34_IMG_001_PHOTO_test-bench-major-components_fig1) with a special key (included in the equipment set).
+2. There are two fittings for refilling of the test bench hydraulic system: <<Service LP>> and <<Service HP>> (n.5, Fig.5 @D_34_IMG_005_PHOTO_test-bench-service-compartment_fig5).
+3. Connect the filling station lines to the test bench fittings. High-pressure and low-pressure valves (n.1,5, Fig. 3 @D_34_IMG_003_PHOTO_test-bench-control-panel_fig3) located on the control panel (Fig.3 @D_34_IMG_003_PHOTO_test-bench-control-panel_fig3) should be in the closed position (OFF).
+4. Pump the refrigerant out of the hydraulic system.
+WARNING! It is necessary to control the amount of oil released together with the refrigerant since the same amount of it should be added when refilling.
+5. Dehydrate the system to remove the air and moisture residues. To do this, take the filling station off into the air pumping mode. Stop pumping on reaching the pressure of -0.9 Bar.
+6. Upon the vacuuming procedure completion, non-condensable impurities must be removed from the filling station in the following manner:
+6.1. Disconnect the filling station line from the Test Bench.
+6.2. Remove the non-condensed impurities through a special valve (Fig.20 @D_34_IMG_020_PHOTO_filling-station-discharge-valve_fig20) as prescribed in the corresponding Manual for the filling station.
+7. Connect the lines of the filling station to the Test Bench. Fill the bench with the necessary amount of the refrigerant and oil.
+8. Upon completion, disconnect the filling station lines. Place protective caps on the fittings for better tightness. Close the door of the service compartment with a special key.
+Figure 20. Discharge valve of the filling station @D_34_IMG_020_PHOTO_filling-station-discharge-valve_fig20
+
+WARNING! In cases when R1234yf must be used in the test bench, the evacuation of R134a from the system is required. The evacuation time should be extended for 10 min from the rated time. To fill the bench with refrigerant R1234yf, follow the procedure described in User Manual for the filling station and the information specified above.
+
+6. COMPRESSOR DIAGNOSTICS
+
+6.1. Preparation of a compressor for diagnostics
+Prepare the compressor for diagnostics as follows:
+1. Clean the compressor surface from dirt with a compressed air stream.
+2. Unscrew the oil filling cap. Drain the oil into a clear container.
+3. Check the oil condition. Wear debris, dark or black color of the oil signal that major moving components of the compressor are significantly worn out. We do not recommend testing such a compressor on the bench as testing of the known-faulty compressor may lead to the contamination of the bench hydraulic system.
+4. If the condition of oil is good, add 20-30 ml of the test oil (PAG46yf) into the compressor and screw the cap in.
+5. Find proper fittings in the equipment set and fix them on the compressor. Now the compressor is ready for use.
+Figure 21. Monitoring of compressor oil condition @D_34_IMG_021_PHOTO_compressor-oil-condition-monitoring_fig21
+
+
+6.2. Compressor installation and connection
+1. Switch the bench on by pressing button "OFF/ON". Wait for the firmware to load.
+2. Install the compressor on the mounting face.
+WARNING! Align the pulley in parallel with the belt before fixing the compressor. Figure 22. Correct position of the compressor belt and pulley @D_34_IMG_022_PHOTO_correct-belt-pulley-position_fig22
+WARNING! Be careful when tensioning the chain to avoid the risk of injury. Figure 23. Mounting and fixing of a compressor on the Test Bench @D_34_IMG_023_PHOTO_compressor-mounting-fixing-1_fig23 @D_34_IMG_024_PHOTO_compressor-mounting-fixing-2_fig23
+
+4. Latch the belt over the compressor pulley and press "Tension belt" @D_34_IMG_025_PHOTO_belt-tension-button. The belt tension should be the same as on the car. Check it manually (subjective evaluation). When the desired tension is reached, press "Tension belt" to stop. Figure 24. Adjusting the belt and checking its tightness @D_34_IMG_026_PHOTO_belt-adjustment_fig24 @D_34_IMG_027_PHOTO_belt-tightness-check_fig24
+5. Connect lines LP and HP to the appropriate fittings as follows: first high pressure line - HP (discharge line), then low pressure line - LP (suction line). Figure 25. Connection of the LP and HP lines to a compressor @D_34_IMG_028_PHOTO_lp-line-connection_fig25 @D_34_IMG_029_PHOTO_hp-line-connection_fig25
+6. Connect cables "Clutch" to the electromagnetic clutch terminals. Connect cables "Valve" to the electromagnetic valve terminals. Use crocodile clips to make connections. The polarity observance is not necessary. Figure 26. Connection of cables and Adapter MS122 to the bench terminals <<Clutch>> and <<Valve>> @D_34_IMG_030_PHOTO_cables-adapter-connection_fig26
+Figure 27. Connection of control wires to a compressor @D_34_IMG_031_PHOTO_control-wires-connection-1_fig27 @D_34_IMG_032_PHOTO_control-wires-connection-2_fig27
+6.1. Evaluate the performance of the electromagnetic clutch and/or valve. Press button "Clutch Valve test" on the main screen. The test results will be displayed in the form of graphs (Fig.28 @D_34_IMG_034_PHOTO_electromagnetic-clutch-valve-test-results-A_fig28 @D_34_IMG_035_PHOTO_electromagnetic-clutch-valve-test-results-B_fig28). 
+If the tested element is faultless, it will be displayed in blue. Red color means the fault has been detected. The fault type will be displayed additionally, for example: "Short circuit" or "Circuit break". If the diode is present, the corresponding icon will be displayed.
+Figure 28. Electromagnetic clutch and/or valve test results: @D_34_IMG_034_PHOTO_electromagnetic-clutch-valve-test-results-A_fig28 @D_34_IMG_035_PHOTO_electromagnetic-clutch-valve-test-results-B_fig28
+A - elements are faultless, a diode is present; B - elements are faulty, a diode is present.
+
+6.2. In case the compressor is equipped with a 24V clutch, it must be tested as described in Item 6.1 of the Manual. For further diagnostics of the compressor, the clutch must be connected to the Test Bench via Adapter MS122 (Fig.26 @D_34_IMG_030_PHOTO_cables-adapter-connection_fig26).
+7. The control of the compressor temperature depends on the test bench type and is performed as follows:
+7.1. For a test bench with a contact sensor. Install the sensor into one of the compressor mounting holes (for connection) close to either the discharge side (pistons travel area) or the HP fitting (Fig.29 @D_34_IMG_036_PHOTO_contact-temperature-sensor-position_fig29).
+Figure 29. Position of a contact temperature sensor @D_34_IMG_036_PHOTO_contact-temperature-sensor-position_fig29
+
+7.2. For a test bench with a contact-free sensor. Direct the pressure sensor to the compressor hottest spot which is either the suction side (pistons travel area) or near the HP fitting (Fig.30 @D_34_IMG_037_PHOTO_contactfree-sensor-positioning-1_fig30 @D_34_IMG_038_PHOTO_contactfree-sensor-positioning-2_fig30).
+
+8. Press "Air pumping" on the main screen of the bench to pump the air. The pumping will start. The process will stop automatically.
+The compressor is ready to be tested.
+Figure 30. Positioning of a contact-free temperature sensor @D_34_IMG_037_PHOTO_contactfree-sensor-positioning-1_fig30 @D_34_IMG_038_PHOTO_contactfree-sensor-positioning-2_fig30
+
+To dismount the compressor, do the following:
+ turn off both valves - LP and HP;
+ enter the main menu;
+ press <<Refrigerant pumping>> to evacuate the refrigerant;
+disconnect the hoses;
+ release the belt and remove it from the pulley;
+ release and remove the chain;
+ dismount the compressor from the Test Bench.
+
+6.3. Diagnostics of a compressor in automatic mode
+Press "Automatic test" to enter the automatic test mode. Valves 1 and 5 must be in closed position. The window of automatic test mode (Fig.5 @D_34_IMG_005_PHOTO_test-bench-service-compartment_fig5) will appear.
+Press "Start" (Fig.5 @D_34_IMG_005_PHOTO_test-bench-service-compartment_fig5, n.5) to launch the automatic testing. The Test Bench will perform the following tests:
+- Vacuum tightness test. It may take from one to three operational cycles to complete the test procedure. Every cycle is divided into two stages: air pumping and hold time. During the hold time the compressor tightness will be assessed. Upon completion, the following message will be displayed in the information field: "Ok" - positive test result, "Failed" - negative test result.
+- Valves and/or clutches. Upon the test completion, the test result will be displayed in the appropriate line: "Ok" - positive test result, "Failed" - negative test result or some element is missing.
+- Compressor productivity. The Test Bench performs diagnostics in two stages at high and low speeds under different heat loads on the evaporator. The test results are displayed in the information field: "Ok" - positive test result, "Failed" - negative test result.
+- Noise test. The Test Bench will gradually increase the speed on the compressor pulley. The operator must detect the abnormal noise coming from the compressor. If there is any, press "Ok" @D_34_IMG_039_PHOTO_noise-test-ok-button, if no noise is detected, press "No" @D_34_IMG_040_PHOTO_noise-test-no-button.
+
+The test procedure can be stopped at any time by pressing button "Stop". To restart the procedure, press "Start". The procedure will be launched again from the beginning.
+During the procedure, the information messages instructing on the positions of the LP and HP valves will be displayed on the screen. The valves should be turned on/off smoothly to avoid a hydraulic shock.
+Figure 31. Information messages displayed during the automatic test @D_34_IMG_041_PHOTO_automatic-test-info-message-1_fig31 @D_34_IMG_042_PHOTO_automatic-test-info-message-2_fig31
+
+Upon completion of all the tests, press "Results". The window with test results will appear. The test results can be saved and/or printed out.
+In case one of the test results is negative, the fault should be found and eliminated. After this, the test procedure must be run again.
+
+6.4. Post-maintenance run of a compressor
+When the compressor has been repaired and some of its moving parts have been replaced, its post-maintenance run is necessary. Otherwise, the grit resulted from the components wear will inevitably damage the system.
+A post-maintenance run of the compressor includes the following steps:
+1. Add 20-30g of diagnostic oil (PAG46yf) into the compressor.
+2. Fix the compressor on the mounting face of the bench.
+3. Select <<Manual mode>>. Make the test bench settings as shown in Fig.32 @D_34_IMG_043_PHOTO_post-maintenance-run-settings_fig32. Set the level of the PWM signal on the electromagnetic valve as 100%.
+Figure 32. Test Bench settings for post-maintenance run of a compressor @D_34_IMG_043_PHOTO_post-maintenance-run-settings_fig32
+
+4. Start the procedure by pressing "Valve" and/or "Clutch".
+5. During the procedure the temperature must not exceed 60degC. If the temperature is higher, the process must be stopped to allow the unit to cool off.
+6. After 10-15 minutes of compressor operation, press "Valve" and/or "Clutch", and then "Stop" to stop the procedure.
+7. Pump the refrigerant out and dismount the compressor from the bench.
+8. Drain the compressor oil. Assess its condition. If there is grit in the oil, repeat steps 1-7 to continue the compressor running. If the oil doesn't change and there are no signs of wear, the procedure can be finished.
+9. If, after the 4th cycle of the procedure, the oil drained from the compressor still has the signs of wear, the further running of the compressor is useless and it must be considered faulty.
+
+6.5. Compressor pre-sale check
+A pre-sale check of a compressor can be performed when it is necessary to assess its technical condition and quality.
+Run the procedure as follows:
+1. Drain the factory oil from the compressor to a clean container.
+2. Add 20-30g of diagnostic oil (PAG46yf) to the compressor.
+3. Fix the compressor on the test bench as shown in Item 2.3 of the Manual.
+4. Select and press <<Automatic test>>.
+5. Read Item 2.4 to learn how to perform the procedure in automatic mode
+6. Take note of the pressure values in HP and LP lines of the compressor.
+7. Upon completion, pump the refrigerant out and dismount the compressor from the bench.
+8. Drain the diagnostic oil.
+9. Fill the compressor with the factory oil.
+
+7. TEST BENCH MAINTENANCE
+To ensure a longtime unfailing performance of a compressor and its objective health assessment, the Test Bench runs self-diagnostic checks and evaluates the condition of its main components on a regular basis. During its operation the following messages can be displayed:
+* <<HP pressure is too low!>> (Fig.33 @D_34_IMG_044_PHOTO_hp-pressure-too-low-message_fig33). This message appears when the bench operates in auto test mode and the operator didn't turn the valve off prior to launching "Productivity Test" or "Noise Test".
+Figure 33. Message <<PH pressure is too low!>> @D_34_IMG_044_PHOTO_hp-pressure-too-low-message_fig33
+
+* <<HP pressure is too high!>> (Fig.34 @D_34_IMG_045_PHOTO_hp-pressure-too-high-message_fig34). Turn the valves off, enter the main menu and pump the refrigerant out.
+Figure 34. Message <<HP pressure is too high!>> @D_34_IMG_045_PHOTO_hp-pressure-too-high-message_fig34
+
+* <<Too much air in the system!>> (Fig.35 @D_34_IMG_046_PHOTO_too-much-air-message_fig35). This message will appear in the following cases:
+- incorrect filling of the Test Bench: too much or too little refrigerant in the system;
+- ingress of air into the system when leaky compressors are diagnosed;
+- high room temperature and incorrect HP fan settings.
+Figure 35. Message <<Too much air in the system!>> @D_34_IMG_046_PHOTO_too-much-air-message_fig35
+
+When message <<Too much air in the system!>> is displayed, the following measures must be taken:
+1) Refill the test bench with the refrigerant.
+2) Make sure the Test Bench position and installation meet the requirements stated in Item 5.2.1.
+3) If this message appeared during the Test Bench operation in manual mode, do the following:
+- select the higher HP pressure value and test again;
+- reduce the speed of the evaporator fan (LP fan).
+
+7.1. Condensate draining
+Drain the condensate from the tank as follows: 
+1. Disconnect the bench from the power supply.
+2. Open the door of the service compartment (n.5 Fig.1 @D_34_IMG_001_PHOTO_test-bench-major-components_fig1) with a special key (included in the equipment set).
+3. Unscrew the tank cap (n.3, Fig.36 @D_34_IMG_047_PHOTO_condensate-tank-removal_fig36).
+4. Disconnect the condensate level sensor (n.2 Fig.36 @D_34_IMG_047_PHOTO_condensate-tank-removal_fig36).
+5. Remove the tank from the test bench by pushing it upward.
+6. Empty the tank.
+7. Reinstall the tank, reconnect the sensor, put the tank cap on and screw it up.
+Figure 36 - Removal of the condensate tank @D_34_IMG_047_PHOTO_condensate-tank-removal_fig36
+1 - tank; 2 - connector of the condensate level sensor; 3 - tank cap
+
+7.2. Replacement of filters in the hydraulic system of the Test Bench
+Observe the actual diagram and Chart 1 for replacement of the filters:
+* each message <<Replace filter>> should be followed by replacement of the right filter element MS0101 (Fig.37 @D_34_IMG_048_PHOTO_filter-cover-rotation-direction_fig37);
+* every other replacement of the right filter element MS0101 should be followed by replacement of the left filter element MS0101; 
+* every forth replacement of the left filter element MS0101 should be followed by replacement of both filter elements MS0102 (Fig.41 @D_34_IMG_052_PHOTO_ms0102-filter-cover-rotation_fig41);
+
+Figure 37. Direction of filter cover rotation during filter replacement MS0101 @D_34_IMG_048_PHOTO_filter-cover-rotation-direction_fig37
+
+WARNING! Since the compression oil is hygroscopic and absorbs moisture from the air, filter elements MS0101 and MS0102 should be reinstalled as quickly as possible.
+The procedure of filter MS0101 (n.4, Fig.5 @D_34_IMG_005_PHOTO_test-bench-service-compartment_fig5) replacement is as follows:
+1. Put both valves (HP and LP) in "OFF" position and disconnect the bench from the power supply.
+2. Open the service compartment door (n.5, Fig.1 @D_34_IMG_001_PHOTO_test-bench-major-components_fig1) with a special key (included in the equipment set).
+3. Pump the refrigerant out using a special service station for air conditioners.
+4. Level the inside pressure of the Test Bench with the atmospheric pressure by pressing the valve of the filling port. Even a slight pressure difference will make it much more difficult to unscrew the filter cup.
+5. Turn the filter cover (n.1, Fig.38 @D_34_IMG_049_PHOTO_refrigerant-filter-structure_fig38) counter-clockwise (Fig.37 @D_34_IMG_048_PHOTO_filter-cover-rotation-direction_fig37) with either a hook wrench or a socket wrench until the filter bowl is free.
+6. Check the condition of O-rings (n.3, Fig.38 @D_34_IMG_049_PHOTO_refrigerant-filter-structure_fig38) and replace if necessary.
+7. Replace the filter element MS0101 (n.2 Fig. 38 @D_34_IMG_049_PHOTO_refrigerant-filter-structure_fig38).
+8. Reinstall the filter cover and screw it clockwise until tight (see Fig.37 @D_34_IMG_048_PHOTO_filter-cover-rotation-direction_fig37).
+9. Close the door of the test bench service compartment (n.5 Fig.1 @D_34_IMG_001_PHOTO_test-bench-major-components_fig1).
+10. Refill the Test bench with the refrigerant (Item 5.2.2).
+Figure 38 - Refrigerant filter structure: @D_34_IMG_049_PHOTO_refrigerant-filter-structure_fig38
+1 - filter cover; 2 - filter element MS0101; 3 - O-rings
+Figure 39 - Filter element MS0101 @D_34_IMG_050_PHOTO_filter-element-ms0101_fig39
+Figure 40 - Filter element MS0102 @D_34_IMG_051_PHOTO_filter-element-ms0102_fig40
+
+It is recommended to replace filter elements MS0102 of electromagnetic valves together with filter elements MS0101.
+Figure 41. Direction of the cover rotation when replacing filter MS0102 @D_34_IMG_052_PHOTO_ms0102-filter-cover-rotation_fig41
+
+7.3. Test bench software update
+Being connected to the Internet, with every switching on, the test bench checks for software updates. In case the bench finds the software update at company server, you'll be offered to install the update or disregard it. To start updating, press OK, to decline - SKIP.
+WARNING! It's forbidden to switch off the bench supply to stop the updating.
+
+7.4. Cleaning and care
+To clean the surfaces, use the soft napkins or rags, and neutral cleansers. The display should be cleaned with a special fiber cleaning cloth and with a spray for display cleaning. To prevent the device from the failure and corrosion, do not use abrasive materials and solvents. Blow through the dust from the cooling radiators carefully, preventing the damage of the fans.
+
+8. TROUBLESHOOTING GUIDE
+Table with the possible problems and the solutions on their elimination:
+Below are the potential faults and recovery methods:
+
+Failure symptom	Potential cause	Troubleshooting tips
+1. Test Bench doesn't start up.	No connection to the power supply	Restore the supply voltage
+1. Test Bench doesn't start up.	Button <<EMERGENCY STOP>> is pressed	Turn off the emergency button
+1. Test Bench doesn't start up.	Faulty power supply unit	Contact technical support
+2. Touch screen doesn't respond the operator's touch.	Touch screen is damaged	Contact technical support
+3. Operating system doesn't load.	Operating system failure	Contact technical support
+4. Diagnostic program doesn't launch.	Operating system failure	Contact technical support
+5. Compressor drive doesn't start.	Opened protective cover or opened service compartment door; full condensate tank	Shut down the protective cover, close the service compartment door, drain the condensate.
+5. Compressor drive doesn't start.	The cable short circuit or motor winding short circuit to the ground	Eliminate short circuit
+5. Compressor drive doesn't start.	Low power supply	Make sure that no high- power consumers with high starting currents are nearby the Test Bench
+6. No vacuuming.	The pressure inside the unit is higher than 0,3 Bar	Press "Refrigerant pumping" on the display to pump out the refrigerant. In case of a relaunch, open the HP valve, start the process, close the HP valve.
+7. Insufficient vacuum during the pump operation.	Depressurized compressor or fittings	Remove the leak
+7. Insufficient vacuum during the pump operation.	Vacuum pump failure	Replace the vacuum pump
+8. No refrigerant evacuation.	The HP valve is opened	Close the HP valve
+8. No refrigerant evacuation.	The pumping procedure was relaunched	Open the HP valve, launch the pumping procedure, close the HP valve
+8. No refrigerant evacuation.	Hydraulic system clogging	Replace the filter as shown in Chart 1 (Item 6.3 of this Manual)
+8. No refrigerant evacuation.	Compressor failure	Replace the compressor for refrigerant pumping
+9. The displayed information is not complete.	Firmware error	Turn the bench off and on again
+9. The displayed information is not complete.	Firmware error	Contact technical support
+
+9. DISPOSAL 
+Equipment deemed unserviceable is subject to disposal.
+The bench does not have in its design any chemical, biological or radioactive elements, which, if the storage and operation rules are observed, could cause damage to human health or the environment.
+Disposal of the equipment must comply with local, regional and national legislative norms and regulations. Do not dispose of non-biodegradable materials (PVC, rubber, synthetic resins, petroleum products, synthetic oils, etc.) into the environment. To dispose of such materials, it is necessary to contact companies specializing in the collection and disposal of industrial waste.
+Copper and aluminum parts, which are non-ferrous metal waste, should be collected and sold.
