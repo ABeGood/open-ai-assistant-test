@@ -22,7 +22,7 @@ aiohttp==3.12.15
 aiosignal==1.4.0
 multidict==6.6.4
 yarl==1.20.1
-psycopg==3.2.9
+psycopg[binary]==3.2.9
 
 # Additional dependencies that might be needed
 python-dateutil==2.9.0.post0

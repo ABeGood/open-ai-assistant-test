@@ -16,8 +16,10 @@ RUN apk add --no-cache --virtual .build-deps \
     gcc \
     musl-dev \
     libffi-dev \
+    postgresql-dev \
     && apk add --no-cache \
-    ca-certificates
+    ca-certificates \
+    libpq
 
 # Copy requirements first for better caching
 COPY requirements.txt .
