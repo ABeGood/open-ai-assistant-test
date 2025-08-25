@@ -4,7 +4,7 @@ assistant_configs = {
         "purpose": "Equipment expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 1
+            "last_n_messages": 6
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -15,7 +15,7 @@ assistant_configs = {
         "purpose": "Diagnostics expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 1
+            "last_n_messages": 6
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -26,7 +26,7 @@ assistant_configs = {
         "purpose": "Hand tools expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 1
+            "last_n_messages": 6
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -37,7 +37,7 @@ assistant_configs = {
         "purpose": "Cables for equipment connection expert",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 1
+            "last_n_messages": 6
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -48,7 +48,7 @@ assistant_configs = {
         "purpose": "Expert with common information knowledge",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 1
+            "last_n_messages": 6
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
@@ -59,7 +59,7 @@ assistant_configs = {
         "purpose": "Expert in creating scripts for MS005-MS005A",
         "truncation_strategy": {
             "type": "last_messages",
-            "last_n_messages": 1
+            "last_n_messages": 6
         },
         "max_prompt_tokens": None,
         "max_completion_tokens": None
