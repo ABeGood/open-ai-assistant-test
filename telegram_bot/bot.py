@@ -215,17 +215,10 @@ class TelegramBot:
                             f"Неуспешные: {len(failed_spec_resps)}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    if len(successfull_spec_resps) == 1:
-                        if DEBUG:
-                            debug_msg = "📄 STEP 3 \nFormatting final response\n\n"\
-                                f"Был получен один успешный ответ, оформляем его в финальное сообщение..."
-                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
-                        final_answer_dict = successfull_spec_resps[0]
-                    elif len(successfull_spec_resps) >1:
+                    elif len(successfull_spec_resps) > 0:
                         if DEBUG:
                             debug_msg = "🔗 STEP 3.1 \nCombinator call\n\n"\
-                                f"Было получено несколько успешных ответов.\n\n"\
-                                "➡️ Направляем их в бот-комбинатор для составления финального ответа."
+                                f"➡️ Направляем результат в бот-комбинатор для составления финального ответа."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
                             
                         final_answer_dict = self.combinator_agent.process_with_combinator_chat(user_message, successfull_spec_resps)

@@ -1,0 +1,42 @@
+After-Sales Service Policy
+Last updated: Jul 25, 2025
+MSG Equipment after-sales service policy aimed at meeting customer needs and maintaining a high level of service.
+Warranty Service
+Basic Warranty
+We provide a two-year warranty on MSG equipment products. The warranty period begins from the day of shipment from the manufacturer's/distributor's warehouse. Detailed information about the basic warranty is outlined in the "Warranty Obligations" document.
+Warranty Repair
+Repair is performed to the state of full equipment functionality (excluding external appearance). All repairs that fall under warranty conditions are carried out at the manufacturer's expense.
+Simple repairs may be performed by the buyer independently, the manufacturer provides consultations and necessary spare parts, which must be delivered within no more than two months.
+Complex repairs are performed by distributors or the manufacturer within up to two months including delivery. By prior agreement, the repair time may be changed.
+Non-Warranty Repairs
+Non-warranty repairs are carried out according to the same rules as warranty repairs, only on a paid basis.
+Warranty on Repair Work
+The basic warranty period is extended by the duration of repair work. Warranty on the repaired unit is valid until the end of the basic warranty or one year and remains valid after the end of the basic warranty.
+Delivery for Repair
+If there are no other agreements, delivery related to warranty cases is paid for by our company.
+Technical Support
+Response Time
+Our company specialists provide technical support: Monday through Friday from 09:00 to 18:00 Kyiv time EEST (UTC+3). By individual agreement, communications may be conducted at other times. Response occurs within 2 hours considering the work schedule. After the first interaction, work stages and client communication time are agreed upon. Questions can be written to the chat at any time, responses will be provided according to the work schedule.
+Communication Channels
+Technical support is provided through WhatsApp and Telegram. After equipment sale, the Sales Manager creates a technical support chat in the messenger convenient for the client.
+Help with Setup, Installation, and Troubleshooting
+Technical support provides informational assistance in conducting commissioning work, software updates, service maintenance, troubleshooting and fault elimination, and performing simple repairs. Implemented through online correspondence, telephone communication, and video communication. Provides clients with text and video instructions.
+Training and Customer Support
+Training
+Technical specialists conduct masterclasses on product use, as well as training on unit repair technology. They provide clients with methodological manuals and video tutorials.
+Customer Support
+Technical specialists online provide informational assistance in product use and unit diagnostics methodology. Customer support occurs in accordance with the "Response Time" section.
+Regular Technical Maintenance
+Technical Maintenance
+Product technical maintenance is performed by the client independently. Detailed description of the process and frequency is outlined in the operating instructions. The client bears responsibility for compliance.
+Consumables
+Consumables for technical maintenance are purchased by the client independently from suppliers in their region. For additional information about consumables, the client contacts technical support. Also, consumables, except for working fluids and lubricants, can be purchased from our company.
+Software Updates
+Software installation/updating is handled by the client independently, the algorithm is described in the operating manual. In case of questions, the client contacts technical support. The frequency of software update releases remains exclusively at our company's discretion.
+Product Modification
+Product modification for specific client needs, major product repair, product restoration "to new condition" is not performed.
+Provision of Spare Parts
+Parts Nomenclature
+For all manufactured products, the manufacturer provides clients with the complete nomenclature of spare parts. For products discontinued from production, spare parts are guaranteed to be available for three years after the end of its production.
+Independent Purchase
+The manufacturer does not object to the client's independent purchase of standard spare parts, but coordination with technical support is required. In this case, warranty obligations remain in effect.

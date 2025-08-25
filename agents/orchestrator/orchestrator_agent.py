@@ -5,6 +5,7 @@ from openai.types.chat import ChatCompletionMessageParam
 from classes.classes import Message
 from classes.validators import SpecialistRoutingResponse, flatten_schema
 from agents.orchestrator.prompts.prompts import ORCHESTRATOR_PROMPT
+from agents.prompt_static_analyzer.prompt_static_analyzer import PromptStaticAnalyzer
 
 
 class OrchestratorAgent:
@@ -13,12 +14,12 @@ class OrchestratorAgent:
     def __init__(self, llm_client: OpenAI, llm_model: str = "gpt-4o-2024-08-06"):
         self.llm_client = llm_client
         self.llm_model = llm_model
+        self.prompt_static_analyzer = PromptStaticAnalyzer()
     
     def route_query_chat_completion(
         self, 
         user_query: str, 
         last_n_messages: List[Message],
-        user_message_metadata: str = ""
     ) -> SpecialistRoutingResponse:
         """
         Route user query to appropriate specialists using chat completions API
@@ -31,8 +32,10 @@ class OrchestratorAgent:
         Returns:
             SpecialistRoutingResponse: Validated routing decision
         """
+        user_message_metadata = self.prompt_static_analyzer.route_query(user_query)
+
         # Format conversation history
-        conversation_history = self._format_conversation_history(last_n_messages)
+        conversation_history = self._format_conversation_history(last_n_messages[:-1])
         
         # Create prompt from template
         prompt = ORCHESTRATOR_PROMPT.format(
@@ -82,6 +85,7 @@ class OrchestratorAgent:
         for msg in messages:
             author = msg.get_author()
             content = msg.get_content()
+            author = 'Assistant' if str(author).startswith('bot') else 'User'
             formatted_messages.append(f"{author}: {content}")
         
         return "\n".join(formatted_messages)

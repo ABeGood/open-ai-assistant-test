@@ -1,0 +1,51 @@
+Warranty Obligations
+Last updated: Jul 25, 2025
+MSG Equipment guarantees proper operation of all our products at the time of sale and the absence of any defects. Minor deviations that do not affect technical characteristics and product functionality (weak noise, squeaking, vibration, etc.) are not considered defects.
+MSG Equipment undertakes to repair or replace free of charge any part that has material defects or assembly defects within the warranty period, if all requirements for operation and technical maintenance of the product described in the Operating Manual have been met. Warranty period of operation - 24 months. The warranty period begins from the moment of shipment of goods from the Seller's warehouse.
+Products that are not manufactured by MSG Equipment but may be supplied as part of MSG Equipment products have their own manufacturer's warranty. These components include:
+
+Printer;
+Computer;
+Frequency converter;
+Electric motor;
+Pump;
+Blower;
+Gearbox;
+Electric heater;
+Power supplies.
+
+Receipt of products from the transport company confirms that the product was received in proper condition.
+The Seller is not responsible for the Buyer's expenses and losses caused by product failure or component replacement, including lost profits, payment for specialists, electricity costs, consumables, communications, and the like.
+Conditions for Warranty Repair Acceptance
+Before sending the product for warranty repair, the Buyer must provide the Seller with a description of the malfunction. The Buyer is responsible for packaging and delivering the goods or component to which their warranty claim relates.
+The Buyer must provide full cooperation to the Seller to fulfill the warranty obligations undertaken.
+If the case was recognized as warranty and the troubleshooting involves significant costs, the Seller has the right to replace the goods with new ones instead of warranty repair. Exchange of goods for new ones can be made only once.
+Warranty Obligations Do Not Apply If:
+
+The product was used for purposes not corresponding to its intended purpose.
+The product was operated in violation of the requirements of the Operating Manual.
+The product body and/or its components show traces of mechanical impact not related to its normal operation.
+There was incorrect connection to electrical networks, for example:
+
+absence of protective grounding;
+increased or decreased voltage;
+use of extension cords whose cross-section does not correspond to the power of the equipment used;
+etc.
+
+
+There are traces of external interference, attempts at self-repair, design changes, interference with the product software without the manufacturer's knowledge.
+There are damages caused by foreign objects, substances, liquids getting inside the product, the product was exposed to moisture, acids, open fire.
+The product received damage caused by acts of force majeure (fire, earthquake, flood, etc.).
+Intentional or careless actions of the consumer or third parties that led to product breakdown.
+The product received damage due to the use of consumables that do not meet the manufacturer's requirements.
+There is normal wear of the product due to prolonged use in the absence of factory defects.
+
+List of Fast-Wearing and Consumable Units, Parts Not Covered by Warranty Obligations:
+
+Drive belts
+Filter elements
+Fuse elements
+Power cords
+Switching wires
+Working fluids
+Hydraulic hoses

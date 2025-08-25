@@ -242,8 +242,8 @@ class QueryRouter:
         # Special rules for compatibility domain
         if oem_numbers or car_brands or any(keyword in query.lower() for keyword in 
             ['генератор от', 'генератор від', 'компрессор с', 'компресор з', 'generator from']):
-            if 'compatibility' not in primary_domains:
-                primary_domains.append('compatibility')
+            if 'tables' not in primary_domains:
+                primary_domains.append('tables')
         
         # If no clear domain detected, route to support
         if not primary_domains:
