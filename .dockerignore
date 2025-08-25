@@ -68,9 +68,12 @@ build/
 dist/
 exports/
 
-# Raw data files (keep processed files)
+# Raw data files (keep only essential processed files)
 data/files_raw/
+data/files_clean/
 communication_with_customer/
+data/files_preproc.rar
+files_preproc/
 
 # Git
 .git
@@ -84,5 +87,7 @@ docker-compose.yml
 # Railway
 railway.toml
 
-# Original requirements (using clean version)
-requirements.txt
+# Keep requirements.txt but exclude alternatives
+requirements_clean.txt
+requirements_freeze.txt
+requirements_full.txt

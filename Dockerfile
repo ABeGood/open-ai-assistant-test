@@ -1,5 +1,5 @@
-# Use Python 3.11 slim image
-FROM python:3.11-slim
+# Use Python 3.11 alpine for smaller size and lower memory usage
+FROM python:3.11-alpine
 
 # Set working directory
 WORKDIR /app
@@ -7,28 +7,37 @@ WORKDIR /app
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PYTHONPATH=/app
+    PYTHONPATH=/app \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+# Install minimal system dependencies in one layer
+RUN apk add --no-cache --virtual .build-deps \
     gcc \
-    && rm -rf /var/lib/apt/lists/*
+    musl-dev \
+    libffi-dev \
+    && apk add --no-cache \
+    ca-certificates
 
 # Copy requirements first for better caching
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY . .
+# Install Python dependencies with optimizations
+RUN pip install --no-cache-dir -r requirements.txt \
+    && apk del .build-deps
+
+# Copy only necessary application files
+COPY main.py .
+COPY telegram_bot/ telegram_bot/
+COPY agents/ agents/
+COPY classes/ classes/
+COPY config/ config/
+COPY data/files_processed/ data/files_processed/
 
 # Create non-root user
-RUN useradd --create-home --shell /bin/bash app && \
+RUN adduser -D -s /bin/sh app && \
     chown -R app:app /app
 USER app
-
-# Expose port (Railway will set PORT environment variable)
-EXPOSE 8000
 
 # Command to run the application
 CMD ["python", "main.py"]
