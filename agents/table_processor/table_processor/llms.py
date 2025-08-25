@@ -50,7 +50,7 @@ class LLM:
     def __init__(
         self,
         llm_client: OpenAI,
-        llm_model = 'gpt-4o-mini',
+        llm_model = 'gpt-5-2025-08-07',
         head_number=2,
         prompt_strategy="simple",
         functions_description: str|None = None,
@@ -82,7 +82,7 @@ class LLM:
                 model=self.llm_model,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=16200,
-                temperature=0.01
+                # temperature=0.01
             )
         return response.choices[0].message.content
     
