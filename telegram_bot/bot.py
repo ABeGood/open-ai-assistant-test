@@ -439,6 +439,7 @@ class TelegramBot:
                         await self.bot.edit_message_reply_markup(chat_id, message_id, reply_markup=updated_keyboard)
         else:
             # Send multiple images
+            caption_too_long = len(message) > CAPTION_LIMIT
             await self._send_media_group(chat_id, images, message, caption_too_long, user, tg_chat_id, user_message_id)
 
     async def _send_media_group(self, chat_id: int, images: list, message: str, caption_too_long: bool, user: User, tg_chat_id: int, user_message_id: int):
