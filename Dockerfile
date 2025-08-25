@@ -14,12 +14,17 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Install minimal system dependencies in one layer
 RUN apk add --no-cache --virtual .build-deps \
     gcc \
+    g++ \
     musl-dev \
     libffi-dev \
     postgresql-dev \
+    freetype-dev \
+    libpng-dev \
     && apk add --no-cache \
     ca-certificates \
-    libpq
+    libpq \
+    freetype \
+    libpng
 
 # Copy requirements first for better caching
 COPY requirements.txt .
