@@ -282,13 +282,14 @@ class TableAgent:
         # query = self.llm_calls.modify_query_for_save_df(query)
 
         if self._plan is None and self.prompt_strategy.has_planner:  # Not skipping the reasoning part
-            self._plan, self._prompt_user_for_planner = self.llm_calls.plan_steps_with_gpt(
+            self._plan = self.llm_calls.plan_steps_with_gpt(
                 query, self.df, data_annotation=self.data_specs)
+            self._prompt_user_for_planner = None
             if check_plan:
                 self._plan = self.llm_calls.generate_replan(
                     query, self.df, self._plan, data_annotation=self.data_specs)
 
-        generated_code, coder_prompt = self.llm_calls.generate_code(
+        generated_code = self.llm_calls.generate_code(
             query,
             self.df,
             self._plan,
@@ -311,7 +312,7 @@ class TableAgent:
             copy(code_to_execute),
             self._code,
             query,
-            coder_prompt,
+            query,
             self.agent_hash,
             tested_type,
             args={
@@ -356,7 +357,7 @@ class TableAgent:
                 PRINT_RESULT = output,
                 TABLE_ANNOTATION=self.data_specs
                 )
-            result_raw = self.llm_calls.call_llm(prompt=prompt)[0]
+            result_raw = self.llm_calls.call_llm(prompt=prompt)
             try:
                 InterpreterResponse.model_validate_json(result_raw)
                 interpreter_response_dict = json.loads(result_raw)

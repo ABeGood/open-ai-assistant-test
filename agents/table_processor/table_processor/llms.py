@@ -112,7 +112,7 @@ class LLM:
                 f"Description and unit for the column '{column['name']}':"
             )
 
-            combined_result = self.call_llm(combined_prompt)[0]
+            combined_result = self.call_llm(combined_prompt)
 
             # Extract description and unit from the combined result
             try:
