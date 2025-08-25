@@ -81,7 +81,7 @@ class LLM:
         response = self.llm_client.chat.completions.create(
                 model=self.llm_model,
                 messages=[{"role": "user", "content": prompt}],
-                max_tokens=16200,
+                # max_tokens=16200,
                 # temperature=0.01
             )
         return response.choices[0].message.content
