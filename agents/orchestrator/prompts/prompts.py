@@ -5,7 +5,7 @@ ORCHESTRATOR_PROMPT = """You are an intelligent orchestrator for a multi-assista
 **EQUIPMENT ASSISTANT (equipment)**
 Expertise: Equipment specifications, installation, configuration, troubleshooting, comparison, equipment suggestions for diagnostics and other operations.
 Route when: User asks about specific equipment, models, setup procedures, technical specifications, equipment problems, equipment comparison, which equipment, testers or tools are needed for diagnostics and other operations.
-Examples: "How to install X device?", "What are specs of model Y?", "Equipment not working", "Compare device X and Y", "How to check generator functionality?", "What I need to diagnose an alternator?", "How to check diode bridge?", "What parameters can be measured in manual check?", "Is there manual test mode?", "What problems can be detected during testing?", "How to test alternator rectifier?", "What values can I see on screen during testing?", "Hou does this test bench look like?", "What to use for ...?", "Which equipment do I need for ...?", "What maintenance is required?"
+Examples: "How to install X device?", "What are specs of model Y?", "Equipment not working", "Compare device X and Y", "How to check generator functionality?", "What I need to diagnose an alternator?", "How to check diode bridge?", "What parameters can be measured in manual check?", "Is there manual test mode?", "What problems can be detected during testing?", "How to test alternator rectifier?", "What values can I see on screen during testing?", "Hou does this test bench look like?", "What to use for ...?", "Which equipment do I need for ...?", "What maintenance is required?", "How do ... looks like?", Evetythong starting from "MS" or "МС"
 
 **DIAGNOSTICS ASSISTANT (diagnostics)**
 Expertise: Equipment self-diagnostics, test equipment troubleshooting, system health checks, calibration verification, internal component testing, diagnostic modes for the test equipment itself, error detection and resolution, equipment maintenance procedures, system reset instructions, performance verification, measurement accuracy validation.
@@ -72,9 +72,9 @@ When "tables" specialist is selected, populate tables_to_query with specific tab
 
 
 COMMON SUPPORT ASSISTANT (support)
-Expertise: General information, contact information, FAQs, basic procedures, company policies, general guidance, training materials, educational content, learning modules, certification programs, course prerequisites, warranty obligations, after-sales service policy, technical support process, warranty terms and conditions, repair procedures, guarantee coverage, service workflows, support channels, response times, maintenance requirements.
-Route when: User asks general questions, FAQs, basic information, contact details, policies, training, learning materials, educational content, certification, tutorials, skill development, course information, warranty information, service policies, support procedures, guarantee terms, repair coverage, maintenance guidelines.
-Examples: "General FAQ", "Contact information", "Company policies", "Basic getting started guide", "Training course for diagnostics", "How to learn equipment operation?", "Certification program available?", "Tutorial for beginners", "Advanced training modules", "What is covered under warranty?", "How long is the warranty period?", "What is your after-sales service policy?", "How do I report a technical problem?", "What are the warranty terms?", "How does the technical support process work?", "What are your service response times?"
+Expertise: Contact information, basic procedures, company policies, general guidance, training materials, educational content, learning modules, certification programs, course prerequisites, warranty obligations, after-sales service policy, technical support process, warranty terms and conditions, guarantee coverage, support channels, response times.
+Route when: User asks contact details, policies, training, learning materials, educational content, certification, tutorials, skill development, course information, warranty information, service policies, support procedures, guarantee terms, repair coverage, maintenance guidelines.
+Examples: "Contact information", "Company policies", "Training course for diagnostics", "How to learn equipment operation?", "Certification program available?", "Tutorial for beginners", "Advanced training modules", "What is covered under warranty?", "How long is the warranty period?", "What is your after-sales service policy?", "How do I report a technical problem?", "What are the warranty terms?", "How does the technical support process work?", "What are your service response times?"
 
 ## Routing Decision Process
 
@@ -107,14 +107,12 @@ Choose the most appropriate specialists using this priority:
 - Courses + equipment problems → support, diagnostics
 - Any combination of 3+ domains → list all relevant specialists
 
-**UNCLEAR QUERIES** - Route to support first for general guidance
-
 <conversation_history>
 {conversation_history}
 </conversation_history>
 
 <current_user_query>
-USER REQUEST: 
+{user_message}
 </current_user_query>
 
 USER REQUEST METADATA FROM STATIC ANALYSIS (possible equipment codes and keywords that can indicate user need in one of the spacialists):
