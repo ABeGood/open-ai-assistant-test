@@ -22,14 +22,12 @@ RUN apk add --no-cache --virtual .build-deps \
     freetype-dev \
     libpng-dev \
     openblas-dev \
-    lapack-dev \
     && apk add --no-cache \
     ca-certificates \
     libpq \
     freetype \
     libpng \
-    openblas \
-    lapack
+    openblas
 
 # Copy requirements first for better caching
 COPY requirements.txt .
