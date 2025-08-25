@@ -231,7 +231,7 @@ class SpecialistAgent:
                                     specialist_data_path = get_data_path_str(assistant_name)
                                     file = find_file_by_name(os.path.join(specialist_data_path, img_dir), img_info['img_file_key']+'_'+img_info['img_name'])
                                     if file:
-                                        img_files_list.append(file[0].replace('\\', '/'))
+                                        img_files_list.append(file[0])
                                 else:
                                     logging.warning(f'Image mapping not found for: {img_info["img_file_key"]}')
                         except Exception as e:

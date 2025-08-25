@@ -178,7 +178,7 @@ class TelegramBot:
                             for table in orchestrator_response.tables_to_query:
                                 table_file_path = get_table_data_path(table_name=table)
                                 self.table_agent.agent_dataframe_manager.add_data(table_file_path)
-                                resp, code = self.table_agent.answer_query(user_message)
+                                resp, code = self.table_agent.answer_query(orchestrator_response.user_query)
                                 table_response_results[table] = {'response': resp, 'code': code[0].final_code_segment}
                                 table_agent_interpreter_result = self.table_agent.interpret_result(
                                     user_query=user_message,
@@ -189,7 +189,7 @@ class TelegramBot:
                     
                     specialists_responses = await self.specialists_agent.call_specialists_parallel(
                         specialists_names=chosen_specialists.copy(),
-                        user_message=user_message
+                        user_message=orchestrator_response.user_query
                         )
                     
                     # Add table agent results to specialists_responses KOSTYL
@@ -222,7 +222,7 @@ class TelegramBot:
                                 f"➡️ Направляем результат в бот-комбинатор для составления финального ответа."
                             await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
                             
-                        final_answer_dict = self.combinator_agent.process_with_combinator_chat(user_message, successfull_spec_resps)
+                        final_answer_dict = self.combinator_agent.process_with_combinator_chat(orchestrator_response.user_query, successfull_spec_resps)
 
                         if DEBUG:
                             debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\
