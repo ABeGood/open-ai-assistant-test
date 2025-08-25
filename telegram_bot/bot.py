@@ -198,11 +198,11 @@ class TelegramBot:
                             specialists_responses.successful_responses.append(table_agent_interpreter_result)
                         else:
                             specialists_responses.failed_responses.append(table_agent_interpreter_result)
-                    # Update totals and success rate
-                    specialists_responses.total_specialists += 1
-                    total_successful = len(specialists_responses.successful_responses)
-                    specialists_responses.success_rate = total_successful /specialists_responses.total_specialists
-                    specialists_responses.success = total_successful > 0
+                        # Update totals and success rate
+                        specialists_responses.total_specialists += 1
+                        total_successful = len(specialists_responses.successful_responses)
+                        specialists_responses.success_rate = total_successful /specialists_responses.total_specialists
+                        specialists_responses.success = total_successful > 0
 
                     successfull_spec_resps = specialists_responses.successful_responses
                     failed_spec_resps = specialists_responses.failed_responses
@@ -215,7 +215,8 @@ class TelegramBot:
                             f"Неуспешные: {len(failed_spec_resps)}"
                         await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
 
-                    elif len(successfull_spec_resps) > 0:
+                    final_answer_dict = None
+                    if len(successfull_spec_resps) > 0:
                         if DEBUG:
                             debug_msg = "🔗 STEP 3.1 \nCombinator call\n\n"\
                                 f"➡️ Направляем результат в бот-комбинатор для составления финального ответа."

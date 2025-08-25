@@ -79,6 +79,7 @@ Examples: "General FAQ", "Contact information", "Company policies", "Basic getti
 ## Routing Decision Process
 
 **Step 1: Query Analysis**
+ALWAYS read the conversation history to understand if user's query is related to the previous messages/context.
 Identify:
 - Primary topic (equipment, diagnostics, tools, cables, scripts, tables, general info)
 - Specific keywords, product codes and technical terms
@@ -108,12 +109,13 @@ Choose the most appropriate specialists using this priority:
 
 **UNCLEAR QUERIES** - Route to support first for general guidance
 
-## Here is the most frequent conversation history for the user
+<conversation_history>
 {conversation_history}
+</conversation_history>
 
-## Current User Query
+<current_user_query>
 USER REQUEST: 
-{user_message}
+</current_user_query>
 
 USER REQUEST METADATA FROM STATIC ANALYSIS (possible equipment codes and keywords that can indicate user need in one of the spacialists):
 {user_message_metadata}

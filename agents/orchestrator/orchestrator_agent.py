@@ -35,13 +35,14 @@ class OrchestratorAgent:
         user_message_metadata = self.prompt_static_analyzer.route_query(user_query)
 
         # Format conversation history
-        conversation_history = self._format_conversation_history(last_n_messages[:-1])
+        conversation_history = self._format_conversation_history(last_n_messages[-6:-1])
         
         # Create prompt from template
         prompt = ORCHESTRATOR_PROMPT.format(
             conversation_history=conversation_history,
             user_message=user_query,
-            user_message_metadata=user_message_metadata
+            # user_message_metadata=user_message_metadata  # TODO
+            user_message_metadata= 'No message metadata'
         )
         
         # Get JSON schema from Pydantic model
