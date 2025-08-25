@@ -32,6 +32,7 @@ COPY telegram_bot/ telegram_bot/
 COPY agents/ agents/
 COPY classes/ classes/
 COPY config/ config/
+COPY db_utils/ db_utils/
 COPY data/files_processed/ data/files_processed/
 
 # Create non-root user

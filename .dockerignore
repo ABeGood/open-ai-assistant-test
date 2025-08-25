@@ -68,12 +68,14 @@ build/
 dist/
 exports/
 
-# Raw data files (keep only essential processed files)
+# Exclude specific data directories but keep files_processed
 data/files_raw/
 data/files_clean/
-communication_with_customer/
 data/files_preproc.rar
 files_preproc/
+
+# Exclude communication_with_customer as requested
+communication_with_customer/
 
 # Git
 .git
