@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from telebot import custom_filters
 from telebot.async_telebot import AsyncTeleBot
 from telebot.types import ReactionTypeEmoji
-from telegram.constants import ParseMode
+# Using string constants for parse_mode with pyTelegramBotAPI
 from telebot.apihelper import ApiTelegramException
 from telebot.types import InputMediaPhoto
 
@@ -118,7 +118,7 @@ class TelegramBot:
 
             if msg.text == "Hi":
                 keyboard = create_reaction_keyboard(0)  # Will be updated after sending
-                sent = await self.bot.send_message(msg.chat.id, "Hello!", parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                sent = await self.bot.send_message(msg.chat.id, "Hello!", parse_mode="Markdown", reply_markup=keyboard)
                 message_id = getattr(sent, "message_id", None)
                 
                 test_msg = Message(
@@ -145,7 +145,7 @@ class TelegramBot:
                     if DEBUG:
                         debug_msg = "🔀 STEP 1.1 \nOrchestrator call\n\n"\
                             f"Определяем каких ботов-специалистов использовать для этого запроса..."
-                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
 
                     last_messages = user.get_chat_history(last_n=10)
                     orchestrator_response = self.orchestrator_agent.route_query_chat_completion(user_message, last_messages)
@@ -154,7 +154,7 @@ class TelegramBot:
                         debug_msg = "🔀 STEP 1.2 \nOrchestrator response\n\n"\
                             f"🤖 Выбранные специалисты: \n{', '.join(orchestrator_response.specialists)}\n\n" \
                             f"❓ Причина: \n{orchestrator_response.reason}".replace("_", "\\_")
-                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
 
                     chosen_specialists = orchestrator_response.specialists
 
@@ -162,14 +162,14 @@ class TelegramBot:
                         if DEBUG:
                             debug_msg = "⚠️ Что-то пошло не так:\n\n" \
                                 "Не был выбран ни один специалист..."
-                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
                             raise Exception(f"No specialists were selected for query {user_message}")
                         
                     if DEBUG:
                         debug_msg = "🤖 STEP 2.1 \nSpecialists call\n\n"\
                             f"➡️ Отправляем параллельные запросы ботам-специалистам:\n\n" \
                             f"{chosen_specialists}"
-                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
 
                     # Call table processor if needed
                     if SpecialistType.TABLES in chosen_specialists:
@@ -213,30 +213,30 @@ class TelegramBot:
                             f"{chosen_specialists}\n\n"\
                             f"Успешные: {len(successfull_spec_resps)}\n"\
                             f"Неуспешные: {len(failed_spec_resps)}"
-                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                        await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
 
                     final_answer_dict = None
                     if len(successfull_spec_resps) > 0:
                         if DEBUG:
                             debug_msg = "🔗 STEP 3.1 \nCombinator call\n\n"\
                                 f"➡️ Направляем результат в бот-комбинатор для составления финального ответа."
-                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
                             
                         final_answer_dict = self.combinator_agent.process_with_combinator_chat(user_message, successfull_spec_resps)
 
                         if DEBUG:
                             debug_msg = "🔗 STEP 3.2 \nCombinator response\n\n"\
                                 "⬅️ Получили ответ от комбинатора."
-                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
 
                             debug_msg = "📄 STEP 4 \nFormatting final response\n\n"\
                             f"Оформляем ответ комбинатора в финальное сообщение..."
-                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
                     else:
                         if DEBUG:
                             debug_msg = "⚠️ Что-то пошло не так:\n\n"\
                                 "Не было получено ни одного ответа."
-                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode=ParseMode.MARKDOWN)
+                            await self.bot.send_message(msg.chat.id, debug_msg, parse_mode="Markdown")
 
                     if final_answer_dict:
                         tg_message, images = format_telegram_message(final_answer_dict)
@@ -366,7 +366,7 @@ class TelegramBot:
             # No images - just send text message
             if len(message) <= MESSAGE_LIMIT:
                 keyboard = create_reaction_keyboard(0)  # Will be updated after sending
-                sent = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                sent = await self.bot.send_message(chat_id, message, parse_mode="Markdown", reply_markup=keyboard)
                 message_id = getattr(sent, "message_id", None)
                 self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                 # Update keyboard with correct message_id
@@ -399,7 +399,7 @@ class TelegramBot:
                 for i, chunk in enumerate(chunks):
                     if i == len(chunks) - 1:  # Last chunk - add reaction keyboard
                         keyboard = create_reaction_keyboard(0)  # Will be updated after sending
-                        sent = await self.bot.send_message(chat_id, chunk, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                        sent = await self.bot.send_message(chat_id, chunk, parse_mode="Markdown", reply_markup=keyboard)
                         message_id = getattr(sent, "message_id", None)
                         self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                         # Update keyboard with correct message_id
@@ -407,7 +407,7 @@ class TelegramBot:
                             updated_keyboard = create_reaction_keyboard(message_id)
                             await self.bot.edit_message_reply_markup(chat_id, message_id, reply_markup=updated_keyboard)
                     else:
-                        sent = await self.bot.send_message(chat_id, chunk, parse_mode=ParseMode.MARKDOWN)
+                        sent = await self.bot.send_message(chat_id, chunk, parse_mode="Markdown")
                         self._persist_message(user, message, getattr(sent, "message_id", None), user_message_id, tg_chat_id)
         
         elif len(images) == 1:
@@ -418,7 +418,7 @@ class TelegramBot:
                     # Send image without caption, then text separately
                     await self.bot.send_photo(chat_id, photo)
                     keyboard = create_reaction_keyboard(0)  # Will be updated after sending
-                    sent_text = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                    sent_text = await self.bot.send_message(chat_id, message, parse_mode="Markdown", reply_markup=keyboard)
                     message_id = getattr(sent_text, "message_id", None)
                     self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                     
@@ -429,7 +429,7 @@ class TelegramBot:
                 else:
                     # Send image with caption
                     keyboard = create_reaction_keyboard(0)  # Will be updated after sending
-                    sent_photo = await self.bot.send_photo(chat_id, photo, caption=message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+                    sent_photo = await self.bot.send_photo(chat_id, photo, caption=message, parse_mode="Markdown", reply_markup=keyboard)
                     message_id = getattr(sent_photo, "message_id", None)
                     self._persist_message(user, message, message_id, user_message_id, tg_chat_id)
                     
@@ -465,7 +465,7 @@ class TelegramBot:
                     media_group.append(InputMediaPhoto(
                         photo, 
                         caption=caption, 
-                        parse_mode=ParseMode.MARKDOWN if caption else None
+                        parse_mode="Markdown" if caption else None
                     ))
                 
                 group_messages = await self.bot.send_media_group(chat_id, media_group)
@@ -481,7 +481,7 @@ class TelegramBot:
         assistant_msg_id_to_save = None
         if caption_too_long:
             keyboard = create_reaction_keyboard(0)  # Will be updated after sending
-            sent_caption = await self.bot.send_message(chat_id, message, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard)
+            sent_caption = await self.bot.send_message(chat_id, message, parse_mode="Markdown", reply_markup=keyboard)
             assistant_msg_id_to_save = getattr(sent_caption, "message_id", None)
             
             # Update keyboard with correct message_id
