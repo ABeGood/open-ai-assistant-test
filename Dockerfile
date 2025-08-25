@@ -34,10 +34,6 @@ COPY config/ config/
 COPY db_utils/ db_utils/
 COPY data/files_processed/ data/files_processed/
 
-# Create non-root user
-RUN adduser -D -s /bin/sh app && \
-    chown -R app:app /app
-USER app
 
 # Command to run the application
 CMD ["python", "main.py"]
