@@ -11,7 +11,7 @@ from agents.prompt_static_analyzer.prompt_static_analyzer import PromptStaticAna
 class OrchestratorAgent:
     """Orchestrator agent using chat completions API for routing queries to specialists"""
     
-    def __init__(self, llm_client: OpenAI, llm_model: str = "gpt-4o-2024-08-06"):
+    def __init__(self, llm_client: OpenAI, llm_model: str = "gpt-5-2025-08-07"):
         self.llm_client = llm_client
         self.llm_model = llm_model
         self.prompt_static_analyzer = PromptStaticAnalyzer()
@@ -68,7 +68,7 @@ class OrchestratorAgent:
                 "type": "json_schema",
                 "json_schema": schema
             },
-            temperature=0.01
+            # temperature=0.01 # not supported by 5
         )
         
         # Parse and validate response
