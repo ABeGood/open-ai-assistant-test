@@ -1,6 +1,6 @@
 assistant_configs = {
     "equipment": {
-        "id": "asst_1dQLsAz9p6T2cQyGtnjSeXnv",
+        "id": "asst_awHzb3xl9uRV0SvuLjOteTus",
         "purpose": "Equipment expert",
         "truncation_strategy": {
             "type": "last_messages",
@@ -22,7 +22,7 @@ assistant_configs = {
     },
 
     "tools": {
-        "id": "asst_jtOdIxiHK1UsVkXaCxM8y0PS",
+        "id": "asst_XVvRqM5N2gtZNafuQFCQ4Gbe",
         "purpose": "Hand tools expert",
         "truncation_strategy": {
             "type": "last_messages",
@@ -33,7 +33,7 @@ assistant_configs = {
     },
 
     "cables": {
-        "id": "asst_cErO4m6RZdfHQPAT3wVagp2z",
+        "id": "asst_AEIIYE4ElLmYqjo5eBJdXssm",
         "purpose": "Cables for equipment connection expert",
         "truncation_strategy": {
             "type": "last_messages",
@@ -44,7 +44,7 @@ assistant_configs = {
     },
 
     "support": {
-        "id": "asst_nJzNpbdII7UzbOGiiSFcu09u",
+        "id": "asst_gRr26pcbjcrcBz6e1N2bb2y9",
         "purpose": "Expert with common information knowledge",
         "truncation_strategy": {
             "type": "last_messages",
