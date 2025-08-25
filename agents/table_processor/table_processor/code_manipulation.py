@@ -474,7 +474,7 @@ class Code(Subscriber):
 
     @staticmethod
     def _prepend_imports(code_str: str) -> str:
-        return f"import pandas as pd\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom numbers import Number\n\n{code_str}"
+        return f"import pandas as pd\nimport numpy as np\nfrom numbers import Number\n\n{code_str}"
 
     # @staticmethod
     # def _append_result_storage(code_str: str, n_dfs: int=None) -> str:
@@ -494,7 +494,7 @@ class Code(Subscriber):
 
     @staticmethod
     def preprocess_extracted_code(extracted_code: str, prompt_strategy: BasePromptStrategy, n_dfs: int = None) -> str:
-        if "import pandas as pd" not in extracted_code or "import matplotlib.pyplot as plt" not in extracted_code:
+        if "import pandas as pd" not in extracted_code:
             extracted_code = Code._prepend_imports(extracted_code)
         extracted_code = prompt_strategy.append_to_code(
             extracted_code, n_dfs=n_dfs)

@@ -1,5 +1,5 @@
-# Use Python 3.11 alpine for smaller size and lower memory usage
-FROM python:3.11-alpine
+# Use Python 3.11 slim for better package compatibility
+FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
@@ -11,23 +11,13 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Install minimal system dependencies in one layer
-RUN apk add --no-cache --virtual .build-deps \
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
-    gfortran \
-    musl-dev \
-    libffi-dev \
-    postgresql-dev \
-    freetype-dev \
-    libpng-dev \
-    openblas-dev \
-    && apk add --no-cache \
-    ca-certificates \
-    libpq \
-    freetype \
-    libpng \
-    openblas
+    libpq-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
 COPY requirements.txt .
