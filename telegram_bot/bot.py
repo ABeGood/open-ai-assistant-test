@@ -38,7 +38,7 @@ from agents.path_utils import (
 from .chat_utils import create_reaction_keyboard, create_locked_reaction_keyboard, parse_reaction_callback, get_reaction_emoji
 from db_utils.db_manager import get_message_reaction, update_message_reaction
 
-DEBUG = True
+DEBUG = False
 
 load_dotenv()
 OPENAI_KEY = os.getenv("OPENAI_TOKEN")

@@ -1,0 +1,14 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "python main.py"
+restartPolicyType = "always"
+
+[env]
+# Environment variables will be set in Railway dashboard
+# Required: TELEGRAM_TOKEN, OPENAI_TOKEN
+
+[settings]
+generateDomain = true
