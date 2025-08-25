@@ -8,6 +8,7 @@ pydantic==2.11.7
 # Required for TableAgent and data processing
 pandas==2.2.3
 numpy==1.26.4
+matplotlib==3.7.5
 autopep8==2.3.2
 
 # Required by the dependencies above

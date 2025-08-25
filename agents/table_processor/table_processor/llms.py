@@ -26,19 +26,6 @@ load_dotenv()
 api_key = os.environ.get("OPENAI_TOKEN")
 client = OpenAI(api_key=api_key)
 
-def call_llm(last_question: str, user_message: str):
-    """Simple function to determine if assistant switch is needed."""
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{
-            "role": "user", 
-            "content": f"Last question: {last_question}\nNew message: {user_message}\nSay Hello!"
-        }],
-        max_tokens=100
-    )
-    return response.choices[0].message.content
-# *USE THIS* End
-
 class TopicClassifier(BaseModel):
     """Classify if the user asked for a vizualization, e.g. plot or graph, or asked for some general numerical result, e.g. finding correlation or maximum value."""
 
@@ -97,7 +84,7 @@ class LLM:
                 max_tokens=16200,
                 temperature=0.01
             )
-        return response.choices[0].message.content, prompt
+        return response.choices[0].message.content
     
     def generate_column_descriptions(self, table_name: str, columns: list) -> str:
         """
@@ -183,27 +170,27 @@ class LLM:
         template_prompt = self.prompts.query_rewrite(
             df, user_query, data_annotation)
 
-        return self._call_openai_llm(template_prompt, role=Role.PLANNER), template_prompt
+        return self._call_openai_llm(template_prompt), template_prompt
 
     def generate_replan(self, user_query, df, plan, save_plot_name=None, query_type=None, data_annotation: dict | None = None):
         template_prompt = self.prompts.generate_replan(
             df, user_query, plan, data_annotation)
-        return self._call_openai_llm(template_prompt, role=Role.PLANNER)
+        return self._call_openai_llm(template_prompt)
 
     def merge_query_and_history(self, user_query, history):
         template_prompt = self.prompts.get_merge_query_and_history(
             user_query, history)
-        return self._call_openai_llm(template_prompt, role=Role.PLANNER)
+        return self._call_openai_llm(template_prompt)
 
     def is_query_clear(self, user_query, df, data_annotation: dict | None = None):
         template_prompt = self.prompts.is_query_clear(
             df, user_query, data_annotation)
-        return self._call_openai_llm(template_prompt, role=Role.PLANNER)
+        return self._call_openai_llm(template_prompt)
 
     def is_coding_needed_cls(self, user_query, df) -> int:
         # 0 - no coding required, 1 - coding required
         template_prompt = self.prompts.is_coding_needed_cls(df, user_query)
-        answer = self._call_openai_llm(template_prompt, role=Role.PLANNER)
+        answer = self._call_openai_llm(template_prompt)
         print(answer)
         if '1' in answer:
             return 1
@@ -212,7 +199,7 @@ class LLM:
     def answer_noncoding_query(self, user_query, chat_history):
         template_prompt = self.prompts.get_answer_noncoding_query_prompt(
             user_query, chat_history)
-        return self._call_openai_llm(template_prompt, role=Role.PLANNER)
+        return self._call_openai_llm(template_prompt)
 
     def modify_query_for_save_df(self, user_query):
         return self.prompts.get_save_df_prompt(user_query)
@@ -220,7 +207,7 @@ class LLM:
     def query_disambiguation(self, user_query, df, data_annotation: dict | None = None):
         template_prompt = self.prompts.query_disambiguation(
             df, user_query, data_annotation)
-        return self._call_openai_llm(template_prompt, role=Role.PLANNER)
+        return self._call_openai_llm(template_prompt)
 
     def generate_code(self,
                       user_query,
@@ -260,7 +247,7 @@ class LLM:
     def fix_generated_code(self, df, code_to_be_fixed, error_message, user_query, initial_coder_prompt, data_annotation: dict | None = None):
         prompt = self.prompts.fix_code_prompt(
             df, user_query, code_to_be_fixed, error_message, initial_coder_prompt)
-        return self._call_openai_llm(prompt, Role.DEBUGGER), prompt
+        return self._call_openai_llm(prompt), prompt
 
     def clear_conversation_history(self):
         """Clear the conversation history to start fresh."""
@@ -275,7 +262,7 @@ class LLM:
     
     def generate_title(self, prompt: str) -> str:
         try:
-            response = self._call_openai_llm(prompt, role=Role.PLANNER)
+            response = self._call_openai_llm(prompt)[0]
             title = response.strip() 
             return title
         except Exception as e:
