@@ -5,13 +5,11 @@ class SpecialistType(str, Enum):
     """Enum for available specialist types"""
     EQUIPMENT = "equipment"
     DIAGNOSTICS = "diagnostics"
-    COMPATIBILITY = "compatibility"
     TOOLS = "tools"
     CABLES = "cables"
     SUPPORT = "support"
     SCRIPTS = "scripts"
     TABLES = "tables"
-    COURSES = "courses"
 
 class TableName(str, Enum):
     """Enum for available table types"""

@@ -201,14 +201,19 @@ class SpecialistAgent:
                     with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
                         pdf_mapping = json.load(file)
                     for source in sources_list:
-                        source_filename = source.filename
-                        name_without_ext = os.path.splitext(source_filename)[0]
-                        source_file_path = pdf_mapping.get(name_without_ext)
-                        if source_file_path:
-                            sources_files_list.append(source_file_path)
-                        else:
-                            logging.warning(f'Source mapping not found for: {name_without_ext}')
+                        try:
+                            source_filename = source.filename
+                            name_without_ext = os.path.splitext(source_filename)[0]
+                            source_file_path = pdf_mapping.get(name_without_ext)
+                            if source_file_path:
+                                sources_files_list.append(source_file_path)
+                            else:
+                                logging.warning(f'Source mapping not found for: {name_without_ext}')
+                        except Exception as e:
+                            logging.warning(f'Failed to process source {source}: {e}')
                     sources_files_list = list(set(sources_files_list))
+                except KeyError as e:
+                    logging.warning(f'Unknown specialist "{assistant_name}" - skipping source mapping: {e}')
                 except Exception as e:
                     logging.warning(f'Failed find source in pdf_mapping.json. {e}',exc_info=True)
 
@@ -218,17 +223,22 @@ class SpecialistAgent:
                     with open(img_mapping_filepath, 'r', encoding='utf-8') as file:
                         img_mapping = json.load(file)
                     for img in img_markers_list:
-                        img_info = extract_marker_parts(marker = img)
-                        if img_info:
-                            img_dir = img_mapping.get(img_info['img_file_key'])
-                            if img_dir:
-                                specialist_data_path = get_data_path_str(assistant_name)
-                                file = find_file_by_name(os.path.join(specialist_data_path, img_dir), img_info['img_file_key']+'_'+img_info['img_name'])
-                                if file:
-                                    img_files_list.append(file[0].replace('\\', '/'))
-                            else:
-                                logging.warning(f'Image mapping not found for: {img_info["img_file_key"]}')
+                        try:
+                            img_info = extract_marker_parts(marker = img)
+                            if img_info:
+                                img_dir = img_mapping.get(img_info['img_file_key'])
+                                if img_dir:
+                                    specialist_data_path = get_data_path_str(assistant_name)
+                                    file = find_file_by_name(os.path.join(specialist_data_path, img_dir), img_info['img_file_key']+'_'+img_info['img_name'])
+                                    if file:
+                                        img_files_list.append(file[0].replace('\\', '/'))
+                                else:
+                                    logging.warning(f'Image mapping not found for: {img_info["img_file_key"]}')
+                        except Exception as e:
+                            logging.warning(f'Failed to process image marker {img}: {e}')
                     img_files_list = list(set(img_files_list))
+                except KeyError as e:
+                    logging.warning(f'Unknown specialist "{assistant_name}" - skipping image mapping: {e}')
                 except Exception as e:
                     logging.warning(f'Failed to process image mappings. {e}', exc_info=True)
 
@@ -355,14 +365,19 @@ class SpecialistAgent:
                     with open(source_mapping_filepath, 'r', encoding='utf-8') as file:
                         pdf_mapping = json.load(file)
                     for source in sources_list:
-                        source_filename = source.filename
-                        name_without_ext = os.path.splitext(source_filename)[0]
-                        source_file_path = pdf_mapping.get(name_without_ext)
-                        if source_file_path:
-                            sources_files_list.append(source_file_path)
-                        else:
-                            logging.warning(f'Source mapping not found for: {name_without_ext}')
+                        try:
+                            source_filename = source.filename
+                            name_without_ext = os.path.splitext(source_filename)[0]
+                            source_file_path = pdf_mapping.get(name_without_ext)
+                            if source_file_path:
+                                sources_files_list.append(source_file_path)
+                            else:
+                                logging.warning(f'Source mapping not found for: {name_without_ext}')
+                        except Exception as e:
+                            logging.warning(f'Failed to process source {source}: {e}')
                     sources_files_list = list(set(sources_files_list))
+                except KeyError as e:
+                    logging.warning(f'Unknown specialist "{assistant_name}" - skipping source mapping: {e}')
                 except Exception as e:
                     logging.warning(f'Failed find source in pdf_mapping.json. {e}',exc_info=True)
 
@@ -372,17 +387,22 @@ class SpecialistAgent:
                     with open(img_mapping_filepath, 'r', encoding='utf-8') as file:
                         img_mapping = json.load(file)
                     for img in img_markers_list:
-                        img_info = extract_marker_parts(marker = img)
-                        if img_info:
-                            img_dir = img_mapping.get(img_info['img_file_key'])
-                            if img_dir:
-                                specialist_data_path = get_data_path_str(assistant_name)
-                                file = find_file_by_name(os.path.join(specialist_data_path, img_dir), img_info['img_file_key']+'_'+img_info['img_name'])
-                                if file:
-                                    img_files_list.append(file[0].replace('\\', '/'))
-                            else:
-                                logging.warning(f'Image mapping not found for: {img_info["img_file_key"]}')
+                        try:
+                            img_info = extract_marker_parts(marker = img)
+                            if img_info:
+                                img_dir = img_mapping.get(img_info['img_file_key'])
+                                if img_dir:
+                                    specialist_data_path = get_data_path_str(assistant_name)
+                                    file = find_file_by_name(os.path.join(specialist_data_path, img_dir), img_info['img_file_key']+'_'+img_info['img_name'])
+                                    if file:
+                                        img_files_list.append(file[0].replace('\\', '/'))
+                                else:
+                                    logging.warning(f'Image mapping not found for: {img_info["img_file_key"]}')
+                        except Exception as e:
+                            logging.warning(f'Failed to process image marker {img}: {e}')
                     img_files_list = list(set(img_files_list))
+                except KeyError as e:
+                    logging.warning(f'Unknown specialist "{assistant_name}" - skipping image mapping: {e}')
                 except Exception as e:
                     logging.warning(f'Failed to process image mappings. {e}', exc_info=True)
 

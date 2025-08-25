@@ -19,7 +19,9 @@ SPECIALIST_DATA_PATHS: Dict[str, Path] = {
     'equipment': FILES_PROCESSED_ROOT / "equipment",
     'cables': FILES_PROCESSED_ROOT / "cables", 
     'tools': FILES_PROCESSED_ROOT / "tools",
-    'common_info': FILES_PROCESSED_ROOT / "common_info"
+    'support': FILES_PROCESSED_ROOT / "common_info",
+    'scripts': FILES_PROCESSED_ROOT / "scripts",
+    'diagnostics': FILES_PROCESSED_ROOT / "diagnostics"
 }
 
 # Convert to strings for compatibility with existing code
